@@ -1,4 +1,7 @@
+import { Application } from '@nativescript/core';
 import { ILoginManager } from './common';
+
+declare const GULAppDelegateSwizzler, NSCFacebookUIAppDelegateExt;
 
 function setToArray<T>(value: NSSet<T>): T[] {
 	const result = [];
@@ -185,12 +188,22 @@ export class LoginResult {
 		return this.native;
 	}
 }
-
+let appDelegateInitialized = false;
 export class LoginManager implements ILoginManager {
 	static #native: FBSDKLoginManager;
 	static init() {
 		if (!this.#native) {
 			this.#native = FBSDKLoginManager.new();
+		}
+
+		if (!appDelegateInitialized) {
+			if (!Application.ios.delegate) {
+				Application.ios.delegate = NSCFacebookUIAppDelegateExt;
+			}
+			GULAppDelegateSwizzler.proxyOriginalDelegate();
+			GULAppDelegateSwizzler.registerAppDelegateInterceptor(<any>NSCFacebookUIAppDelegateExt);
+
+			appDelegateInitialized = true;
 		}
 	}
 
