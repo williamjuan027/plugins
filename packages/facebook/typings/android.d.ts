@@ -2,6 +2,7 @@ declare module com {
 	export module facebook {
 		export class AccessToken {
 			public static class: java.lang.Class<com.facebook.AccessToken>;
+			public static Companion: com.facebook.AccessToken.Companion;
 			public static ACCESS_TOKEN_KEY: string;
 			public static EXPIRES_IN_KEY: string;
 			public static USER_ID_KEY: string;
@@ -95,6 +96,7 @@ declare module com {
 	export module facebook {
 		export class AccessTokenCache {
 			public static class: java.lang.Class<com.facebook.AccessTokenCache>;
+			public static Companion: com.facebook.AccessTokenCache.Companion;
 			public static CACHED_ACCESS_TOKEN_KEY: string;
 			public clear(): void;
 			public constructor();
@@ -119,6 +121,7 @@ declare module com {
 	export module facebook {
 		export class AccessTokenManager {
 			public static class: java.lang.Class<com.facebook.AccessTokenManager>;
+			public static Companion: com.facebook.AccessTokenManager.Companion;
 			public static TAG: string;
 			public static ACTION_CURRENT_ACCESS_TOKEN_CHANGED: string;
 			public static EXTRA_OLD_ACCESS_TOKEN: string;
@@ -209,8 +212,33 @@ declare module com {
 
 declare module com {
 	export module facebook {
+		export abstract class AccessTokenTracker {
+			public static class: java.lang.Class<com.facebook.AccessTokenTracker>;
+			public static Companion: com.facebook.AccessTokenTracker.Companion;
+			public onCurrentAccessTokenChanged(param0: com.facebook.AccessToken, param1: com.facebook.AccessToken): void;
+			public startTracking(): void;
+			public stopTracking(): void;
+			public constructor();
+			public isTracking(): boolean;
+		}
+		export module AccessTokenTracker {
+			export class Companion {
+				public static class: java.lang.Class<com.facebook.AccessTokenTracker.Companion>;
+			}
+			export class CurrentAccessTokenBroadcastReceiver {
+				public static class: java.lang.Class<com.facebook.AccessTokenTracker.CurrentAccessTokenBroadcastReceiver>;
+				public constructor(param0: com.facebook.AccessTokenTracker);
+				public onReceive(param0: globalAndroid.content.Context, param1: globalAndroid.content.Intent): void;
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
 		export class AuthenticationToken {
 			public static class: java.lang.Class<com.facebook.AuthenticationToken>;
+			public static Companion: com.facebook.AuthenticationToken.Companion;
 			public static AUTHENTICATION_TOKEN_KEY: string;
 			public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.AuthenticationToken>;
 			public equals(param0: any): boolean;
@@ -243,6 +271,7 @@ declare module com {
 	export module facebook {
 		export class AuthenticationTokenCache {
 			public static class: java.lang.Class<com.facebook.AuthenticationTokenCache>;
+			public static Companion: com.facebook.AuthenticationTokenCache.Companion;
 			public static CACHED_AUTHENTICATION_TOKEN_KEY: string;
 			public save(param0: com.facebook.AuthenticationToken): void;
 			public clear(): void;
@@ -262,6 +291,7 @@ declare module com {
 	export module facebook {
 		export class AuthenticationTokenClaims {
 			public static class: java.lang.Class<com.facebook.AuthenticationTokenClaims>;
+			public static Companion: com.facebook.AuthenticationTokenClaims.Companion;
 			public static MAX_TIME_SINCE_TOKEN_ISSUED: number;
 			public static JSON_KEY_JIT: string;
 			public static JSON_KEY_ISS: string;
@@ -343,6 +373,7 @@ declare module com {
 	export module facebook {
 		export class AuthenticationTokenHeader {
 			public static class: java.lang.Class<com.facebook.AuthenticationTokenHeader>;
+			public static Companion: com.facebook.AuthenticationTokenHeader.Companion;
 			public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.AuthenticationTokenHeader>;
 			public equals(param0: any): boolean;
 			public getKid(): string;
@@ -371,6 +402,7 @@ declare module com {
 	export module facebook {
 		export class AuthenticationTokenManager {
 			public static class: java.lang.Class<com.facebook.AuthenticationTokenManager>;
+			public static Companion: com.facebook.AuthenticationTokenManager.Companion;
 			public static TAG: string;
 			public static ACTION_CURRENT_AUTHENTICATION_TOKEN_CHANGED: string;
 			public static EXTRA_OLD_AUTHENTICATION_TOKEN: string;
@@ -392,6 +424,30 @@ declare module com {
 				public static class: java.lang.Class<com.facebook.AuthenticationTokenManager.CurrentAuthenticationTokenChangedBroadcastReceiver>;
 				public onReceive(param0: globalAndroid.content.Context, param1: globalAndroid.content.Intent): void;
 				public constructor();
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export abstract class AuthenticationTokenTracker {
+			public static class: java.lang.Class<com.facebook.AuthenticationTokenTracker>;
+			public static Companion: com.facebook.AuthenticationTokenTracker.Companion;
+			public startTracking(): void;
+			public onCurrentAuthenticationTokenChanged(param0: com.facebook.AuthenticationToken, param1: com.facebook.AuthenticationToken): void;
+			public stopTracking(): void;
+			public constructor();
+			public isTracking(): boolean;
+		}
+		export module AuthenticationTokenTracker {
+			export class Companion {
+				public static class: java.lang.Class<com.facebook.AuthenticationTokenTracker.Companion>;
+			}
+			export class CurrentAuthenticationTokenBroadcastReceiver {
+				public static class: java.lang.Class<com.facebook.AuthenticationTokenTracker.CurrentAuthenticationTokenBroadcastReceiver>;
+				public onReceive(param0: globalAndroid.content.Context, param1: globalAndroid.content.Intent): void;
+				public constructor(param0: com.facebook.AuthenticationTokenTracker);
 			}
 		}
 	}
@@ -444,6 +500,128 @@ declare module com {
 
 declare module com {
 	export module facebook {
+		export class CustomTabActivity {
+			public static class: java.lang.Class<com.facebook.CustomTabActivity>;
+			public static Companion: com.facebook.CustomTabActivity.Companion;
+			public static CUSTOM_TAB_REDIRECT_ACTION: string;
+			public static DESTROY_ACTION: string;
+			public onCreate(param0: globalAndroid.os.Bundle): void;
+			public onActivityResult(param0: number, param1: number, param2: globalAndroid.content.Intent): void;
+			public constructor();
+			public onDestroy(): void;
+		}
+		export module CustomTabActivity {
+			export class Companion {
+				public static class: java.lang.Class<com.facebook.CustomTabActivity.Companion>;
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export class CustomTabMainActivity {
+			public static class: java.lang.Class<com.facebook.CustomTabMainActivity>;
+			public static Companion: com.facebook.CustomTabMainActivity.Companion;
+			public static EXTRA_ACTION: string;
+			public static EXTRA_PARAMS: string;
+			public static EXTRA_CHROME_PACKAGE: string;
+			public static EXTRA_URL: string;
+			public static EXTRA_TARGET_APP: string;
+			public static REFRESH_ACTION: string;
+			public static NO_ACTIVITY_EXCEPTION: string;
+			public onResume(): void;
+			public onCreate(param0: globalAndroid.os.Bundle): void;
+			public constructor();
+			public onNewIntent(param0: globalAndroid.content.Intent): void;
+		}
+		export module CustomTabMainActivity {
+			export class Companion {
+				public static class: java.lang.Class<com.facebook.CustomTabMainActivity.Companion>;
+			}
+			export class WhenMappings {
+				public static class: java.lang.Class<com.facebook.CustomTabMainActivity.WhenMappings>;
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export class FacebookActivity extends androidx.fragment.app.FragmentActivity {
+			public static class: java.lang.Class<com.facebook.FacebookActivity>;
+			public static Companion: com.facebook.FacebookActivity.Companion;
+			public static PASS_THROUGH_CANCEL_ACTION: string;
+			public registerForActivityResult(param0: androidx.activity.result.contract.ActivityResultContract, param1: androidx.activity.result.ActivityResultCallback): androidx.activity.result.ActivityResultLauncher;
+			public addMenuProvider(param0: androidx.core.view.MenuProvider, param1: androidx.lifecycle.LifecycleOwner, param2: androidx.lifecycle.Lifecycle.State): void;
+			public onRequestPermissionsResult(param0: number, param1: androidNative.Array<string>, param2: androidNative.Array<number>): void;
+			public getFragment(): androidx.fragment.app.Fragment;
+			public removeOnContextAvailableListener(param0: androidx.activity.contextaware.OnContextAvailableListener): void;
+			public removeOnNewIntentListener(param0: androidx.core.util.Consumer<globalAndroid.content.Intent>): void;
+			public getSavedStateRegistry(): androidx.savedstate.SavedStateRegistry;
+			public onConfigurationChanged(param0: globalAndroid.content.res.Configuration): void;
+			public dump(param0: string, param1: java.io.FileDescriptor, param2: java.io.PrintWriter, param3: androidNative.Array<string>): void;
+			public getOnBackPressedDispatcher(): androidx.activity.OnBackPressedDispatcher;
+			public addOnTrimMemoryListener(param0: androidx.core.util.Consumer<java.lang.Integer>): void;
+			public removeMenuProvider(param0: androidx.core.view.MenuProvider): void;
+			/** @deprecated */
+			public validateRequestPermissionsRequestCode(param0: number): void;
+			public getDefaultViewModelCreationExtras(): androidx.lifecycle.viewmodel.CreationExtras;
+			public addOnPictureInPictureModeChangedListener(param0: androidx.core.util.Consumer<androidx.core.app.PictureInPictureModeChangedInfo>): void;
+			public getDefaultViewModelProviderFactory(): androidx.lifecycle.ViewModelProvider.Factory;
+			public peekAvailableContext(): globalAndroid.content.Context;
+			public getCurrentFragment(): androidx.fragment.app.Fragment;
+			public addOnMultiWindowModeChangedListener(param0: androidx.core.util.Consumer<androidx.core.app.MultiWindowModeChangedInfo>): void;
+			public removeOnTrimMemoryListener(param0: androidx.core.util.Consumer<java.lang.Integer>): void;
+			public addOnConfigurationChangedListener(param0: androidx.core.util.Consumer<globalAndroid.content.res.Configuration>): void;
+			public constructor(param0: number);
+			public onCreate(param0: globalAndroid.os.Bundle): void;
+			public invalidateMenu(): void;
+			public constructor();
+			public getLifecycle(): androidx.lifecycle.Lifecycle;
+			public validateRequestPermissionsRequestCode(param0: number): void;
+			public registerForActivityResult(param0: androidx.activity.result.contract.ActivityResultContract, param1: androidx.activity.result.ActivityResultRegistry, param2: androidx.activity.result.ActivityResultCallback): androidx.activity.result.ActivityResultLauncher;
+			public removeOnConfigurationChangedListener(param0: androidx.core.util.Consumer<globalAndroid.content.res.Configuration>): void;
+			public removeOnMultiWindowModeChangedListener(param0: androidx.core.util.Consumer<androidx.core.app.MultiWindowModeChangedInfo>): void;
+			public getViewModelStore(): androidx.lifecycle.ViewModelStore;
+			public addOnContextAvailableListener(param0: androidx.activity.contextaware.OnContextAvailableListener): void;
+			public superDispatchKeyEvent(param0: globalAndroid.view.KeyEvent): boolean;
+			public addMenuProvider(param0: androidx.core.view.MenuProvider): void;
+			public getActivityResultRegistry(): androidx.activity.result.ActivityResultRegistry;
+			public addOnNewIntentListener(param0: androidx.core.util.Consumer<globalAndroid.content.Intent>): void;
+			public removeOnPictureInPictureModeChangedListener(param0: androidx.core.util.Consumer<androidx.core.app.PictureInPictureModeChangedInfo>): void;
+			public addMenuProvider(param0: androidx.core.view.MenuProvider, param1: androidx.lifecycle.LifecycleOwner): void;
+		}
+		export module FacebookActivity {
+			export class Companion {
+				public static class: java.lang.Class<com.facebook.FacebookActivity.Companion>;
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export class FacebookAuthorizationException extends com.facebook.FacebookException {
+			public static class: java.lang.Class<com.facebook.FacebookAuthorizationException>;
+			public static Companion: com.facebook.FacebookAuthorizationException.Companion;
+			public static serialVersionUID: number;
+			public constructor(param0: java.lang.Throwable);
+			public constructor(param0: string, param1: java.lang.Throwable);
+			public constructor();
+			public constructor(param0: string);
+			public constructor(param0: string, param1: androidNative.Array<any>);
+		}
+		export module FacebookAuthorizationException {
+			export class Companion {
+				public static class: java.lang.Class<com.facebook.FacebookAuthorizationException.Companion>;
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
 		export class FacebookBroadcastReceiver {
 			public static class: java.lang.Class<com.facebook.FacebookBroadcastReceiver>;
 			public onFailedAppCall(param0: string, param1: string, param2: globalAndroid.os.Bundle): void;
@@ -456,8 +634,56 @@ declare module com {
 
 declare module com {
 	export module facebook {
+		export abstract class FacebookButtonBase {
+			public static class: java.lang.Class<com.facebook.FacebookButtonBase>;
+			public getAndroidxActivityResultRegistryOwner(): androidx.activity.result.ActivityResultRegistryOwner;
+			public getFragment(): androidx.fragment.app.Fragment;
+			public getCompoundPaddingLeft(): number;
+			public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number, param4: string, param5: string);
+			public getRequestCode(): number;
+			public logButtonTapped(param0: globalAndroid.content.Context): void;
+			public onDraw(param0: globalAndroid.graphics.Canvas): void;
+			public getCompoundPaddingRight(): number;
+			public configureButton(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number): void;
+			public logButtonCreated(param0: globalAndroid.content.Context): void;
+			public getAnalyticsButtonTappedEventName(): string;
+			public measureTextWidth(param0: string): number;
+			public getAnalyticsButtonCreatedEventName(): string;
+			public setFragment(param0: androidx.fragment.app.Fragment): void;
+			public getDefaultRequestCode(): number;
+			public getActivity(): globalAndroid.app.Activity;
+			public setInternalOnClickListener(param0: globalAndroid.view.View.OnClickListener): void;
+			public getNativeFragment(): globalAndroid.app.Fragment;
+			public setOnClickListener(param0: globalAndroid.view.View.OnClickListener): void;
+			public setFragment(param0: globalAndroid.app.Fragment): void;
+			public callExternalOnClickListener(param0: globalAndroid.view.View): void;
+			public onAttachedToWindow(): void;
+			public getDefaultStyleResource(): number;
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export class FacebookCallback<RESULT> extends java.lang.Object {
+			public static class: java.lang.Class<com.facebook.FacebookCallback>;
+			/**
+			 * Constructs a new instance of the com.facebook.FacebookCallback interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+			 */
+			public constructor(implementation: { onSuccess(param0: RESULT): void; onCancel(): void; onError(param0: com.facebook.FacebookException): void });
+			public constructor();
+			public onCancel(): void;
+			public onSuccess(param0: RESULT): void;
+			public onError(param0: com.facebook.FacebookException): void;
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
 		export class FacebookContentProvider {
 			public static class: java.lang.Class<com.facebook.FacebookContentProvider>;
+			public static Companion: com.facebook.FacebookContentProvider.Companion;
 			public onCreate(): boolean;
 			public update(param0: globalAndroid.net.Uri, param1: globalAndroid.content.ContentValues, param2: string, param3: androidNative.Array<string>): number;
 			public openFile(param0: globalAndroid.net.Uri, param1: string): globalAndroid.os.ParcelFileDescriptor;
@@ -479,8 +705,51 @@ declare module com {
 
 declare module com {
 	export module facebook {
+		export class FacebookDialog<CONTENT, RESULT> extends java.lang.Object {
+			public static class: java.lang.Class<com.facebook.FacebookDialog>;
+			/**
+			 * Constructs a new instance of the com.facebook.FacebookDialog interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+			 */
+			public constructor(implementation: { canShow(param0: CONTENT): boolean; show(param0: CONTENT): void; registerCallback(param0: com.facebook.CallbackManager, param1: com.facebook.FacebookCallback<RESULT>): void; registerCallback(param0: com.facebook.CallbackManager, param1: com.facebook.FacebookCallback<RESULT>, param2: number): void; createActivityResultContractForShowingDialog(param0: com.facebook.CallbackManager): androidx.activity.result.contract.ActivityResultContract<CONTENT, com.facebook.CallbackManager.ActivityResultParameters> });
+			public constructor();
+			public registerCallback(param0: com.facebook.CallbackManager, param1: com.facebook.FacebookCallback<RESULT>, param2: number): void;
+			public createActivityResultContractForShowingDialog(param0: com.facebook.CallbackManager): androidx.activity.result.contract.ActivityResultContract<CONTENT, com.facebook.CallbackManager.ActivityResultParameters>;
+			public canShow(param0: CONTENT): boolean;
+			public show(param0: CONTENT): void;
+			public registerCallback(param0: com.facebook.CallbackManager, param1: com.facebook.FacebookCallback<RESULT>): void;
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export class FacebookDialogException extends com.facebook.FacebookException {
+			public static class: java.lang.Class<com.facebook.FacebookDialogException>;
+			public static Companion: com.facebook.FacebookDialogException.Companion;
+			public static serialVersionUID: number;
+			public constructor(param0: string, param1: number, param2: string);
+			public getErrorCode(): number;
+			public toString(): string;
+			public constructor(param0: java.lang.Throwable);
+			public constructor(param0: string, param1: java.lang.Throwable);
+			public getFailingUrl(): string;
+			public constructor();
+			public constructor(param0: string);
+			public constructor(param0: string, param1: androidNative.Array<any>);
+		}
+		export module FacebookDialogException {
+			export class Companion {
+				public static class: java.lang.Class<com.facebook.FacebookDialogException.Companion>;
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
 		export class FacebookException {
 			public static class: java.lang.Class<com.facebook.FacebookException>;
+			public static Companion: com.facebook.FacebookException.Companion;
 			public static serialVersionUID: number;
 			public toString(): string;
 			public constructor(param0: java.lang.Throwable);
@@ -517,6 +786,7 @@ declare module com {
 	export module facebook {
 		export class FacebookOperationCanceledException extends com.facebook.FacebookException {
 			public static class: java.lang.Class<com.facebook.FacebookOperationCanceledException>;
+			public static Companion: com.facebook.FacebookOperationCanceledException.Companion;
 			public static serialVersionUID: number;
 			public constructor(param0: java.lang.Throwable);
 			public constructor(param0: string, param1: java.lang.Throwable);
@@ -536,6 +806,7 @@ declare module com {
 	export module facebook {
 		export class FacebookRequestError {
 			public static class: java.lang.Class<com.facebook.FacebookRequestError>;
+			public static Companion: com.facebook.FacebookRequestError.Companion;
 			public static INVALID_ERROR_CODE: number;
 			public static INVALID_HTTP_STATUS_CODE: number;
 			public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.FacebookRequestError>;
@@ -677,6 +948,7 @@ declare module com {
 			public static getSdkVersion(): string;
 			public static isLegacyTokenUpgradeSupported(): boolean;
 			public static removeLoggingBehavior(param0: com.facebook.LoggingBehavior): void;
+			public static getFacebookGamingDomain(): string;
 		}
 		export module FacebookSdk {
 			export class GraphRequestCreator {
@@ -705,6 +977,7 @@ declare module com {
 	export module facebook {
 		export class FacebookSdkNotInitializedException extends com.facebook.FacebookException {
 			public static class: java.lang.Class<com.facebook.FacebookSdkNotInitializedException>;
+			public static Companion: com.facebook.FacebookSdkNotInitializedException.Companion;
 			public static serialVersionUID: number;
 			public constructor(param0: java.lang.Throwable);
 			public constructor(param0: string, param1: java.lang.Throwable);
@@ -734,6 +1007,7 @@ declare module com {
 	export module facebook {
 		export class FacebookServiceException extends com.facebook.FacebookException {
 			public static class: java.lang.Class<com.facebook.FacebookServiceException>;
+			public static Companion: com.facebook.FacebookServiceException.Companion;
 			public toString(): string;
 			public constructor(param0: com.facebook.FacebookRequestError, param1: string);
 			public constructor(param0: java.lang.Throwable);
@@ -755,6 +1029,7 @@ declare module com {
 	export module facebook {
 		export class GraphRequest {
 			public static class: java.lang.Class<com.facebook.GraphRequest>;
+			public static Companion: com.facebook.GraphRequest.Companion;
 			public static MAXIMUM_BATCH_SIZE: number;
 			public static TAG: string;
 			public static ACCESS_TOKEN_PARAM: string;
@@ -915,7 +1190,8 @@ declare module com {
 				public onProgress(param0: number, param1: number): void;
 			}
 			export class ParcelableResourceWithMimeType<RESOURCE> extends globalAndroid.os.Parcelable {
-				public static class: java.lang.Class<com.facebook.GraphRequest.ParcelableResourceWithMimeType<any>>;
+				public static class: java.lang.Class<com.facebook.GraphRequest.ParcelableResourceWithMimeType>;
+				public static Companion: com.facebook.GraphRequest.ParcelableResourceWithMimeType.Companion;
 				public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.GraphRequest.ParcelableResourceWithMimeType<any>>;
 				public writeToParcel(param0: globalAndroid.os.Parcel, param1: number): void;
 				public constructor(param0: any, param1: string);
@@ -951,6 +1227,7 @@ declare module com {
 	export module facebook {
 		export class GraphRequestAsyncTask extends globalAndroid.os.AsyncTask<java.lang.Void, java.lang.Void, java.util.List<any>> {
 			public static class: java.lang.Class<com.facebook.GraphRequestAsyncTask>;
+			public static Companion: com.facebook.GraphRequestAsyncTask.Companion;
 			public constructor(param0: androidNative.Array<com.facebook.GraphRequest>);
 			public constructor(param0: java.net.HttpURLConnection, param1: java.util.Collection<com.facebook.GraphRequest>);
 			public toString(): string;
@@ -976,6 +1253,7 @@ declare module com {
 	export module facebook {
 		export class GraphRequestBatch extends java.util.AbstractList<com.facebook.GraphRequest> {
 			public static class: java.lang.Class<com.facebook.GraphRequestBatch>;
+			public static Companion: com.facebook.GraphRequestBatch.Companion;
 			public constructor(param0: androidNative.Array<com.facebook.GraphRequest>);
 			public add(param0: com.facebook.GraphRequest): boolean;
 			public getCallbackHandler(): globalAndroid.os.Handler;
@@ -1042,6 +1320,7 @@ declare module com {
 	export module facebook {
 		export class GraphResponse {
 			public static class: java.lang.Class<com.facebook.GraphResponse>;
+			public static Companion: com.facebook.GraphResponse.Companion;
 			public static NON_JSON_RESPONSE_PROPERTY: string;
 			public static SUCCESS_KEY: string;
 			public getRequestForPagedResults(param0: com.facebook.GraphResponse.PagingDirection): com.facebook.GraphRequest;
@@ -1099,6 +1378,7 @@ declare module com {
 	export module facebook {
 		export class LegacyTokenHelper {
 			public static class: java.lang.Class<com.facebook.LegacyTokenHelper>;
+			public static Companion: com.facebook.LegacyTokenHelper.Companion;
 			public static TOKEN_KEY: string;
 			public static EXPIRATION_DATE_KEY: string;
 			public static LAST_REFRESH_DATE_KEY: string;
@@ -1180,8 +1460,25 @@ declare module com {
 
 declare module com {
 	export module facebook {
+		export class LoginStatusCallback {
+			public static class: java.lang.Class<com.facebook.LoginStatusCallback>;
+			/**
+			 * Constructs a new instance of the com.facebook.LoginStatusCallback interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+			 */
+			public constructor(implementation: { onCompleted(param0: com.facebook.AccessToken): void; onFailure(): void; onError(param0: java.lang.Exception): void });
+			public constructor();
+			public onCompleted(param0: com.facebook.AccessToken): void;
+			public onFailure(): void;
+			public onError(param0: java.lang.Exception): void;
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
 		export class Profile {
 			public static class: java.lang.Class<com.facebook.Profile>;
+			public static Companion: com.facebook.Profile.Companion;
 			public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.Profile>;
 			public static fetchProfileForCurrentAccessToken(): void;
 			public equals(param0: any): boolean;
@@ -1218,6 +1515,7 @@ declare module com {
 	export module facebook {
 		export class ProfileCache {
 			public static class: java.lang.Class<com.facebook.ProfileCache>;
+			public static Companion: com.facebook.ProfileCache.Companion;
 			public static CACHED_PROFILE_KEY: string;
 			public static SHARED_PREFERENCES_NAME: string;
 			public clear(): void;
@@ -1237,6 +1535,7 @@ declare module com {
 	export module facebook {
 		export class ProfileManager {
 			public static class: java.lang.Class<com.facebook.ProfileManager>;
+			public static Companion: com.facebook.ProfileManager.Companion;
 			public static ACTION_CURRENT_PROFILE_CHANGED: string;
 			public static EXTRA_OLD_PROFILE: string;
 			public static EXTRA_NEW_PROFILE: string;
@@ -1309,6 +1608,1951 @@ declare module com {
 
 declare module com {
 	export module facebook {
+		export class R {
+			public static class: java.lang.Class<com.facebook.R>;
+		}
+		export module R {
+			export class anim {
+				public static class: java.lang.Class<com.facebook.R.anim>;
+				public static abc_fade_in: number;
+				public static abc_fade_out: number;
+				public static abc_grow_fade_in_from_bottom: number;
+				public static abc_popup_enter: number;
+				public static abc_popup_exit: number;
+				public static abc_shrink_fade_out_from_bottom: number;
+				public static abc_slide_in_bottom: number;
+				public static abc_slide_in_top: number;
+				public static abc_slide_out_bottom: number;
+				public static abc_slide_out_top: number;
+				public static abc_tooltip_enter: number;
+				public static abc_tooltip_exit: number;
+				public static btn_checkbox_to_checked_box_inner_merged_animation: number;
+				public static btn_checkbox_to_checked_box_outer_merged_animation: number;
+				public static btn_checkbox_to_checked_icon_null_animation: number;
+				public static btn_checkbox_to_unchecked_box_inner_merged_animation: number;
+				public static btn_checkbox_to_unchecked_check_path_merged_animation: number;
+				public static btn_checkbox_to_unchecked_icon_null_animation: number;
+				public static btn_radio_to_off_mtrl_dot_group_animation: number;
+				public static btn_radio_to_off_mtrl_ring_outer_animation: number;
+				public static btn_radio_to_off_mtrl_ring_outer_path_animation: number;
+				public static btn_radio_to_on_mtrl_dot_group_animation: number;
+				public static btn_radio_to_on_mtrl_ring_outer_animation: number;
+				public static btn_radio_to_on_mtrl_ring_outer_path_animation: number;
+				public static fragment_fast_out_extra_slow_in: number;
+			}
+			export class animator {
+				public static class: java.lang.Class<com.facebook.R.animator>;
+				public static fragment_close_enter: number;
+				public static fragment_close_exit: number;
+				public static fragment_fade_enter: number;
+				public static fragment_fade_exit: number;
+				public static fragment_open_enter: number;
+				public static fragment_open_exit: number;
+			}
+			export class attr {
+				public static class: java.lang.Class<com.facebook.R.attr>;
+				public static actionBarDivider: number;
+				public static actionBarItemBackground: number;
+				public static actionBarPopupTheme: number;
+				public static actionBarSize: number;
+				public static actionBarSplitStyle: number;
+				public static actionBarStyle: number;
+				public static actionBarTabBarStyle: number;
+				public static actionBarTabStyle: number;
+				public static actionBarTabTextStyle: number;
+				public static actionBarTheme: number;
+				public static actionBarWidgetTheme: number;
+				public static actionButtonStyle: number;
+				public static actionDropDownStyle: number;
+				public static actionLayout: number;
+				public static actionMenuTextAppearance: number;
+				public static actionMenuTextColor: number;
+				public static actionModeBackground: number;
+				public static actionModeCloseButtonStyle: number;
+				public static actionModeCloseDrawable: number;
+				public static actionModeCopyDrawable: number;
+				public static actionModeCutDrawable: number;
+				public static actionModeFindDrawable: number;
+				public static actionModePasteDrawable: number;
+				public static actionModePopupWindowStyle: number;
+				public static actionModeSelectAllDrawable: number;
+				public static actionModeShareDrawable: number;
+				public static actionModeSplitBackground: number;
+				public static actionModeStyle: number;
+				public static actionModeWebSearchDrawable: number;
+				public static actionOverflowButtonStyle: number;
+				public static actionOverflowMenuStyle: number;
+				public static actionProviderClass: number;
+				public static actionViewClass: number;
+				public static activityChooserViewStyle: number;
+				public static alertDialogButtonGroupStyle: number;
+				public static alertDialogCenterButtons: number;
+				public static alertDialogStyle: number;
+				public static alertDialogTheme: number;
+				public static allowStacking: number;
+				public static alpha: number;
+				public static alphabeticModifiers: number;
+				public static arrowHeadLength: number;
+				public static arrowShaftLength: number;
+				public static autoCompleteTextViewStyle: number;
+				public static autoSizeMaxTextSize: number;
+				public static autoSizeMinTextSize: number;
+				public static autoSizePresetSizes: number;
+				public static autoSizeStepGranularity: number;
+				public static autoSizeTextType: number;
+				public static background: number;
+				public static backgroundSplit: number;
+				public static backgroundStacked: number;
+				public static backgroundTint: number;
+				public static backgroundTintMode: number;
+				public static barLength: number;
+				public static borderlessButtonStyle: number;
+				public static buttonBarButtonStyle: number;
+				public static buttonBarNegativeButtonStyle: number;
+				public static buttonBarNeutralButtonStyle: number;
+				public static buttonBarPositiveButtonStyle: number;
+				public static buttonBarStyle: number;
+				public static buttonCompat: number;
+				public static buttonGravity: number;
+				public static buttonIconDimen: number;
+				public static buttonPanelSideLayout: number;
+				public static buttonStyle: number;
+				public static buttonStyleSmall: number;
+				public static buttonTint: number;
+				public static buttonTintMode: number;
+				public static cardBackgroundColor: number;
+				public static cardCornerRadius: number;
+				public static cardElevation: number;
+				public static cardMaxElevation: number;
+				public static cardPreventCornerOverlap: number;
+				public static cardUseCompatPadding: number;
+				public static cardViewStyle: number;
+				public static checkboxStyle: number;
+				public static checkedTextViewStyle: number;
+				public static closeIcon: number;
+				public static closeItemLayout: number;
+				public static collapseContentDescription: number;
+				public static collapseIcon: number;
+				public static color: number;
+				public static colorAccent: number;
+				public static colorBackgroundFloating: number;
+				public static colorButtonNormal: number;
+				public static colorControlActivated: number;
+				public static colorControlHighlight: number;
+				public static colorControlNormal: number;
+				public static colorError: number;
+				public static colorPrimary: number;
+				public static colorPrimaryDark: number;
+				public static colorSwitchThumbNormal: number;
+				public static com_facebook_auxiliary_view_position: number;
+				public static com_facebook_confirm_logout: number;
+				public static com_facebook_foreground_color: number;
+				public static com_facebook_horizontal_alignment: number;
+				public static com_facebook_is_cropped: number;
+				public static com_facebook_login_button_radius: number;
+				public static com_facebook_login_button_transparency: number;
+				public static com_facebook_login_text: number;
+				public static com_facebook_logout_text: number;
+				public static com_facebook_object_id: number;
+				public static com_facebook_object_type: number;
+				public static com_facebook_preset_size: number;
+				public static com_facebook_style: number;
+				public static com_facebook_tooltip_mode: number;
+				public static commitIcon: number;
+				public static contentDescription: number;
+				public static contentInsetEnd: number;
+				public static contentInsetEndWithActions: number;
+				public static contentInsetLeft: number;
+				public static contentInsetRight: number;
+				public static contentInsetStart: number;
+				public static contentInsetStartWithNavigation: number;
+				public static contentPadding: number;
+				public static contentPaddingBottom: number;
+				public static contentPaddingLeft: number;
+				public static contentPaddingRight: number;
+				public static contentPaddingTop: number;
+				public static controlBackground: number;
+				public static coordinatorLayoutStyle: number;
+				public static customNavigationLayout: number;
+				public static defaultQueryHint: number;
+				public static dialogCornerRadius: number;
+				public static dialogPreferredPadding: number;
+				public static dialogTheme: number;
+				public static displayOptions: number;
+				public static divider: number;
+				public static dividerHorizontal: number;
+				public static dividerPadding: number;
+				public static dividerVertical: number;
+				public static drawableBottomCompat: number;
+				public static drawableEndCompat: number;
+				public static drawableLeftCompat: number;
+				public static drawableRightCompat: number;
+				public static drawableSize: number;
+				public static drawableStartCompat: number;
+				public static drawableTint: number;
+				public static drawableTintMode: number;
+				public static drawableTopCompat: number;
+				public static drawerArrowStyle: number;
+				public static dropDownListViewStyle: number;
+				public static dropdownListPreferredItemHeight: number;
+				public static editTextBackground: number;
+				public static editTextColor: number;
+				public static editTextStyle: number;
+				public static elevation: number;
+				public static expandActivityOverflowButtonDrawable: number;
+				public static firstBaselineToTopHeight: number;
+				public static font: number;
+				public static fontFamily: number;
+				public static fontProviderAuthority: number;
+				public static fontProviderCerts: number;
+				public static fontProviderFetchStrategy: number;
+				public static fontProviderFetchTimeout: number;
+				public static fontProviderPackage: number;
+				public static fontProviderQuery: number;
+				public static fontStyle: number;
+				public static fontVariationSettings: number;
+				public static fontWeight: number;
+				public static gapBetweenBars: number;
+				public static goIcon: number;
+				public static height: number;
+				public static hideOnContentScroll: number;
+				public static homeAsUpIndicator: number;
+				public static homeLayout: number;
+				public static icon: number;
+				public static iconTint: number;
+				public static iconTintMode: number;
+				public static iconifiedByDefault: number;
+				public static imageButtonStyle: number;
+				public static indeterminateProgressStyle: number;
+				public static initialActivityCount: number;
+				public static isLightTheme: number;
+				public static itemPadding: number;
+				public static keylines: number;
+				public static lastBaselineToBottomHeight: number;
+				public static layout: number;
+				public static layout_anchor: number;
+				public static layout_anchorGravity: number;
+				public static layout_behavior: number;
+				public static layout_dodgeInsetEdges: number;
+				public static layout_insetEdge: number;
+				public static layout_keyline: number;
+				public static lineHeight: number;
+				public static listChoiceBackgroundIndicator: number;
+				public static listChoiceIndicatorMultipleAnimated: number;
+				public static listChoiceIndicatorSingleAnimated: number;
+				public static listDividerAlertDialog: number;
+				public static listItemLayout: number;
+				public static listLayout: number;
+				public static listMenuViewStyle: number;
+				public static listPopupWindowStyle: number;
+				public static listPreferredItemHeight: number;
+				public static listPreferredItemHeightLarge: number;
+				public static listPreferredItemHeightSmall: number;
+				public static listPreferredItemPaddingEnd: number;
+				public static listPreferredItemPaddingLeft: number;
+				public static listPreferredItemPaddingRight: number;
+				public static listPreferredItemPaddingStart: number;
+				public static logo: number;
+				public static logoDescription: number;
+				public static maxButtonHeight: number;
+				public static measureWithLargestChild: number;
+				public static menu: number;
+				public static multiChoiceItemLayout: number;
+				public static navigationContentDescription: number;
+				public static navigationIcon: number;
+				public static navigationMode: number;
+				public static numericModifiers: number;
+				public static overlapAnchor: number;
+				public static paddingBottomNoButtons: number;
+				public static paddingEnd: number;
+				public static paddingStart: number;
+				public static paddingTopNoTitle: number;
+				public static panelBackground: number;
+				public static panelMenuListTheme: number;
+				public static panelMenuListWidth: number;
+				public static popupMenuStyle: number;
+				public static popupTheme: number;
+				public static popupWindowStyle: number;
+				public static preserveIconSpacing: number;
+				public static progressBarPadding: number;
+				public static progressBarStyle: number;
+				public static queryBackground: number;
+				public static queryHint: number;
+				public static radioButtonStyle: number;
+				public static ratingBarStyle: number;
+				public static ratingBarStyleIndicator: number;
+				public static ratingBarStyleSmall: number;
+				public static searchHintIcon: number;
+				public static searchIcon: number;
+				public static searchViewStyle: number;
+				public static seekBarStyle: number;
+				public static selectableItemBackground: number;
+				public static selectableItemBackgroundBorderless: number;
+				public static showAsAction: number;
+				public static showDividers: number;
+				public static showText: number;
+				public static showTitle: number;
+				public static singleChoiceItemLayout: number;
+				public static spinBars: number;
+				public static spinnerDropDownItemStyle: number;
+				public static spinnerStyle: number;
+				public static splitTrack: number;
+				public static srcCompat: number;
+				public static state_above_anchor: number;
+				public static statusBarBackground: number;
+				public static subMenuArrow: number;
+				public static submitBackground: number;
+				public static subtitle: number;
+				public static subtitleTextAppearance: number;
+				public static subtitleTextColor: number;
+				public static subtitleTextStyle: number;
+				public static suggestionRowLayout: number;
+				public static switchMinWidth: number;
+				public static switchPadding: number;
+				public static switchStyle: number;
+				public static switchTextAppearance: number;
+				public static textAllCaps: number;
+				public static textAppearanceLargePopupMenu: number;
+				public static textAppearanceListItem: number;
+				public static textAppearanceListItemSecondary: number;
+				public static textAppearanceListItemSmall: number;
+				public static textAppearancePopupMenuHeader: number;
+				public static textAppearanceSearchResultSubtitle: number;
+				public static textAppearanceSearchResultTitle: number;
+				public static textAppearanceSmallPopupMenu: number;
+				public static textColorAlertDialogListItem: number;
+				public static textColorSearchUrl: number;
+				public static textLocale: number;
+				public static theme: number;
+				public static thickness: number;
+				public static thumbTextPadding: number;
+				public static thumbTint: number;
+				public static thumbTintMode: number;
+				public static tickMark: number;
+				public static tickMarkTint: number;
+				public static tickMarkTintMode: number;
+				public static tint: number;
+				public static tintMode: number;
+				public static title: number;
+				public static titleMargin: number;
+				public static titleMarginBottom: number;
+				public static titleMarginEnd: number;
+				public static titleMarginStart: number;
+				public static titleMarginTop: number;
+				public static titleMargins: number;
+				public static titleTextAppearance: number;
+				public static titleTextColor: number;
+				public static titleTextStyle: number;
+				public static toolbarNavigationButtonStyle: number;
+				public static toolbarStyle: number;
+				public static tooltipForegroundColor: number;
+				public static tooltipFrameBackground: number;
+				public static tooltipText: number;
+				public static track: number;
+				public static trackTint: number;
+				public static trackTintMode: number;
+				public static ttcIndex: number;
+				public static viewInflaterClass: number;
+				public static voiceIcon: number;
+				public static windowActionBar: number;
+				public static windowActionBarOverlay: number;
+				public static windowActionModeOverlay: number;
+				public static windowFixedHeightMajor: number;
+				public static windowFixedHeightMinor: number;
+				public static windowFixedWidthMajor: number;
+				public static windowFixedWidthMinor: number;
+				public static windowMinWidthMajor: number;
+				public static windowMinWidthMinor: number;
+				public static windowNoTitle: number;
+			}
+			export class bool {
+				public static class: java.lang.Class<com.facebook.R.bool>;
+				public static abc_action_bar_embed_tabs: number;
+				public static abc_config_actionMenuItemAllCaps: number;
+			}
+			export class color {
+				public static class: java.lang.Class<com.facebook.R.color>;
+				public static abc_background_cache_hint_selector_material_dark: number;
+				public static abc_background_cache_hint_selector_material_light: number;
+				public static abc_btn_colored_borderless_text_material: number;
+				public static abc_btn_colored_text_material: number;
+				public static abc_color_highlight_material: number;
+				public static abc_hint_foreground_material_dark: number;
+				public static abc_hint_foreground_material_light: number;
+				public static abc_primary_text_disable_only_material_dark: number;
+				public static abc_primary_text_disable_only_material_light: number;
+				public static abc_primary_text_material_dark: number;
+				public static abc_primary_text_material_light: number;
+				public static abc_search_url_text: number;
+				public static abc_search_url_text_normal: number;
+				public static abc_search_url_text_pressed: number;
+				public static abc_search_url_text_selected: number;
+				public static abc_secondary_text_material_dark: number;
+				public static abc_secondary_text_material_light: number;
+				public static abc_tint_btn_checkable: number;
+				public static abc_tint_default: number;
+				public static abc_tint_edittext: number;
+				public static abc_tint_seek_thumb: number;
+				public static abc_tint_spinner: number;
+				public static abc_tint_switch_track: number;
+				public static accent_material_dark: number;
+				public static accent_material_light: number;
+				public static androidx_core_ripple_material_light: number;
+				public static androidx_core_secondary_text_default_material_light: number;
+				public static background_floating_material_dark: number;
+				public static background_floating_material_light: number;
+				public static background_material_dark: number;
+				public static background_material_light: number;
+				public static bright_foreground_disabled_material_dark: number;
+				public static bright_foreground_disabled_material_light: number;
+				public static bright_foreground_inverse_material_dark: number;
+				public static bright_foreground_inverse_material_light: number;
+				public static bright_foreground_material_dark: number;
+				public static bright_foreground_material_light: number;
+				public static browser_actions_bg_grey: number;
+				public static browser_actions_divider_color: number;
+				public static browser_actions_text_color: number;
+				public static browser_actions_title_color: number;
+				public static button_material_dark: number;
+				public static button_material_light: number;
+				public static cardview_dark_background: number;
+				public static cardview_light_background: number;
+				public static cardview_shadow_end_color: number;
+				public static cardview_shadow_start_color: number;
+				public static com_facebook_blue: number;
+				public static com_facebook_button_background_color: number;
+				public static com_facebook_button_background_color_disabled: number;
+				public static com_facebook_button_background_color_pressed: number;
+				public static com_facebook_button_send_background_color: number;
+				public static com_facebook_button_send_background_color_pressed: number;
+				public static com_facebook_button_text_color: number;
+				public static com_facebook_device_auth_text: number;
+				public static com_facebook_likeboxcountview_border_color: number;
+				public static com_facebook_likeboxcountview_text_color: number;
+				public static com_facebook_likeview_text_color: number;
+				public static com_facebook_messenger_blue: number;
+				public static com_facebook_primary_button_disabled_text_color: number;
+				public static com_facebook_primary_button_pressed_text_color: number;
+				public static com_facebook_primary_button_text_color: number;
+				public static com_facebook_send_button_text_color: number;
+				public static com_smart_login_code: number;
+				public static dim_foreground_disabled_material_dark: number;
+				public static dim_foreground_disabled_material_light: number;
+				public static dim_foreground_material_dark: number;
+				public static dim_foreground_material_light: number;
+				public static error_color_material_dark: number;
+				public static error_color_material_light: number;
+				public static foreground_material_dark: number;
+				public static foreground_material_light: number;
+				public static highlighted_text_material_dark: number;
+				public static highlighted_text_material_light: number;
+				public static material_blue_grey_800: number;
+				public static material_blue_grey_900: number;
+				public static material_blue_grey_950: number;
+				public static material_deep_teal_200: number;
+				public static material_deep_teal_500: number;
+				public static material_grey_100: number;
+				public static material_grey_300: number;
+				public static material_grey_50: number;
+				public static material_grey_600: number;
+				public static material_grey_800: number;
+				public static material_grey_850: number;
+				public static material_grey_900: number;
+				public static notification_action_color_filter: number;
+				public static notification_icon_bg_color: number;
+				public static notification_material_background_media_default_color: number;
+				public static primary_dark_material_dark: number;
+				public static primary_dark_material_light: number;
+				public static primary_material_dark: number;
+				public static primary_material_light: number;
+				public static primary_text_default_material_dark: number;
+				public static primary_text_default_material_light: number;
+				public static primary_text_disabled_material_dark: number;
+				public static primary_text_disabled_material_light: number;
+				public static ripple_material_dark: number;
+				public static ripple_material_light: number;
+				public static secondary_text_default_material_dark: number;
+				public static secondary_text_default_material_light: number;
+				public static secondary_text_disabled_material_dark: number;
+				public static secondary_text_disabled_material_light: number;
+				public static switch_thumb_disabled_material_dark: number;
+				public static switch_thumb_disabled_material_light: number;
+				public static switch_thumb_material_dark: number;
+				public static switch_thumb_material_light: number;
+				public static switch_thumb_normal_material_dark: number;
+				public static switch_thumb_normal_material_light: number;
+				public static tooltip_background_dark: number;
+				public static tooltip_background_light: number;
+			}
+			export class dimen {
+				public static class: java.lang.Class<com.facebook.R.dimen>;
+				public static abc_action_bar_content_inset_material: number;
+				public static abc_action_bar_content_inset_with_nav: number;
+				public static abc_action_bar_default_height_material: number;
+				public static abc_action_bar_default_padding_end_material: number;
+				public static abc_action_bar_default_padding_start_material: number;
+				public static abc_action_bar_elevation_material: number;
+				public static abc_action_bar_icon_vertical_padding_material: number;
+				public static abc_action_bar_overflow_padding_end_material: number;
+				public static abc_action_bar_overflow_padding_start_material: number;
+				public static abc_action_bar_stacked_max_height: number;
+				public static abc_action_bar_stacked_tab_max_width: number;
+				public static abc_action_bar_subtitle_bottom_margin_material: number;
+				public static abc_action_bar_subtitle_top_margin_material: number;
+				public static abc_action_button_min_height_material: number;
+				public static abc_action_button_min_width_material: number;
+				public static abc_action_button_min_width_overflow_material: number;
+				public static abc_alert_dialog_button_bar_height: number;
+				public static abc_alert_dialog_button_dimen: number;
+				public static abc_button_inset_horizontal_material: number;
+				public static abc_button_inset_vertical_material: number;
+				public static abc_button_padding_horizontal_material: number;
+				public static abc_button_padding_vertical_material: number;
+				public static abc_cascading_menus_min_smallest_width: number;
+				public static abc_config_prefDialogWidth: number;
+				public static abc_control_corner_material: number;
+				public static abc_control_inset_material: number;
+				public static abc_control_padding_material: number;
+				public static abc_dialog_corner_radius_material: number;
+				public static abc_dialog_fixed_height_major: number;
+				public static abc_dialog_fixed_height_minor: number;
+				public static abc_dialog_fixed_width_major: number;
+				public static abc_dialog_fixed_width_minor: number;
+				public static abc_dialog_list_padding_bottom_no_buttons: number;
+				public static abc_dialog_list_padding_top_no_title: number;
+				public static abc_dialog_min_width_major: number;
+				public static abc_dialog_min_width_minor: number;
+				public static abc_dialog_padding_material: number;
+				public static abc_dialog_padding_top_material: number;
+				public static abc_dialog_title_divider_material: number;
+				public static abc_disabled_alpha_material_dark: number;
+				public static abc_disabled_alpha_material_light: number;
+				public static abc_dropdownitem_icon_width: number;
+				public static abc_dropdownitem_text_padding_left: number;
+				public static abc_dropdownitem_text_padding_right: number;
+				public static abc_edit_text_inset_bottom_material: number;
+				public static abc_edit_text_inset_horizontal_material: number;
+				public static abc_edit_text_inset_top_material: number;
+				public static abc_floating_window_z: number;
+				public static abc_list_item_height_large_material: number;
+				public static abc_list_item_height_material: number;
+				public static abc_list_item_height_small_material: number;
+				public static abc_list_item_padding_horizontal_material: number;
+				public static abc_panel_menu_list_width: number;
+				public static abc_progress_bar_height_material: number;
+				public static abc_search_view_preferred_height: number;
+				public static abc_search_view_preferred_width: number;
+				public static abc_seekbar_track_background_height_material: number;
+				public static abc_seekbar_track_progress_height_material: number;
+				public static abc_select_dialog_padding_start_material: number;
+				public static abc_switch_padding: number;
+				public static abc_text_size_body_1_material: number;
+				public static abc_text_size_body_2_material: number;
+				public static abc_text_size_button_material: number;
+				public static abc_text_size_caption_material: number;
+				public static abc_text_size_display_1_material: number;
+				public static abc_text_size_display_2_material: number;
+				public static abc_text_size_display_3_material: number;
+				public static abc_text_size_display_4_material: number;
+				public static abc_text_size_headline_material: number;
+				public static abc_text_size_large_material: number;
+				public static abc_text_size_medium_material: number;
+				public static abc_text_size_menu_header_material: number;
+				public static abc_text_size_menu_material: number;
+				public static abc_text_size_small_material: number;
+				public static abc_text_size_subhead_material: number;
+				public static abc_text_size_subtitle_material_toolbar: number;
+				public static abc_text_size_title_material: number;
+				public static abc_text_size_title_material_toolbar: number;
+				public static browser_actions_context_menu_max_width: number;
+				public static browser_actions_context_menu_min_padding: number;
+				public static cardview_compat_inset_shadow: number;
+				public static cardview_default_elevation: number;
+				public static cardview_default_radius: number;
+				public static com_facebook_auth_dialog_corner_radius: number;
+				public static com_facebook_auth_dialog_corner_radius_oversized: number;
+				public static com_facebook_button_corner_radius: number;
+				public static com_facebook_button_login_corner_radius: number;
+				public static com_facebook_likeboxcountview_border_radius: number;
+				public static com_facebook_likeboxcountview_border_width: number;
+				public static com_facebook_likeboxcountview_caret_height: number;
+				public static com_facebook_likeboxcountview_caret_width: number;
+				public static com_facebook_likeboxcountview_text_padding: number;
+				public static com_facebook_likeboxcountview_text_size: number;
+				public static com_facebook_likeview_edge_padding: number;
+				public static com_facebook_likeview_internal_padding: number;
+				public static com_facebook_likeview_text_size: number;
+				public static com_facebook_profilepictureview_preset_size_large: number;
+				public static com_facebook_profilepictureview_preset_size_normal: number;
+				public static com_facebook_profilepictureview_preset_size_small: number;
+				public static compat_button_inset_horizontal_material: number;
+				public static compat_button_inset_vertical_material: number;
+				public static compat_button_padding_horizontal_material: number;
+				public static compat_button_padding_vertical_material: number;
+				public static compat_control_corner_material: number;
+				public static compat_notification_large_icon_max_height: number;
+				public static compat_notification_large_icon_max_width: number;
+				public static disabled_alpha_material_dark: number;
+				public static disabled_alpha_material_light: number;
+				public static highlight_alpha_material_colored: number;
+				public static highlight_alpha_material_dark: number;
+				public static highlight_alpha_material_light: number;
+				public static hint_alpha_material_dark: number;
+				public static hint_alpha_material_light: number;
+				public static hint_pressed_alpha_material_dark: number;
+				public static hint_pressed_alpha_material_light: number;
+				public static notification_action_icon_size: number;
+				public static notification_action_text_size: number;
+				public static notification_big_circle_margin: number;
+				public static notification_content_margin_start: number;
+				public static notification_large_icon_height: number;
+				public static notification_large_icon_width: number;
+				public static notification_main_column_padding_top: number;
+				public static notification_media_narrow_margin: number;
+				public static notification_right_icon_size: number;
+				public static notification_right_side_padding_top: number;
+				public static notification_small_icon_background_padding: number;
+				public static notification_small_icon_size_as_large: number;
+				public static notification_subtext_size: number;
+				public static notification_top_pad: number;
+				public static notification_top_pad_large_text: number;
+				public static subtitle_corner_radius: number;
+				public static subtitle_outline_width: number;
+				public static subtitle_shadow_offset: number;
+				public static subtitle_shadow_radius: number;
+				public static tooltip_corner_radius: number;
+				public static tooltip_horizontal_padding: number;
+				public static tooltip_margin: number;
+				public static tooltip_precise_anchor_extra_offset: number;
+				public static tooltip_precise_anchor_threshold: number;
+				public static tooltip_vertical_padding: number;
+				public static tooltip_y_offset_non_touch: number;
+				public static tooltip_y_offset_touch: number;
+			}
+			export class drawable {
+				public static class: java.lang.Class<com.facebook.R.drawable>;
+				public static abc_ab_share_pack_mtrl_alpha: number;
+				public static abc_action_bar_item_background_material: number;
+				public static abc_btn_borderless_material: number;
+				public static abc_btn_check_material: number;
+				public static abc_btn_check_material_anim: number;
+				public static abc_btn_check_to_on_mtrl_000: number;
+				public static abc_btn_check_to_on_mtrl_015: number;
+				public static abc_btn_colored_material: number;
+				public static abc_btn_default_mtrl_shape: number;
+				public static abc_btn_radio_material: number;
+				public static abc_btn_radio_material_anim: number;
+				public static abc_btn_radio_to_on_mtrl_000: number;
+				public static abc_btn_radio_to_on_mtrl_015: number;
+				public static abc_btn_switch_to_on_mtrl_00001: number;
+				public static abc_btn_switch_to_on_mtrl_00012: number;
+				public static abc_cab_background_internal_bg: number;
+				public static abc_cab_background_top_material: number;
+				public static abc_cab_background_top_mtrl_alpha: number;
+				public static abc_control_background_material: number;
+				public static abc_dialog_material_background: number;
+				public static abc_edit_text_material: number;
+				public static abc_ic_ab_back_material: number;
+				public static abc_ic_arrow_drop_right_black_24dp: number;
+				public static abc_ic_clear_material: number;
+				public static abc_ic_commit_search_api_mtrl_alpha: number;
+				public static abc_ic_go_search_api_material: number;
+				public static abc_ic_menu_copy_mtrl_am_alpha: number;
+				public static abc_ic_menu_cut_mtrl_alpha: number;
+				public static abc_ic_menu_overflow_material: number;
+				public static abc_ic_menu_paste_mtrl_am_alpha: number;
+				public static abc_ic_menu_selectall_mtrl_alpha: number;
+				public static abc_ic_menu_share_mtrl_alpha: number;
+				public static abc_ic_search_api_material: number;
+				public static abc_ic_voice_search_api_material: number;
+				public static abc_item_background_holo_dark: number;
+				public static abc_item_background_holo_light: number;
+				public static abc_list_divider_material: number;
+				public static abc_list_divider_mtrl_alpha: number;
+				public static abc_list_focused_holo: number;
+				public static abc_list_longpressed_holo: number;
+				public static abc_list_pressed_holo_dark: number;
+				public static abc_list_pressed_holo_light: number;
+				public static abc_list_selector_background_transition_holo_dark: number;
+				public static abc_list_selector_background_transition_holo_light: number;
+				public static abc_list_selector_disabled_holo_dark: number;
+				public static abc_list_selector_disabled_holo_light: number;
+				public static abc_list_selector_holo_dark: number;
+				public static abc_list_selector_holo_light: number;
+				public static abc_menu_hardkey_panel_mtrl_mult: number;
+				public static abc_popup_background_mtrl_mult: number;
+				public static abc_ratingbar_indicator_material: number;
+				public static abc_ratingbar_material: number;
+				public static abc_ratingbar_small_material: number;
+				public static abc_scrubber_control_off_mtrl_alpha: number;
+				public static abc_scrubber_control_to_pressed_mtrl_000: number;
+				public static abc_scrubber_control_to_pressed_mtrl_005: number;
+				public static abc_scrubber_primary_mtrl_alpha: number;
+				public static abc_scrubber_track_mtrl_alpha: number;
+				public static abc_seekbar_thumb_material: number;
+				public static abc_seekbar_tick_mark_material: number;
+				public static abc_seekbar_track_material: number;
+				public static abc_spinner_mtrl_am_alpha: number;
+				public static abc_spinner_textfield_background_material: number;
+				public static abc_switch_thumb_material: number;
+				public static abc_switch_track_mtrl_alpha: number;
+				public static abc_tab_indicator_material: number;
+				public static abc_tab_indicator_mtrl_alpha: number;
+				public static abc_text_cursor_material: number;
+				public static abc_textfield_activated_mtrl_alpha: number;
+				public static abc_textfield_default_mtrl_alpha: number;
+				public static abc_textfield_search_activated_mtrl_alpha: number;
+				public static abc_textfield_search_default_mtrl_alpha: number;
+				public static abc_textfield_search_material: number;
+				public static abc_vector_test: number;
+				public static btn_checkbox_checked_mtrl: number;
+				public static btn_checkbox_checked_to_unchecked_mtrl_animation: number;
+				public static btn_checkbox_unchecked_mtrl: number;
+				public static btn_checkbox_unchecked_to_checked_mtrl_animation: number;
+				public static btn_radio_off_mtrl: number;
+				public static btn_radio_off_to_on_mtrl_animation: number;
+				public static btn_radio_on_mtrl: number;
+				public static btn_radio_on_to_off_mtrl_animation: number;
+				public static com_facebook_auth_dialog_background: number;
+				public static com_facebook_auth_dialog_cancel_background: number;
+				public static com_facebook_auth_dialog_header_background: number;
+				public static com_facebook_button_background: number;
+				public static com_facebook_button_icon: number;
+				public static com_facebook_button_like_background: number;
+				public static com_facebook_button_like_icon_selected: number;
+				public static com_facebook_button_send_background: number;
+				public static com_facebook_button_send_icon_blue: number;
+				public static com_facebook_button_send_icon_white: number;
+				public static com_facebook_close: number;
+				public static com_facebook_favicon_blue: number;
+				public static com_facebook_profile_picture_blank_portrait: number;
+				public static com_facebook_profile_picture_blank_square: number;
+				public static com_facebook_send_button_icon: number;
+				public static com_facebook_tooltip_black_background: number;
+				public static com_facebook_tooltip_black_bottomnub: number;
+				public static com_facebook_tooltip_black_topnub: number;
+				public static com_facebook_tooltip_black_xout: number;
+				public static com_facebook_tooltip_blue_background: number;
+				public static com_facebook_tooltip_blue_bottomnub: number;
+				public static com_facebook_tooltip_blue_topnub: number;
+				public static com_facebook_tooltip_blue_xout: number;
+				public static messenger_bubble_large_blue: number;
+				public static messenger_bubble_large_white: number;
+				public static messenger_bubble_small_blue: number;
+				public static messenger_bubble_small_white: number;
+				public static messenger_button_blue_bg_round: number;
+				public static messenger_button_blue_bg_selector: number;
+				public static messenger_button_send_round_shadow: number;
+				public static messenger_button_white_bg_round: number;
+				public static messenger_button_white_bg_selector: number;
+				public static notification_action_background: number;
+				public static notification_bg: number;
+				public static notification_bg_low: number;
+				public static notification_bg_low_normal: number;
+				public static notification_bg_low_pressed: number;
+				public static notification_bg_normal: number;
+				public static notification_bg_normal_pressed: number;
+				public static notification_icon_background: number;
+				public static notification_template_icon_bg: number;
+				public static notification_template_icon_low_bg: number;
+				public static notification_tile_bg: number;
+				public static notify_panel_notification_icon_bg: number;
+				public static tooltip_frame_dark: number;
+				public static tooltip_frame_light: number;
+			}
+			export class id {
+				public static class: java.lang.Class<com.facebook.R.id>;
+				public static accessibility_action_clickable_span: number;
+				public static accessibility_custom_action_0: number;
+				public static accessibility_custom_action_1: number;
+				public static accessibility_custom_action_10: number;
+				public static accessibility_custom_action_11: number;
+				public static accessibility_custom_action_12: number;
+				public static accessibility_custom_action_13: number;
+				public static accessibility_custom_action_14: number;
+				public static accessibility_custom_action_15: number;
+				public static accessibility_custom_action_16: number;
+				public static accessibility_custom_action_17: number;
+				public static accessibility_custom_action_18: number;
+				public static accessibility_custom_action_19: number;
+				public static accessibility_custom_action_2: number;
+				public static accessibility_custom_action_20: number;
+				public static accessibility_custom_action_21: number;
+				public static accessibility_custom_action_22: number;
+				public static accessibility_custom_action_23: number;
+				public static accessibility_custom_action_24: number;
+				public static accessibility_custom_action_25: number;
+				public static accessibility_custom_action_26: number;
+				public static accessibility_custom_action_27: number;
+				public static accessibility_custom_action_28: number;
+				public static accessibility_custom_action_29: number;
+				public static accessibility_custom_action_3: number;
+				public static accessibility_custom_action_30: number;
+				public static accessibility_custom_action_31: number;
+				public static accessibility_custom_action_4: number;
+				public static accessibility_custom_action_5: number;
+				public static accessibility_custom_action_6: number;
+				public static accessibility_custom_action_7: number;
+				public static accessibility_custom_action_8: number;
+				public static accessibility_custom_action_9: number;
+				public static action0: number;
+				public static action_bar: number;
+				public static action_bar_activity_content: number;
+				public static action_bar_container: number;
+				public static action_bar_root: number;
+				public static action_bar_spinner: number;
+				public static action_bar_subtitle: number;
+				public static action_bar_title: number;
+				public static action_container: number;
+				public static action_context_bar: number;
+				public static action_divider: number;
+				public static action_image: number;
+				public static action_menu_divider: number;
+				public static action_menu_presenter: number;
+				public static action_mode_bar: number;
+				public static action_mode_bar_stub: number;
+				public static action_mode_close_button: number;
+				public static action_text: number;
+				public static actions: number;
+				public static activity_chooser_view_content: number;
+				public static add: number;
+				public static alertTitle: number;
+				public static async: number;
+				public static automatic: number;
+				public static blocking: number;
+				public static bottom: number;
+				public static box_count: number;
+				public static browser_actions_header_text: number;
+				public static browser_actions_menu_item_icon: number;
+				public static browser_actions_menu_item_text: number;
+				public static browser_actions_menu_items: number;
+				public static browser_actions_menu_view: number;
+				public static button: number;
+				public static buttonPanel: number;
+				public static cancel_action: number;
+				public static cancel_button: number;
+				public static center: number;
+				public static checkbox: number;
+				public static checked: number;
+				public static chronometer: number;
+				public static com_facebook_body_frame: number;
+				public static com_facebook_button_xout: number;
+				public static com_facebook_device_auth_instructions: number;
+				public static com_facebook_fragment_container: number;
+				public static com_facebook_login_fragment_progress_bar: number;
+				public static com_facebook_smart_instructions_0: number;
+				public static com_facebook_smart_instructions_or: number;
+				public static com_facebook_tooltip_bubble_view_bottom_pointer: number;
+				public static com_facebook_tooltip_bubble_view_text_body: number;
+				public static com_facebook_tooltip_bubble_view_top_pointer: number;
+				public static confirmation_code: number;
+				public static content: number;
+				public static contentPanel: number;
+				public static custom: number;
+				public static customPanel: number;
+				public static decor_content_parent: number;
+				public static default_activity_button: number;
+				public static dialog_button: number;
+				public static display_always: number;
+				public static edit_query: number;
+				public static end: number;
+				public static end_padder: number;
+				public static expand_activities_button: number;
+				public static expanded_menu: number;
+				public static forever: number;
+				public static fragment_container_view_tag: number;
+				public static group_divider: number;
+				public static home: number;
+				public static icon: number;
+				public static icon_group: number;
+				public static image: number;
+				public static info: number;
+				public static inline: number;
+				public static italic: number;
+				public static large: number;
+				public static left: number;
+				public static line1: number;
+				public static line3: number;
+				public static listMode: number;
+				public static list_item: number;
+				public static media_actions: number;
+				public static message: number;
+				public static messenger_send_button: number;
+				public static multiply: number;
+				public static never_display: number;
+				public static none: number;
+				public static normal: number;
+				public static notification_background: number;
+				public static notification_main_column: number;
+				public static notification_main_column_container: number;
+				public static off: number;
+				public static on: number;
+				public static open_graph: number;
+				public static page: number;
+				public static parentPanel: number;
+				public static progress_bar: number;
+				public static progress_circular: number;
+				public static progress_horizontal: number;
+				public static radio: number;
+				public static right: number;
+				public static right_icon: number;
+				public static right_side: number;
+				public static screen: number;
+				public static scrollIndicatorDown: number;
+				public static scrollIndicatorUp: number;
+				public static scrollView: number;
+				public static search_badge: number;
+				public static search_bar: number;
+				public static search_button: number;
+				public static search_close_btn: number;
+				public static search_edit_frame: number;
+				public static search_go_btn: number;
+				public static search_mag_icon: number;
+				public static search_plate: number;
+				public static search_src_text: number;
+				public static search_voice_btn: number;
+				public static select_dialog_listview: number;
+				public static shortcut: number;
+				public static small: number;
+				public static spacer: number;
+				public static special_effects_controller_view_tag: number;
+				public static split_action_bar: number;
+				public static src_atop: number;
+				public static src_in: number;
+				public static src_over: number;
+				public static standard: number;
+				public static start: number;
+				public static status_bar_latest_event_content: number;
+				public static submenuarrow: number;
+				public static submit_area: number;
+				public static tabMode: number;
+				public static tag_accessibility_actions: number;
+				public static tag_accessibility_clickable_spans: number;
+				public static tag_accessibility_heading: number;
+				public static tag_accessibility_pane_title: number;
+				public static tag_screen_reader_focusable: number;
+				public static tag_transition_group: number;
+				public static tag_unhandled_key_event_manager: number;
+				public static tag_unhandled_key_listeners: number;
+				public static text: number;
+				public static text2: number;
+				public static textSpacerNoButtons: number;
+				public static textSpacerNoTitle: number;
+				public static time: number;
+				public static title: number;
+				public static titleDividerNoCustom: number;
+				public static title_template: number;
+				public static top: number;
+				public static topPanel: number;
+				public static unchecked: number;
+				public static uniform: number;
+				public static unknown: number;
+				public static up: number;
+				public static view_tree_lifecycle_owner: number;
+				public static view_tree_saved_state_registry_owner: number;
+				public static view_tree_view_model_store_owner: number;
+				public static visible_removing_fragment_view_tag: number;
+				public static wrap_content: number;
+			}
+			export class integer {
+				public static class: java.lang.Class<com.facebook.R.integer>;
+				public static abc_config_activityDefaultDur: number;
+				public static abc_config_activityShortDur: number;
+				public static cancel_button_image_alpha: number;
+				public static config_tooltipAnimTime: number;
+				public static status_bar_notification_info_maxnum: number;
+			}
+			export class interpolator {
+				public static class: java.lang.Class<com.facebook.R.interpolator>;
+				public static btn_checkbox_checked_mtrl_animation_interpolator_0: number;
+				public static btn_checkbox_checked_mtrl_animation_interpolator_1: number;
+				public static btn_checkbox_unchecked_mtrl_animation_interpolator_0: number;
+				public static btn_checkbox_unchecked_mtrl_animation_interpolator_1: number;
+				public static btn_radio_to_off_mtrl_animation_interpolator_0: number;
+				public static btn_radio_to_on_mtrl_animation_interpolator_0: number;
+				public static fast_out_slow_in: number;
+			}
+			export class layout {
+				public static class: java.lang.Class<com.facebook.R.layout>;
+				public static abc_action_bar_title_item: number;
+				public static abc_action_bar_up_container: number;
+				public static abc_action_menu_item_layout: number;
+				public static abc_action_menu_layout: number;
+				public static abc_action_mode_bar: number;
+				public static abc_action_mode_close_item_material: number;
+				public static abc_activity_chooser_view: number;
+				public static abc_activity_chooser_view_list_item: number;
+				public static abc_alert_dialog_button_bar_material: number;
+				public static abc_alert_dialog_material: number;
+				public static abc_alert_dialog_title_material: number;
+				public static abc_cascading_menu_item_layout: number;
+				public static abc_dialog_title_material: number;
+				public static abc_expanded_menu_layout: number;
+				public static abc_list_menu_item_checkbox: number;
+				public static abc_list_menu_item_icon: number;
+				public static abc_list_menu_item_layout: number;
+				public static abc_list_menu_item_radio: number;
+				public static abc_popup_menu_header_item_layout: number;
+				public static abc_popup_menu_item_layout: number;
+				public static abc_screen_content_include: number;
+				public static abc_screen_simple: number;
+				public static abc_screen_simple_overlay_action_mode: number;
+				public static abc_screen_toolbar: number;
+				public static abc_search_dropdown_item_icons_2line: number;
+				public static abc_search_view: number;
+				public static abc_select_dialog_material: number;
+				public static abc_tooltip: number;
+				public static browser_actions_context_menu_page: number;
+				public static browser_actions_context_menu_row: number;
+				public static com_facebook_activity_layout: number;
+				public static com_facebook_device_auth_dialog_fragment: number;
+				public static com_facebook_login_fragment: number;
+				public static com_facebook_smart_device_dialog_fragment: number;
+				public static com_facebook_tooltip_bubble: number;
+				public static custom_dialog: number;
+				public static messenger_button_send_blue_large: number;
+				public static messenger_button_send_blue_round: number;
+				public static messenger_button_send_blue_small: number;
+				public static messenger_button_send_white_large: number;
+				public static messenger_button_send_white_round: number;
+				public static messenger_button_send_white_small: number;
+				public static notification_action: number;
+				public static notification_action_tombstone: number;
+				public static notification_media_action: number;
+				public static notification_media_cancel_action: number;
+				public static notification_template_big_media: number;
+				public static notification_template_big_media_custom: number;
+				public static notification_template_big_media_narrow: number;
+				public static notification_template_big_media_narrow_custom: number;
+				public static notification_template_custom_big: number;
+				public static notification_template_icon_group: number;
+				public static notification_template_lines_media: number;
+				public static notification_template_media: number;
+				public static notification_template_media_custom: number;
+				public static notification_template_part_chronometer: number;
+				public static notification_template_part_time: number;
+				public static select_dialog_item_material: number;
+				public static select_dialog_multichoice_material: number;
+				public static select_dialog_singlechoice_material: number;
+				public static support_simple_spinner_dropdown_item: number;
+			}
+			export class style {
+				public static class: java.lang.Class<com.facebook.R.style>;
+				public static AlertDialog_AppCompat: number;
+				public static AlertDialog_AppCompat_Light: number;
+				public static Animation_AppCompat_Dialog: number;
+				public static Animation_AppCompat_DropDownUp: number;
+				public static Animation_AppCompat_Tooltip: number;
+				public static Base_AlertDialog_AppCompat: number;
+				public static Base_AlertDialog_AppCompat_Light: number;
+				public static Base_Animation_AppCompat_Dialog: number;
+				public static Base_Animation_AppCompat_DropDownUp: number;
+				public static Base_Animation_AppCompat_Tooltip: number;
+				public static Base_CardView: number;
+				public static Base_DialogWindowTitleBackground_AppCompat: number;
+				public static Base_DialogWindowTitle_AppCompat: number;
+				public static Base_TextAppearance_AppCompat: number;
+				public static Base_TextAppearance_AppCompat_Body1: number;
+				public static Base_TextAppearance_AppCompat_Body2: number;
+				public static Base_TextAppearance_AppCompat_Button: number;
+				public static Base_TextAppearance_AppCompat_Caption: number;
+				public static Base_TextAppearance_AppCompat_Display1: number;
+				public static Base_TextAppearance_AppCompat_Display2: number;
+				public static Base_TextAppearance_AppCompat_Display3: number;
+				public static Base_TextAppearance_AppCompat_Display4: number;
+				public static Base_TextAppearance_AppCompat_Headline: number;
+				public static Base_TextAppearance_AppCompat_Inverse: number;
+				public static Base_TextAppearance_AppCompat_Large: number;
+				public static Base_TextAppearance_AppCompat_Large_Inverse: number;
+				public static Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large: number;
+				public static Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small: number;
+				public static Base_TextAppearance_AppCompat_Medium: number;
+				public static Base_TextAppearance_AppCompat_Medium_Inverse: number;
+				public static Base_TextAppearance_AppCompat_Menu: number;
+				public static Base_TextAppearance_AppCompat_SearchResult: number;
+				public static Base_TextAppearance_AppCompat_SearchResult_Subtitle: number;
+				public static Base_TextAppearance_AppCompat_SearchResult_Title: number;
+				public static Base_TextAppearance_AppCompat_Small: number;
+				public static Base_TextAppearance_AppCompat_Small_Inverse: number;
+				public static Base_TextAppearance_AppCompat_Subhead: number;
+				public static Base_TextAppearance_AppCompat_Subhead_Inverse: number;
+				public static Base_TextAppearance_AppCompat_Title: number;
+				public static Base_TextAppearance_AppCompat_Title_Inverse: number;
+				public static Base_TextAppearance_AppCompat_Tooltip: number;
+				public static Base_TextAppearance_AppCompat_Widget_ActionBar_Menu: number;
+				public static Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle: number;
+				public static Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse: number;
+				public static Base_TextAppearance_AppCompat_Widget_ActionBar_Title: number;
+				public static Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse: number;
+				public static Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle: number;
+				public static Base_TextAppearance_AppCompat_Widget_ActionMode_Title: number;
+				public static Base_TextAppearance_AppCompat_Widget_Button: number;
+				public static Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored: number;
+				public static Base_TextAppearance_AppCompat_Widget_Button_Colored: number;
+				public static Base_TextAppearance_AppCompat_Widget_Button_Inverse: number;
+				public static Base_TextAppearance_AppCompat_Widget_DropDownItem: number;
+				public static Base_TextAppearance_AppCompat_Widget_PopupMenu_Header: number;
+				public static Base_TextAppearance_AppCompat_Widget_PopupMenu_Large: number;
+				public static Base_TextAppearance_AppCompat_Widget_PopupMenu_Small: number;
+				public static Base_TextAppearance_AppCompat_Widget_Switch: number;
+				public static Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem: number;
+				public static Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item: number;
+				public static Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle: number;
+				public static Base_TextAppearance_Widget_AppCompat_Toolbar_Title: number;
+				public static Base_ThemeOverlay_AppCompat: number;
+				public static Base_ThemeOverlay_AppCompat_ActionBar: number;
+				public static Base_ThemeOverlay_AppCompat_Dark: number;
+				public static Base_ThemeOverlay_AppCompat_Dark_ActionBar: number;
+				public static Base_ThemeOverlay_AppCompat_Dialog: number;
+				public static Base_ThemeOverlay_AppCompat_Dialog_Alert: number;
+				public static Base_ThemeOverlay_AppCompat_Light: number;
+				public static Base_Theme_AppCompat: number;
+				public static Base_Theme_AppCompat_CompactMenu: number;
+				public static Base_Theme_AppCompat_Dialog: number;
+				public static Base_Theme_AppCompat_DialogWhenLarge: number;
+				public static Base_Theme_AppCompat_Dialog_Alert: number;
+				public static Base_Theme_AppCompat_Dialog_FixedSize: number;
+				public static Base_Theme_AppCompat_Dialog_MinWidth: number;
+				public static Base_Theme_AppCompat_Light: number;
+				public static Base_Theme_AppCompat_Light_DarkActionBar: number;
+				public static Base_Theme_AppCompat_Light_Dialog: number;
+				public static Base_Theme_AppCompat_Light_DialogWhenLarge: number;
+				public static Base_Theme_AppCompat_Light_Dialog_Alert: number;
+				public static Base_Theme_AppCompat_Light_Dialog_FixedSize: number;
+				public static Base_Theme_AppCompat_Light_Dialog_MinWidth: number;
+				public static Base_V21_ThemeOverlay_AppCompat_Dialog: number;
+				public static Base_V21_Theme_AppCompat: number;
+				public static Base_V21_Theme_AppCompat_Dialog: number;
+				public static Base_V21_Theme_AppCompat_Light: number;
+				public static Base_V21_Theme_AppCompat_Light_Dialog: number;
+				public static Base_V22_Theme_AppCompat: number;
+				public static Base_V22_Theme_AppCompat_Light: number;
+				public static Base_V23_Theme_AppCompat: number;
+				public static Base_V23_Theme_AppCompat_Light: number;
+				public static Base_V26_Theme_AppCompat: number;
+				public static Base_V26_Theme_AppCompat_Light: number;
+				public static Base_V26_Widget_AppCompat_Toolbar: number;
+				public static Base_V28_Theme_AppCompat: number;
+				public static Base_V28_Theme_AppCompat_Light: number;
+				public static Base_V7_ThemeOverlay_AppCompat_Dialog: number;
+				public static Base_V7_Theme_AppCompat: number;
+				public static Base_V7_Theme_AppCompat_Dialog: number;
+				public static Base_V7_Theme_AppCompat_Light: number;
+				public static Base_V7_Theme_AppCompat_Light_Dialog: number;
+				public static Base_V7_Widget_AppCompat_AutoCompleteTextView: number;
+				public static Base_V7_Widget_AppCompat_EditText: number;
+				public static Base_V7_Widget_AppCompat_Toolbar: number;
+				public static Base_Widget_AppCompat_ActionBar: number;
+				public static Base_Widget_AppCompat_ActionBar_Solid: number;
+				public static Base_Widget_AppCompat_ActionBar_TabBar: number;
+				public static Base_Widget_AppCompat_ActionBar_TabText: number;
+				public static Base_Widget_AppCompat_ActionBar_TabView: number;
+				public static Base_Widget_AppCompat_ActionButton: number;
+				public static Base_Widget_AppCompat_ActionButton_CloseMode: number;
+				public static Base_Widget_AppCompat_ActionButton_Overflow: number;
+				public static Base_Widget_AppCompat_ActionMode: number;
+				public static Base_Widget_AppCompat_ActivityChooserView: number;
+				public static Base_Widget_AppCompat_AutoCompleteTextView: number;
+				public static Base_Widget_AppCompat_Button: number;
+				public static Base_Widget_AppCompat_ButtonBar: number;
+				public static Base_Widget_AppCompat_ButtonBar_AlertDialog: number;
+				public static Base_Widget_AppCompat_Button_Borderless: number;
+				public static Base_Widget_AppCompat_Button_Borderless_Colored: number;
+				public static Base_Widget_AppCompat_Button_ButtonBar_AlertDialog: number;
+				public static Base_Widget_AppCompat_Button_Colored: number;
+				public static Base_Widget_AppCompat_Button_Small: number;
+				public static Base_Widget_AppCompat_CompoundButton_CheckBox: number;
+				public static Base_Widget_AppCompat_CompoundButton_RadioButton: number;
+				public static Base_Widget_AppCompat_CompoundButton_Switch: number;
+				public static Base_Widget_AppCompat_DrawerArrowToggle: number;
+				public static Base_Widget_AppCompat_DrawerArrowToggle_Common: number;
+				public static Base_Widget_AppCompat_DropDownItem_Spinner: number;
+				public static Base_Widget_AppCompat_EditText: number;
+				public static Base_Widget_AppCompat_ImageButton: number;
+				public static Base_Widget_AppCompat_Light_ActionBar: number;
+				public static Base_Widget_AppCompat_Light_ActionBar_Solid: number;
+				public static Base_Widget_AppCompat_Light_ActionBar_TabBar: number;
+				public static Base_Widget_AppCompat_Light_ActionBar_TabText: number;
+				public static Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse: number;
+				public static Base_Widget_AppCompat_Light_ActionBar_TabView: number;
+				public static Base_Widget_AppCompat_Light_PopupMenu: number;
+				public static Base_Widget_AppCompat_Light_PopupMenu_Overflow: number;
+				public static Base_Widget_AppCompat_ListMenuView: number;
+				public static Base_Widget_AppCompat_ListPopupWindow: number;
+				public static Base_Widget_AppCompat_ListView: number;
+				public static Base_Widget_AppCompat_ListView_DropDown: number;
+				public static Base_Widget_AppCompat_ListView_Menu: number;
+				public static Base_Widget_AppCompat_PopupMenu: number;
+				public static Base_Widget_AppCompat_PopupMenu_Overflow: number;
+				public static Base_Widget_AppCompat_PopupWindow: number;
+				public static Base_Widget_AppCompat_ProgressBar: number;
+				public static Base_Widget_AppCompat_ProgressBar_Horizontal: number;
+				public static Base_Widget_AppCompat_RatingBar: number;
+				public static Base_Widget_AppCompat_RatingBar_Indicator: number;
+				public static Base_Widget_AppCompat_RatingBar_Small: number;
+				public static Base_Widget_AppCompat_SearchView: number;
+				public static Base_Widget_AppCompat_SearchView_ActionBar: number;
+				public static Base_Widget_AppCompat_SeekBar: number;
+				public static Base_Widget_AppCompat_SeekBar_Discrete: number;
+				public static Base_Widget_AppCompat_Spinner: number;
+				public static Base_Widget_AppCompat_Spinner_Underlined: number;
+				public static Base_Widget_AppCompat_TextView: number;
+				public static Base_Widget_AppCompat_TextView_SpinnerItem: number;
+				public static Base_Widget_AppCompat_Toolbar: number;
+				public static Base_Widget_AppCompat_Toolbar_Button_Navigation: number;
+				public static CardView: number;
+				public static CardView_Dark: number;
+				public static CardView_Light: number;
+				public static MessengerButton: number;
+				public static MessengerButtonText: number;
+				public static MessengerButtonText_Blue: number;
+				public static MessengerButtonText_Blue_Large: number;
+				public static MessengerButtonText_Blue_Small: number;
+				public static MessengerButtonText_White: number;
+				public static MessengerButtonText_White_Large: number;
+				public static MessengerButtonText_White_Small: number;
+				public static MessengerButton_Blue: number;
+				public static MessengerButton_Blue_Large: number;
+				public static MessengerButton_Blue_Small: number;
+				public static MessengerButton_White: number;
+				public static MessengerButton_White_Large: number;
+				public static MessengerButton_White_Small: number;
+				public static Platform_AppCompat: number;
+				public static Platform_AppCompat_Light: number;
+				public static Platform_ThemeOverlay_AppCompat: number;
+				public static Platform_ThemeOverlay_AppCompat_Dark: number;
+				public static Platform_ThemeOverlay_AppCompat_Light: number;
+				public static Platform_V21_AppCompat: number;
+				public static Platform_V21_AppCompat_Light: number;
+				public static Platform_V25_AppCompat: number;
+				public static Platform_V25_AppCompat_Light: number;
+				public static Platform_Widget_AppCompat_Spinner: number;
+				public static RtlOverlay_DialogWindowTitle_AppCompat: number;
+				public static RtlOverlay_Widget_AppCompat_ActionBar_TitleItem: number;
+				public static RtlOverlay_Widget_AppCompat_DialogTitle_Icon: number;
+				public static RtlOverlay_Widget_AppCompat_PopupMenuItem: number;
+				public static RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup: number;
+				public static RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut: number;
+				public static RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow: number;
+				public static RtlOverlay_Widget_AppCompat_PopupMenuItem_Text: number;
+				public static RtlOverlay_Widget_AppCompat_PopupMenuItem_Title: number;
+				public static RtlOverlay_Widget_AppCompat_SearchView_MagIcon: number;
+				public static RtlOverlay_Widget_AppCompat_Search_DropDown: number;
+				public static RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1: number;
+				public static RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2: number;
+				public static RtlOverlay_Widget_AppCompat_Search_DropDown_Query: number;
+				public static RtlOverlay_Widget_AppCompat_Search_DropDown_Text: number;
+				public static RtlUnderlay_Widget_AppCompat_ActionButton: number;
+				public static RtlUnderlay_Widget_AppCompat_ActionButton_Overflow: number;
+				public static TextAppearance_AppCompat: number;
+				public static TextAppearance_AppCompat_Body1: number;
+				public static TextAppearance_AppCompat_Body2: number;
+				public static TextAppearance_AppCompat_Button: number;
+				public static TextAppearance_AppCompat_Caption: number;
+				public static TextAppearance_AppCompat_Display1: number;
+				public static TextAppearance_AppCompat_Display2: number;
+				public static TextAppearance_AppCompat_Display3: number;
+				public static TextAppearance_AppCompat_Display4: number;
+				public static TextAppearance_AppCompat_Headline: number;
+				public static TextAppearance_AppCompat_Inverse: number;
+				public static TextAppearance_AppCompat_Large: number;
+				public static TextAppearance_AppCompat_Large_Inverse: number;
+				public static TextAppearance_AppCompat_Light_SearchResult_Subtitle: number;
+				public static TextAppearance_AppCompat_Light_SearchResult_Title: number;
+				public static TextAppearance_AppCompat_Light_Widget_PopupMenu_Large: number;
+				public static TextAppearance_AppCompat_Light_Widget_PopupMenu_Small: number;
+				public static TextAppearance_AppCompat_Medium: number;
+				public static TextAppearance_AppCompat_Medium_Inverse: number;
+				public static TextAppearance_AppCompat_Menu: number;
+				public static TextAppearance_AppCompat_SearchResult_Subtitle: number;
+				public static TextAppearance_AppCompat_SearchResult_Title: number;
+				public static TextAppearance_AppCompat_Small: number;
+				public static TextAppearance_AppCompat_Small_Inverse: number;
+				public static TextAppearance_AppCompat_Subhead: number;
+				public static TextAppearance_AppCompat_Subhead_Inverse: number;
+				public static TextAppearance_AppCompat_Title: number;
+				public static TextAppearance_AppCompat_Title_Inverse: number;
+				public static TextAppearance_AppCompat_Tooltip: number;
+				public static TextAppearance_AppCompat_Widget_ActionBar_Menu: number;
+				public static TextAppearance_AppCompat_Widget_ActionBar_Subtitle: number;
+				public static TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse: number;
+				public static TextAppearance_AppCompat_Widget_ActionBar_Title: number;
+				public static TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse: number;
+				public static TextAppearance_AppCompat_Widget_ActionMode_Subtitle: number;
+				public static TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse: number;
+				public static TextAppearance_AppCompat_Widget_ActionMode_Title: number;
+				public static TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse: number;
+				public static TextAppearance_AppCompat_Widget_Button: number;
+				public static TextAppearance_AppCompat_Widget_Button_Borderless_Colored: number;
+				public static TextAppearance_AppCompat_Widget_Button_Colored: number;
+				public static TextAppearance_AppCompat_Widget_Button_Inverse: number;
+				public static TextAppearance_AppCompat_Widget_DropDownItem: number;
+				public static TextAppearance_AppCompat_Widget_PopupMenu_Header: number;
+				public static TextAppearance_AppCompat_Widget_PopupMenu_Large: number;
+				public static TextAppearance_AppCompat_Widget_PopupMenu_Small: number;
+				public static TextAppearance_AppCompat_Widget_Switch: number;
+				public static TextAppearance_AppCompat_Widget_TextView_SpinnerItem: number;
+				public static TextAppearance_Compat_Notification: number;
+				public static TextAppearance_Compat_Notification_Info: number;
+				public static TextAppearance_Compat_Notification_Info_Media: number;
+				public static TextAppearance_Compat_Notification_Line2: number;
+				public static TextAppearance_Compat_Notification_Line2_Media: number;
+				public static TextAppearance_Compat_Notification_Media: number;
+				public static TextAppearance_Compat_Notification_Time: number;
+				public static TextAppearance_Compat_Notification_Time_Media: number;
+				public static TextAppearance_Compat_Notification_Title: number;
+				public static TextAppearance_Compat_Notification_Title_Media: number;
+				public static TextAppearance_Widget_AppCompat_ExpandedMenu_Item: number;
+				public static TextAppearance_Widget_AppCompat_Toolbar_Subtitle: number;
+				public static TextAppearance_Widget_AppCompat_Toolbar_Title: number;
+				public static ThemeOverlay_AppCompat: number;
+				public static ThemeOverlay_AppCompat_ActionBar: number;
+				public static ThemeOverlay_AppCompat_Dark: number;
+				public static ThemeOverlay_AppCompat_Dark_ActionBar: number;
+				public static ThemeOverlay_AppCompat_DayNight: number;
+				public static ThemeOverlay_AppCompat_DayNight_ActionBar: number;
+				public static ThemeOverlay_AppCompat_Dialog: number;
+				public static ThemeOverlay_AppCompat_Dialog_Alert: number;
+				public static ThemeOverlay_AppCompat_Light: number;
+				public static Theme_AppCompat: number;
+				public static Theme_AppCompat_CompactMenu: number;
+				public static Theme_AppCompat_DayNight: number;
+				public static Theme_AppCompat_DayNight_DarkActionBar: number;
+				public static Theme_AppCompat_DayNight_Dialog: number;
+				public static Theme_AppCompat_DayNight_DialogWhenLarge: number;
+				public static Theme_AppCompat_DayNight_Dialog_Alert: number;
+				public static Theme_AppCompat_DayNight_Dialog_MinWidth: number;
+				public static Theme_AppCompat_DayNight_NoActionBar: number;
+				public static Theme_AppCompat_Dialog: number;
+				public static Theme_AppCompat_DialogWhenLarge: number;
+				public static Theme_AppCompat_Dialog_Alert: number;
+				public static Theme_AppCompat_Dialog_MinWidth: number;
+				public static Theme_AppCompat_Light: number;
+				public static Theme_AppCompat_Light_DarkActionBar: number;
+				public static Theme_AppCompat_Light_Dialog: number;
+				public static Theme_AppCompat_Light_DialogWhenLarge: number;
+				public static Theme_AppCompat_Light_Dialog_Alert: number;
+				public static Theme_AppCompat_Light_Dialog_MinWidth: number;
+				public static Theme_AppCompat_Light_NoActionBar: number;
+				public static Theme_AppCompat_NoActionBar: number;
+				public static Widget_AppCompat_ActionBar: number;
+				public static Widget_AppCompat_ActionBar_Solid: number;
+				public static Widget_AppCompat_ActionBar_TabBar: number;
+				public static Widget_AppCompat_ActionBar_TabText: number;
+				public static Widget_AppCompat_ActionBar_TabView: number;
+				public static Widget_AppCompat_ActionButton: number;
+				public static Widget_AppCompat_ActionButton_CloseMode: number;
+				public static Widget_AppCompat_ActionButton_Overflow: number;
+				public static Widget_AppCompat_ActionMode: number;
+				public static Widget_AppCompat_ActivityChooserView: number;
+				public static Widget_AppCompat_AutoCompleteTextView: number;
+				public static Widget_AppCompat_Button: number;
+				public static Widget_AppCompat_ButtonBar: number;
+				public static Widget_AppCompat_ButtonBar_AlertDialog: number;
+				public static Widget_AppCompat_Button_Borderless: number;
+				public static Widget_AppCompat_Button_Borderless_Colored: number;
+				public static Widget_AppCompat_Button_ButtonBar_AlertDialog: number;
+				public static Widget_AppCompat_Button_Colored: number;
+				public static Widget_AppCompat_Button_Small: number;
+				public static Widget_AppCompat_CompoundButton_CheckBox: number;
+				public static Widget_AppCompat_CompoundButton_RadioButton: number;
+				public static Widget_AppCompat_CompoundButton_Switch: number;
+				public static Widget_AppCompat_DrawerArrowToggle: number;
+				public static Widget_AppCompat_DropDownItem_Spinner: number;
+				public static Widget_AppCompat_EditText: number;
+				public static Widget_AppCompat_ImageButton: number;
+				public static Widget_AppCompat_Light_ActionBar: number;
+				public static Widget_AppCompat_Light_ActionBar_Solid: number;
+				public static Widget_AppCompat_Light_ActionBar_Solid_Inverse: number;
+				public static Widget_AppCompat_Light_ActionBar_TabBar: number;
+				public static Widget_AppCompat_Light_ActionBar_TabBar_Inverse: number;
+				public static Widget_AppCompat_Light_ActionBar_TabText: number;
+				public static Widget_AppCompat_Light_ActionBar_TabText_Inverse: number;
+				public static Widget_AppCompat_Light_ActionBar_TabView: number;
+				public static Widget_AppCompat_Light_ActionBar_TabView_Inverse: number;
+				public static Widget_AppCompat_Light_ActionButton: number;
+				public static Widget_AppCompat_Light_ActionButton_CloseMode: number;
+				public static Widget_AppCompat_Light_ActionButton_Overflow: number;
+				public static Widget_AppCompat_Light_ActionMode_Inverse: number;
+				public static Widget_AppCompat_Light_ActivityChooserView: number;
+				public static Widget_AppCompat_Light_AutoCompleteTextView: number;
+				public static Widget_AppCompat_Light_DropDownItem_Spinner: number;
+				public static Widget_AppCompat_Light_ListPopupWindow: number;
+				public static Widget_AppCompat_Light_ListView_DropDown: number;
+				public static Widget_AppCompat_Light_PopupMenu: number;
+				public static Widget_AppCompat_Light_PopupMenu_Overflow: number;
+				public static Widget_AppCompat_Light_SearchView: number;
+				public static Widget_AppCompat_Light_Spinner_DropDown_ActionBar: number;
+				public static Widget_AppCompat_ListMenuView: number;
+				public static Widget_AppCompat_ListPopupWindow: number;
+				public static Widget_AppCompat_ListView: number;
+				public static Widget_AppCompat_ListView_DropDown: number;
+				public static Widget_AppCompat_ListView_Menu: number;
+				public static Widget_AppCompat_PopupMenu: number;
+				public static Widget_AppCompat_PopupMenu_Overflow: number;
+				public static Widget_AppCompat_PopupWindow: number;
+				public static Widget_AppCompat_ProgressBar: number;
+				public static Widget_AppCompat_ProgressBar_Horizontal: number;
+				public static Widget_AppCompat_RatingBar: number;
+				public static Widget_AppCompat_RatingBar_Indicator: number;
+				public static Widget_AppCompat_RatingBar_Small: number;
+				public static Widget_AppCompat_SearchView: number;
+				public static Widget_AppCompat_SearchView_ActionBar: number;
+				public static Widget_AppCompat_SeekBar: number;
+				public static Widget_AppCompat_SeekBar_Discrete: number;
+				public static Widget_AppCompat_Spinner: number;
+				public static Widget_AppCompat_Spinner_DropDown: number;
+				public static Widget_AppCompat_Spinner_DropDown_ActionBar: number;
+				public static Widget_AppCompat_Spinner_Underlined: number;
+				public static Widget_AppCompat_TextView: number;
+				public static Widget_AppCompat_TextView_SpinnerItem: number;
+				public static Widget_AppCompat_Toolbar: number;
+				public static Widget_AppCompat_Toolbar_Button_Navigation: number;
+				public static Widget_Compat_NotificationActionContainer: number;
+				public static Widget_Compat_NotificationActionText: number;
+				public static Widget_Support_CoordinatorLayout: number;
+				public static com_facebook_activity_theme: number;
+				public static com_facebook_auth_dialog: number;
+				public static com_facebook_auth_dialog_instructions_textview: number;
+				public static com_facebook_button: number;
+				public static com_facebook_button_like: number;
+				public static com_facebook_button_send: number;
+				public static com_facebook_button_share: number;
+				public static com_facebook_loginview_default_style: number;
+				public static tooltip_bubble_text: number;
+			}
+			export class styleable {
+				public static class: java.lang.Class<com.facebook.R.styleable>;
+				public static ActionBar: androidNative.Array<number>;
+				public static ActionBar_background: number;
+				public static ActionBar_backgroundSplit: number;
+				public static ActionBar_backgroundStacked: number;
+				public static ActionBar_contentInsetEnd: number;
+				public static ActionBar_contentInsetEndWithActions: number;
+				public static ActionBar_contentInsetLeft: number;
+				public static ActionBar_contentInsetRight: number;
+				public static ActionBar_contentInsetStart: number;
+				public static ActionBar_contentInsetStartWithNavigation: number;
+				public static ActionBar_customNavigationLayout: number;
+				public static ActionBar_displayOptions: number;
+				public static ActionBar_divider: number;
+				public static ActionBar_elevation: number;
+				public static ActionBar_height: number;
+				public static ActionBar_hideOnContentScroll: number;
+				public static ActionBar_homeAsUpIndicator: number;
+				public static ActionBar_homeLayout: number;
+				public static ActionBar_icon: number;
+				public static ActionBar_indeterminateProgressStyle: number;
+				public static ActionBar_itemPadding: number;
+				public static ActionBar_logo: number;
+				public static ActionBar_navigationMode: number;
+				public static ActionBar_popupTheme: number;
+				public static ActionBar_progressBarPadding: number;
+				public static ActionBar_progressBarStyle: number;
+				public static ActionBar_subtitle: number;
+				public static ActionBar_subtitleTextStyle: number;
+				public static ActionBar_title: number;
+				public static ActionBar_titleTextStyle: number;
+				public static ActionBarLayout: androidNative.Array<number>;
+				public static ActionBarLayout_android_layout_gravity: number;
+				public static ActionMenuItemView: androidNative.Array<number>;
+				public static ActionMenuItemView_android_minWidth: number;
+				public static ActionMenuView: androidNative.Array<number>;
+				public static ActionMode: androidNative.Array<number>;
+				public static ActionMode_background: number;
+				public static ActionMode_backgroundSplit: number;
+				public static ActionMode_closeItemLayout: number;
+				public static ActionMode_height: number;
+				public static ActionMode_subtitleTextStyle: number;
+				public static ActionMode_titleTextStyle: number;
+				public static ActivityChooserView: androidNative.Array<number>;
+				public static ActivityChooserView_expandActivityOverflowButtonDrawable: number;
+				public static ActivityChooserView_initialActivityCount: number;
+				public static AlertDialog: androidNative.Array<number>;
+				public static AlertDialog_android_layout: number;
+				public static AlertDialog_buttonIconDimen: number;
+				public static AlertDialog_buttonPanelSideLayout: number;
+				public static AlertDialog_listItemLayout: number;
+				public static AlertDialog_listLayout: number;
+				public static AlertDialog_multiChoiceItemLayout: number;
+				public static AlertDialog_showTitle: number;
+				public static AlertDialog_singleChoiceItemLayout: number;
+				public static AnimatedStateListDrawableCompat: androidNative.Array<number>;
+				public static AnimatedStateListDrawableCompat_android_dither: number;
+				public static AnimatedStateListDrawableCompat_android_visible: number;
+				public static AnimatedStateListDrawableCompat_android_variablePadding: number;
+				public static AnimatedStateListDrawableCompat_android_constantSize: number;
+				public static AnimatedStateListDrawableCompat_android_enterFadeDuration: number;
+				public static AnimatedStateListDrawableCompat_android_exitFadeDuration: number;
+				public static AnimatedStateListDrawableItem: androidNative.Array<number>;
+				public static AnimatedStateListDrawableItem_android_id: number;
+				public static AnimatedStateListDrawableItem_android_drawable: number;
+				public static AnimatedStateListDrawableTransition: androidNative.Array<number>;
+				public static AnimatedStateListDrawableTransition_android_drawable: number;
+				public static AnimatedStateListDrawableTransition_android_toId: number;
+				public static AnimatedStateListDrawableTransition_android_fromId: number;
+				public static AnimatedStateListDrawableTransition_android_reversible: number;
+				public static AppCompatImageView: androidNative.Array<number>;
+				public static AppCompatImageView_android_src: number;
+				public static AppCompatImageView_srcCompat: number;
+				public static AppCompatImageView_tint: number;
+				public static AppCompatImageView_tintMode: number;
+				public static AppCompatSeekBar: androidNative.Array<number>;
+				public static AppCompatSeekBar_android_thumb: number;
+				public static AppCompatSeekBar_tickMark: number;
+				public static AppCompatSeekBar_tickMarkTint: number;
+				public static AppCompatSeekBar_tickMarkTintMode: number;
+				public static AppCompatTextHelper: androidNative.Array<number>;
+				public static AppCompatTextHelper_android_textAppearance: number;
+				public static AppCompatTextHelper_android_drawableTop: number;
+				public static AppCompatTextHelper_android_drawableBottom: number;
+				public static AppCompatTextHelper_android_drawableLeft: number;
+				public static AppCompatTextHelper_android_drawableRight: number;
+				public static AppCompatTextHelper_android_drawableStart: number;
+				public static AppCompatTextHelper_android_drawableEnd: number;
+				public static AppCompatTextView: androidNative.Array<number>;
+				public static AppCompatTextView_android_textAppearance: number;
+				public static AppCompatTextView_autoSizeMaxTextSize: number;
+				public static AppCompatTextView_autoSizeMinTextSize: number;
+				public static AppCompatTextView_autoSizePresetSizes: number;
+				public static AppCompatTextView_autoSizeStepGranularity: number;
+				public static AppCompatTextView_autoSizeTextType: number;
+				public static AppCompatTextView_drawableBottomCompat: number;
+				public static AppCompatTextView_drawableEndCompat: number;
+				public static AppCompatTextView_drawableLeftCompat: number;
+				public static AppCompatTextView_drawableRightCompat: number;
+				public static AppCompatTextView_drawableStartCompat: number;
+				public static AppCompatTextView_drawableTint: number;
+				public static AppCompatTextView_drawableTintMode: number;
+				public static AppCompatTextView_drawableTopCompat: number;
+				public static AppCompatTextView_emojiCompatEnabled: number;
+				public static AppCompatTextView_firstBaselineToTopHeight: number;
+				public static AppCompatTextView_fontFamily: number;
+				public static AppCompatTextView_fontVariationSettings: number;
+				public static AppCompatTextView_lastBaselineToBottomHeight: number;
+				public static AppCompatTextView_lineHeight: number;
+				public static AppCompatTextView_textAllCaps: number;
+				public static AppCompatTextView_textLocale: number;
+				public static AppCompatTheme: androidNative.Array<number>;
+				public static AppCompatTheme_android_windowIsFloating: number;
+				public static AppCompatTheme_android_windowAnimationStyle: number;
+				public static AppCompatTheme_actionBarDivider: number;
+				public static AppCompatTheme_actionBarItemBackground: number;
+				public static AppCompatTheme_actionBarPopupTheme: number;
+				public static AppCompatTheme_actionBarSize: number;
+				public static AppCompatTheme_actionBarSplitStyle: number;
+				public static AppCompatTheme_actionBarStyle: number;
+				public static AppCompatTheme_actionBarTabBarStyle: number;
+				public static AppCompatTheme_actionBarTabStyle: number;
+				public static AppCompatTheme_actionBarTabTextStyle: number;
+				public static AppCompatTheme_actionBarTheme: number;
+				public static AppCompatTheme_actionBarWidgetTheme: number;
+				public static AppCompatTheme_actionButtonStyle: number;
+				public static AppCompatTheme_actionDropDownStyle: number;
+				public static AppCompatTheme_actionMenuTextAppearance: number;
+				public static AppCompatTheme_actionMenuTextColor: number;
+				public static AppCompatTheme_actionModeBackground: number;
+				public static AppCompatTheme_actionModeCloseButtonStyle: number;
+				public static AppCompatTheme_actionModeCloseContentDescription: number;
+				public static AppCompatTheme_actionModeCloseDrawable: number;
+				public static AppCompatTheme_actionModeCopyDrawable: number;
+				public static AppCompatTheme_actionModeCutDrawable: number;
+				public static AppCompatTheme_actionModeFindDrawable: number;
+				public static AppCompatTheme_actionModePasteDrawable: number;
+				public static AppCompatTheme_actionModePopupWindowStyle: number;
+				public static AppCompatTheme_actionModeSelectAllDrawable: number;
+				public static AppCompatTheme_actionModeShareDrawable: number;
+				public static AppCompatTheme_actionModeSplitBackground: number;
+				public static AppCompatTheme_actionModeStyle: number;
+				public static AppCompatTheme_actionModeTheme: number;
+				public static AppCompatTheme_actionModeWebSearchDrawable: number;
+				public static AppCompatTheme_actionOverflowButtonStyle: number;
+				public static AppCompatTheme_actionOverflowMenuStyle: number;
+				public static AppCompatTheme_activityChooserViewStyle: number;
+				public static AppCompatTheme_alertDialogButtonGroupStyle: number;
+				public static AppCompatTheme_alertDialogCenterButtons: number;
+				public static AppCompatTheme_alertDialogStyle: number;
+				public static AppCompatTheme_alertDialogTheme: number;
+				public static AppCompatTheme_autoCompleteTextViewStyle: number;
+				public static AppCompatTheme_borderlessButtonStyle: number;
+				public static AppCompatTheme_buttonBarButtonStyle: number;
+				public static AppCompatTheme_buttonBarNegativeButtonStyle: number;
+				public static AppCompatTheme_buttonBarNeutralButtonStyle: number;
+				public static AppCompatTheme_buttonBarPositiveButtonStyle: number;
+				public static AppCompatTheme_buttonBarStyle: number;
+				public static AppCompatTheme_buttonStyle: number;
+				public static AppCompatTheme_buttonStyleSmall: number;
+				public static AppCompatTheme_checkboxStyle: number;
+				public static AppCompatTheme_checkedTextViewStyle: number;
+				public static AppCompatTheme_colorAccent: number;
+				public static AppCompatTheme_colorBackgroundFloating: number;
+				public static AppCompatTheme_colorButtonNormal: number;
+				public static AppCompatTheme_colorControlActivated: number;
+				public static AppCompatTheme_colorControlHighlight: number;
+				public static AppCompatTheme_colorControlNormal: number;
+				public static AppCompatTheme_colorError: number;
+				public static AppCompatTheme_colorPrimary: number;
+				public static AppCompatTheme_colorPrimaryDark: number;
+				public static AppCompatTheme_colorSwitchThumbNormal: number;
+				public static AppCompatTheme_controlBackground: number;
+				public static AppCompatTheme_dialogCornerRadius: number;
+				public static AppCompatTheme_dialogPreferredPadding: number;
+				public static AppCompatTheme_dialogTheme: number;
+				public static AppCompatTheme_dividerHorizontal: number;
+				public static AppCompatTheme_dividerVertical: number;
+				public static AppCompatTheme_dropDownListViewStyle: number;
+				public static AppCompatTheme_dropdownListPreferredItemHeight: number;
+				public static AppCompatTheme_editTextBackground: number;
+				public static AppCompatTheme_editTextColor: number;
+				public static AppCompatTheme_editTextStyle: number;
+				public static AppCompatTheme_homeAsUpIndicator: number;
+				public static AppCompatTheme_imageButtonStyle: number;
+				public static AppCompatTheme_listChoiceBackgroundIndicator: number;
+				public static AppCompatTheme_listChoiceIndicatorMultipleAnimated: number;
+				public static AppCompatTheme_listChoiceIndicatorSingleAnimated: number;
+				public static AppCompatTheme_listDividerAlertDialog: number;
+				public static AppCompatTheme_listMenuViewStyle: number;
+				public static AppCompatTheme_listPopupWindowStyle: number;
+				public static AppCompatTheme_listPreferredItemHeight: number;
+				public static AppCompatTheme_listPreferredItemHeightLarge: number;
+				public static AppCompatTheme_listPreferredItemHeightSmall: number;
+				public static AppCompatTheme_listPreferredItemPaddingEnd: number;
+				public static AppCompatTheme_listPreferredItemPaddingLeft: number;
+				public static AppCompatTheme_listPreferredItemPaddingRight: number;
+				public static AppCompatTheme_listPreferredItemPaddingStart: number;
+				public static AppCompatTheme_panelBackground: number;
+				public static AppCompatTheme_panelMenuListTheme: number;
+				public static AppCompatTheme_panelMenuListWidth: number;
+				public static AppCompatTheme_popupMenuStyle: number;
+				public static AppCompatTheme_popupWindowStyle: number;
+				public static AppCompatTheme_radioButtonStyle: number;
+				public static AppCompatTheme_ratingBarStyle: number;
+				public static AppCompatTheme_ratingBarStyleIndicator: number;
+				public static AppCompatTheme_ratingBarStyleSmall: number;
+				public static AppCompatTheme_searchViewStyle: number;
+				public static AppCompatTheme_seekBarStyle: number;
+				public static AppCompatTheme_selectableItemBackground: number;
+				public static AppCompatTheme_selectableItemBackgroundBorderless: number;
+				public static AppCompatTheme_spinnerDropDownItemStyle: number;
+				public static AppCompatTheme_spinnerStyle: number;
+				public static AppCompatTheme_switchStyle: number;
+				public static AppCompatTheme_textAppearanceLargePopupMenu: number;
+				public static AppCompatTheme_textAppearanceListItem: number;
+				public static AppCompatTheme_textAppearanceListItemSecondary: number;
+				public static AppCompatTheme_textAppearanceListItemSmall: number;
+				public static AppCompatTheme_textAppearancePopupMenuHeader: number;
+				public static AppCompatTheme_textAppearanceSearchResultSubtitle: number;
+				public static AppCompatTheme_textAppearanceSearchResultTitle: number;
+				public static AppCompatTheme_textAppearanceSmallPopupMenu: number;
+				public static AppCompatTheme_textColorAlertDialogListItem: number;
+				public static AppCompatTheme_textColorSearchUrl: number;
+				public static AppCompatTheme_toolbarNavigationButtonStyle: number;
+				public static AppCompatTheme_toolbarStyle: number;
+				public static AppCompatTheme_tooltipForegroundColor: number;
+				public static AppCompatTheme_tooltipFrameBackground: number;
+				public static AppCompatTheme_viewInflaterClass: number;
+				public static AppCompatTheme_windowActionBar: number;
+				public static AppCompatTheme_windowActionBarOverlay: number;
+				public static AppCompatTheme_windowActionModeOverlay: number;
+				public static AppCompatTheme_windowFixedHeightMajor: number;
+				public static AppCompatTheme_windowFixedHeightMinor: number;
+				public static AppCompatTheme_windowFixedWidthMajor: number;
+				public static AppCompatTheme_windowFixedWidthMinor: number;
+				public static AppCompatTheme_windowMinWidthMajor: number;
+				public static AppCompatTheme_windowMinWidthMinor: number;
+				public static AppCompatTheme_windowNoTitle: number;
+				public static ButtonBarLayout: androidNative.Array<number>;
+				public static ButtonBarLayout_allowStacking: number;
+				public static CardView: androidNative.Array<number>;
+				public static CardView_android_minWidth: number;
+				public static CardView_android_minHeight: number;
+				public static CardView_cardBackgroundColor: number;
+				public static CardView_cardCornerRadius: number;
+				public static CardView_cardElevation: number;
+				public static CardView_cardMaxElevation: number;
+				public static CardView_cardPreventCornerOverlap: number;
+				public static CardView_cardUseCompatPadding: number;
+				public static CardView_contentPadding: number;
+				public static CardView_contentPaddingBottom: number;
+				public static CardView_contentPaddingLeft: number;
+				public static CardView_contentPaddingRight: number;
+				public static CardView_contentPaddingTop: number;
+				public static ColorStateListItem: androidNative.Array<number>;
+				public static ColorStateListItem_android_color: number;
+				public static ColorStateListItem_android_alpha: number;
+				public static ColorStateListItem_android_lStar: number;
+				public static ColorStateListItem_alpha: number;
+				public static ColorStateListItem_lStar: number;
+				public static CompoundButton: androidNative.Array<number>;
+				public static CompoundButton_android_button: number;
+				public static CompoundButton_buttonCompat: number;
+				public static CompoundButton_buttonTint: number;
+				public static CompoundButton_buttonTintMode: number;
+				public static CoordinatorLayout: androidNative.Array<number>;
+				public static CoordinatorLayout_keylines: number;
+				public static CoordinatorLayout_statusBarBackground: number;
+				public static CoordinatorLayout_Layout: androidNative.Array<number>;
+				public static CoordinatorLayout_Layout_android_layout_gravity: number;
+				public static CoordinatorLayout_Layout_layout_anchor: number;
+				public static CoordinatorLayout_Layout_layout_anchorGravity: number;
+				public static CoordinatorLayout_Layout_layout_behavior: number;
+				public static CoordinatorLayout_Layout_layout_dodgeInsetEdges: number;
+				public static CoordinatorLayout_Layout_layout_insetEdge: number;
+				public static CoordinatorLayout_Layout_layout_keyline: number;
+				public static DrawerArrowToggle: androidNative.Array<number>;
+				public static DrawerArrowToggle_arrowHeadLength: number;
+				public static DrawerArrowToggle_arrowShaftLength: number;
+				public static DrawerArrowToggle_barLength: number;
+				public static DrawerArrowToggle_color: number;
+				public static DrawerArrowToggle_drawableSize: number;
+				public static DrawerArrowToggle_gapBetweenBars: number;
+				public static DrawerArrowToggle_spinBars: number;
+				public static DrawerArrowToggle_thickness: number;
+				public static FontFamily: androidNative.Array<number>;
+				public static FontFamily_fontProviderAuthority: number;
+				public static FontFamily_fontProviderCerts: number;
+				public static FontFamily_fontProviderFetchStrategy: number;
+				public static FontFamily_fontProviderFetchTimeout: number;
+				public static FontFamily_fontProviderPackage: number;
+				public static FontFamily_fontProviderQuery: number;
+				public static FontFamily_fontProviderSystemFontFamily: number;
+				public static FontFamilyFont: androidNative.Array<number>;
+				public static FontFamilyFont_android_font: number;
+				public static FontFamilyFont_android_fontWeight: number;
+				public static FontFamilyFont_android_fontStyle: number;
+				public static FontFamilyFont_android_ttcIndex: number;
+				public static FontFamilyFont_android_fontVariationSettings: number;
+				public static FontFamilyFont_font: number;
+				public static FontFamilyFont_fontStyle: number;
+				public static FontFamilyFont_fontVariationSettings: number;
+				public static FontFamilyFont_fontWeight: number;
+				public static FontFamilyFont_ttcIndex: number;
+				public static Fragment: androidNative.Array<number>;
+				public static Fragment_android_name: number;
+				public static Fragment_android_id: number;
+				public static Fragment_android_tag: number;
+				public static FragmentContainerView: androidNative.Array<number>;
+				public static FragmentContainerView_android_name: number;
+				public static FragmentContainerView_android_tag: number;
+				public static GradientColor: androidNative.Array<number>;
+				public static GradientColor_android_startColor: number;
+				public static GradientColor_android_endColor: number;
+				public static GradientColor_android_type: number;
+				public static GradientColor_android_centerX: number;
+				public static GradientColor_android_centerY: number;
+				public static GradientColor_android_gradientRadius: number;
+				public static GradientColor_android_tileMode: number;
+				public static GradientColor_android_centerColor: number;
+				public static GradientColor_android_startX: number;
+				public static GradientColor_android_startY: number;
+				public static GradientColor_android_endX: number;
+				public static GradientColor_android_endY: number;
+				public static GradientColorItem: androidNative.Array<number>;
+				public static GradientColorItem_android_color: number;
+				public static GradientColorItem_android_offset: number;
+				public static LinearLayoutCompat: androidNative.Array<number>;
+				public static LinearLayoutCompat_android_gravity: number;
+				public static LinearLayoutCompat_android_orientation: number;
+				public static LinearLayoutCompat_android_baselineAligned: number;
+				public static LinearLayoutCompat_android_baselineAlignedChildIndex: number;
+				public static LinearLayoutCompat_android_weightSum: number;
+				public static LinearLayoutCompat_divider: number;
+				public static LinearLayoutCompat_dividerPadding: number;
+				public static LinearLayoutCompat_measureWithLargestChild: number;
+				public static LinearLayoutCompat_showDividers: number;
+				public static LinearLayoutCompat_Layout: androidNative.Array<number>;
+				public static LinearLayoutCompat_Layout_android_layout_gravity: number;
+				public static LinearLayoutCompat_Layout_android_layout_width: number;
+				public static LinearLayoutCompat_Layout_android_layout_height: number;
+				public static LinearLayoutCompat_Layout_android_layout_weight: number;
+				public static ListPopupWindow: androidNative.Array<number>;
+				public static ListPopupWindow_android_dropDownHorizontalOffset: number;
+				public static ListPopupWindow_android_dropDownVerticalOffset: number;
+				public static MenuGroup: androidNative.Array<number>;
+				public static MenuGroup_android_enabled: number;
+				public static MenuGroup_android_id: number;
+				public static MenuGroup_android_visible: number;
+				public static MenuGroup_android_menuCategory: number;
+				public static MenuGroup_android_orderInCategory: number;
+				public static MenuGroup_android_checkableBehavior: number;
+				public static MenuItem: androidNative.Array<number>;
+				public static MenuItem_android_icon: number;
+				public static MenuItem_android_enabled: number;
+				public static MenuItem_android_id: number;
+				public static MenuItem_android_checked: number;
+				public static MenuItem_android_visible: number;
+				public static MenuItem_android_menuCategory: number;
+				public static MenuItem_android_orderInCategory: number;
+				public static MenuItem_android_title: number;
+				public static MenuItem_android_titleCondensed: number;
+				public static MenuItem_android_alphabeticShortcut: number;
+				public static MenuItem_android_numericShortcut: number;
+				public static MenuItem_android_checkable: number;
+				public static MenuItem_android_onClick: number;
+				public static MenuItem_actionLayout: number;
+				public static MenuItem_actionProviderClass: number;
+				public static MenuItem_actionViewClass: number;
+				public static MenuItem_alphabeticModifiers: number;
+				public static MenuItem_contentDescription: number;
+				public static MenuItem_iconTint: number;
+				public static MenuItem_iconTintMode: number;
+				public static MenuItem_numericModifiers: number;
+				public static MenuItem_showAsAction: number;
+				public static MenuItem_tooltipText: number;
+				public static MenuView: androidNative.Array<number>;
+				public static MenuView_android_windowAnimationStyle: number;
+				public static MenuView_android_itemTextAppearance: number;
+				public static MenuView_android_horizontalDivider: number;
+				public static MenuView_android_verticalDivider: number;
+				public static MenuView_android_headerBackground: number;
+				public static MenuView_android_itemBackground: number;
+				public static MenuView_android_itemIconDisabledAlpha: number;
+				public static MenuView_preserveIconSpacing: number;
+				public static MenuView_subMenuArrow: number;
+				public static PopupWindow: androidNative.Array<number>;
+				public static PopupWindow_android_popupBackground: number;
+				public static PopupWindow_android_popupAnimationStyle: number;
+				public static PopupWindow_overlapAnchor: number;
+				public static PopupWindowBackgroundState: androidNative.Array<number>;
+				public static PopupWindowBackgroundState_state_above_anchor: number;
+				public static RecycleListView: androidNative.Array<number>;
+				public static RecycleListView_paddingBottomNoButtons: number;
+				public static RecycleListView_paddingTopNoTitle: number;
+				public static SearchView: androidNative.Array<number>;
+				public static SearchView_android_focusable: number;
+				public static SearchView_android_maxWidth: number;
+				public static SearchView_android_inputType: number;
+				public static SearchView_android_imeOptions: number;
+				public static SearchView_closeIcon: number;
+				public static SearchView_commitIcon: number;
+				public static SearchView_defaultQueryHint: number;
+				public static SearchView_goIcon: number;
+				public static SearchView_iconifiedByDefault: number;
+				public static SearchView_layout: number;
+				public static SearchView_queryBackground: number;
+				public static SearchView_queryHint: number;
+				public static SearchView_searchHintIcon: number;
+				public static SearchView_searchIcon: number;
+				public static SearchView_submitBackground: number;
+				public static SearchView_suggestionRowLayout: number;
+				public static SearchView_voiceIcon: number;
+				public static Spinner: androidNative.Array<number>;
+				public static Spinner_android_entries: number;
+				public static Spinner_android_popupBackground: number;
+				public static Spinner_android_prompt: number;
+				public static Spinner_android_dropDownWidth: number;
+				public static Spinner_popupTheme: number;
+				public static StateListDrawable: androidNative.Array<number>;
+				public static StateListDrawable_android_dither: number;
+				public static StateListDrawable_android_visible: number;
+				public static StateListDrawable_android_variablePadding: number;
+				public static StateListDrawable_android_constantSize: number;
+				public static StateListDrawable_android_enterFadeDuration: number;
+				public static StateListDrawable_android_exitFadeDuration: number;
+				public static StateListDrawableItem: androidNative.Array<number>;
+				public static StateListDrawableItem_android_drawable: number;
+				public static SwitchCompat: androidNative.Array<number>;
+				public static SwitchCompat_android_textOn: number;
+				public static SwitchCompat_android_textOff: number;
+				public static SwitchCompat_android_thumb: number;
+				public static SwitchCompat_showText: number;
+				public static SwitchCompat_splitTrack: number;
+				public static SwitchCompat_switchMinWidth: number;
+				public static SwitchCompat_switchPadding: number;
+				public static SwitchCompat_switchTextAppearance: number;
+				public static SwitchCompat_thumbTextPadding: number;
+				public static SwitchCompat_thumbTint: number;
+				public static SwitchCompat_thumbTintMode: number;
+				public static SwitchCompat_track: number;
+				public static SwitchCompat_trackTint: number;
+				public static SwitchCompat_trackTintMode: number;
+				public static TextAppearance: androidNative.Array<number>;
+				public static TextAppearance_android_textSize: number;
+				public static TextAppearance_android_typeface: number;
+				public static TextAppearance_android_textStyle: number;
+				public static TextAppearance_android_textColor: number;
+				public static TextAppearance_android_textColorHint: number;
+				public static TextAppearance_android_textColorLink: number;
+				public static TextAppearance_android_shadowColor: number;
+				public static TextAppearance_android_shadowDx: number;
+				public static TextAppearance_android_shadowDy: number;
+				public static TextAppearance_android_shadowRadius: number;
+				public static TextAppearance_android_fontFamily: number;
+				public static TextAppearance_android_textFontWeight: number;
+				public static TextAppearance_fontFamily: number;
+				public static TextAppearance_fontVariationSettings: number;
+				public static TextAppearance_textAllCaps: number;
+				public static TextAppearance_textLocale: number;
+				public static Toolbar: androidNative.Array<number>;
+				public static Toolbar_android_gravity: number;
+				public static Toolbar_android_minHeight: number;
+				public static Toolbar_buttonGravity: number;
+				public static Toolbar_collapseContentDescription: number;
+				public static Toolbar_collapseIcon: number;
+				public static Toolbar_contentInsetEnd: number;
+				public static Toolbar_contentInsetEndWithActions: number;
+				public static Toolbar_contentInsetLeft: number;
+				public static Toolbar_contentInsetRight: number;
+				public static Toolbar_contentInsetStart: number;
+				public static Toolbar_contentInsetStartWithNavigation: number;
+				public static Toolbar_logo: number;
+				public static Toolbar_logoDescription: number;
+				public static Toolbar_maxButtonHeight: number;
+				public static Toolbar_menu: number;
+				public static Toolbar_navigationContentDescription: number;
+				public static Toolbar_navigationIcon: number;
+				public static Toolbar_popupTheme: number;
+				public static Toolbar_subtitle: number;
+				public static Toolbar_subtitleTextAppearance: number;
+				public static Toolbar_subtitleTextColor: number;
+				public static Toolbar_title: number;
+				public static Toolbar_titleMargin: number;
+				public static Toolbar_titleMarginBottom: number;
+				public static Toolbar_titleMarginEnd: number;
+				public static Toolbar_titleMarginStart: number;
+				public static Toolbar_titleMarginTop: number;
+				public static Toolbar_titleMargins: number;
+				public static Toolbar_titleTextAppearance: number;
+				public static Toolbar_titleTextColor: number;
+				public static View: androidNative.Array<number>;
+				public static View_android_theme: number;
+				public static View_android_focusable: number;
+				public static View_paddingEnd: number;
+				public static View_paddingStart: number;
+				public static View_theme: number;
+				public static ViewBackgroundHelper: androidNative.Array<number>;
+				public static ViewBackgroundHelper_android_background: number;
+				public static ViewBackgroundHelper_backgroundTint: number;
+				public static ViewBackgroundHelper_backgroundTintMode: number;
+				public static ViewStubCompat: androidNative.Array<number>;
+				public static ViewStubCompat_android_id: number;
+				public static ViewStubCompat_android_layout: number;
+				public static ViewStubCompat_android_inflatedId: number;
+				public static com_facebook_like_view: androidNative.Array<number>;
+				public static com_facebook_like_view_com_facebook_auxiliary_view_position: number;
+				public static com_facebook_like_view_com_facebook_foreground_color: number;
+				public static com_facebook_like_view_com_facebook_horizontal_alignment: number;
+				public static com_facebook_like_view_com_facebook_object_id: number;
+				public static com_facebook_like_view_com_facebook_object_type: number;
+				public static com_facebook_like_view_com_facebook_style: number;
+				public static com_facebook_login_view: androidNative.Array<number>;
+				public static com_facebook_login_view_com_facebook_confirm_logout: number;
+				public static com_facebook_login_view_com_facebook_login_button_radius: number;
+				public static com_facebook_login_view_com_facebook_login_button_transparency: number;
+				public static com_facebook_login_view_com_facebook_login_text: number;
+				public static com_facebook_login_view_com_facebook_logout_text: number;
+				public static com_facebook_login_view_com_facebook_tooltip_mode: number;
+				public static com_facebook_profile_picture_view: androidNative.Array<number>;
+				public static com_facebook_profile_picture_view_com_facebook_is_cropped: number;
+				public static com_facebook_profile_picture_view_com_facebook_preset_size: number;
+				public static<clinit>(): void;
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
 		export class RequestOutputStream {
 			public static class: java.lang.Class<com.facebook.RequestOutputStream>;
 			/**
@@ -1371,9 +3615,21 @@ declare module com {
 
 declare module com {
 	export module facebook {
+		export class WebDialog {
+			public static class: java.lang.Class<com.facebook.WebDialog>;
+			public static INSTANCE: com.facebook.WebDialog;
+			public static setWebDialogTheme(param0: number): void;
+			public static getWebDialogTheme(): number;
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
 		export module appevents {
 			export class AccessTokenAppIdPair {
 				public static class: java.lang.Class<com.facebook.appevents.AccessTokenAppIdPair>;
+				public static Companion: com.facebook.appevents.AccessTokenAppIdPair.Companion;
 				public constructor(param0: com.facebook.AccessToken);
 				public getAccessTokenString(): string;
 				public hashCode(): number;
@@ -1387,6 +3643,7 @@ declare module com {
 				}
 				export class SerializationProxyV1 {
 					public static class: java.lang.Class<com.facebook.appevents.AccessTokenAppIdPair.SerializationProxyV1>;
+					public static Companion: com.facebook.appevents.AccessTokenAppIdPair.SerializationProxyV1.Companion;
 					public constructor(param0: string, param1: string);
 				}
 				export module SerializationProxyV1 {
@@ -1418,6 +3675,7 @@ declare module com {
 		export module appevents {
 			export class AppEvent {
 				public static class: java.lang.Class<com.facebook.appevents.AppEvent>;
+				public static Companion: com.facebook.appevents.AppEvent.Companion;
 				public constructor(param0: string, param1: string, param2: java.lang.Double, param3: globalAndroid.os.Bundle, param4: boolean, param5: boolean, param6: java.util.UUID);
 				public getJSONObject(): org.json.JSONObject;
 				public isImplicit(): boolean;
@@ -1433,6 +3691,7 @@ declare module com {
 				}
 				export class SerializationProxyV2 {
 					public static class: java.lang.Class<com.facebook.appevents.AppEvent.SerializationProxyV2>;
+					public static Companion: com.facebook.appevents.AppEvent.SerializationProxyV2.Companion;
 					public constructor(param0: string, param1: boolean, param2: boolean, param3: string);
 				}
 				export module SerializationProxyV2 {
@@ -1473,6 +3732,7 @@ declare module com {
 			export module AppEventDiskStore {
 				export class MovedClassObjectInputStream {
 					public static class: java.lang.Class<com.facebook.appevents.AppEventDiskStore.MovedClassObjectInputStream>;
+					public static Companion: com.facebook.appevents.AppEventDiskStore.MovedClassObjectInputStream.Companion;
 					public constructor(param0: java.io.InputStream);
 					public readClassDescriptor(): java.io.ObjectStreamClass;
 				}
@@ -1614,6 +3874,7 @@ declare module com {
 		export module appevents {
 			export class AppEventsLogger {
 				public static class: java.lang.Class<com.facebook.appevents.AppEventsLogger>;
+				public static Companion: com.facebook.appevents.AppEventsLogger.Companion;
 				public static ACTION_APP_EVENTS_FLUSHED: string;
 				public static APP_EVENTS_EXTRA_NUM_EVENTS_FLUSHED: string;
 				public static APP_EVENTS_EXTRA_FLUSH_RESULT: string;
@@ -1709,6 +3970,8 @@ declare module com {
 		export module appevents {
 			export class AppEventsLoggerImpl {
 				public static class: java.lang.Class<com.facebook.appevents.AppEventsLoggerImpl>;
+				public static Companion: com.facebook.appevents.AppEventsLoggerImpl.Companion;
+				public static APP_EVENTS_KILLSWITCH: string;
 				public logPurchase(param0: java.math.BigDecimal, param1: java.util.Currency): void;
 				public logPurchaseImplicitly(param0: java.math.BigDecimal, param1: java.util.Currency, param2: globalAndroid.os.Bundle): void;
 				public logPurchase(param0: java.math.BigDecimal, param1: java.util.Currency, param2: globalAndroid.os.Bundle, param3: boolean): void;
@@ -1783,6 +4046,7 @@ declare module com {
 		export module appevents {
 			export class FacebookSDKJSInterface {
 				public static class: java.lang.Class<com.facebook.appevents.FacebookSDKJSInterface>;
+				public static Companion: com.facebook.appevents.FacebookSDKJSInterface.Companion;
 				public sendEvent(param0: string, param1: string, param2: string): void;
 				public constructor(param0: globalAndroid.content.Context);
 				public getProtocol(): string;
@@ -1851,6 +4115,7 @@ declare module com {
 		export module appevents {
 			export class InternalAppEventsLogger {
 				public static class: java.lang.Class<com.facebook.appevents.InternalAppEventsLogger>;
+				public static Companion: com.facebook.appevents.InternalAppEventsLogger.Companion;
 				public logPurchaseImplicitly(param0: java.math.BigDecimal, param1: java.util.Currency, param2: globalAndroid.os.Bundle): void;
 				public logEventImplicitly(param0: string, param1: java.math.BigDecimal, param2: java.util.Currency, param3: globalAndroid.os.Bundle): void;
 				public static getPushNotificationsRegistrationId(): string;
@@ -1896,6 +4161,7 @@ declare module com {
 		export module appevents {
 			export class PersistedEvents {
 				public static class: java.lang.Class<com.facebook.appevents.PersistedEvents>;
+				public static Companion: com.facebook.appevents.PersistedEvents.Companion;
 				public keySet(): java.util.Set<com.facebook.appevents.AccessTokenAppIdPair>;
 				public containsKey(param0: com.facebook.appevents.AccessTokenAppIdPair): boolean;
 				public entrySet(): java.util.Set<java.util.Map.Entry<com.facebook.appevents.AccessTokenAppIdPair, java.util.List<com.facebook.appevents.AppEvent>>>;
@@ -1910,6 +4176,7 @@ declare module com {
 				}
 				export class SerializationProxyV1 {
 					public static class: java.lang.Class<com.facebook.appevents.PersistedEvents.SerializationProxyV1>;
+					public static Companion: com.facebook.appevents.PersistedEvents.SerializationProxyV1.Companion;
 					public constructor(param0: java.util.HashMap<com.facebook.appevents.AccessTokenAppIdPair, java.util.List<com.facebook.appevents.AppEvent>>);
 				}
 				export module SerializationProxyV1 {
@@ -1927,6 +4194,7 @@ declare module com {
 		export module appevents {
 			export class SessionEventsState {
 				public static class: java.lang.Class<com.facebook.appevents.SessionEventsState>;
+				public static Companion: com.facebook.appevents.SessionEventsState.Companion;
 				public constructor(param0: com.facebook.internal.AttributionIdentifiers, param1: string);
 				public clearInFlightAndStats(param0: boolean): void;
 				public addEvent(param0: com.facebook.appevents.AppEvent): void;
@@ -2010,6 +4278,7 @@ declare module com {
 			export module aam {
 				export class MetadataRule {
 					public static class: java.lang.Class<com.facebook.appevents.aam.MetadataRule>;
+					public static Companion: com.facebook.appevents.aam.MetadataRule.Companion;
 					public static getEnabledRuleNames(): java.util.Set<string>;
 					public getName(): string;
 					public static updateRules(param0: string): void;
@@ -2036,6 +4305,7 @@ declare module com {
 			export module aam {
 				export class MetadataViewObserver {
 					public static class: java.lang.Class<com.facebook.appevents.aam.MetadataViewObserver>;
+					public static Companion: com.facebook.appevents.aam.MetadataViewObserver.Companion;
 					public static startTrackingActivity(param0: globalAndroid.app.Activity): void;
 					public static stopTrackingActivity(param0: globalAndroid.app.Activity): void;
 					public onGlobalFocusChanged(param0: globalAndroid.view.View, param1: globalAndroid.view.View): void;
@@ -2058,6 +4328,7 @@ declare module com {
 			export module cloudbridge {
 				export class AppEventType {
 					public static class: java.lang.Class<com.facebook.appevents.cloudbridge.AppEventType>;
+					public static Companion: com.facebook.appevents.cloudbridge.AppEventType.Companion;
 					public static MOBILE_APP_INSTALL: com.facebook.appevents.cloudbridge.AppEventType;
 					public static CUSTOM: com.facebook.appevents.cloudbridge.AppEventType;
 					public static OTHER: com.facebook.appevents.cloudbridge.AppEventType;
@@ -2081,6 +4352,7 @@ declare module com {
 			export module cloudbridge {
 				export class AppEventUserAndAppDataField {
 					public static class: java.lang.Class<com.facebook.appevents.cloudbridge.AppEventUserAndAppDataField>;
+					public static Companion: com.facebook.appevents.cloudbridge.AppEventUserAndAppDataField.Companion;
 					public static ANON_ID: com.facebook.appevents.cloudbridge.AppEventUserAndAppDataField;
 					public static APP_USER_ID: com.facebook.appevents.cloudbridge.AppEventUserAndAppDataField;
 					public static ADVERTISER_ID: com.facebook.appevents.cloudbridge.AppEventUserAndAppDataField;
@@ -2152,6 +4424,7 @@ declare module com {
 				export module AppEventsConversionsAPITransformer {
 					export class DataProcessingParameterName {
 						public static class: java.lang.Class<com.facebook.appevents.cloudbridge.AppEventsConversionsAPITransformer.DataProcessingParameterName>;
+						public static Companion: com.facebook.appevents.cloudbridge.AppEventsConversionsAPITransformer.DataProcessingParameterName.Companion;
 						public static OPTIONS: com.facebook.appevents.cloudbridge.AppEventsConversionsAPITransformer.DataProcessingParameterName;
 						public static COUNTRY: com.facebook.appevents.cloudbridge.AppEventsConversionsAPITransformer.DataProcessingParameterName;
 						public static STATE: com.facebook.appevents.cloudbridge.AppEventsConversionsAPITransformer.DataProcessingParameterName;
@@ -2195,6 +4468,7 @@ declare module com {
 					}
 					export class ValueTransformationType {
 						public static class: java.lang.Class<com.facebook.appevents.cloudbridge.AppEventsConversionsAPITransformer.ValueTransformationType>;
+						public static Companion: com.facebook.appevents.cloudbridge.AppEventsConversionsAPITransformer.ValueTransformationType.Companion;
 						public static ARRAY: com.facebook.appevents.cloudbridge.AppEventsConversionsAPITransformer.ValueTransformationType;
 						public static BOOL: com.facebook.appevents.cloudbridge.AppEventsConversionsAPITransformer.ValueTransformationType;
 						public static INT: com.facebook.appevents.cloudbridge.AppEventsConversionsAPITransformer.ValueTransformationType;
@@ -2232,7 +4506,7 @@ declare module com {
 					public setTransformedEvents$facebook_core_release(param0: java.util.List<java.util.Map<string, any>>): void;
 					public setCurrentRetryCount$facebook_core_release(param0: number): void;
 					public appendEvents$facebook_core_release(param0: java.util.List<any>): void;
-					public makeHttpRequest$facebook_core_release(param0: string, param1: string, param2: string, param3: java.util.Map<string, string>, param4: number, param5: any): void;
+					public makeHttpRequest$facebook_core_release(param0: string, param1: string, param2: string, param3: java.util.Map<string, string>, param4: number, param5: kotlin.jvm.functions.Function2<any, any, kotlin.Unit>): void;
 					public static configure(param0: string, param1: string, param2: string): void;
 					public getCredentials$facebook_core_release(): com.facebook.appevents.cloudbridge.AppEventsConversionsAPITransformerWebRequests.CloudBridgeCredentials;
 					public setCredentials$facebook_core_release(param0: com.facebook.appevents.cloudbridge.AppEventsConversionsAPITransformerWebRequests.CloudBridgeCredentials): void;
@@ -2379,6 +4653,7 @@ declare module com {
 			export module cloudbridge {
 				export class CustomEventField {
 					public static class: java.lang.Class<com.facebook.appevents.cloudbridge.CustomEventField>;
+					public static Companion: com.facebook.appevents.cloudbridge.CustomEventField.Companion;
 					public static EVENT_TIME: com.facebook.appevents.cloudbridge.CustomEventField;
 					public static EVENT_NAME: com.facebook.appevents.cloudbridge.CustomEventField;
 					public static VALUE_TO_SUM: com.facebook.appevents.cloudbridge.CustomEventField;
@@ -2510,6 +4785,7 @@ declare module com {
 			export module codeless {
 				export class CodelessMatcher {
 					public static class: java.lang.Class<com.facebook.appevents.codeless.CodelessMatcher>;
+					public static Companion: com.facebook.appevents.codeless.CodelessMatcher.Companion;
 					public add(param0: globalAndroid.app.Activity): void;
 					public remove(param0: globalAndroid.app.Activity): void;
 					public static getParameters(param0: com.facebook.appevents.codeless.internal.EventBinding, param1: globalAndroid.view.View, param2: globalAndroid.view.View): globalAndroid.os.Bundle;
@@ -2530,6 +4806,7 @@ declare module com {
 					}
 					export class ViewMatcher {
 						public static class: java.lang.Class<com.facebook.appevents.codeless.CodelessMatcher.ViewMatcher>;
+						public static Companion: com.facebook.appevents.codeless.CodelessMatcher.ViewMatcher.Companion;
 						public run(): void;
 						public onScrollChanged(): void;
 						public onGlobalLayout(): void;
@@ -2577,6 +4854,7 @@ declare module com {
 			export module codeless {
 				export class ViewIndexer {
 					public static class: java.lang.Class<com.facebook.appevents.codeless.ViewIndexer>;
+					public static Companion: com.facebook.appevents.codeless.ViewIndexer.Companion;
 					public unschedule(): void;
 					public static buildAppIndexingRequest(param0: string, param1: com.facebook.AccessToken, param2: string, param3: string): com.facebook.GraphRequest;
 					public processRequest(param0: com.facebook.GraphRequest, param1: string): void;
@@ -2607,6 +4885,7 @@ declare module com {
 			export module codeless {
 				export class ViewIndexingTrigger {
 					public static class: java.lang.Class<com.facebook.appevents.codeless.ViewIndexingTrigger>;
+					public static Companion: com.facebook.appevents.codeless.ViewIndexingTrigger.Companion;
 					public setOnShakeListener(param0: com.facebook.appevents.codeless.ViewIndexingTrigger.OnShakeListener): void;
 					public onSensorChanged(param0: globalAndroid.hardware.SensorEvent): void;
 					public onAccuracyChanged(param0: globalAndroid.hardware.Sensor, param1: number): void;
@@ -2665,6 +4944,7 @@ declare module com {
 				export module internal {
 					export class EventBinding {
 						public static class: java.lang.Class<com.facebook.appevents.codeless.internal.EventBinding>;
+						public static Companion: com.facebook.appevents.codeless.internal.EventBinding.Companion;
 						public getAppVersion(): string;
 						public getViewParameters(): java.util.List<com.facebook.appevents.codeless.internal.ParameterComponent>;
 						public getActivityName(): string;
@@ -2713,6 +4993,7 @@ declare module com {
 				export module internal {
 					export class ParameterComponent {
 						public static class: java.lang.Class<com.facebook.appevents.codeless.internal.ParameterComponent>;
+						public static Companion: com.facebook.appevents.codeless.internal.ParameterComponent.Companion;
 						public constructor(param0: org.json.JSONObject);
 						public getValue(): string;
 						public getPath(): java.util.List<com.facebook.appevents.codeless.internal.PathComponent>;
@@ -2737,6 +5018,7 @@ declare module com {
 				export module internal {
 					export class PathComponent {
 						public static class: java.lang.Class<com.facebook.appevents.codeless.internal.PathComponent>;
+						public static Companion: com.facebook.appevents.codeless.internal.PathComponent.Companion;
 						public getHint(): string;
 						public getMatchBitmask(): number;
 						public getTag(): string;
@@ -2891,6 +5173,7 @@ declare module com {
 			export module iap {
 				export class InAppPurchaseBillingClientWrapper {
 					public static class: java.lang.Class<com.facebook.appevents.iap.InAppPurchaseBillingClientWrapper>;
+					public static Companion: com.facebook.appevents.iap.InAppPurchaseBillingClientWrapper.Companion;
 					public queryPurchase(param0: string, param1: java.lang.Runnable): void;
 					public static getOrCreateInstance(param0: globalAndroid.content.Context): com.facebook.appevents.iap.InAppPurchaseBillingClientWrapper;
 					public queryPurchaseHistory(param0: string, param1: java.lang.Runnable): void;
@@ -2993,6 +5276,7 @@ declare module com {
 			export module iap {
 				export class InAppPurchaseSkuDetailsWrapper {
 					public static class: java.lang.Class<com.facebook.appevents.iap.InAppPurchaseSkuDetailsWrapper>;
+					public static Companion: com.facebook.appevents.iap.InAppPurchaseSkuDetailsWrapper.Companion;
 					public constructor(param0: java.lang.Class<any>, param1: java.lang.Class<any>, param2: java.lang.reflect.Method, param3: java.lang.reflect.Method, param4: java.lang.reflect.Method, param5: java.lang.reflect.Method);
 					public static getOrCreateInstance(): com.facebook.appevents.iap.InAppPurchaseSkuDetailsWrapper;
 					public getSkuDetailsParams(param0: string, param1: java.util.List<string>): any;
@@ -3031,6 +5315,22 @@ declare module com {
 	export module facebook {
 		export module appevents {
 			export module integrity {
+				export class BlocklistEventsManager {
+					public static class: java.lang.Class<com.facebook.appevents.integrity.BlocklistEventsManager>;
+					public static INSTANCE: com.facebook.appevents.integrity.BlocklistEventsManager;
+					public static disable(): void;
+					public static enable(): void;
+					public static isInBlocklist(param0: string): boolean;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module appevents {
+			export module integrity {
 				export class IntegrityManager {
 					public static class: java.lang.Class<com.facebook.appevents.integrity.IntegrityManager>;
 					public static INSTANCE: com.facebook.appevents.integrity.IntegrityManager;
@@ -3038,6 +5338,78 @@ declare module com {
 					public static INTEGRITY_TYPE_ADDRESS: string;
 					public static INTEGRITY_TYPE_HEALTH: string;
 					public static processParameters(param0: java.util.Map<string, string>): void;
+					public static enable(): void;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module appevents {
+			export module integrity {
+				export class MACARuleMatchingManager {
+					public static class: java.lang.Class<com.facebook.appevents.integrity.MACARuleMatchingManager>;
+					public static INSTANCE: com.facebook.appevents.integrity.MACARuleMatchingManager;
+					public static getKey(param0: org.json.JSONObject): string;
+					public static stringComparison(param0: string, param1: org.json.JSONObject, param2: globalAndroid.os.Bundle): boolean;
+					public static getStringArrayList(param0: org.json.JSONArray): java.util.ArrayList<string>;
+					public static generateInfo(param0: globalAndroid.os.Bundle, param1: string): void;
+					public static processParameters(param0: globalAndroid.os.Bundle, param1: string): void;
+					public static removeGeneratedInfo(param0: globalAndroid.os.Bundle): void;
+					public static isMatchCCRule(param0: string, param1: globalAndroid.os.Bundle): boolean;
+					public static enable(): void;
+					public static getMatchPropertyIDs(param0: globalAndroid.os.Bundle): string;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module appevents {
+			export module integrity {
+				export class ProtectedModeManager {
+					public static class: java.lang.Class<com.facebook.appevents.integrity.ProtectedModeManager>;
+					public static INSTANCE: com.facebook.appevents.integrity.ProtectedModeManager;
+					public static disable(): void;
+					public protectedModeIsApplied(param0: globalAndroid.os.Bundle): boolean;
+					public static enable(): void;
+					public getDefaultStandardParameterNames(): java.util.HashSet<string>;
+					public static processParametersForProtectedMode(param0: globalAndroid.os.Bundle): void;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module appevents {
+			export module integrity {
+				export class RedactedEventsManager {
+					public static class: java.lang.Class<com.facebook.appevents.integrity.RedactedEventsManager>;
+					public static INSTANCE: com.facebook.appevents.integrity.RedactedEventsManager;
+					public static disable(): void;
+					public static enable(): void;
+					public static processEventsRedaction(param0: string): string;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module appevents {
+			export module integrity {
+				export class SensitiveParamsManager {
+					public static class: java.lang.Class<com.facebook.appevents.integrity.SensitiveParamsManager>;
+					public static INSTANCE: com.facebook.appevents.integrity.SensitiveParamsManager;
+					public static disable(): void;
+					public static processFilterSensitiveParams(param0: java.util.Map<string, string>, param1: string): void;
 					public static enable(): void;
 				}
 			}
@@ -3227,6 +5599,7 @@ declare module com {
 			export module internal {
 				export class SessionInfo {
 					public static class: java.lang.Class<com.facebook.appevents.internal.SessionInfo>;
+					public static Companion: com.facebook.appevents.internal.SessionInfo.Companion;
 					public getDiskRestoreTime(): java.lang.Long;
 					public getSourceApplicationInfo(): com.facebook.appevents.internal.SourceApplicationInfo;
 					public static getStoredSessionInfo(): com.facebook.appevents.internal.SessionInfo;
@@ -3279,6 +5652,7 @@ declare module com {
 			export module internal {
 				export class SourceApplicationInfo {
 					public static class: java.lang.Class<com.facebook.appevents.internal.SourceApplicationInfo>;
+					public static Companion: com.facebook.appevents.internal.SourceApplicationInfo.Companion;
 					public writeSourceApplicationInfoToDisk(): void;
 					public toString(): string;
 					public static clearSavedSourceApplicationInfoFromDisk(): void;
@@ -3378,6 +5752,7 @@ declare module com {
 			export module ml {
 				export class MTensor {
 					public static class: java.lang.Class<com.facebook.appevents.ml.MTensor>;
+					public static Companion: com.facebook.appevents.ml.MTensor.Companion;
 					public getShapeSize(): number;
 					public reshape(param0: androidNative.Array<number>): void;
 					public getData(): androidNative.Array<number>;
@@ -3400,6 +5775,7 @@ declare module com {
 			export module ml {
 				export class Model {
 					public static class: java.lang.Class<com.facebook.appevents.ml.Model>;
+					public static Companion: com.facebook.appevents.ml.Model.Companion;
 					public predictOnMTML(param0: com.facebook.appevents.ml.MTensor, param1: androidNative.Array<string>, param2: string): com.facebook.appevents.ml.MTensor;
 				}
 				export module Model {
@@ -3420,6 +5796,7 @@ declare module com {
 				export class ModelManager {
 					public static class: java.lang.Class<com.facebook.appevents.ml.ModelManager>;
 					public static INSTANCE: com.facebook.appevents.ml.ModelManager;
+					public static MODEL_REQUEST_INTERVAL_MILLISECONDS: number;
 					public static getRuleFile(param0: com.facebook.appevents.ml.ModelManager.Task): java.io.File;
 					public static predict(param0: com.facebook.appevents.ml.ModelManager.Task, param1: androidNative.Array<androidNative.Array<number>>, param2: androidNative.Array<string>): androidNative.Array<string>;
 					public static enable(): void;
@@ -3441,6 +5818,7 @@ declare module com {
 					}
 					export class TaskHandler {
 						public static class: java.lang.Class<com.facebook.appevents.ml.ModelManager.TaskHandler>;
+						public static Companion: com.facebook.appevents.ml.ModelManager.TaskHandler.Companion;
 						public setVersionId(param0: number): void;
 						public getRuleUri(): string;
 						public getRuleFile(): java.io.File;
@@ -3693,6 +6071,7 @@ declare module com {
 			export module suggestedevents {
 				export class ViewObserver {
 					public static class: java.lang.Class<com.facebook.appevents.suggestedevents.ViewObserver>;
+					public static Companion: com.facebook.appevents.suggestedevents.ViewObserver.Companion;
 					public static startTrackingActivity(param0: globalAndroid.app.Activity): void;
 					public static stopTrackingActivity(param0: globalAndroid.app.Activity): void;
 					public onGlobalLayout(): void;
@@ -3715,6 +6094,7 @@ declare module com {
 			export module suggestedevents {
 				export class ViewOnClickListener {
 					public static class: java.lang.Class<com.facebook.appevents.suggestedevents.ViewOnClickListener>;
+					public static Companion: com.facebook.appevents.suggestedevents.ViewOnClickListener.Companion;
 					public static OTHER_EVENT: string;
 					public onClick(param0: globalAndroid.view.View): void;
 					public static attachListener$facebook_core_release(param0: globalAndroid.view.View, param1: globalAndroid.view.View, param2: string): void;
@@ -3724,6 +6104,2684 @@ declare module com {
 						public static class: java.lang.Class<com.facebook.appevents.suggestedevents.ViewOnClickListener.Companion>;
 						public attachListener$facebook_core_release(param0: globalAndroid.view.View, param1: globalAndroid.view.View, param2: string): void;
 					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module applinks {
+			export class R {
+				public static class: java.lang.Class<com.facebook.applinks.R>;
+			}
+			export module R {
+				export class attr {
+					public static class: java.lang.Class<com.facebook.applinks.R.attr>;
+					public static alpha: number;
+					public static font: number;
+					public static fontProviderAuthority: number;
+					public static fontProviderCerts: number;
+					public static fontProviderFetchStrategy: number;
+					public static fontProviderFetchTimeout: number;
+					public static fontProviderPackage: number;
+					public static fontProviderQuery: number;
+					public static fontStyle: number;
+					public static fontVariationSettings: number;
+					public static fontWeight: number;
+					public static ttcIndex: number;
+				}
+				export class color {
+					public static class: java.lang.Class<com.facebook.applinks.R.color>;
+					public static androidx_core_ripple_material_light: number;
+					public static androidx_core_secondary_text_default_material_light: number;
+					public static notification_action_color_filter: number;
+					public static notification_icon_bg_color: number;
+					public static ripple_material_light: number;
+					public static secondary_text_default_material_light: number;
+				}
+				export class dimen {
+					public static class: java.lang.Class<com.facebook.applinks.R.dimen>;
+					public static compat_button_inset_horizontal_material: number;
+					public static compat_button_inset_vertical_material: number;
+					public static compat_button_padding_horizontal_material: number;
+					public static compat_button_padding_vertical_material: number;
+					public static compat_control_corner_material: number;
+					public static compat_notification_large_icon_max_height: number;
+					public static compat_notification_large_icon_max_width: number;
+					public static notification_action_icon_size: number;
+					public static notification_action_text_size: number;
+					public static notification_big_circle_margin: number;
+					public static notification_content_margin_start: number;
+					public static notification_large_icon_height: number;
+					public static notification_large_icon_width: number;
+					public static notification_main_column_padding_top: number;
+					public static notification_media_narrow_margin: number;
+					public static notification_right_icon_size: number;
+					public static notification_right_side_padding_top: number;
+					public static notification_small_icon_background_padding: number;
+					public static notification_small_icon_size_as_large: number;
+					public static notification_subtext_size: number;
+					public static notification_top_pad: number;
+					public static notification_top_pad_large_text: number;
+				}
+				export class drawable {
+					public static class: java.lang.Class<com.facebook.applinks.R.drawable>;
+					public static notification_action_background: number;
+					public static notification_bg: number;
+					public static notification_bg_low: number;
+					public static notification_bg_low_normal: number;
+					public static notification_bg_low_pressed: number;
+					public static notification_bg_normal: number;
+					public static notification_bg_normal_pressed: number;
+					public static notification_icon_background: number;
+					public static notification_template_icon_bg: number;
+					public static notification_template_icon_low_bg: number;
+					public static notification_tile_bg: number;
+					public static notify_panel_notification_icon_bg: number;
+				}
+				export class id {
+					public static class: java.lang.Class<com.facebook.applinks.R.id>;
+					public static accessibility_action_clickable_span: number;
+					public static accessibility_custom_action_0: number;
+					public static accessibility_custom_action_1: number;
+					public static accessibility_custom_action_10: number;
+					public static accessibility_custom_action_11: number;
+					public static accessibility_custom_action_12: number;
+					public static accessibility_custom_action_13: number;
+					public static accessibility_custom_action_14: number;
+					public static accessibility_custom_action_15: number;
+					public static accessibility_custom_action_16: number;
+					public static accessibility_custom_action_17: number;
+					public static accessibility_custom_action_18: number;
+					public static accessibility_custom_action_19: number;
+					public static accessibility_custom_action_2: number;
+					public static accessibility_custom_action_20: number;
+					public static accessibility_custom_action_21: number;
+					public static accessibility_custom_action_22: number;
+					public static accessibility_custom_action_23: number;
+					public static accessibility_custom_action_24: number;
+					public static accessibility_custom_action_25: number;
+					public static accessibility_custom_action_26: number;
+					public static accessibility_custom_action_27: number;
+					public static accessibility_custom_action_28: number;
+					public static accessibility_custom_action_29: number;
+					public static accessibility_custom_action_3: number;
+					public static accessibility_custom_action_30: number;
+					public static accessibility_custom_action_31: number;
+					public static accessibility_custom_action_4: number;
+					public static accessibility_custom_action_5: number;
+					public static accessibility_custom_action_6: number;
+					public static accessibility_custom_action_7: number;
+					public static accessibility_custom_action_8: number;
+					public static accessibility_custom_action_9: number;
+					public static action_container: number;
+					public static action_divider: number;
+					public static action_image: number;
+					public static action_text: number;
+					public static actions: number;
+					public static async: number;
+					public static blocking: number;
+					public static chronometer: number;
+					public static dialog_button: number;
+					public static forever: number;
+					public static icon: number;
+					public static icon_group: number;
+					public static info: number;
+					public static italic: number;
+					public static line1: number;
+					public static line3: number;
+					public static normal: number;
+					public static notification_background: number;
+					public static notification_main_column: number;
+					public static notification_main_column_container: number;
+					public static right_icon: number;
+					public static right_side: number;
+					public static tag_accessibility_actions: number;
+					public static tag_accessibility_clickable_spans: number;
+					public static tag_accessibility_heading: number;
+					public static tag_accessibility_pane_title: number;
+					public static tag_screen_reader_focusable: number;
+					public static tag_transition_group: number;
+					public static tag_unhandled_key_event_manager: number;
+					public static tag_unhandled_key_listeners: number;
+					public static text: number;
+					public static text2: number;
+					public static time: number;
+					public static title: number;
+				}
+				export class integer {
+					public static class: java.lang.Class<com.facebook.applinks.R.integer>;
+					public static status_bar_notification_info_maxnum: number;
+				}
+				export class layout {
+					public static class: java.lang.Class<com.facebook.applinks.R.layout>;
+					public static custom_dialog: number;
+					public static notification_action: number;
+					public static notification_action_tombstone: number;
+					public static notification_template_custom_big: number;
+					public static notification_template_icon_group: number;
+					public static notification_template_part_chronometer: number;
+					public static notification_template_part_time: number;
+				}
+				export class style {
+					public static class: java.lang.Class<com.facebook.applinks.R.style>;
+					public static TextAppearance_Compat_Notification: number;
+					public static TextAppearance_Compat_Notification_Info: number;
+					public static TextAppearance_Compat_Notification_Line2: number;
+					public static TextAppearance_Compat_Notification_Time: number;
+					public static TextAppearance_Compat_Notification_Title: number;
+					public static Widget_Compat_NotificationActionContainer: number;
+					public static Widget_Compat_NotificationActionText: number;
+				}
+				export class styleable {
+					public static class: java.lang.Class<com.facebook.applinks.R.styleable>;
+					public static ColorStateListItem: androidNative.Array<number>;
+					public static ColorStateListItem_android_color: number;
+					public static ColorStateListItem_android_alpha: number;
+					public static ColorStateListItem_android_lStar: number;
+					public static ColorStateListItem_alpha: number;
+					public static ColorStateListItem_lStar: number;
+					public static FontFamily: androidNative.Array<number>;
+					public static FontFamily_fontProviderAuthority: number;
+					public static FontFamily_fontProviderCerts: number;
+					public static FontFamily_fontProviderFetchStrategy: number;
+					public static FontFamily_fontProviderFetchTimeout: number;
+					public static FontFamily_fontProviderPackage: number;
+					public static FontFamily_fontProviderQuery: number;
+					public static FontFamily_fontProviderSystemFontFamily: number;
+					public static FontFamilyFont: androidNative.Array<number>;
+					public static FontFamilyFont_android_font: number;
+					public static FontFamilyFont_android_fontWeight: number;
+					public static FontFamilyFont_android_fontStyle: number;
+					public static FontFamilyFont_android_ttcIndex: number;
+					public static FontFamilyFont_android_fontVariationSettings: number;
+					public static FontFamilyFont_font: number;
+					public static FontFamilyFont_fontStyle: number;
+					public static FontFamilyFont_fontVariationSettings: number;
+					public static FontFamilyFont_fontWeight: number;
+					public static FontFamilyFont_ttcIndex: number;
+					public static GradientColor: androidNative.Array<number>;
+					public static GradientColor_android_startColor: number;
+					public static GradientColor_android_endColor: number;
+					public static GradientColor_android_type: number;
+					public static GradientColor_android_centerX: number;
+					public static GradientColor_android_centerY: number;
+					public static GradientColor_android_gradientRadius: number;
+					public static GradientColor_android_tileMode: number;
+					public static GradientColor_android_centerColor: number;
+					public static GradientColor_android_startX: number;
+					public static GradientColor_android_startY: number;
+					public static GradientColor_android_endX: number;
+					public static GradientColor_android_endY: number;
+					public static GradientColorItem: androidNative.Array<number>;
+					public static GradientColorItem_android_color: number;
+					public static GradientColorItem_android_offset: number;
+					public static<clinit>(): void;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class AggregateException {
+				public static class: java.lang.Class<com.facebook.bolts.AggregateException>;
+				public static Companion: com.facebook.bolts.AggregateException.Companion;
+				public printStackTrace(param0: java.io.PrintWriter): void;
+				public constructor(param0: string, param1: java.util.List<any>);
+				public printStackTrace(param0: java.io.PrintStream): void;
+			}
+			export module AggregateException {
+				export class Companion {
+					public static class: java.lang.Class<com.facebook.bolts.AggregateException.Companion>;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class AndroidExecutors {
+				public static class: java.lang.Class<com.facebook.bolts.AndroidExecutors>;
+				public static Companion: com.facebook.bolts.AndroidExecutors.Companion;
+				public static newCachedThreadPool(): java.util.concurrent.ExecutorService;
+				public static uiThread(): java.util.concurrent.Executor;
+			}
+			export module AndroidExecutors {
+				export class Companion {
+					public static class: java.lang.Class<com.facebook.bolts.AndroidExecutors.Companion>;
+					public uiThread(): java.util.concurrent.Executor;
+					public newCachedThreadPool(): java.util.concurrent.ExecutorService;
+				}
+				export class UIThreadExecutor {
+					public static class: java.lang.Class<com.facebook.bolts.AndroidExecutors.UIThreadExecutor>;
+					public execute(param0: java.lang.Runnable): void;
+					public constructor();
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class AppLink {
+				public static class: java.lang.Class<com.facebook.bolts.AppLink>;
+				public getTargets(): java.util.List<com.facebook.bolts.AppLink.Target>;
+				public getWebUrl(): globalAndroid.net.Uri;
+				public getSourceUrl(): globalAndroid.net.Uri;
+				public constructor(param0: globalAndroid.net.Uri, param1: java.util.List<com.facebook.bolts.AppLink.Target>, param2: globalAndroid.net.Uri);
+			}
+			export module AppLink {
+				export class Target {
+					public static class: java.lang.Class<com.facebook.bolts.AppLink.Target>;
+					public getClassName(): string;
+					public constructor(param0: string, param1: string, param2: globalAndroid.net.Uri, param3: string);
+					public getPackageName(): string;
+					public getAppName(): string;
+					public getUrl(): globalAndroid.net.Uri;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class AppLinkResolver {
+				public static class: java.lang.Class<com.facebook.bolts.AppLinkResolver>;
+				/**
+				 * Constructs a new instance of the com.facebook.bolts.AppLinkResolver interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+				 */
+				public constructor(implementation: { getAppLinkFromUrlInBackground(param0: globalAndroid.net.Uri): com.facebook.bolts.Task<com.facebook.bolts.AppLink> });
+				public constructor();
+				public getAppLinkFromUrlInBackground(param0: globalAndroid.net.Uri): com.facebook.bolts.Task<com.facebook.bolts.AppLink>;
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class AppLinks {
+				public static class: java.lang.Class<com.facebook.bolts.AppLinks>;
+				public static INSTANCE: com.facebook.bolts.AppLinks;
+				public static KEY_NAME_APPLINK_DATA: string;
+				public static KEY_NAME_EXTRAS: string;
+				public static getAppLinkData(param0: globalAndroid.content.Intent): globalAndroid.os.Bundle;
+				public static getAppLinkExtras(param0: globalAndroid.content.Intent): globalAndroid.os.Bundle;
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class BoltsExecutors {
+				public static class: java.lang.Class<com.facebook.bolts.BoltsExecutors>;
+				public static Companion: com.facebook.bolts.BoltsExecutors.Companion;
+				public static immediate$facebook_bolts_release(): java.util.concurrent.Executor;
+				public static background(): java.util.concurrent.ExecutorService;
+				public static scheduled$facebook_bolts_release(): java.util.concurrent.ScheduledExecutorService;
+			}
+			export module BoltsExecutors {
+				export class Companion {
+					public static class: java.lang.Class<com.facebook.bolts.BoltsExecutors.Companion>;
+					public scheduled$facebook_bolts_release(): java.util.concurrent.ScheduledExecutorService;
+					public immediate$facebook_bolts_release(): java.util.concurrent.Executor;
+					public background(): java.util.concurrent.ExecutorService;
+				}
+				export class ImmediateExecutor {
+					public static class: java.lang.Class<com.facebook.bolts.BoltsExecutors.ImmediateExecutor>;
+					public static Companion: com.facebook.bolts.BoltsExecutors.ImmediateExecutor.Companion;
+					public execute(param0: java.lang.Runnable): void;
+					public constructor();
+				}
+				export module ImmediateExecutor {
+					export class Companion {
+						public static class: java.lang.Class<com.facebook.bolts.BoltsExecutors.ImmediateExecutor.Companion>;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class BuildConfig {
+				public static class: java.lang.Class<com.facebook.bolts.BuildConfig>;
+				public static DEBUG: boolean;
+				public static LIBRARY_PACKAGE_NAME: string;
+				public static BUILD_TYPE: string;
+				public constructor();
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class CancellationToken {
+				public static class: java.lang.Class<com.facebook.bolts.CancellationToken>;
+				public register(param0: java.lang.Runnable): com.facebook.bolts.CancellationTokenRegistration;
+				public throwIfCancellationRequested(): void;
+				public toString(): string;
+				public constructor(param0: com.facebook.bolts.CancellationTokenSource);
+				public isCancellationRequested(): boolean;
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class CancellationTokenRegistration {
+				public static class: java.lang.Class<com.facebook.bolts.CancellationTokenRegistration>;
+				public close(): void;
+				public runAction$facebook_bolts_release(): void;
+				public constructor(param0: com.facebook.bolts.CancellationTokenSource, param1: java.lang.Runnable);
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class CancellationTokenSource {
+				public static class: java.lang.Class<com.facebook.bolts.CancellationTokenSource>;
+				public getToken(): com.facebook.bolts.CancellationToken;
+				public close(): void;
+				public cancelAfter(param0: number): void;
+				public cancel(): void;
+				public register$facebook_bolts_release(param0: java.lang.Runnable): com.facebook.bolts.CancellationTokenRegistration;
+				public toString(): string;
+				public throwIfCancellationRequested$facebook_bolts_release(): void;
+				public unregister$facebook_bolts_release(param0: com.facebook.bolts.CancellationTokenRegistration): void;
+				public constructor();
+				public isCancellationRequested(): boolean;
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class Continuation<TTaskResult, TContinuationResult> extends java.lang.Object {
+				public static class: java.lang.Class<com.facebook.bolts.Continuation>;
+				/**
+				 * Constructs a new instance of the com.facebook.bolts.Continuation interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+				 */
+				public constructor(implementation: { then(param0: com.facebook.bolts.Task<TTaskResult>): TContinuationResult });
+				public constructor();
+				public then(param0: com.facebook.bolts.Task<TTaskResult>): TContinuationResult;
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class ExecutorException {
+				public static class: java.lang.Class<com.facebook.bolts.ExecutorException>;
+				public constructor(param0: java.lang.Exception);
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class R {
+				public static class: java.lang.Class<com.facebook.bolts.R>;
+			}
+			export module R {
+				export class attr {
+					public static class: java.lang.Class<com.facebook.bolts.R.attr>;
+					public static alpha: number;
+					public static font: number;
+					public static fontProviderAuthority: number;
+					public static fontProviderCerts: number;
+					public static fontProviderFetchStrategy: number;
+					public static fontProviderFetchTimeout: number;
+					public static fontProviderPackage: number;
+					public static fontProviderQuery: number;
+					public static fontStyle: number;
+					public static fontVariationSettings: number;
+					public static fontWeight: number;
+					public static ttcIndex: number;
+				}
+				export class color {
+					public static class: java.lang.Class<com.facebook.bolts.R.color>;
+					public static androidx_core_ripple_material_light: number;
+					public static androidx_core_secondary_text_default_material_light: number;
+					public static notification_action_color_filter: number;
+					public static notification_icon_bg_color: number;
+				}
+				export class dimen {
+					public static class: java.lang.Class<com.facebook.bolts.R.dimen>;
+					public static compat_button_inset_horizontal_material: number;
+					public static compat_button_inset_vertical_material: number;
+					public static compat_button_padding_horizontal_material: number;
+					public static compat_button_padding_vertical_material: number;
+					public static compat_control_corner_material: number;
+					public static compat_notification_large_icon_max_height: number;
+					public static compat_notification_large_icon_max_width: number;
+					public static notification_action_icon_size: number;
+					public static notification_action_text_size: number;
+					public static notification_big_circle_margin: number;
+					public static notification_content_margin_start: number;
+					public static notification_large_icon_height: number;
+					public static notification_large_icon_width: number;
+					public static notification_main_column_padding_top: number;
+					public static notification_media_narrow_margin: number;
+					public static notification_right_icon_size: number;
+					public static notification_right_side_padding_top: number;
+					public static notification_small_icon_background_padding: number;
+					public static notification_small_icon_size_as_large: number;
+					public static notification_subtext_size: number;
+					public static notification_top_pad: number;
+					public static notification_top_pad_large_text: number;
+				}
+				export class drawable {
+					public static class: java.lang.Class<com.facebook.bolts.R.drawable>;
+					public static notification_action_background: number;
+					public static notification_bg: number;
+					public static notification_bg_low: number;
+					public static notification_bg_low_normal: number;
+					public static notification_bg_low_pressed: number;
+					public static notification_bg_normal: number;
+					public static notification_bg_normal_pressed: number;
+					public static notification_icon_background: number;
+					public static notification_template_icon_bg: number;
+					public static notification_template_icon_low_bg: number;
+					public static notification_tile_bg: number;
+					public static notify_panel_notification_icon_bg: number;
+				}
+				export class id {
+					public static class: java.lang.Class<com.facebook.bolts.R.id>;
+					public static accessibility_action_clickable_span: number;
+					public static accessibility_custom_action_0: number;
+					public static accessibility_custom_action_1: number;
+					public static accessibility_custom_action_10: number;
+					public static accessibility_custom_action_11: number;
+					public static accessibility_custom_action_12: number;
+					public static accessibility_custom_action_13: number;
+					public static accessibility_custom_action_14: number;
+					public static accessibility_custom_action_15: number;
+					public static accessibility_custom_action_16: number;
+					public static accessibility_custom_action_17: number;
+					public static accessibility_custom_action_18: number;
+					public static accessibility_custom_action_19: number;
+					public static accessibility_custom_action_2: number;
+					public static accessibility_custom_action_20: number;
+					public static accessibility_custom_action_21: number;
+					public static accessibility_custom_action_22: number;
+					public static accessibility_custom_action_23: number;
+					public static accessibility_custom_action_24: number;
+					public static accessibility_custom_action_25: number;
+					public static accessibility_custom_action_26: number;
+					public static accessibility_custom_action_27: number;
+					public static accessibility_custom_action_28: number;
+					public static accessibility_custom_action_29: number;
+					public static accessibility_custom_action_3: number;
+					public static accessibility_custom_action_30: number;
+					public static accessibility_custom_action_31: number;
+					public static accessibility_custom_action_4: number;
+					public static accessibility_custom_action_5: number;
+					public static accessibility_custom_action_6: number;
+					public static accessibility_custom_action_7: number;
+					public static accessibility_custom_action_8: number;
+					public static accessibility_custom_action_9: number;
+					public static action_container: number;
+					public static action_divider: number;
+					public static action_image: number;
+					public static action_text: number;
+					public static actions: number;
+					public static async: number;
+					public static blocking: number;
+					public static chronometer: number;
+					public static dialog_button: number;
+					public static forever: number;
+					public static icon: number;
+					public static icon_group: number;
+					public static info: number;
+					public static italic: number;
+					public static line1: number;
+					public static line3: number;
+					public static normal: number;
+					public static notification_background: number;
+					public static notification_main_column: number;
+					public static notification_main_column_container: number;
+					public static right_icon: number;
+					public static right_side: number;
+					public static tag_accessibility_actions: number;
+					public static tag_accessibility_clickable_spans: number;
+					public static tag_accessibility_heading: number;
+					public static tag_accessibility_pane_title: number;
+					public static tag_screen_reader_focusable: number;
+					public static tag_transition_group: number;
+					public static tag_unhandled_key_event_manager: number;
+					public static tag_unhandled_key_listeners: number;
+					public static text: number;
+					public static text2: number;
+					public static time: number;
+					public static title: number;
+				}
+				export class integer {
+					public static class: java.lang.Class<com.facebook.bolts.R.integer>;
+					public static status_bar_notification_info_maxnum: number;
+				}
+				export class layout {
+					public static class: java.lang.Class<com.facebook.bolts.R.layout>;
+					public static custom_dialog: number;
+					public static notification_action: number;
+					public static notification_action_tombstone: number;
+					public static notification_template_custom_big: number;
+					public static notification_template_icon_group: number;
+					public static notification_template_part_chronometer: number;
+					public static notification_template_part_time: number;
+				}
+				export class style {
+					public static class: java.lang.Class<com.facebook.bolts.R.style>;
+					public static TextAppearance_Compat_Notification: number;
+					public static TextAppearance_Compat_Notification_Info: number;
+					public static TextAppearance_Compat_Notification_Line2: number;
+					public static TextAppearance_Compat_Notification_Time: number;
+					public static TextAppearance_Compat_Notification_Title: number;
+					public static Widget_Compat_NotificationActionContainer: number;
+					public static Widget_Compat_NotificationActionText: number;
+				}
+				export class styleable {
+					public static class: java.lang.Class<com.facebook.bolts.R.styleable>;
+					public static ColorStateListItem: androidNative.Array<number>;
+					public static ColorStateListItem_android_color: number;
+					public static ColorStateListItem_android_alpha: number;
+					public static ColorStateListItem_android_lStar: number;
+					public static ColorStateListItem_alpha: number;
+					public static ColorStateListItem_lStar: number;
+					public static FontFamily: androidNative.Array<number>;
+					public static FontFamily_fontProviderAuthority: number;
+					public static FontFamily_fontProviderCerts: number;
+					public static FontFamily_fontProviderFetchStrategy: number;
+					public static FontFamily_fontProviderFetchTimeout: number;
+					public static FontFamily_fontProviderPackage: number;
+					public static FontFamily_fontProviderQuery: number;
+					public static FontFamily_fontProviderSystemFontFamily: number;
+					public static FontFamilyFont: androidNative.Array<number>;
+					public static FontFamilyFont_android_font: number;
+					public static FontFamilyFont_android_fontWeight: number;
+					public static FontFamilyFont_android_fontStyle: number;
+					public static FontFamilyFont_android_ttcIndex: number;
+					public static FontFamilyFont_android_fontVariationSettings: number;
+					public static FontFamilyFont_font: number;
+					public static FontFamilyFont_fontStyle: number;
+					public static FontFamilyFont_fontVariationSettings: number;
+					public static FontFamilyFont_fontWeight: number;
+					public static FontFamilyFont_ttcIndex: number;
+					public static GradientColor: androidNative.Array<number>;
+					public static GradientColor_android_startColor: number;
+					public static GradientColor_android_endColor: number;
+					public static GradientColor_android_type: number;
+					public static GradientColor_android_centerX: number;
+					public static GradientColor_android_centerY: number;
+					public static GradientColor_android_gradientRadius: number;
+					public static GradientColor_android_tileMode: number;
+					public static GradientColor_android_centerColor: number;
+					public static GradientColor_android_startX: number;
+					public static GradientColor_android_startY: number;
+					public static GradientColor_android_endX: number;
+					public static GradientColor_android_endY: number;
+					public static GradientColorItem: androidNative.Array<number>;
+					public static GradientColorItem_android_color: number;
+					public static GradientColorItem_android_offset: number;
+					public static<clinit>(): void;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class Task<TResult> extends java.lang.Object {
+				public static class: java.lang.Class<com.facebook.bolts.Task>;
+				public static Companion: com.facebook.bolts.Task.Companion;
+				public static BACKGROUND_EXECUTOR: java.util.concurrent.ExecutorService;
+				public static UI_THREAD_EXECUTOR: java.util.concurrent.Executor;
+				public getResult(): TResult;
+				public continueWhile(param0: java.util.concurrent.Callable<java.lang.Boolean>, param1: com.facebook.bolts.Continuation<java.lang.Void, com.facebook.bolts.Task<java.lang.Void>>, param2: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task<java.lang.Void>;
+				public static delay(param0: number): com.facebook.bolts.Task<java.lang.Void>;
+				public static call(param0: java.util.concurrent.Callable, param1: java.util.concurrent.Executor, param2: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task;
+				public static call(param0: java.util.concurrent.Callable, param1: java.util.concurrent.Executor): com.facebook.bolts.Task;
+				public continueWith(param0: com.facebook.bolts.Continuation, param1: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task;
+				public constructor();
+				public continueWithTask(param0: com.facebook.bolts.Continuation, param1: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task;
+				public isCompleted(): boolean;
+				public cast(): com.facebook.bolts.Task;
+				public static delay(param0: number, param1: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task<java.lang.Void>;
+				public static forError(param0: java.lang.Exception): com.facebook.bolts.Task;
+				public onSuccess(param0: com.facebook.bolts.Continuation, param1: java.util.concurrent.Executor, param2: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task;
+				public trySetResult(param0: TResult): boolean;
+				public static callInBackground(param0: java.util.concurrent.Callable, param1: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task;
+				public waitForCompletion(param0: number, param1: java.util.concurrent.TimeUnit): boolean;
+				public onSuccess(param0: com.facebook.bolts.Continuation, param1: java.util.concurrent.Executor): com.facebook.bolts.Task;
+				public static getUnobservedExceptionHandler(): com.facebook.bolts.Task.UnobservedExceptionHandler;
+				public continueWithTask(param0: com.facebook.bolts.Continuation, param1: java.util.concurrent.Executor): com.facebook.bolts.Task;
+				public static call(param0: java.util.concurrent.Callable): com.facebook.bolts.Task;
+				public continueWithTask(param0: com.facebook.bolts.Continuation, param1: java.util.concurrent.Executor, param2: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task;
+				public static call(param0: java.util.concurrent.Callable, param1: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task;
+				public static whenAllResult(param0: java.util.Collection): com.facebook.bolts.Task;
+				public static setUnobservedExceptionHandler(param0: com.facebook.bolts.Task.UnobservedExceptionHandler): void;
+				public continueWhile(param0: java.util.concurrent.Callable<java.lang.Boolean>, param1: com.facebook.bolts.Continuation<java.lang.Void, com.facebook.bolts.Task<java.lang.Void>>, param2: java.util.concurrent.Executor, param3: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task<java.lang.Void>;
+				public static whenAll(param0: java.util.Collection<any>): com.facebook.bolts.Task<java.lang.Void>;
+				public trySetError(param0: java.lang.Exception): boolean;
+				public onSuccessTask(param0: com.facebook.bolts.Continuation, param1: java.util.concurrent.Executor, param2: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task;
+				public continueWhile(param0: java.util.concurrent.Callable<java.lang.Boolean>, param1: com.facebook.bolts.Continuation<java.lang.Void, com.facebook.bolts.Task<java.lang.Void>>): com.facebook.bolts.Task<java.lang.Void>;
+				public onSuccess(param0: com.facebook.bolts.Continuation): com.facebook.bolts.Task;
+				public static forResult(param0: any): com.facebook.bolts.Task;
+				public getError(): java.lang.Exception;
+				public static callInBackground(param0: java.util.concurrent.Callable): com.facebook.bolts.Task;
+				public isFaulted(): boolean;
+				public onSuccessTask(param0: com.facebook.bolts.Continuation): com.facebook.bolts.Task;
+				public onSuccessTask(param0: com.facebook.bolts.Continuation, param1: java.util.concurrent.Executor): com.facebook.bolts.Task;
+				public onSuccessTask(param0: com.facebook.bolts.Continuation, param1: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task;
+				public continueWith(param0: com.facebook.bolts.Continuation): com.facebook.bolts.Task;
+				public continueWith(param0: com.facebook.bolts.Continuation, param1: java.util.concurrent.Executor): com.facebook.bolts.Task;
+				public static cancelled(): com.facebook.bolts.Task;
+				public continueWith(param0: com.facebook.bolts.Continuation, param1: java.util.concurrent.Executor, param2: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task;
+				public makeVoid(): com.facebook.bolts.Task<java.lang.Void>;
+				public static whenAny(param0: java.util.Collection<any>): com.facebook.bolts.Task<com.facebook.bolts.Task<any>>;
+				public trySetCancelled(): boolean;
+				public static whenAnyResult(param0: java.util.Collection): com.facebook.bolts.Task;
+				public static delay$facebook_bolts_release(param0: number, param1: java.util.concurrent.ScheduledExecutorService, param2: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task<java.lang.Void>;
+				public waitForCompletion(): void;
+				public continueWithTask(param0: com.facebook.bolts.Continuation): com.facebook.bolts.Task;
+				public isCancelled(): boolean;
+				public onSuccess(param0: com.facebook.bolts.Continuation, param1: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task;
+			}
+			export module Task {
+				export class Companion {
+					public static class: java.lang.Class<com.facebook.bolts.Task.Companion>;
+					public call(param0: java.util.concurrent.Callable): com.facebook.bolts.Task;
+					public call(param0: java.util.concurrent.Callable, param1: java.util.concurrent.Executor, param2: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task;
+					public whenAll(param0: java.util.Collection<any>): com.facebook.bolts.Task<java.lang.Void>;
+					public delay(param0: number): com.facebook.bolts.Task<java.lang.Void>;
+					public callInBackground(param0: java.util.concurrent.Callable, param1: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task;
+					public forError(param0: java.lang.Exception): com.facebook.bolts.Task;
+					public delay(param0: number, param1: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task<java.lang.Void>;
+					public whenAny(param0: java.util.Collection<any>): com.facebook.bolts.Task<com.facebook.bolts.Task<any>>;
+					public whenAnyResult(param0: java.util.Collection): com.facebook.bolts.Task;
+					public call(param0: java.util.concurrent.Callable, param1: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task;
+					public delay$facebook_bolts_release(param0: number, param1: java.util.concurrent.ScheduledExecutorService, param2: com.facebook.bolts.CancellationToken): com.facebook.bolts.Task<java.lang.Void>;
+					public callInBackground(param0: java.util.concurrent.Callable): com.facebook.bolts.Task;
+					public whenAllResult(param0: java.util.Collection): com.facebook.bolts.Task;
+					public getUnobservedExceptionHandler(): com.facebook.bolts.Task.UnobservedExceptionHandler;
+					public call(param0: java.util.concurrent.Callable, param1: java.util.concurrent.Executor): com.facebook.bolts.Task;
+					public setUnobservedExceptionHandler(param0: com.facebook.bolts.Task.UnobservedExceptionHandler): void;
+					public forResult(param0: any): com.facebook.bolts.Task;
+					public cancelled(): com.facebook.bolts.Task;
+				}
+				export class TaskCompletionSource extends com.facebook.bolts.TaskCompletionSource<any> {
+					public static class: java.lang.Class<com.facebook.bolts.Task.TaskCompletionSource>;
+					public constructor();
+					public constructor(param0: com.facebook.bolts.Task);
+				}
+				export class UnobservedExceptionHandler {
+					public static class: java.lang.Class<com.facebook.bolts.Task.UnobservedExceptionHandler>;
+					/**
+					 * Constructs a new instance of the com.facebook.bolts.Task$UnobservedExceptionHandler interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+					 */
+					public constructor(implementation: { unobservedException(param0: com.facebook.bolts.Task<any>, param1: com.facebook.bolts.UnobservedTaskException): void });
+					public constructor();
+					public unobservedException(param0: com.facebook.bolts.Task<any>, param1: com.facebook.bolts.UnobservedTaskException): void;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class TaskCompletionSource<TResult> extends java.lang.Object {
+				public static class: java.lang.Class<com.facebook.bolts.TaskCompletionSource>;
+				public getTask(): com.facebook.bolts.Task<TResult>;
+				public trySetResult(param0: TResult): boolean;
+				public setResult(param0: TResult): void;
+				public trySetError(param0: java.lang.Exception): boolean;
+				public setError(param0: java.lang.Exception): void;
+				public trySetCancelled(): boolean;
+				public setCancelled(): void;
+				public constructor();
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class UnobservedErrorNotifier {
+				public static class: java.lang.Class<com.facebook.bolts.UnobservedErrorNotifier>;
+				public setObserved(): void;
+				public finalize(): void;
+				public constructor(param0: com.facebook.bolts.Task<any>);
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module bolts {
+			export class UnobservedTaskException {
+				public static class: java.lang.Class<com.facebook.bolts.UnobservedTaskException>;
+				public constructor(param0: java.lang.Throwable);
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module common {
+			export class BuildConfig {
+				public static class: java.lang.Class<com.facebook.common.BuildConfig>;
+				public static DEBUG: boolean;
+				public static LIBRARY_PACKAGE_NAME: string;
+				public static BUILD_TYPE: string;
+				public constructor();
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module common {
+			export class Common {
+				public static class: java.lang.Class<com.facebook.common.Common>;
+				public constructor();
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module common {
+			export class R {
+				public static class: java.lang.Class<com.facebook.common.R>;
+			}
+			export module R {
+				export class anim {
+					public static class: java.lang.Class<com.facebook.common.R.anim>;
+					public static abc_fade_in: number;
+					public static abc_fade_out: number;
+					public static abc_grow_fade_in_from_bottom: number;
+					public static abc_popup_enter: number;
+					public static abc_popup_exit: number;
+					public static abc_shrink_fade_out_from_bottom: number;
+					public static abc_slide_in_bottom: number;
+					public static abc_slide_in_top: number;
+					public static abc_slide_out_bottom: number;
+					public static abc_slide_out_top: number;
+					public static abc_tooltip_enter: number;
+					public static abc_tooltip_exit: number;
+					public static btn_checkbox_to_checked_box_inner_merged_animation: number;
+					public static btn_checkbox_to_checked_box_outer_merged_animation: number;
+					public static btn_checkbox_to_checked_icon_null_animation: number;
+					public static btn_checkbox_to_unchecked_box_inner_merged_animation: number;
+					public static btn_checkbox_to_unchecked_check_path_merged_animation: number;
+					public static btn_checkbox_to_unchecked_icon_null_animation: number;
+					public static btn_radio_to_off_mtrl_dot_group_animation: number;
+					public static btn_radio_to_off_mtrl_ring_outer_animation: number;
+					public static btn_radio_to_off_mtrl_ring_outer_path_animation: number;
+					public static btn_radio_to_on_mtrl_dot_group_animation: number;
+					public static btn_radio_to_on_mtrl_ring_outer_animation: number;
+					public static btn_radio_to_on_mtrl_ring_outer_path_animation: number;
+					public static fragment_fast_out_extra_slow_in: number;
+				}
+				export class animator {
+					public static class: java.lang.Class<com.facebook.common.R.animator>;
+					public static fragment_close_enter: number;
+					public static fragment_close_exit: number;
+					public static fragment_fade_enter: number;
+					public static fragment_fade_exit: number;
+					public static fragment_open_enter: number;
+					public static fragment_open_exit: number;
+				}
+				export class attr {
+					public static class: java.lang.Class<com.facebook.common.R.attr>;
+					public static actionBarDivider: number;
+					public static actionBarItemBackground: number;
+					public static actionBarPopupTheme: number;
+					public static actionBarSize: number;
+					public static actionBarSplitStyle: number;
+					public static actionBarStyle: number;
+					public static actionBarTabBarStyle: number;
+					public static actionBarTabStyle: number;
+					public static actionBarTabTextStyle: number;
+					public static actionBarTheme: number;
+					public static actionBarWidgetTheme: number;
+					public static actionButtonStyle: number;
+					public static actionDropDownStyle: number;
+					public static actionLayout: number;
+					public static actionMenuTextAppearance: number;
+					public static actionMenuTextColor: number;
+					public static actionModeBackground: number;
+					public static actionModeCloseButtonStyle: number;
+					public static actionModeCloseDrawable: number;
+					public static actionModeCopyDrawable: number;
+					public static actionModeCutDrawable: number;
+					public static actionModeFindDrawable: number;
+					public static actionModePasteDrawable: number;
+					public static actionModePopupWindowStyle: number;
+					public static actionModeSelectAllDrawable: number;
+					public static actionModeShareDrawable: number;
+					public static actionModeSplitBackground: number;
+					public static actionModeStyle: number;
+					public static actionModeWebSearchDrawable: number;
+					public static actionOverflowButtonStyle: number;
+					public static actionOverflowMenuStyle: number;
+					public static actionProviderClass: number;
+					public static actionViewClass: number;
+					public static activityChooserViewStyle: number;
+					public static alertDialogButtonGroupStyle: number;
+					public static alertDialogCenterButtons: number;
+					public static alertDialogStyle: number;
+					public static alertDialogTheme: number;
+					public static allowStacking: number;
+					public static alpha: number;
+					public static alphabeticModifiers: number;
+					public static arrowHeadLength: number;
+					public static arrowShaftLength: number;
+					public static autoCompleteTextViewStyle: number;
+					public static autoSizeMaxTextSize: number;
+					public static autoSizeMinTextSize: number;
+					public static autoSizePresetSizes: number;
+					public static autoSizeStepGranularity: number;
+					public static autoSizeTextType: number;
+					public static background: number;
+					public static backgroundSplit: number;
+					public static backgroundStacked: number;
+					public static backgroundTint: number;
+					public static backgroundTintMode: number;
+					public static barLength: number;
+					public static borderlessButtonStyle: number;
+					public static buttonBarButtonStyle: number;
+					public static buttonBarNegativeButtonStyle: number;
+					public static buttonBarNeutralButtonStyle: number;
+					public static buttonBarPositiveButtonStyle: number;
+					public static buttonBarStyle: number;
+					public static buttonCompat: number;
+					public static buttonGravity: number;
+					public static buttonIconDimen: number;
+					public static buttonPanelSideLayout: number;
+					public static buttonStyle: number;
+					public static buttonStyleSmall: number;
+					public static buttonTint: number;
+					public static buttonTintMode: number;
+					public static cardBackgroundColor: number;
+					public static cardCornerRadius: number;
+					public static cardElevation: number;
+					public static cardMaxElevation: number;
+					public static cardPreventCornerOverlap: number;
+					public static cardUseCompatPadding: number;
+					public static cardViewStyle: number;
+					public static checkboxStyle: number;
+					public static checkedTextViewStyle: number;
+					public static closeIcon: number;
+					public static closeItemLayout: number;
+					public static collapseContentDescription: number;
+					public static collapseIcon: number;
+					public static color: number;
+					public static colorAccent: number;
+					public static colorBackgroundFloating: number;
+					public static colorButtonNormal: number;
+					public static colorControlActivated: number;
+					public static colorControlHighlight: number;
+					public static colorControlNormal: number;
+					public static colorError: number;
+					public static colorPrimary: number;
+					public static colorPrimaryDark: number;
+					public static colorSwitchThumbNormal: number;
+					public static com_facebook_auxiliary_view_position: number;
+					public static com_facebook_foreground_color: number;
+					public static com_facebook_horizontal_alignment: number;
+					public static com_facebook_object_id: number;
+					public static com_facebook_object_type: number;
+					public static com_facebook_style: number;
+					public static commitIcon: number;
+					public static contentDescription: number;
+					public static contentInsetEnd: number;
+					public static contentInsetEndWithActions: number;
+					public static contentInsetLeft: number;
+					public static contentInsetRight: number;
+					public static contentInsetStart: number;
+					public static contentInsetStartWithNavigation: number;
+					public static contentPadding: number;
+					public static contentPaddingBottom: number;
+					public static contentPaddingLeft: number;
+					public static contentPaddingRight: number;
+					public static contentPaddingTop: number;
+					public static controlBackground: number;
+					public static coordinatorLayoutStyle: number;
+					public static customNavigationLayout: number;
+					public static defaultQueryHint: number;
+					public static dialogCornerRadius: number;
+					public static dialogPreferredPadding: number;
+					public static dialogTheme: number;
+					public static displayOptions: number;
+					public static divider: number;
+					public static dividerHorizontal: number;
+					public static dividerPadding: number;
+					public static dividerVertical: number;
+					public static drawableBottomCompat: number;
+					public static drawableEndCompat: number;
+					public static drawableLeftCompat: number;
+					public static drawableRightCompat: number;
+					public static drawableSize: number;
+					public static drawableStartCompat: number;
+					public static drawableTint: number;
+					public static drawableTintMode: number;
+					public static drawableTopCompat: number;
+					public static drawerArrowStyle: number;
+					public static dropDownListViewStyle: number;
+					public static dropdownListPreferredItemHeight: number;
+					public static editTextBackground: number;
+					public static editTextColor: number;
+					public static editTextStyle: number;
+					public static elevation: number;
+					public static expandActivityOverflowButtonDrawable: number;
+					public static firstBaselineToTopHeight: number;
+					public static font: number;
+					public static fontFamily: number;
+					public static fontProviderAuthority: number;
+					public static fontProviderCerts: number;
+					public static fontProviderFetchStrategy: number;
+					public static fontProviderFetchTimeout: number;
+					public static fontProviderPackage: number;
+					public static fontProviderQuery: number;
+					public static fontStyle: number;
+					public static fontVariationSettings: number;
+					public static fontWeight: number;
+					public static gapBetweenBars: number;
+					public static goIcon: number;
+					public static height: number;
+					public static hideOnContentScroll: number;
+					public static homeAsUpIndicator: number;
+					public static homeLayout: number;
+					public static icon: number;
+					public static iconTint: number;
+					public static iconTintMode: number;
+					public static iconifiedByDefault: number;
+					public static imageButtonStyle: number;
+					public static indeterminateProgressStyle: number;
+					public static initialActivityCount: number;
+					public static isLightTheme: number;
+					public static itemPadding: number;
+					public static keylines: number;
+					public static lastBaselineToBottomHeight: number;
+					public static layout: number;
+					public static layout_anchor: number;
+					public static layout_anchorGravity: number;
+					public static layout_behavior: number;
+					public static layout_dodgeInsetEdges: number;
+					public static layout_insetEdge: number;
+					public static layout_keyline: number;
+					public static lineHeight: number;
+					public static listChoiceBackgroundIndicator: number;
+					public static listChoiceIndicatorMultipleAnimated: number;
+					public static listChoiceIndicatorSingleAnimated: number;
+					public static listDividerAlertDialog: number;
+					public static listItemLayout: number;
+					public static listLayout: number;
+					public static listMenuViewStyle: number;
+					public static listPopupWindowStyle: number;
+					public static listPreferredItemHeight: number;
+					public static listPreferredItemHeightLarge: number;
+					public static listPreferredItemHeightSmall: number;
+					public static listPreferredItemPaddingEnd: number;
+					public static listPreferredItemPaddingLeft: number;
+					public static listPreferredItemPaddingRight: number;
+					public static listPreferredItemPaddingStart: number;
+					public static logo: number;
+					public static logoDescription: number;
+					public static maxButtonHeight: number;
+					public static measureWithLargestChild: number;
+					public static menu: number;
+					public static multiChoiceItemLayout: number;
+					public static navigationContentDescription: number;
+					public static navigationIcon: number;
+					public static navigationMode: number;
+					public static numericModifiers: number;
+					public static overlapAnchor: number;
+					public static paddingBottomNoButtons: number;
+					public static paddingEnd: number;
+					public static paddingStart: number;
+					public static paddingTopNoTitle: number;
+					public static panelBackground: number;
+					public static panelMenuListTheme: number;
+					public static panelMenuListWidth: number;
+					public static popupMenuStyle: number;
+					public static popupTheme: number;
+					public static popupWindowStyle: number;
+					public static preserveIconSpacing: number;
+					public static progressBarPadding: number;
+					public static progressBarStyle: number;
+					public static queryBackground: number;
+					public static queryHint: number;
+					public static radioButtonStyle: number;
+					public static ratingBarStyle: number;
+					public static ratingBarStyleIndicator: number;
+					public static ratingBarStyleSmall: number;
+					public static searchHintIcon: number;
+					public static searchIcon: number;
+					public static searchViewStyle: number;
+					public static seekBarStyle: number;
+					public static selectableItemBackground: number;
+					public static selectableItemBackgroundBorderless: number;
+					public static showAsAction: number;
+					public static showDividers: number;
+					public static showText: number;
+					public static showTitle: number;
+					public static singleChoiceItemLayout: number;
+					public static spinBars: number;
+					public static spinnerDropDownItemStyle: number;
+					public static spinnerStyle: number;
+					public static splitTrack: number;
+					public static srcCompat: number;
+					public static state_above_anchor: number;
+					public static statusBarBackground: number;
+					public static subMenuArrow: number;
+					public static submitBackground: number;
+					public static subtitle: number;
+					public static subtitleTextAppearance: number;
+					public static subtitleTextColor: number;
+					public static subtitleTextStyle: number;
+					public static suggestionRowLayout: number;
+					public static switchMinWidth: number;
+					public static switchPadding: number;
+					public static switchStyle: number;
+					public static switchTextAppearance: number;
+					public static textAllCaps: number;
+					public static textAppearanceLargePopupMenu: number;
+					public static textAppearanceListItem: number;
+					public static textAppearanceListItemSecondary: number;
+					public static textAppearanceListItemSmall: number;
+					public static textAppearancePopupMenuHeader: number;
+					public static textAppearanceSearchResultSubtitle: number;
+					public static textAppearanceSearchResultTitle: number;
+					public static textAppearanceSmallPopupMenu: number;
+					public static textColorAlertDialogListItem: number;
+					public static textColorSearchUrl: number;
+					public static textLocale: number;
+					public static theme: number;
+					public static thickness: number;
+					public static thumbTextPadding: number;
+					public static thumbTint: number;
+					public static thumbTintMode: number;
+					public static tickMark: number;
+					public static tickMarkTint: number;
+					public static tickMarkTintMode: number;
+					public static tint: number;
+					public static tintMode: number;
+					public static title: number;
+					public static titleMargin: number;
+					public static titleMarginBottom: number;
+					public static titleMarginEnd: number;
+					public static titleMarginStart: number;
+					public static titleMarginTop: number;
+					public static titleMargins: number;
+					public static titleTextAppearance: number;
+					public static titleTextColor: number;
+					public static titleTextStyle: number;
+					public static toolbarNavigationButtonStyle: number;
+					public static toolbarStyle: number;
+					public static tooltipForegroundColor: number;
+					public static tooltipFrameBackground: number;
+					public static tooltipText: number;
+					public static track: number;
+					public static trackTint: number;
+					public static trackTintMode: number;
+					public static ttcIndex: number;
+					public static viewInflaterClass: number;
+					public static voiceIcon: number;
+					public static windowActionBar: number;
+					public static windowActionBarOverlay: number;
+					public static windowActionModeOverlay: number;
+					public static windowFixedHeightMajor: number;
+					public static windowFixedHeightMinor: number;
+					public static windowFixedWidthMajor: number;
+					public static windowFixedWidthMinor: number;
+					public static windowMinWidthMajor: number;
+					public static windowMinWidthMinor: number;
+					public static windowNoTitle: number;
+				}
+				export class bool {
+					public static class: java.lang.Class<com.facebook.common.R.bool>;
+					public static abc_action_bar_embed_tabs: number;
+					public static abc_config_actionMenuItemAllCaps: number;
+				}
+				export class color {
+					public static class: java.lang.Class<com.facebook.common.R.color>;
+					public static abc_background_cache_hint_selector_material_dark: number;
+					public static abc_background_cache_hint_selector_material_light: number;
+					public static abc_btn_colored_borderless_text_material: number;
+					public static abc_btn_colored_text_material: number;
+					public static abc_color_highlight_material: number;
+					public static abc_hint_foreground_material_dark: number;
+					public static abc_hint_foreground_material_light: number;
+					public static abc_primary_text_disable_only_material_dark: number;
+					public static abc_primary_text_disable_only_material_light: number;
+					public static abc_primary_text_material_dark: number;
+					public static abc_primary_text_material_light: number;
+					public static abc_search_url_text: number;
+					public static abc_search_url_text_normal: number;
+					public static abc_search_url_text_pressed: number;
+					public static abc_search_url_text_selected: number;
+					public static abc_secondary_text_material_dark: number;
+					public static abc_secondary_text_material_light: number;
+					public static abc_tint_btn_checkable: number;
+					public static abc_tint_default: number;
+					public static abc_tint_edittext: number;
+					public static abc_tint_seek_thumb: number;
+					public static abc_tint_spinner: number;
+					public static abc_tint_switch_track: number;
+					public static accent_material_dark: number;
+					public static accent_material_light: number;
+					public static androidx_core_ripple_material_light: number;
+					public static androidx_core_secondary_text_default_material_light: number;
+					public static background_floating_material_dark: number;
+					public static background_floating_material_light: number;
+					public static background_material_dark: number;
+					public static background_material_light: number;
+					public static bright_foreground_disabled_material_dark: number;
+					public static bright_foreground_disabled_material_light: number;
+					public static bright_foreground_inverse_material_dark: number;
+					public static bright_foreground_inverse_material_light: number;
+					public static bright_foreground_material_dark: number;
+					public static bright_foreground_material_light: number;
+					public static browser_actions_bg_grey: number;
+					public static browser_actions_divider_color: number;
+					public static browser_actions_text_color: number;
+					public static browser_actions_title_color: number;
+					public static button_material_dark: number;
+					public static button_material_light: number;
+					public static cardview_dark_background: number;
+					public static cardview_light_background: number;
+					public static cardview_shadow_end_color: number;
+					public static cardview_shadow_start_color: number;
+					public static com_facebook_blue: number;
+					public static com_facebook_button_background_color: number;
+					public static com_facebook_button_background_color_disabled: number;
+					public static com_facebook_button_background_color_pressed: number;
+					public static com_facebook_button_text_color: number;
+					public static com_facebook_device_auth_text: number;
+					public static com_facebook_likeboxcountview_border_color: number;
+					public static com_facebook_likeboxcountview_text_color: number;
+					public static com_facebook_likeview_text_color: number;
+					public static com_facebook_primary_button_disabled_text_color: number;
+					public static com_facebook_primary_button_pressed_text_color: number;
+					public static com_facebook_primary_button_text_color: number;
+					public static com_smart_login_code: number;
+					public static dim_foreground_disabled_material_dark: number;
+					public static dim_foreground_disabled_material_light: number;
+					public static dim_foreground_material_dark: number;
+					public static dim_foreground_material_light: number;
+					public static error_color_material_dark: number;
+					public static error_color_material_light: number;
+					public static foreground_material_dark: number;
+					public static foreground_material_light: number;
+					public static highlighted_text_material_dark: number;
+					public static highlighted_text_material_light: number;
+					public static material_blue_grey_800: number;
+					public static material_blue_grey_900: number;
+					public static material_blue_grey_950: number;
+					public static material_deep_teal_200: number;
+					public static material_deep_teal_500: number;
+					public static material_grey_100: number;
+					public static material_grey_300: number;
+					public static material_grey_50: number;
+					public static material_grey_600: number;
+					public static material_grey_800: number;
+					public static material_grey_850: number;
+					public static material_grey_900: number;
+					public static notification_action_color_filter: number;
+					public static notification_icon_bg_color: number;
+					public static notification_material_background_media_default_color: number;
+					public static primary_dark_material_dark: number;
+					public static primary_dark_material_light: number;
+					public static primary_material_dark: number;
+					public static primary_material_light: number;
+					public static primary_text_default_material_dark: number;
+					public static primary_text_default_material_light: number;
+					public static primary_text_disabled_material_dark: number;
+					public static primary_text_disabled_material_light: number;
+					public static ripple_material_dark: number;
+					public static ripple_material_light: number;
+					public static secondary_text_default_material_dark: number;
+					public static secondary_text_default_material_light: number;
+					public static secondary_text_disabled_material_dark: number;
+					public static secondary_text_disabled_material_light: number;
+					public static switch_thumb_disabled_material_dark: number;
+					public static switch_thumb_disabled_material_light: number;
+					public static switch_thumb_material_dark: number;
+					public static switch_thumb_material_light: number;
+					public static switch_thumb_normal_material_dark: number;
+					public static switch_thumb_normal_material_light: number;
+					public static tooltip_background_dark: number;
+					public static tooltip_background_light: number;
+				}
+				export class dimen {
+					public static class: java.lang.Class<com.facebook.common.R.dimen>;
+					public static abc_action_bar_content_inset_material: number;
+					public static abc_action_bar_content_inset_with_nav: number;
+					public static abc_action_bar_default_height_material: number;
+					public static abc_action_bar_default_padding_end_material: number;
+					public static abc_action_bar_default_padding_start_material: number;
+					public static abc_action_bar_elevation_material: number;
+					public static abc_action_bar_icon_vertical_padding_material: number;
+					public static abc_action_bar_overflow_padding_end_material: number;
+					public static abc_action_bar_overflow_padding_start_material: number;
+					public static abc_action_bar_stacked_max_height: number;
+					public static abc_action_bar_stacked_tab_max_width: number;
+					public static abc_action_bar_subtitle_bottom_margin_material: number;
+					public static abc_action_bar_subtitle_top_margin_material: number;
+					public static abc_action_button_min_height_material: number;
+					public static abc_action_button_min_width_material: number;
+					public static abc_action_button_min_width_overflow_material: number;
+					public static abc_alert_dialog_button_bar_height: number;
+					public static abc_alert_dialog_button_dimen: number;
+					public static abc_button_inset_horizontal_material: number;
+					public static abc_button_inset_vertical_material: number;
+					public static abc_button_padding_horizontal_material: number;
+					public static abc_button_padding_vertical_material: number;
+					public static abc_cascading_menus_min_smallest_width: number;
+					public static abc_config_prefDialogWidth: number;
+					public static abc_control_corner_material: number;
+					public static abc_control_inset_material: number;
+					public static abc_control_padding_material: number;
+					public static abc_dialog_corner_radius_material: number;
+					public static abc_dialog_fixed_height_major: number;
+					public static abc_dialog_fixed_height_minor: number;
+					public static abc_dialog_fixed_width_major: number;
+					public static abc_dialog_fixed_width_minor: number;
+					public static abc_dialog_list_padding_bottom_no_buttons: number;
+					public static abc_dialog_list_padding_top_no_title: number;
+					public static abc_dialog_min_width_major: number;
+					public static abc_dialog_min_width_minor: number;
+					public static abc_dialog_padding_material: number;
+					public static abc_dialog_padding_top_material: number;
+					public static abc_dialog_title_divider_material: number;
+					public static abc_disabled_alpha_material_dark: number;
+					public static abc_disabled_alpha_material_light: number;
+					public static abc_dropdownitem_icon_width: number;
+					public static abc_dropdownitem_text_padding_left: number;
+					public static abc_dropdownitem_text_padding_right: number;
+					public static abc_edit_text_inset_bottom_material: number;
+					public static abc_edit_text_inset_horizontal_material: number;
+					public static abc_edit_text_inset_top_material: number;
+					public static abc_floating_window_z: number;
+					public static abc_list_item_height_large_material: number;
+					public static abc_list_item_height_material: number;
+					public static abc_list_item_height_small_material: number;
+					public static abc_list_item_padding_horizontal_material: number;
+					public static abc_panel_menu_list_width: number;
+					public static abc_progress_bar_height_material: number;
+					public static abc_search_view_preferred_height: number;
+					public static abc_search_view_preferred_width: number;
+					public static abc_seekbar_track_background_height_material: number;
+					public static abc_seekbar_track_progress_height_material: number;
+					public static abc_select_dialog_padding_start_material: number;
+					public static abc_switch_padding: number;
+					public static abc_text_size_body_1_material: number;
+					public static abc_text_size_body_2_material: number;
+					public static abc_text_size_button_material: number;
+					public static abc_text_size_caption_material: number;
+					public static abc_text_size_display_1_material: number;
+					public static abc_text_size_display_2_material: number;
+					public static abc_text_size_display_3_material: number;
+					public static abc_text_size_display_4_material: number;
+					public static abc_text_size_headline_material: number;
+					public static abc_text_size_large_material: number;
+					public static abc_text_size_medium_material: number;
+					public static abc_text_size_menu_header_material: number;
+					public static abc_text_size_menu_material: number;
+					public static abc_text_size_small_material: number;
+					public static abc_text_size_subhead_material: number;
+					public static abc_text_size_subtitle_material_toolbar: number;
+					public static abc_text_size_title_material: number;
+					public static abc_text_size_title_material_toolbar: number;
+					public static browser_actions_context_menu_max_width: number;
+					public static browser_actions_context_menu_min_padding: number;
+					public static cardview_compat_inset_shadow: number;
+					public static cardview_default_elevation: number;
+					public static cardview_default_radius: number;
+					public static com_facebook_auth_dialog_corner_radius: number;
+					public static com_facebook_auth_dialog_corner_radius_oversized: number;
+					public static com_facebook_button_corner_radius: number;
+					public static com_facebook_likeboxcountview_border_radius: number;
+					public static com_facebook_likeboxcountview_border_width: number;
+					public static com_facebook_likeboxcountview_caret_height: number;
+					public static com_facebook_likeboxcountview_caret_width: number;
+					public static com_facebook_likeboxcountview_text_padding: number;
+					public static com_facebook_likeboxcountview_text_size: number;
+					public static com_facebook_likeview_edge_padding: number;
+					public static com_facebook_likeview_internal_padding: number;
+					public static com_facebook_likeview_text_size: number;
+					public static compat_button_inset_horizontal_material: number;
+					public static compat_button_inset_vertical_material: number;
+					public static compat_button_padding_horizontal_material: number;
+					public static compat_button_padding_vertical_material: number;
+					public static compat_control_corner_material: number;
+					public static compat_notification_large_icon_max_height: number;
+					public static compat_notification_large_icon_max_width: number;
+					public static disabled_alpha_material_dark: number;
+					public static disabled_alpha_material_light: number;
+					public static highlight_alpha_material_colored: number;
+					public static highlight_alpha_material_dark: number;
+					public static highlight_alpha_material_light: number;
+					public static hint_alpha_material_dark: number;
+					public static hint_alpha_material_light: number;
+					public static hint_pressed_alpha_material_dark: number;
+					public static hint_pressed_alpha_material_light: number;
+					public static notification_action_icon_size: number;
+					public static notification_action_text_size: number;
+					public static notification_big_circle_margin: number;
+					public static notification_content_margin_start: number;
+					public static notification_large_icon_height: number;
+					public static notification_large_icon_width: number;
+					public static notification_main_column_padding_top: number;
+					public static notification_media_narrow_margin: number;
+					public static notification_right_icon_size: number;
+					public static notification_right_side_padding_top: number;
+					public static notification_small_icon_background_padding: number;
+					public static notification_small_icon_size_as_large: number;
+					public static notification_subtext_size: number;
+					public static notification_top_pad: number;
+					public static notification_top_pad_large_text: number;
+					public static subtitle_corner_radius: number;
+					public static subtitle_outline_width: number;
+					public static subtitle_shadow_offset: number;
+					public static subtitle_shadow_radius: number;
+					public static tooltip_corner_radius: number;
+					public static tooltip_horizontal_padding: number;
+					public static tooltip_margin: number;
+					public static tooltip_precise_anchor_extra_offset: number;
+					public static tooltip_precise_anchor_threshold: number;
+					public static tooltip_vertical_padding: number;
+					public static tooltip_y_offset_non_touch: number;
+					public static tooltip_y_offset_touch: number;
+				}
+				export class drawable {
+					public static class: java.lang.Class<com.facebook.common.R.drawable>;
+					public static abc_ab_share_pack_mtrl_alpha: number;
+					public static abc_action_bar_item_background_material: number;
+					public static abc_btn_borderless_material: number;
+					public static abc_btn_check_material: number;
+					public static abc_btn_check_material_anim: number;
+					public static abc_btn_check_to_on_mtrl_000: number;
+					public static abc_btn_check_to_on_mtrl_015: number;
+					public static abc_btn_colored_material: number;
+					public static abc_btn_default_mtrl_shape: number;
+					public static abc_btn_radio_material: number;
+					public static abc_btn_radio_material_anim: number;
+					public static abc_btn_radio_to_on_mtrl_000: number;
+					public static abc_btn_radio_to_on_mtrl_015: number;
+					public static abc_btn_switch_to_on_mtrl_00001: number;
+					public static abc_btn_switch_to_on_mtrl_00012: number;
+					public static abc_cab_background_internal_bg: number;
+					public static abc_cab_background_top_material: number;
+					public static abc_cab_background_top_mtrl_alpha: number;
+					public static abc_control_background_material: number;
+					public static abc_dialog_material_background: number;
+					public static abc_edit_text_material: number;
+					public static abc_ic_ab_back_material: number;
+					public static abc_ic_arrow_drop_right_black_24dp: number;
+					public static abc_ic_clear_material: number;
+					public static abc_ic_commit_search_api_mtrl_alpha: number;
+					public static abc_ic_go_search_api_material: number;
+					public static abc_ic_menu_copy_mtrl_am_alpha: number;
+					public static abc_ic_menu_cut_mtrl_alpha: number;
+					public static abc_ic_menu_overflow_material: number;
+					public static abc_ic_menu_paste_mtrl_am_alpha: number;
+					public static abc_ic_menu_selectall_mtrl_alpha: number;
+					public static abc_ic_menu_share_mtrl_alpha: number;
+					public static abc_ic_search_api_material: number;
+					public static abc_ic_voice_search_api_material: number;
+					public static abc_item_background_holo_dark: number;
+					public static abc_item_background_holo_light: number;
+					public static abc_list_divider_material: number;
+					public static abc_list_divider_mtrl_alpha: number;
+					public static abc_list_focused_holo: number;
+					public static abc_list_longpressed_holo: number;
+					public static abc_list_pressed_holo_dark: number;
+					public static abc_list_pressed_holo_light: number;
+					public static abc_list_selector_background_transition_holo_dark: number;
+					public static abc_list_selector_background_transition_holo_light: number;
+					public static abc_list_selector_disabled_holo_dark: number;
+					public static abc_list_selector_disabled_holo_light: number;
+					public static abc_list_selector_holo_dark: number;
+					public static abc_list_selector_holo_light: number;
+					public static abc_menu_hardkey_panel_mtrl_mult: number;
+					public static abc_popup_background_mtrl_mult: number;
+					public static abc_ratingbar_indicator_material: number;
+					public static abc_ratingbar_material: number;
+					public static abc_ratingbar_small_material: number;
+					public static abc_scrubber_control_off_mtrl_alpha: number;
+					public static abc_scrubber_control_to_pressed_mtrl_000: number;
+					public static abc_scrubber_control_to_pressed_mtrl_005: number;
+					public static abc_scrubber_primary_mtrl_alpha: number;
+					public static abc_scrubber_track_mtrl_alpha: number;
+					public static abc_seekbar_thumb_material: number;
+					public static abc_seekbar_tick_mark_material: number;
+					public static abc_seekbar_track_material: number;
+					public static abc_spinner_mtrl_am_alpha: number;
+					public static abc_spinner_textfield_background_material: number;
+					public static abc_switch_thumb_material: number;
+					public static abc_switch_track_mtrl_alpha: number;
+					public static abc_tab_indicator_material: number;
+					public static abc_tab_indicator_mtrl_alpha: number;
+					public static abc_text_cursor_material: number;
+					public static abc_textfield_activated_mtrl_alpha: number;
+					public static abc_textfield_default_mtrl_alpha: number;
+					public static abc_textfield_search_activated_mtrl_alpha: number;
+					public static abc_textfield_search_default_mtrl_alpha: number;
+					public static abc_textfield_search_material: number;
+					public static abc_vector_test: number;
+					public static btn_checkbox_checked_mtrl: number;
+					public static btn_checkbox_checked_to_unchecked_mtrl_animation: number;
+					public static btn_checkbox_unchecked_mtrl: number;
+					public static btn_checkbox_unchecked_to_checked_mtrl_animation: number;
+					public static btn_radio_off_mtrl: number;
+					public static btn_radio_off_to_on_mtrl_animation: number;
+					public static btn_radio_on_mtrl: number;
+					public static btn_radio_on_to_off_mtrl_animation: number;
+					public static com_facebook_auth_dialog_background: number;
+					public static com_facebook_auth_dialog_cancel_background: number;
+					public static com_facebook_auth_dialog_header_background: number;
+					public static com_facebook_button_background: number;
+					public static com_facebook_button_icon: number;
+					public static com_facebook_button_like_background: number;
+					public static com_facebook_button_like_icon_selected: number;
+					public static com_facebook_close: number;
+					public static com_facebook_favicon_blue: number;
+					public static notification_action_background: number;
+					public static notification_bg: number;
+					public static notification_bg_low: number;
+					public static notification_bg_low_normal: number;
+					public static notification_bg_low_pressed: number;
+					public static notification_bg_normal: number;
+					public static notification_bg_normal_pressed: number;
+					public static notification_icon_background: number;
+					public static notification_template_icon_bg: number;
+					public static notification_template_icon_low_bg: number;
+					public static notification_tile_bg: number;
+					public static notify_panel_notification_icon_bg: number;
+					public static tooltip_frame_dark: number;
+					public static tooltip_frame_light: number;
+				}
+				export class id {
+					public static class: java.lang.Class<com.facebook.common.R.id>;
+					public static accessibility_action_clickable_span: number;
+					public static accessibility_custom_action_0: number;
+					public static accessibility_custom_action_1: number;
+					public static accessibility_custom_action_10: number;
+					public static accessibility_custom_action_11: number;
+					public static accessibility_custom_action_12: number;
+					public static accessibility_custom_action_13: number;
+					public static accessibility_custom_action_14: number;
+					public static accessibility_custom_action_15: number;
+					public static accessibility_custom_action_16: number;
+					public static accessibility_custom_action_17: number;
+					public static accessibility_custom_action_18: number;
+					public static accessibility_custom_action_19: number;
+					public static accessibility_custom_action_2: number;
+					public static accessibility_custom_action_20: number;
+					public static accessibility_custom_action_21: number;
+					public static accessibility_custom_action_22: number;
+					public static accessibility_custom_action_23: number;
+					public static accessibility_custom_action_24: number;
+					public static accessibility_custom_action_25: number;
+					public static accessibility_custom_action_26: number;
+					public static accessibility_custom_action_27: number;
+					public static accessibility_custom_action_28: number;
+					public static accessibility_custom_action_29: number;
+					public static accessibility_custom_action_3: number;
+					public static accessibility_custom_action_30: number;
+					public static accessibility_custom_action_31: number;
+					public static accessibility_custom_action_4: number;
+					public static accessibility_custom_action_5: number;
+					public static accessibility_custom_action_6: number;
+					public static accessibility_custom_action_7: number;
+					public static accessibility_custom_action_8: number;
+					public static accessibility_custom_action_9: number;
+					public static action0: number;
+					public static action_bar: number;
+					public static action_bar_activity_content: number;
+					public static action_bar_container: number;
+					public static action_bar_root: number;
+					public static action_bar_spinner: number;
+					public static action_bar_subtitle: number;
+					public static action_bar_title: number;
+					public static action_container: number;
+					public static action_context_bar: number;
+					public static action_divider: number;
+					public static action_image: number;
+					public static action_menu_divider: number;
+					public static action_menu_presenter: number;
+					public static action_mode_bar: number;
+					public static action_mode_bar_stub: number;
+					public static action_mode_close_button: number;
+					public static action_text: number;
+					public static actions: number;
+					public static activity_chooser_view_content: number;
+					public static add: number;
+					public static alertTitle: number;
+					public static async: number;
+					public static blocking: number;
+					public static bottom: number;
+					public static box_count: number;
+					public static browser_actions_header_text: number;
+					public static browser_actions_menu_item_icon: number;
+					public static browser_actions_menu_item_text: number;
+					public static browser_actions_menu_items: number;
+					public static browser_actions_menu_view: number;
+					public static button: number;
+					public static buttonPanel: number;
+					public static cancel_action: number;
+					public static cancel_button: number;
+					public static center: number;
+					public static checkbox: number;
+					public static checked: number;
+					public static chronometer: number;
+					public static com_facebook_device_auth_instructions: number;
+					public static com_facebook_fragment_container: number;
+					public static com_facebook_login_fragment_progress_bar: number;
+					public static com_facebook_smart_instructions_0: number;
+					public static com_facebook_smart_instructions_or: number;
+					public static confirmation_code: number;
+					public static content: number;
+					public static contentPanel: number;
+					public static custom: number;
+					public static customPanel: number;
+					public static decor_content_parent: number;
+					public static default_activity_button: number;
+					public static dialog_button: number;
+					public static edit_query: number;
+					public static end: number;
+					public static end_padder: number;
+					public static expand_activities_button: number;
+					public static expanded_menu: number;
+					public static forever: number;
+					public static fragment_container_view_tag: number;
+					public static group_divider: number;
+					public static home: number;
+					public static icon: number;
+					public static icon_group: number;
+					public static image: number;
+					public static info: number;
+					public static inline: number;
+					public static italic: number;
+					public static left: number;
+					public static line1: number;
+					public static line3: number;
+					public static listMode: number;
+					public static list_item: number;
+					public static media_actions: number;
+					public static message: number;
+					public static multiply: number;
+					public static none: number;
+					public static normal: number;
+					public static notification_background: number;
+					public static notification_main_column: number;
+					public static notification_main_column_container: number;
+					public static off: number;
+					public static on: number;
+					public static open_graph: number;
+					public static page: number;
+					public static parentPanel: number;
+					public static progress_bar: number;
+					public static progress_circular: number;
+					public static progress_horizontal: number;
+					public static radio: number;
+					public static right: number;
+					public static right_icon: number;
+					public static right_side: number;
+					public static screen: number;
+					public static scrollIndicatorDown: number;
+					public static scrollIndicatorUp: number;
+					public static scrollView: number;
+					public static search_badge: number;
+					public static search_bar: number;
+					public static search_button: number;
+					public static search_close_btn: number;
+					public static search_edit_frame: number;
+					public static search_go_btn: number;
+					public static search_mag_icon: number;
+					public static search_plate: number;
+					public static search_src_text: number;
+					public static search_voice_btn: number;
+					public static select_dialog_listview: number;
+					public static shortcut: number;
+					public static spacer: number;
+					public static special_effects_controller_view_tag: number;
+					public static split_action_bar: number;
+					public static src_atop: number;
+					public static src_in: number;
+					public static src_over: number;
+					public static standard: number;
+					public static start: number;
+					public static status_bar_latest_event_content: number;
+					public static submenuarrow: number;
+					public static submit_area: number;
+					public static tabMode: number;
+					public static tag_accessibility_actions: number;
+					public static tag_accessibility_clickable_spans: number;
+					public static tag_accessibility_heading: number;
+					public static tag_accessibility_pane_title: number;
+					public static tag_screen_reader_focusable: number;
+					public static tag_transition_group: number;
+					public static tag_unhandled_key_event_manager: number;
+					public static tag_unhandled_key_listeners: number;
+					public static text: number;
+					public static text2: number;
+					public static textSpacerNoButtons: number;
+					public static textSpacerNoTitle: number;
+					public static time: number;
+					public static title: number;
+					public static titleDividerNoCustom: number;
+					public static title_template: number;
+					public static top: number;
+					public static topPanel: number;
+					public static unchecked: number;
+					public static uniform: number;
+					public static unknown: number;
+					public static up: number;
+					public static view_tree_lifecycle_owner: number;
+					public static view_tree_saved_state_registry_owner: number;
+					public static view_tree_view_model_store_owner: number;
+					public static visible_removing_fragment_view_tag: number;
+					public static wrap_content: number;
+				}
+				export class integer {
+					public static class: java.lang.Class<com.facebook.common.R.integer>;
+					public static abc_config_activityDefaultDur: number;
+					public static abc_config_activityShortDur: number;
+					public static cancel_button_image_alpha: number;
+					public static config_tooltipAnimTime: number;
+					public static status_bar_notification_info_maxnum: number;
+				}
+				export class interpolator {
+					public static class: java.lang.Class<com.facebook.common.R.interpolator>;
+					public static btn_checkbox_checked_mtrl_animation_interpolator_0: number;
+					public static btn_checkbox_checked_mtrl_animation_interpolator_1: number;
+					public static btn_checkbox_unchecked_mtrl_animation_interpolator_0: number;
+					public static btn_checkbox_unchecked_mtrl_animation_interpolator_1: number;
+					public static btn_radio_to_off_mtrl_animation_interpolator_0: number;
+					public static btn_radio_to_on_mtrl_animation_interpolator_0: number;
+					public static fast_out_slow_in: number;
+				}
+				export class layout {
+					public static class: java.lang.Class<com.facebook.common.R.layout>;
+					public static abc_action_bar_title_item: number;
+					public static abc_action_bar_up_container: number;
+					public static abc_action_menu_item_layout: number;
+					public static abc_action_menu_layout: number;
+					public static abc_action_mode_bar: number;
+					public static abc_action_mode_close_item_material: number;
+					public static abc_activity_chooser_view: number;
+					public static abc_activity_chooser_view_list_item: number;
+					public static abc_alert_dialog_button_bar_material: number;
+					public static abc_alert_dialog_material: number;
+					public static abc_alert_dialog_title_material: number;
+					public static abc_cascading_menu_item_layout: number;
+					public static abc_dialog_title_material: number;
+					public static abc_expanded_menu_layout: number;
+					public static abc_list_menu_item_checkbox: number;
+					public static abc_list_menu_item_icon: number;
+					public static abc_list_menu_item_layout: number;
+					public static abc_list_menu_item_radio: number;
+					public static abc_popup_menu_header_item_layout: number;
+					public static abc_popup_menu_item_layout: number;
+					public static abc_screen_content_include: number;
+					public static abc_screen_simple: number;
+					public static abc_screen_simple_overlay_action_mode: number;
+					public static abc_screen_toolbar: number;
+					public static abc_search_dropdown_item_icons_2line: number;
+					public static abc_search_view: number;
+					public static abc_select_dialog_material: number;
+					public static abc_tooltip: number;
+					public static browser_actions_context_menu_page: number;
+					public static browser_actions_context_menu_row: number;
+					public static com_facebook_activity_layout: number;
+					public static com_facebook_device_auth_dialog_fragment: number;
+					public static com_facebook_login_fragment: number;
+					public static com_facebook_smart_device_dialog_fragment: number;
+					public static custom_dialog: number;
+					public static notification_action: number;
+					public static notification_action_tombstone: number;
+					public static notification_media_action: number;
+					public static notification_media_cancel_action: number;
+					public static notification_template_big_media: number;
+					public static notification_template_big_media_custom: number;
+					public static notification_template_big_media_narrow: number;
+					public static notification_template_big_media_narrow_custom: number;
+					public static notification_template_custom_big: number;
+					public static notification_template_icon_group: number;
+					public static notification_template_lines_media: number;
+					public static notification_template_media: number;
+					public static notification_template_media_custom: number;
+					public static notification_template_part_chronometer: number;
+					public static notification_template_part_time: number;
+					public static select_dialog_item_material: number;
+					public static select_dialog_multichoice_material: number;
+					public static select_dialog_singlechoice_material: number;
+					public static support_simple_spinner_dropdown_item: number;
+				}
+				export class style {
+					public static class: java.lang.Class<com.facebook.common.R.style>;
+					public static AlertDialog_AppCompat: number;
+					public static AlertDialog_AppCompat_Light: number;
+					public static Animation_AppCompat_Dialog: number;
+					public static Animation_AppCompat_DropDownUp: number;
+					public static Animation_AppCompat_Tooltip: number;
+					public static Base_AlertDialog_AppCompat: number;
+					public static Base_AlertDialog_AppCompat_Light: number;
+					public static Base_Animation_AppCompat_Dialog: number;
+					public static Base_Animation_AppCompat_DropDownUp: number;
+					public static Base_Animation_AppCompat_Tooltip: number;
+					public static Base_CardView: number;
+					public static Base_DialogWindowTitleBackground_AppCompat: number;
+					public static Base_DialogWindowTitle_AppCompat: number;
+					public static Base_TextAppearance_AppCompat: number;
+					public static Base_TextAppearance_AppCompat_Body1: number;
+					public static Base_TextAppearance_AppCompat_Body2: number;
+					public static Base_TextAppearance_AppCompat_Button: number;
+					public static Base_TextAppearance_AppCompat_Caption: number;
+					public static Base_TextAppearance_AppCompat_Display1: number;
+					public static Base_TextAppearance_AppCompat_Display2: number;
+					public static Base_TextAppearance_AppCompat_Display3: number;
+					public static Base_TextAppearance_AppCompat_Display4: number;
+					public static Base_TextAppearance_AppCompat_Headline: number;
+					public static Base_TextAppearance_AppCompat_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Large: number;
+					public static Base_TextAppearance_AppCompat_Large_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large: number;
+					public static Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small: number;
+					public static Base_TextAppearance_AppCompat_Medium: number;
+					public static Base_TextAppearance_AppCompat_Medium_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Menu: number;
+					public static Base_TextAppearance_AppCompat_SearchResult: number;
+					public static Base_TextAppearance_AppCompat_SearchResult_Subtitle: number;
+					public static Base_TextAppearance_AppCompat_SearchResult_Title: number;
+					public static Base_TextAppearance_AppCompat_Small: number;
+					public static Base_TextAppearance_AppCompat_Small_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Subhead: number;
+					public static Base_TextAppearance_AppCompat_Subhead_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Title: number;
+					public static Base_TextAppearance_AppCompat_Title_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Tooltip: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Menu: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Title: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionMode_Title: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button_Colored: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Widget_DropDownItem: number;
+					public static Base_TextAppearance_AppCompat_Widget_PopupMenu_Header: number;
+					public static Base_TextAppearance_AppCompat_Widget_PopupMenu_Large: number;
+					public static Base_TextAppearance_AppCompat_Widget_PopupMenu_Small: number;
+					public static Base_TextAppearance_AppCompat_Widget_Switch: number;
+					public static Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem: number;
+					public static Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item: number;
+					public static Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle: number;
+					public static Base_TextAppearance_Widget_AppCompat_Toolbar_Title: number;
+					public static Base_ThemeOverlay_AppCompat: number;
+					public static Base_ThemeOverlay_AppCompat_ActionBar: number;
+					public static Base_ThemeOverlay_AppCompat_Dark: number;
+					public static Base_ThemeOverlay_AppCompat_Dark_ActionBar: number;
+					public static Base_ThemeOverlay_AppCompat_Dialog: number;
+					public static Base_ThemeOverlay_AppCompat_Dialog_Alert: number;
+					public static Base_ThemeOverlay_AppCompat_Light: number;
+					public static Base_Theme_AppCompat: number;
+					public static Base_Theme_AppCompat_CompactMenu: number;
+					public static Base_Theme_AppCompat_Dialog: number;
+					public static Base_Theme_AppCompat_DialogWhenLarge: number;
+					public static Base_Theme_AppCompat_Dialog_Alert: number;
+					public static Base_Theme_AppCompat_Dialog_FixedSize: number;
+					public static Base_Theme_AppCompat_Dialog_MinWidth: number;
+					public static Base_Theme_AppCompat_Light: number;
+					public static Base_Theme_AppCompat_Light_DarkActionBar: number;
+					public static Base_Theme_AppCompat_Light_Dialog: number;
+					public static Base_Theme_AppCompat_Light_DialogWhenLarge: number;
+					public static Base_Theme_AppCompat_Light_Dialog_Alert: number;
+					public static Base_Theme_AppCompat_Light_Dialog_FixedSize: number;
+					public static Base_Theme_AppCompat_Light_Dialog_MinWidth: number;
+					public static Base_V21_ThemeOverlay_AppCompat_Dialog: number;
+					public static Base_V21_Theme_AppCompat: number;
+					public static Base_V21_Theme_AppCompat_Dialog: number;
+					public static Base_V21_Theme_AppCompat_Light: number;
+					public static Base_V21_Theme_AppCompat_Light_Dialog: number;
+					public static Base_V22_Theme_AppCompat: number;
+					public static Base_V22_Theme_AppCompat_Light: number;
+					public static Base_V23_Theme_AppCompat: number;
+					public static Base_V23_Theme_AppCompat_Light: number;
+					public static Base_V26_Theme_AppCompat: number;
+					public static Base_V26_Theme_AppCompat_Light: number;
+					public static Base_V26_Widget_AppCompat_Toolbar: number;
+					public static Base_V28_Theme_AppCompat: number;
+					public static Base_V28_Theme_AppCompat_Light: number;
+					public static Base_V7_ThemeOverlay_AppCompat_Dialog: number;
+					public static Base_V7_Theme_AppCompat: number;
+					public static Base_V7_Theme_AppCompat_Dialog: number;
+					public static Base_V7_Theme_AppCompat_Light: number;
+					public static Base_V7_Theme_AppCompat_Light_Dialog: number;
+					public static Base_V7_Widget_AppCompat_AutoCompleteTextView: number;
+					public static Base_V7_Widget_AppCompat_EditText: number;
+					public static Base_V7_Widget_AppCompat_Toolbar: number;
+					public static Base_Widget_AppCompat_ActionBar: number;
+					public static Base_Widget_AppCompat_ActionBar_Solid: number;
+					public static Base_Widget_AppCompat_ActionBar_TabBar: number;
+					public static Base_Widget_AppCompat_ActionBar_TabText: number;
+					public static Base_Widget_AppCompat_ActionBar_TabView: number;
+					public static Base_Widget_AppCompat_ActionButton: number;
+					public static Base_Widget_AppCompat_ActionButton_CloseMode: number;
+					public static Base_Widget_AppCompat_ActionButton_Overflow: number;
+					public static Base_Widget_AppCompat_ActionMode: number;
+					public static Base_Widget_AppCompat_ActivityChooserView: number;
+					public static Base_Widget_AppCompat_AutoCompleteTextView: number;
+					public static Base_Widget_AppCompat_Button: number;
+					public static Base_Widget_AppCompat_ButtonBar: number;
+					public static Base_Widget_AppCompat_ButtonBar_AlertDialog: number;
+					public static Base_Widget_AppCompat_Button_Borderless: number;
+					public static Base_Widget_AppCompat_Button_Borderless_Colored: number;
+					public static Base_Widget_AppCompat_Button_ButtonBar_AlertDialog: number;
+					public static Base_Widget_AppCompat_Button_Colored: number;
+					public static Base_Widget_AppCompat_Button_Small: number;
+					public static Base_Widget_AppCompat_CompoundButton_CheckBox: number;
+					public static Base_Widget_AppCompat_CompoundButton_RadioButton: number;
+					public static Base_Widget_AppCompat_CompoundButton_Switch: number;
+					public static Base_Widget_AppCompat_DrawerArrowToggle: number;
+					public static Base_Widget_AppCompat_DrawerArrowToggle_Common: number;
+					public static Base_Widget_AppCompat_DropDownItem_Spinner: number;
+					public static Base_Widget_AppCompat_EditText: number;
+					public static Base_Widget_AppCompat_ImageButton: number;
+					public static Base_Widget_AppCompat_Light_ActionBar: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_Solid: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabBar: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabText: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabView: number;
+					public static Base_Widget_AppCompat_Light_PopupMenu: number;
+					public static Base_Widget_AppCompat_Light_PopupMenu_Overflow: number;
+					public static Base_Widget_AppCompat_ListMenuView: number;
+					public static Base_Widget_AppCompat_ListPopupWindow: number;
+					public static Base_Widget_AppCompat_ListView: number;
+					public static Base_Widget_AppCompat_ListView_DropDown: number;
+					public static Base_Widget_AppCompat_ListView_Menu: number;
+					public static Base_Widget_AppCompat_PopupMenu: number;
+					public static Base_Widget_AppCompat_PopupMenu_Overflow: number;
+					public static Base_Widget_AppCompat_PopupWindow: number;
+					public static Base_Widget_AppCompat_ProgressBar: number;
+					public static Base_Widget_AppCompat_ProgressBar_Horizontal: number;
+					public static Base_Widget_AppCompat_RatingBar: number;
+					public static Base_Widget_AppCompat_RatingBar_Indicator: number;
+					public static Base_Widget_AppCompat_RatingBar_Small: number;
+					public static Base_Widget_AppCompat_SearchView: number;
+					public static Base_Widget_AppCompat_SearchView_ActionBar: number;
+					public static Base_Widget_AppCompat_SeekBar: number;
+					public static Base_Widget_AppCompat_SeekBar_Discrete: number;
+					public static Base_Widget_AppCompat_Spinner: number;
+					public static Base_Widget_AppCompat_Spinner_Underlined: number;
+					public static Base_Widget_AppCompat_TextView: number;
+					public static Base_Widget_AppCompat_TextView_SpinnerItem: number;
+					public static Base_Widget_AppCompat_Toolbar: number;
+					public static Base_Widget_AppCompat_Toolbar_Button_Navigation: number;
+					public static CardView: number;
+					public static CardView_Dark: number;
+					public static CardView_Light: number;
+					public static Platform_AppCompat: number;
+					public static Platform_AppCompat_Light: number;
+					public static Platform_ThemeOverlay_AppCompat: number;
+					public static Platform_ThemeOverlay_AppCompat_Dark: number;
+					public static Platform_ThemeOverlay_AppCompat_Light: number;
+					public static Platform_V21_AppCompat: number;
+					public static Platform_V21_AppCompat_Light: number;
+					public static Platform_V25_AppCompat: number;
+					public static Platform_V25_AppCompat_Light: number;
+					public static Platform_Widget_AppCompat_Spinner: number;
+					public static RtlOverlay_DialogWindowTitle_AppCompat: number;
+					public static RtlOverlay_Widget_AppCompat_ActionBar_TitleItem: number;
+					public static RtlOverlay_Widget_AppCompat_DialogTitle_Icon: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_Text: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_Title: number;
+					public static RtlOverlay_Widget_AppCompat_SearchView_MagIcon: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Query: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Text: number;
+					public static RtlUnderlay_Widget_AppCompat_ActionButton: number;
+					public static RtlUnderlay_Widget_AppCompat_ActionButton_Overflow: number;
+					public static TextAppearance_AppCompat: number;
+					public static TextAppearance_AppCompat_Body1: number;
+					public static TextAppearance_AppCompat_Body2: number;
+					public static TextAppearance_AppCompat_Button: number;
+					public static TextAppearance_AppCompat_Caption: number;
+					public static TextAppearance_AppCompat_Display1: number;
+					public static TextAppearance_AppCompat_Display2: number;
+					public static TextAppearance_AppCompat_Display3: number;
+					public static TextAppearance_AppCompat_Display4: number;
+					public static TextAppearance_AppCompat_Headline: number;
+					public static TextAppearance_AppCompat_Inverse: number;
+					public static TextAppearance_AppCompat_Large: number;
+					public static TextAppearance_AppCompat_Large_Inverse: number;
+					public static TextAppearance_AppCompat_Light_SearchResult_Subtitle: number;
+					public static TextAppearance_AppCompat_Light_SearchResult_Title: number;
+					public static TextAppearance_AppCompat_Light_Widget_PopupMenu_Large: number;
+					public static TextAppearance_AppCompat_Light_Widget_PopupMenu_Small: number;
+					public static TextAppearance_AppCompat_Medium: number;
+					public static TextAppearance_AppCompat_Medium_Inverse: number;
+					public static TextAppearance_AppCompat_Menu: number;
+					public static TextAppearance_AppCompat_SearchResult_Subtitle: number;
+					public static TextAppearance_AppCompat_SearchResult_Title: number;
+					public static TextAppearance_AppCompat_Small: number;
+					public static TextAppearance_AppCompat_Small_Inverse: number;
+					public static TextAppearance_AppCompat_Subhead: number;
+					public static TextAppearance_AppCompat_Subhead_Inverse: number;
+					public static TextAppearance_AppCompat_Title: number;
+					public static TextAppearance_AppCompat_Title_Inverse: number;
+					public static TextAppearance_AppCompat_Tooltip: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Menu: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Subtitle: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Title: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Subtitle: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Title: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_Button: number;
+					public static TextAppearance_AppCompat_Widget_Button_Borderless_Colored: number;
+					public static TextAppearance_AppCompat_Widget_Button_Colored: number;
+					public static TextAppearance_AppCompat_Widget_Button_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_DropDownItem: number;
+					public static TextAppearance_AppCompat_Widget_PopupMenu_Header: number;
+					public static TextAppearance_AppCompat_Widget_PopupMenu_Large: number;
+					public static TextAppearance_AppCompat_Widget_PopupMenu_Small: number;
+					public static TextAppearance_AppCompat_Widget_Switch: number;
+					public static TextAppearance_AppCompat_Widget_TextView_SpinnerItem: number;
+					public static TextAppearance_Compat_Notification: number;
+					public static TextAppearance_Compat_Notification_Info: number;
+					public static TextAppearance_Compat_Notification_Info_Media: number;
+					public static TextAppearance_Compat_Notification_Line2: number;
+					public static TextAppearance_Compat_Notification_Line2_Media: number;
+					public static TextAppearance_Compat_Notification_Media: number;
+					public static TextAppearance_Compat_Notification_Time: number;
+					public static TextAppearance_Compat_Notification_Time_Media: number;
+					public static TextAppearance_Compat_Notification_Title: number;
+					public static TextAppearance_Compat_Notification_Title_Media: number;
+					public static TextAppearance_Widget_AppCompat_ExpandedMenu_Item: number;
+					public static TextAppearance_Widget_AppCompat_Toolbar_Subtitle: number;
+					public static TextAppearance_Widget_AppCompat_Toolbar_Title: number;
+					public static ThemeOverlay_AppCompat: number;
+					public static ThemeOverlay_AppCompat_ActionBar: number;
+					public static ThemeOverlay_AppCompat_Dark: number;
+					public static ThemeOverlay_AppCompat_Dark_ActionBar: number;
+					public static ThemeOverlay_AppCompat_DayNight: number;
+					public static ThemeOverlay_AppCompat_DayNight_ActionBar: number;
+					public static ThemeOverlay_AppCompat_Dialog: number;
+					public static ThemeOverlay_AppCompat_Dialog_Alert: number;
+					public static ThemeOverlay_AppCompat_Light: number;
+					public static Theme_AppCompat: number;
+					public static Theme_AppCompat_CompactMenu: number;
+					public static Theme_AppCompat_DayNight: number;
+					public static Theme_AppCompat_DayNight_DarkActionBar: number;
+					public static Theme_AppCompat_DayNight_Dialog: number;
+					public static Theme_AppCompat_DayNight_DialogWhenLarge: number;
+					public static Theme_AppCompat_DayNight_Dialog_Alert: number;
+					public static Theme_AppCompat_DayNight_Dialog_MinWidth: number;
+					public static Theme_AppCompat_DayNight_NoActionBar: number;
+					public static Theme_AppCompat_Dialog: number;
+					public static Theme_AppCompat_DialogWhenLarge: number;
+					public static Theme_AppCompat_Dialog_Alert: number;
+					public static Theme_AppCompat_Dialog_MinWidth: number;
+					public static Theme_AppCompat_Light: number;
+					public static Theme_AppCompat_Light_DarkActionBar: number;
+					public static Theme_AppCompat_Light_Dialog: number;
+					public static Theme_AppCompat_Light_DialogWhenLarge: number;
+					public static Theme_AppCompat_Light_Dialog_Alert: number;
+					public static Theme_AppCompat_Light_Dialog_MinWidth: number;
+					public static Theme_AppCompat_Light_NoActionBar: number;
+					public static Theme_AppCompat_NoActionBar: number;
+					public static Widget_AppCompat_ActionBar: number;
+					public static Widget_AppCompat_ActionBar_Solid: number;
+					public static Widget_AppCompat_ActionBar_TabBar: number;
+					public static Widget_AppCompat_ActionBar_TabText: number;
+					public static Widget_AppCompat_ActionBar_TabView: number;
+					public static Widget_AppCompat_ActionButton: number;
+					public static Widget_AppCompat_ActionButton_CloseMode: number;
+					public static Widget_AppCompat_ActionButton_Overflow: number;
+					public static Widget_AppCompat_ActionMode: number;
+					public static Widget_AppCompat_ActivityChooserView: number;
+					public static Widget_AppCompat_AutoCompleteTextView: number;
+					public static Widget_AppCompat_Button: number;
+					public static Widget_AppCompat_ButtonBar: number;
+					public static Widget_AppCompat_ButtonBar_AlertDialog: number;
+					public static Widget_AppCompat_Button_Borderless: number;
+					public static Widget_AppCompat_Button_Borderless_Colored: number;
+					public static Widget_AppCompat_Button_ButtonBar_AlertDialog: number;
+					public static Widget_AppCompat_Button_Colored: number;
+					public static Widget_AppCompat_Button_Small: number;
+					public static Widget_AppCompat_CompoundButton_CheckBox: number;
+					public static Widget_AppCompat_CompoundButton_RadioButton: number;
+					public static Widget_AppCompat_CompoundButton_Switch: number;
+					public static Widget_AppCompat_DrawerArrowToggle: number;
+					public static Widget_AppCompat_DropDownItem_Spinner: number;
+					public static Widget_AppCompat_EditText: number;
+					public static Widget_AppCompat_ImageButton: number;
+					public static Widget_AppCompat_Light_ActionBar: number;
+					public static Widget_AppCompat_Light_ActionBar_Solid: number;
+					public static Widget_AppCompat_Light_ActionBar_Solid_Inverse: number;
+					public static Widget_AppCompat_Light_ActionBar_TabBar: number;
+					public static Widget_AppCompat_Light_ActionBar_TabBar_Inverse: number;
+					public static Widget_AppCompat_Light_ActionBar_TabText: number;
+					public static Widget_AppCompat_Light_ActionBar_TabText_Inverse: number;
+					public static Widget_AppCompat_Light_ActionBar_TabView: number;
+					public static Widget_AppCompat_Light_ActionBar_TabView_Inverse: number;
+					public static Widget_AppCompat_Light_ActionButton: number;
+					public static Widget_AppCompat_Light_ActionButton_CloseMode: number;
+					public static Widget_AppCompat_Light_ActionButton_Overflow: number;
+					public static Widget_AppCompat_Light_ActionMode_Inverse: number;
+					public static Widget_AppCompat_Light_ActivityChooserView: number;
+					public static Widget_AppCompat_Light_AutoCompleteTextView: number;
+					public static Widget_AppCompat_Light_DropDownItem_Spinner: number;
+					public static Widget_AppCompat_Light_ListPopupWindow: number;
+					public static Widget_AppCompat_Light_ListView_DropDown: number;
+					public static Widget_AppCompat_Light_PopupMenu: number;
+					public static Widget_AppCompat_Light_PopupMenu_Overflow: number;
+					public static Widget_AppCompat_Light_SearchView: number;
+					public static Widget_AppCompat_Light_Spinner_DropDown_ActionBar: number;
+					public static Widget_AppCompat_ListMenuView: number;
+					public static Widget_AppCompat_ListPopupWindow: number;
+					public static Widget_AppCompat_ListView: number;
+					public static Widget_AppCompat_ListView_DropDown: number;
+					public static Widget_AppCompat_ListView_Menu: number;
+					public static Widget_AppCompat_PopupMenu: number;
+					public static Widget_AppCompat_PopupMenu_Overflow: number;
+					public static Widget_AppCompat_PopupWindow: number;
+					public static Widget_AppCompat_ProgressBar: number;
+					public static Widget_AppCompat_ProgressBar_Horizontal: number;
+					public static Widget_AppCompat_RatingBar: number;
+					public static Widget_AppCompat_RatingBar_Indicator: number;
+					public static Widget_AppCompat_RatingBar_Small: number;
+					public static Widget_AppCompat_SearchView: number;
+					public static Widget_AppCompat_SearchView_ActionBar: number;
+					public static Widget_AppCompat_SeekBar: number;
+					public static Widget_AppCompat_SeekBar_Discrete: number;
+					public static Widget_AppCompat_Spinner: number;
+					public static Widget_AppCompat_Spinner_DropDown: number;
+					public static Widget_AppCompat_Spinner_DropDown_ActionBar: number;
+					public static Widget_AppCompat_Spinner_Underlined: number;
+					public static Widget_AppCompat_TextView: number;
+					public static Widget_AppCompat_TextView_SpinnerItem: number;
+					public static Widget_AppCompat_Toolbar: number;
+					public static Widget_AppCompat_Toolbar_Button_Navigation: number;
+					public static Widget_Compat_NotificationActionContainer: number;
+					public static Widget_Compat_NotificationActionText: number;
+					public static Widget_Support_CoordinatorLayout: number;
+					public static com_facebook_activity_theme: number;
+					public static com_facebook_auth_dialog: number;
+					public static com_facebook_auth_dialog_instructions_textview: number;
+					public static com_facebook_button: number;
+					public static com_facebook_button_like: number;
+				}
+				export class styleable {
+					public static class: java.lang.Class<com.facebook.common.R.styleable>;
+					public static ActionBar: androidNative.Array<number>;
+					public static ActionBar_background: number;
+					public static ActionBar_backgroundSplit: number;
+					public static ActionBar_backgroundStacked: number;
+					public static ActionBar_contentInsetEnd: number;
+					public static ActionBar_contentInsetEndWithActions: number;
+					public static ActionBar_contentInsetLeft: number;
+					public static ActionBar_contentInsetRight: number;
+					public static ActionBar_contentInsetStart: number;
+					public static ActionBar_contentInsetStartWithNavigation: number;
+					public static ActionBar_customNavigationLayout: number;
+					public static ActionBar_displayOptions: number;
+					public static ActionBar_divider: number;
+					public static ActionBar_elevation: number;
+					public static ActionBar_height: number;
+					public static ActionBar_hideOnContentScroll: number;
+					public static ActionBar_homeAsUpIndicator: number;
+					public static ActionBar_homeLayout: number;
+					public static ActionBar_icon: number;
+					public static ActionBar_indeterminateProgressStyle: number;
+					public static ActionBar_itemPadding: number;
+					public static ActionBar_logo: number;
+					public static ActionBar_navigationMode: number;
+					public static ActionBar_popupTheme: number;
+					public static ActionBar_progressBarPadding: number;
+					public static ActionBar_progressBarStyle: number;
+					public static ActionBar_subtitle: number;
+					public static ActionBar_subtitleTextStyle: number;
+					public static ActionBar_title: number;
+					public static ActionBar_titleTextStyle: number;
+					public static ActionBarLayout: androidNative.Array<number>;
+					public static ActionBarLayout_android_layout_gravity: number;
+					public static ActionMenuItemView: androidNative.Array<number>;
+					public static ActionMenuItemView_android_minWidth: number;
+					public static ActionMenuView: androidNative.Array<number>;
+					public static ActionMode: androidNative.Array<number>;
+					public static ActionMode_background: number;
+					public static ActionMode_backgroundSplit: number;
+					public static ActionMode_closeItemLayout: number;
+					public static ActionMode_height: number;
+					public static ActionMode_subtitleTextStyle: number;
+					public static ActionMode_titleTextStyle: number;
+					public static ActivityChooserView: androidNative.Array<number>;
+					public static ActivityChooserView_expandActivityOverflowButtonDrawable: number;
+					public static ActivityChooserView_initialActivityCount: number;
+					public static AlertDialog: androidNative.Array<number>;
+					public static AlertDialog_android_layout: number;
+					public static AlertDialog_buttonIconDimen: number;
+					public static AlertDialog_buttonPanelSideLayout: number;
+					public static AlertDialog_listItemLayout: number;
+					public static AlertDialog_listLayout: number;
+					public static AlertDialog_multiChoiceItemLayout: number;
+					public static AlertDialog_showTitle: number;
+					public static AlertDialog_singleChoiceItemLayout: number;
+					public static AnimatedStateListDrawableCompat: androidNative.Array<number>;
+					public static AnimatedStateListDrawableCompat_android_dither: number;
+					public static AnimatedStateListDrawableCompat_android_visible: number;
+					public static AnimatedStateListDrawableCompat_android_variablePadding: number;
+					public static AnimatedStateListDrawableCompat_android_constantSize: number;
+					public static AnimatedStateListDrawableCompat_android_enterFadeDuration: number;
+					public static AnimatedStateListDrawableCompat_android_exitFadeDuration: number;
+					public static AnimatedStateListDrawableItem: androidNative.Array<number>;
+					public static AnimatedStateListDrawableItem_android_id: number;
+					public static AnimatedStateListDrawableItem_android_drawable: number;
+					public static AnimatedStateListDrawableTransition: androidNative.Array<number>;
+					public static AnimatedStateListDrawableTransition_android_drawable: number;
+					public static AnimatedStateListDrawableTransition_android_toId: number;
+					public static AnimatedStateListDrawableTransition_android_fromId: number;
+					public static AnimatedStateListDrawableTransition_android_reversible: number;
+					public static AppCompatImageView: androidNative.Array<number>;
+					public static AppCompatImageView_android_src: number;
+					public static AppCompatImageView_srcCompat: number;
+					public static AppCompatImageView_tint: number;
+					public static AppCompatImageView_tintMode: number;
+					public static AppCompatSeekBar: androidNative.Array<number>;
+					public static AppCompatSeekBar_android_thumb: number;
+					public static AppCompatSeekBar_tickMark: number;
+					public static AppCompatSeekBar_tickMarkTint: number;
+					public static AppCompatSeekBar_tickMarkTintMode: number;
+					public static AppCompatTextHelper: androidNative.Array<number>;
+					public static AppCompatTextHelper_android_textAppearance: number;
+					public static AppCompatTextHelper_android_drawableTop: number;
+					public static AppCompatTextHelper_android_drawableBottom: number;
+					public static AppCompatTextHelper_android_drawableLeft: number;
+					public static AppCompatTextHelper_android_drawableRight: number;
+					public static AppCompatTextHelper_android_drawableStart: number;
+					public static AppCompatTextHelper_android_drawableEnd: number;
+					public static AppCompatTextView: androidNative.Array<number>;
+					public static AppCompatTextView_android_textAppearance: number;
+					public static AppCompatTextView_autoSizeMaxTextSize: number;
+					public static AppCompatTextView_autoSizeMinTextSize: number;
+					public static AppCompatTextView_autoSizePresetSizes: number;
+					public static AppCompatTextView_autoSizeStepGranularity: number;
+					public static AppCompatTextView_autoSizeTextType: number;
+					public static AppCompatTextView_drawableBottomCompat: number;
+					public static AppCompatTextView_drawableEndCompat: number;
+					public static AppCompatTextView_drawableLeftCompat: number;
+					public static AppCompatTextView_drawableRightCompat: number;
+					public static AppCompatTextView_drawableStartCompat: number;
+					public static AppCompatTextView_drawableTint: number;
+					public static AppCompatTextView_drawableTintMode: number;
+					public static AppCompatTextView_drawableTopCompat: number;
+					public static AppCompatTextView_emojiCompatEnabled: number;
+					public static AppCompatTextView_firstBaselineToTopHeight: number;
+					public static AppCompatTextView_fontFamily: number;
+					public static AppCompatTextView_fontVariationSettings: number;
+					public static AppCompatTextView_lastBaselineToBottomHeight: number;
+					public static AppCompatTextView_lineHeight: number;
+					public static AppCompatTextView_textAllCaps: number;
+					public static AppCompatTextView_textLocale: number;
+					public static AppCompatTheme: androidNative.Array<number>;
+					public static AppCompatTheme_android_windowIsFloating: number;
+					public static AppCompatTheme_android_windowAnimationStyle: number;
+					public static AppCompatTheme_actionBarDivider: number;
+					public static AppCompatTheme_actionBarItemBackground: number;
+					public static AppCompatTheme_actionBarPopupTheme: number;
+					public static AppCompatTheme_actionBarSize: number;
+					public static AppCompatTheme_actionBarSplitStyle: number;
+					public static AppCompatTheme_actionBarStyle: number;
+					public static AppCompatTheme_actionBarTabBarStyle: number;
+					public static AppCompatTheme_actionBarTabStyle: number;
+					public static AppCompatTheme_actionBarTabTextStyle: number;
+					public static AppCompatTheme_actionBarTheme: number;
+					public static AppCompatTheme_actionBarWidgetTheme: number;
+					public static AppCompatTheme_actionButtonStyle: number;
+					public static AppCompatTheme_actionDropDownStyle: number;
+					public static AppCompatTheme_actionMenuTextAppearance: number;
+					public static AppCompatTheme_actionMenuTextColor: number;
+					public static AppCompatTheme_actionModeBackground: number;
+					public static AppCompatTheme_actionModeCloseButtonStyle: number;
+					public static AppCompatTheme_actionModeCloseContentDescription: number;
+					public static AppCompatTheme_actionModeCloseDrawable: number;
+					public static AppCompatTheme_actionModeCopyDrawable: number;
+					public static AppCompatTheme_actionModeCutDrawable: number;
+					public static AppCompatTheme_actionModeFindDrawable: number;
+					public static AppCompatTheme_actionModePasteDrawable: number;
+					public static AppCompatTheme_actionModePopupWindowStyle: number;
+					public static AppCompatTheme_actionModeSelectAllDrawable: number;
+					public static AppCompatTheme_actionModeShareDrawable: number;
+					public static AppCompatTheme_actionModeSplitBackground: number;
+					public static AppCompatTheme_actionModeStyle: number;
+					public static AppCompatTheme_actionModeTheme: number;
+					public static AppCompatTheme_actionModeWebSearchDrawable: number;
+					public static AppCompatTheme_actionOverflowButtonStyle: number;
+					public static AppCompatTheme_actionOverflowMenuStyle: number;
+					public static AppCompatTheme_activityChooserViewStyle: number;
+					public static AppCompatTheme_alertDialogButtonGroupStyle: number;
+					public static AppCompatTheme_alertDialogCenterButtons: number;
+					public static AppCompatTheme_alertDialogStyle: number;
+					public static AppCompatTheme_alertDialogTheme: number;
+					public static AppCompatTheme_autoCompleteTextViewStyle: number;
+					public static AppCompatTheme_borderlessButtonStyle: number;
+					public static AppCompatTheme_buttonBarButtonStyle: number;
+					public static AppCompatTheme_buttonBarNegativeButtonStyle: number;
+					public static AppCompatTheme_buttonBarNeutralButtonStyle: number;
+					public static AppCompatTheme_buttonBarPositiveButtonStyle: number;
+					public static AppCompatTheme_buttonBarStyle: number;
+					public static AppCompatTheme_buttonStyle: number;
+					public static AppCompatTheme_buttonStyleSmall: number;
+					public static AppCompatTheme_checkboxStyle: number;
+					public static AppCompatTheme_checkedTextViewStyle: number;
+					public static AppCompatTheme_colorAccent: number;
+					public static AppCompatTheme_colorBackgroundFloating: number;
+					public static AppCompatTheme_colorButtonNormal: number;
+					public static AppCompatTheme_colorControlActivated: number;
+					public static AppCompatTheme_colorControlHighlight: number;
+					public static AppCompatTheme_colorControlNormal: number;
+					public static AppCompatTheme_colorError: number;
+					public static AppCompatTheme_colorPrimary: number;
+					public static AppCompatTheme_colorPrimaryDark: number;
+					public static AppCompatTheme_colorSwitchThumbNormal: number;
+					public static AppCompatTheme_controlBackground: number;
+					public static AppCompatTheme_dialogCornerRadius: number;
+					public static AppCompatTheme_dialogPreferredPadding: number;
+					public static AppCompatTheme_dialogTheme: number;
+					public static AppCompatTheme_dividerHorizontal: number;
+					public static AppCompatTheme_dividerVertical: number;
+					public static AppCompatTheme_dropDownListViewStyle: number;
+					public static AppCompatTheme_dropdownListPreferredItemHeight: number;
+					public static AppCompatTheme_editTextBackground: number;
+					public static AppCompatTheme_editTextColor: number;
+					public static AppCompatTheme_editTextStyle: number;
+					public static AppCompatTheme_homeAsUpIndicator: number;
+					public static AppCompatTheme_imageButtonStyle: number;
+					public static AppCompatTheme_listChoiceBackgroundIndicator: number;
+					public static AppCompatTheme_listChoiceIndicatorMultipleAnimated: number;
+					public static AppCompatTheme_listChoiceIndicatorSingleAnimated: number;
+					public static AppCompatTheme_listDividerAlertDialog: number;
+					public static AppCompatTheme_listMenuViewStyle: number;
+					public static AppCompatTheme_listPopupWindowStyle: number;
+					public static AppCompatTheme_listPreferredItemHeight: number;
+					public static AppCompatTheme_listPreferredItemHeightLarge: number;
+					public static AppCompatTheme_listPreferredItemHeightSmall: number;
+					public static AppCompatTheme_listPreferredItemPaddingEnd: number;
+					public static AppCompatTheme_listPreferredItemPaddingLeft: number;
+					public static AppCompatTheme_listPreferredItemPaddingRight: number;
+					public static AppCompatTheme_listPreferredItemPaddingStart: number;
+					public static AppCompatTheme_panelBackground: number;
+					public static AppCompatTheme_panelMenuListTheme: number;
+					public static AppCompatTheme_panelMenuListWidth: number;
+					public static AppCompatTheme_popupMenuStyle: number;
+					public static AppCompatTheme_popupWindowStyle: number;
+					public static AppCompatTheme_radioButtonStyle: number;
+					public static AppCompatTheme_ratingBarStyle: number;
+					public static AppCompatTheme_ratingBarStyleIndicator: number;
+					public static AppCompatTheme_ratingBarStyleSmall: number;
+					public static AppCompatTheme_searchViewStyle: number;
+					public static AppCompatTheme_seekBarStyle: number;
+					public static AppCompatTheme_selectableItemBackground: number;
+					public static AppCompatTheme_selectableItemBackgroundBorderless: number;
+					public static AppCompatTheme_spinnerDropDownItemStyle: number;
+					public static AppCompatTheme_spinnerStyle: number;
+					public static AppCompatTheme_switchStyle: number;
+					public static AppCompatTheme_textAppearanceLargePopupMenu: number;
+					public static AppCompatTheme_textAppearanceListItem: number;
+					public static AppCompatTheme_textAppearanceListItemSecondary: number;
+					public static AppCompatTheme_textAppearanceListItemSmall: number;
+					public static AppCompatTheme_textAppearancePopupMenuHeader: number;
+					public static AppCompatTheme_textAppearanceSearchResultSubtitle: number;
+					public static AppCompatTheme_textAppearanceSearchResultTitle: number;
+					public static AppCompatTheme_textAppearanceSmallPopupMenu: number;
+					public static AppCompatTheme_textColorAlertDialogListItem: number;
+					public static AppCompatTheme_textColorSearchUrl: number;
+					public static AppCompatTheme_toolbarNavigationButtonStyle: number;
+					public static AppCompatTheme_toolbarStyle: number;
+					public static AppCompatTheme_tooltipForegroundColor: number;
+					public static AppCompatTheme_tooltipFrameBackground: number;
+					public static AppCompatTheme_viewInflaterClass: number;
+					public static AppCompatTheme_windowActionBar: number;
+					public static AppCompatTheme_windowActionBarOverlay: number;
+					public static AppCompatTheme_windowActionModeOverlay: number;
+					public static AppCompatTheme_windowFixedHeightMajor: number;
+					public static AppCompatTheme_windowFixedHeightMinor: number;
+					public static AppCompatTheme_windowFixedWidthMajor: number;
+					public static AppCompatTheme_windowFixedWidthMinor: number;
+					public static AppCompatTheme_windowMinWidthMajor: number;
+					public static AppCompatTheme_windowMinWidthMinor: number;
+					public static AppCompatTheme_windowNoTitle: number;
+					public static ButtonBarLayout: androidNative.Array<number>;
+					public static ButtonBarLayout_allowStacking: number;
+					public static CardView: androidNative.Array<number>;
+					public static CardView_android_minWidth: number;
+					public static CardView_android_minHeight: number;
+					public static CardView_cardBackgroundColor: number;
+					public static CardView_cardCornerRadius: number;
+					public static CardView_cardElevation: number;
+					public static CardView_cardMaxElevation: number;
+					public static CardView_cardPreventCornerOverlap: number;
+					public static CardView_cardUseCompatPadding: number;
+					public static CardView_contentPadding: number;
+					public static CardView_contentPaddingBottom: number;
+					public static CardView_contentPaddingLeft: number;
+					public static CardView_contentPaddingRight: number;
+					public static CardView_contentPaddingTop: number;
+					public static ColorStateListItem: androidNative.Array<number>;
+					public static ColorStateListItem_android_color: number;
+					public static ColorStateListItem_android_alpha: number;
+					public static ColorStateListItem_android_lStar: number;
+					public static ColorStateListItem_alpha: number;
+					public static ColorStateListItem_lStar: number;
+					public static CompoundButton: androidNative.Array<number>;
+					public static CompoundButton_android_button: number;
+					public static CompoundButton_buttonCompat: number;
+					public static CompoundButton_buttonTint: number;
+					public static CompoundButton_buttonTintMode: number;
+					public static CoordinatorLayout: androidNative.Array<number>;
+					public static CoordinatorLayout_keylines: number;
+					public static CoordinatorLayout_statusBarBackground: number;
+					public static CoordinatorLayout_Layout: androidNative.Array<number>;
+					public static CoordinatorLayout_Layout_android_layout_gravity: number;
+					public static CoordinatorLayout_Layout_layout_anchor: number;
+					public static CoordinatorLayout_Layout_layout_anchorGravity: number;
+					public static CoordinatorLayout_Layout_layout_behavior: number;
+					public static CoordinatorLayout_Layout_layout_dodgeInsetEdges: number;
+					public static CoordinatorLayout_Layout_layout_insetEdge: number;
+					public static CoordinatorLayout_Layout_layout_keyline: number;
+					public static DrawerArrowToggle: androidNative.Array<number>;
+					public static DrawerArrowToggle_arrowHeadLength: number;
+					public static DrawerArrowToggle_arrowShaftLength: number;
+					public static DrawerArrowToggle_barLength: number;
+					public static DrawerArrowToggle_color: number;
+					public static DrawerArrowToggle_drawableSize: number;
+					public static DrawerArrowToggle_gapBetweenBars: number;
+					public static DrawerArrowToggle_spinBars: number;
+					public static DrawerArrowToggle_thickness: number;
+					public static FontFamily: androidNative.Array<number>;
+					public static FontFamily_fontProviderAuthority: number;
+					public static FontFamily_fontProviderCerts: number;
+					public static FontFamily_fontProviderFetchStrategy: number;
+					public static FontFamily_fontProviderFetchTimeout: number;
+					public static FontFamily_fontProviderPackage: number;
+					public static FontFamily_fontProviderQuery: number;
+					public static FontFamily_fontProviderSystemFontFamily: number;
+					public static FontFamilyFont: androidNative.Array<number>;
+					public static FontFamilyFont_android_font: number;
+					public static FontFamilyFont_android_fontWeight: number;
+					public static FontFamilyFont_android_fontStyle: number;
+					public static FontFamilyFont_android_ttcIndex: number;
+					public static FontFamilyFont_android_fontVariationSettings: number;
+					public static FontFamilyFont_font: number;
+					public static FontFamilyFont_fontStyle: number;
+					public static FontFamilyFont_fontVariationSettings: number;
+					public static FontFamilyFont_fontWeight: number;
+					public static FontFamilyFont_ttcIndex: number;
+					public static Fragment: androidNative.Array<number>;
+					public static Fragment_android_name: number;
+					public static Fragment_android_id: number;
+					public static Fragment_android_tag: number;
+					public static FragmentContainerView: androidNative.Array<number>;
+					public static FragmentContainerView_android_name: number;
+					public static FragmentContainerView_android_tag: number;
+					public static GradientColor: androidNative.Array<number>;
+					public static GradientColor_android_startColor: number;
+					public static GradientColor_android_endColor: number;
+					public static GradientColor_android_type: number;
+					public static GradientColor_android_centerX: number;
+					public static GradientColor_android_centerY: number;
+					public static GradientColor_android_gradientRadius: number;
+					public static GradientColor_android_tileMode: number;
+					public static GradientColor_android_centerColor: number;
+					public static GradientColor_android_startX: number;
+					public static GradientColor_android_startY: number;
+					public static GradientColor_android_endX: number;
+					public static GradientColor_android_endY: number;
+					public static GradientColorItem: androidNative.Array<number>;
+					public static GradientColorItem_android_color: number;
+					public static GradientColorItem_android_offset: number;
+					public static LinearLayoutCompat: androidNative.Array<number>;
+					public static LinearLayoutCompat_android_gravity: number;
+					public static LinearLayoutCompat_android_orientation: number;
+					public static LinearLayoutCompat_android_baselineAligned: number;
+					public static LinearLayoutCompat_android_baselineAlignedChildIndex: number;
+					public static LinearLayoutCompat_android_weightSum: number;
+					public static LinearLayoutCompat_divider: number;
+					public static LinearLayoutCompat_dividerPadding: number;
+					public static LinearLayoutCompat_measureWithLargestChild: number;
+					public static LinearLayoutCompat_showDividers: number;
+					public static LinearLayoutCompat_Layout: androidNative.Array<number>;
+					public static LinearLayoutCompat_Layout_android_layout_gravity: number;
+					public static LinearLayoutCompat_Layout_android_layout_width: number;
+					public static LinearLayoutCompat_Layout_android_layout_height: number;
+					public static LinearLayoutCompat_Layout_android_layout_weight: number;
+					public static ListPopupWindow: androidNative.Array<number>;
+					public static ListPopupWindow_android_dropDownHorizontalOffset: number;
+					public static ListPopupWindow_android_dropDownVerticalOffset: number;
+					public static MenuGroup: androidNative.Array<number>;
+					public static MenuGroup_android_enabled: number;
+					public static MenuGroup_android_id: number;
+					public static MenuGroup_android_visible: number;
+					public static MenuGroup_android_menuCategory: number;
+					public static MenuGroup_android_orderInCategory: number;
+					public static MenuGroup_android_checkableBehavior: number;
+					public static MenuItem: androidNative.Array<number>;
+					public static MenuItem_android_icon: number;
+					public static MenuItem_android_enabled: number;
+					public static MenuItem_android_id: number;
+					public static MenuItem_android_checked: number;
+					public static MenuItem_android_visible: number;
+					public static MenuItem_android_menuCategory: number;
+					public static MenuItem_android_orderInCategory: number;
+					public static MenuItem_android_title: number;
+					public static MenuItem_android_titleCondensed: number;
+					public static MenuItem_android_alphabeticShortcut: number;
+					public static MenuItem_android_numericShortcut: number;
+					public static MenuItem_android_checkable: number;
+					public static MenuItem_android_onClick: number;
+					public static MenuItem_actionLayout: number;
+					public static MenuItem_actionProviderClass: number;
+					public static MenuItem_actionViewClass: number;
+					public static MenuItem_alphabeticModifiers: number;
+					public static MenuItem_contentDescription: number;
+					public static MenuItem_iconTint: number;
+					public static MenuItem_iconTintMode: number;
+					public static MenuItem_numericModifiers: number;
+					public static MenuItem_showAsAction: number;
+					public static MenuItem_tooltipText: number;
+					public static MenuView: androidNative.Array<number>;
+					public static MenuView_android_windowAnimationStyle: number;
+					public static MenuView_android_itemTextAppearance: number;
+					public static MenuView_android_horizontalDivider: number;
+					public static MenuView_android_verticalDivider: number;
+					public static MenuView_android_headerBackground: number;
+					public static MenuView_android_itemBackground: number;
+					public static MenuView_android_itemIconDisabledAlpha: number;
+					public static MenuView_preserveIconSpacing: number;
+					public static MenuView_subMenuArrow: number;
+					public static PopupWindow: androidNative.Array<number>;
+					public static PopupWindow_android_popupBackground: number;
+					public static PopupWindow_android_popupAnimationStyle: number;
+					public static PopupWindow_overlapAnchor: number;
+					public static PopupWindowBackgroundState: androidNative.Array<number>;
+					public static PopupWindowBackgroundState_state_above_anchor: number;
+					public static RecycleListView: androidNative.Array<number>;
+					public static RecycleListView_paddingBottomNoButtons: number;
+					public static RecycleListView_paddingTopNoTitle: number;
+					public static SearchView: androidNative.Array<number>;
+					public static SearchView_android_focusable: number;
+					public static SearchView_android_maxWidth: number;
+					public static SearchView_android_inputType: number;
+					public static SearchView_android_imeOptions: number;
+					public static SearchView_closeIcon: number;
+					public static SearchView_commitIcon: number;
+					public static SearchView_defaultQueryHint: number;
+					public static SearchView_goIcon: number;
+					public static SearchView_iconifiedByDefault: number;
+					public static SearchView_layout: number;
+					public static SearchView_queryBackground: number;
+					public static SearchView_queryHint: number;
+					public static SearchView_searchHintIcon: number;
+					public static SearchView_searchIcon: number;
+					public static SearchView_submitBackground: number;
+					public static SearchView_suggestionRowLayout: number;
+					public static SearchView_voiceIcon: number;
+					public static Spinner: androidNative.Array<number>;
+					public static Spinner_android_entries: number;
+					public static Spinner_android_popupBackground: number;
+					public static Spinner_android_prompt: number;
+					public static Spinner_android_dropDownWidth: number;
+					public static Spinner_popupTheme: number;
+					public static StateListDrawable: androidNative.Array<number>;
+					public static StateListDrawable_android_dither: number;
+					public static StateListDrawable_android_visible: number;
+					public static StateListDrawable_android_variablePadding: number;
+					public static StateListDrawable_android_constantSize: number;
+					public static StateListDrawable_android_enterFadeDuration: number;
+					public static StateListDrawable_android_exitFadeDuration: number;
+					public static StateListDrawableItem: androidNative.Array<number>;
+					public static StateListDrawableItem_android_drawable: number;
+					public static SwitchCompat: androidNative.Array<number>;
+					public static SwitchCompat_android_textOn: number;
+					public static SwitchCompat_android_textOff: number;
+					public static SwitchCompat_android_thumb: number;
+					public static SwitchCompat_showText: number;
+					public static SwitchCompat_splitTrack: number;
+					public static SwitchCompat_switchMinWidth: number;
+					public static SwitchCompat_switchPadding: number;
+					public static SwitchCompat_switchTextAppearance: number;
+					public static SwitchCompat_thumbTextPadding: number;
+					public static SwitchCompat_thumbTint: number;
+					public static SwitchCompat_thumbTintMode: number;
+					public static SwitchCompat_track: number;
+					public static SwitchCompat_trackTint: number;
+					public static SwitchCompat_trackTintMode: number;
+					public static TextAppearance: androidNative.Array<number>;
+					public static TextAppearance_android_textSize: number;
+					public static TextAppearance_android_typeface: number;
+					public static TextAppearance_android_textStyle: number;
+					public static TextAppearance_android_textColor: number;
+					public static TextAppearance_android_textColorHint: number;
+					public static TextAppearance_android_textColorLink: number;
+					public static TextAppearance_android_shadowColor: number;
+					public static TextAppearance_android_shadowDx: number;
+					public static TextAppearance_android_shadowDy: number;
+					public static TextAppearance_android_shadowRadius: number;
+					public static TextAppearance_android_fontFamily: number;
+					public static TextAppearance_android_textFontWeight: number;
+					public static TextAppearance_fontFamily: number;
+					public static TextAppearance_fontVariationSettings: number;
+					public static TextAppearance_textAllCaps: number;
+					public static TextAppearance_textLocale: number;
+					public static Toolbar: androidNative.Array<number>;
+					public static Toolbar_android_gravity: number;
+					public static Toolbar_android_minHeight: number;
+					public static Toolbar_buttonGravity: number;
+					public static Toolbar_collapseContentDescription: number;
+					public static Toolbar_collapseIcon: number;
+					public static Toolbar_contentInsetEnd: number;
+					public static Toolbar_contentInsetEndWithActions: number;
+					public static Toolbar_contentInsetLeft: number;
+					public static Toolbar_contentInsetRight: number;
+					public static Toolbar_contentInsetStart: number;
+					public static Toolbar_contentInsetStartWithNavigation: number;
+					public static Toolbar_logo: number;
+					public static Toolbar_logoDescription: number;
+					public static Toolbar_maxButtonHeight: number;
+					public static Toolbar_menu: number;
+					public static Toolbar_navigationContentDescription: number;
+					public static Toolbar_navigationIcon: number;
+					public static Toolbar_popupTheme: number;
+					public static Toolbar_subtitle: number;
+					public static Toolbar_subtitleTextAppearance: number;
+					public static Toolbar_subtitleTextColor: number;
+					public static Toolbar_title: number;
+					public static Toolbar_titleMargin: number;
+					public static Toolbar_titleMarginBottom: number;
+					public static Toolbar_titleMarginEnd: number;
+					public static Toolbar_titleMarginStart: number;
+					public static Toolbar_titleMarginTop: number;
+					public static Toolbar_titleMargins: number;
+					public static Toolbar_titleTextAppearance: number;
+					public static Toolbar_titleTextColor: number;
+					public static View: androidNative.Array<number>;
+					public static View_android_theme: number;
+					public static View_android_focusable: number;
+					public static View_paddingEnd: number;
+					public static View_paddingStart: number;
+					public static View_theme: number;
+					public static ViewBackgroundHelper: androidNative.Array<number>;
+					public static ViewBackgroundHelper_android_background: number;
+					public static ViewBackgroundHelper_backgroundTint: number;
+					public static ViewBackgroundHelper_backgroundTintMode: number;
+					public static ViewStubCompat: androidNative.Array<number>;
+					public static ViewStubCompat_android_id: number;
+					public static ViewStubCompat_android_layout: number;
+					public static ViewStubCompat_android_inflatedId: number;
+					public static com_facebook_like_view: androidNative.Array<number>;
+					public static com_facebook_like_view_com_facebook_auxiliary_view_position: number;
+					public static com_facebook_like_view_com_facebook_foreground_color: number;
+					public static com_facebook_like_view_com_facebook_horizontal_alignment: number;
+					public static com_facebook_like_view_com_facebook_object_id: number;
+					public static com_facebook_like_view_com_facebook_object_type: number;
+					public static com_facebook_like_view_com_facebook_style: number;
+					public static<clinit>(): void;
 				}
 			}
 		}
@@ -3750,6 +8808,2119 @@ declare module com {
 			export class Core {
 				public static class: java.lang.Class<com.facebook.core.Core>;
 				public constructor();
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module core {
+			export class R {
+				public static class: java.lang.Class<com.facebook.core.R>;
+			}
+			export module R {
+				export class attr {
+					public static class: java.lang.Class<com.facebook.core.R.attr>;
+					public static alpha: number;
+					public static font: number;
+					public static fontProviderAuthority: number;
+					public static fontProviderCerts: number;
+					public static fontProviderFetchStrategy: number;
+					public static fontProviderFetchTimeout: number;
+					public static fontProviderPackage: number;
+					public static fontProviderQuery: number;
+					public static fontStyle: number;
+					public static fontVariationSettings: number;
+					public static fontWeight: number;
+					public static ttcIndex: number;
+				}
+				export class color {
+					public static class: java.lang.Class<com.facebook.core.R.color>;
+					public static androidx_core_ripple_material_light: number;
+					public static androidx_core_secondary_text_default_material_light: number;
+					public static notification_action_color_filter: number;
+					public static notification_icon_bg_color: number;
+					public static ripple_material_light: number;
+					public static secondary_text_default_material_light: number;
+				}
+				export class dimen {
+					public static class: java.lang.Class<com.facebook.core.R.dimen>;
+					public static compat_button_inset_horizontal_material: number;
+					public static compat_button_inset_vertical_material: number;
+					public static compat_button_padding_horizontal_material: number;
+					public static compat_button_padding_vertical_material: number;
+					public static compat_control_corner_material: number;
+					public static compat_notification_large_icon_max_height: number;
+					public static compat_notification_large_icon_max_width: number;
+					public static notification_action_icon_size: number;
+					public static notification_action_text_size: number;
+					public static notification_big_circle_margin: number;
+					public static notification_content_margin_start: number;
+					public static notification_large_icon_height: number;
+					public static notification_large_icon_width: number;
+					public static notification_main_column_padding_top: number;
+					public static notification_media_narrow_margin: number;
+					public static notification_right_icon_size: number;
+					public static notification_right_side_padding_top: number;
+					public static notification_small_icon_background_padding: number;
+					public static notification_small_icon_size_as_large: number;
+					public static notification_subtext_size: number;
+					public static notification_top_pad: number;
+					public static notification_top_pad_large_text: number;
+				}
+				export class drawable {
+					public static class: java.lang.Class<com.facebook.core.R.drawable>;
+					public static notification_action_background: number;
+					public static notification_bg: number;
+					public static notification_bg_low: number;
+					public static notification_bg_low_normal: number;
+					public static notification_bg_low_pressed: number;
+					public static notification_bg_normal: number;
+					public static notification_bg_normal_pressed: number;
+					public static notification_icon_background: number;
+					public static notification_template_icon_bg: number;
+					public static notification_template_icon_low_bg: number;
+					public static notification_tile_bg: number;
+					public static notify_panel_notification_icon_bg: number;
+				}
+				export class id {
+					public static class: java.lang.Class<com.facebook.core.R.id>;
+					public static accessibility_action_clickable_span: number;
+					public static accessibility_custom_action_0: number;
+					public static accessibility_custom_action_1: number;
+					public static accessibility_custom_action_10: number;
+					public static accessibility_custom_action_11: number;
+					public static accessibility_custom_action_12: number;
+					public static accessibility_custom_action_13: number;
+					public static accessibility_custom_action_14: number;
+					public static accessibility_custom_action_15: number;
+					public static accessibility_custom_action_16: number;
+					public static accessibility_custom_action_17: number;
+					public static accessibility_custom_action_18: number;
+					public static accessibility_custom_action_19: number;
+					public static accessibility_custom_action_2: number;
+					public static accessibility_custom_action_20: number;
+					public static accessibility_custom_action_21: number;
+					public static accessibility_custom_action_22: number;
+					public static accessibility_custom_action_23: number;
+					public static accessibility_custom_action_24: number;
+					public static accessibility_custom_action_25: number;
+					public static accessibility_custom_action_26: number;
+					public static accessibility_custom_action_27: number;
+					public static accessibility_custom_action_28: number;
+					public static accessibility_custom_action_29: number;
+					public static accessibility_custom_action_3: number;
+					public static accessibility_custom_action_30: number;
+					public static accessibility_custom_action_31: number;
+					public static accessibility_custom_action_4: number;
+					public static accessibility_custom_action_5: number;
+					public static accessibility_custom_action_6: number;
+					public static accessibility_custom_action_7: number;
+					public static accessibility_custom_action_8: number;
+					public static accessibility_custom_action_9: number;
+					public static action_container: number;
+					public static action_divider: number;
+					public static action_image: number;
+					public static action_text: number;
+					public static actions: number;
+					public static async: number;
+					public static blocking: number;
+					public static chronometer: number;
+					public static dialog_button: number;
+					public static forever: number;
+					public static icon: number;
+					public static icon_group: number;
+					public static info: number;
+					public static italic: number;
+					public static line1: number;
+					public static line3: number;
+					public static normal: number;
+					public static notification_background: number;
+					public static notification_main_column: number;
+					public static notification_main_column_container: number;
+					public static right_icon: number;
+					public static right_side: number;
+					public static tag_accessibility_actions: number;
+					public static tag_accessibility_clickable_spans: number;
+					public static tag_accessibility_heading: number;
+					public static tag_accessibility_pane_title: number;
+					public static tag_screen_reader_focusable: number;
+					public static tag_transition_group: number;
+					public static tag_unhandled_key_event_manager: number;
+					public static tag_unhandled_key_listeners: number;
+					public static text: number;
+					public static text2: number;
+					public static time: number;
+					public static title: number;
+				}
+				export class integer {
+					public static class: java.lang.Class<com.facebook.core.R.integer>;
+					public static status_bar_notification_info_maxnum: number;
+				}
+				export class layout {
+					public static class: java.lang.Class<com.facebook.core.R.layout>;
+					public static custom_dialog: number;
+					public static notification_action: number;
+					public static notification_action_tombstone: number;
+					public static notification_template_custom_big: number;
+					public static notification_template_icon_group: number;
+					public static notification_template_part_chronometer: number;
+					public static notification_template_part_time: number;
+				}
+				export class style {
+					public static class: java.lang.Class<com.facebook.core.R.style>;
+					public static TextAppearance_Compat_Notification: number;
+					public static TextAppearance_Compat_Notification_Info: number;
+					public static TextAppearance_Compat_Notification_Line2: number;
+					public static TextAppearance_Compat_Notification_Time: number;
+					public static TextAppearance_Compat_Notification_Title: number;
+					public static Widget_Compat_NotificationActionContainer: number;
+					public static Widget_Compat_NotificationActionText: number;
+				}
+				export class styleable {
+					public static class: java.lang.Class<com.facebook.core.R.styleable>;
+					public static ColorStateListItem: androidNative.Array<number>;
+					public static ColorStateListItem_android_color: number;
+					public static ColorStateListItem_android_alpha: number;
+					public static ColorStateListItem_android_lStar: number;
+					public static ColorStateListItem_alpha: number;
+					public static ColorStateListItem_lStar: number;
+					public static FontFamily: androidNative.Array<number>;
+					public static FontFamily_fontProviderAuthority: number;
+					public static FontFamily_fontProviderCerts: number;
+					public static FontFamily_fontProviderFetchStrategy: number;
+					public static FontFamily_fontProviderFetchTimeout: number;
+					public static FontFamily_fontProviderPackage: number;
+					public static FontFamily_fontProviderQuery: number;
+					public static FontFamily_fontProviderSystemFontFamily: number;
+					public static FontFamilyFont: androidNative.Array<number>;
+					public static FontFamilyFont_android_font: number;
+					public static FontFamilyFont_android_fontWeight: number;
+					public static FontFamilyFont_android_fontStyle: number;
+					public static FontFamilyFont_android_ttcIndex: number;
+					public static FontFamilyFont_android_fontVariationSettings: number;
+					public static FontFamilyFont_font: number;
+					public static FontFamilyFont_fontStyle: number;
+					public static FontFamilyFont_fontVariationSettings: number;
+					public static FontFamilyFont_fontWeight: number;
+					public static FontFamilyFont_ttcIndex: number;
+					public static GradientColor: androidNative.Array<number>;
+					public static GradientColor_android_startColor: number;
+					public static GradientColor_android_endColor: number;
+					public static GradientColor_android_type: number;
+					public static GradientColor_android_centerX: number;
+					public static GradientColor_android_centerY: number;
+					public static GradientColor_android_gradientRadius: number;
+					public static GradientColor_android_tileMode: number;
+					public static GradientColor_android_centerColor: number;
+					public static GradientColor_android_startX: number;
+					public static GradientColor_android_startY: number;
+					public static GradientColor_android_endX: number;
+					public static GradientColor_android_endY: number;
+					public static GradientColorItem: androidNative.Array<number>;
+					public static GradientColorItem_android_color: number;
+					public static GradientColorItem_android_offset: number;
+					public static<clinit>(): void;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module devicerequests {
+			export module internal {
+				export class DeviceRequestsHelper {
+					public static class: java.lang.Class<com.facebook.devicerequests.internal.DeviceRequestsHelper>;
+					public static INSTANCE: com.facebook.devicerequests.internal.DeviceRequestsHelper;
+					public static DEVICE_INFO_PARAM: string;
+					public static DEVICE_TARGET_USER_ID: string;
+					public static DEVICE_INFO_DEVICE: string;
+					public static DEVICE_INFO_MODEL: string;
+					public static SDK_HEADER: string;
+					public static SDK_FLAVOR: string;
+					public static SERVICE_TYPE: string;
+					public static getDeviceInfo(param0: java.util.Map<string, string>): string;
+					public static getDeviceInfo(): string;
+					public static generateQRCode(param0: string): globalAndroid.graphics.Bitmap;
+					public static cleanUpAdvertisementService(param0: string): void;
+					public static isAvailable(): boolean;
+					public static startAdvertisementService(param0: string): boolean;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module gamingservices {
+			export class R {
+				public static class: java.lang.Class<com.facebook.gamingservices.R>;
+			}
+			export module R {
+				export class anim {
+					public static class: java.lang.Class<com.facebook.gamingservices.R.anim>;
+					public static abc_fade_in: number;
+					public static abc_fade_out: number;
+					public static abc_grow_fade_in_from_bottom: number;
+					public static abc_popup_enter: number;
+					public static abc_popup_exit: number;
+					public static abc_shrink_fade_out_from_bottom: number;
+					public static abc_slide_in_bottom: number;
+					public static abc_slide_in_top: number;
+					public static abc_slide_out_bottom: number;
+					public static abc_slide_out_top: number;
+					public static abc_tooltip_enter: number;
+					public static abc_tooltip_exit: number;
+					public static btn_checkbox_to_checked_box_inner_merged_animation: number;
+					public static btn_checkbox_to_checked_box_outer_merged_animation: number;
+					public static btn_checkbox_to_checked_icon_null_animation: number;
+					public static btn_checkbox_to_unchecked_box_inner_merged_animation: number;
+					public static btn_checkbox_to_unchecked_check_path_merged_animation: number;
+					public static btn_checkbox_to_unchecked_icon_null_animation: number;
+					public static btn_radio_to_off_mtrl_dot_group_animation: number;
+					public static btn_radio_to_off_mtrl_ring_outer_animation: number;
+					public static btn_radio_to_off_mtrl_ring_outer_path_animation: number;
+					public static btn_radio_to_on_mtrl_dot_group_animation: number;
+					public static btn_radio_to_on_mtrl_ring_outer_animation: number;
+					public static btn_radio_to_on_mtrl_ring_outer_path_animation: number;
+					public static fragment_fast_out_extra_slow_in: number;
+				}
+				export class animator {
+					public static class: java.lang.Class<com.facebook.gamingservices.R.animator>;
+					public static fragment_close_enter: number;
+					public static fragment_close_exit: number;
+					public static fragment_fade_enter: number;
+					public static fragment_fade_exit: number;
+					public static fragment_open_enter: number;
+					public static fragment_open_exit: number;
+				}
+				export class attr {
+					public static class: java.lang.Class<com.facebook.gamingservices.R.attr>;
+					public static actionBarDivider: number;
+					public static actionBarItemBackground: number;
+					public static actionBarPopupTheme: number;
+					public static actionBarSize: number;
+					public static actionBarSplitStyle: number;
+					public static actionBarStyle: number;
+					public static actionBarTabBarStyle: number;
+					public static actionBarTabStyle: number;
+					public static actionBarTabTextStyle: number;
+					public static actionBarTheme: number;
+					public static actionBarWidgetTheme: number;
+					public static actionButtonStyle: number;
+					public static actionDropDownStyle: number;
+					public static actionLayout: number;
+					public static actionMenuTextAppearance: number;
+					public static actionMenuTextColor: number;
+					public static actionModeBackground: number;
+					public static actionModeCloseButtonStyle: number;
+					public static actionModeCloseDrawable: number;
+					public static actionModeCopyDrawable: number;
+					public static actionModeCutDrawable: number;
+					public static actionModeFindDrawable: number;
+					public static actionModePasteDrawable: number;
+					public static actionModePopupWindowStyle: number;
+					public static actionModeSelectAllDrawable: number;
+					public static actionModeShareDrawable: number;
+					public static actionModeSplitBackground: number;
+					public static actionModeStyle: number;
+					public static actionModeWebSearchDrawable: number;
+					public static actionOverflowButtonStyle: number;
+					public static actionOverflowMenuStyle: number;
+					public static actionProviderClass: number;
+					public static actionViewClass: number;
+					public static activityChooserViewStyle: number;
+					public static alertDialogButtonGroupStyle: number;
+					public static alertDialogCenterButtons: number;
+					public static alertDialogStyle: number;
+					public static alertDialogTheme: number;
+					public static allowStacking: number;
+					public static alpha: number;
+					public static alphabeticModifiers: number;
+					public static arrowHeadLength: number;
+					public static arrowShaftLength: number;
+					public static autoCompleteTextViewStyle: number;
+					public static autoSizeMaxTextSize: number;
+					public static autoSizeMinTextSize: number;
+					public static autoSizePresetSizes: number;
+					public static autoSizeStepGranularity: number;
+					public static autoSizeTextType: number;
+					public static background: number;
+					public static backgroundSplit: number;
+					public static backgroundStacked: number;
+					public static backgroundTint: number;
+					public static backgroundTintMode: number;
+					public static barLength: number;
+					public static borderlessButtonStyle: number;
+					public static buttonBarButtonStyle: number;
+					public static buttonBarNegativeButtonStyle: number;
+					public static buttonBarNeutralButtonStyle: number;
+					public static buttonBarPositiveButtonStyle: number;
+					public static buttonBarStyle: number;
+					public static buttonCompat: number;
+					public static buttonGravity: number;
+					public static buttonIconDimen: number;
+					public static buttonPanelSideLayout: number;
+					public static buttonStyle: number;
+					public static buttonStyleSmall: number;
+					public static buttonTint: number;
+					public static buttonTintMode: number;
+					public static cardBackgroundColor: number;
+					public static cardCornerRadius: number;
+					public static cardElevation: number;
+					public static cardMaxElevation: number;
+					public static cardPreventCornerOverlap: number;
+					public static cardUseCompatPadding: number;
+					public static cardViewStyle: number;
+					public static checkboxStyle: number;
+					public static checkedTextViewStyle: number;
+					public static closeIcon: number;
+					public static closeItemLayout: number;
+					public static collapseContentDescription: number;
+					public static collapseIcon: number;
+					public static color: number;
+					public static colorAccent: number;
+					public static colorBackgroundFloating: number;
+					public static colorButtonNormal: number;
+					public static colorControlActivated: number;
+					public static colorControlHighlight: number;
+					public static colorControlNormal: number;
+					public static colorError: number;
+					public static colorPrimary: number;
+					public static colorPrimaryDark: number;
+					public static colorSwitchThumbNormal: number;
+					public static com_facebook_auxiliary_view_position: number;
+					public static com_facebook_foreground_color: number;
+					public static com_facebook_horizontal_alignment: number;
+					public static com_facebook_object_id: number;
+					public static com_facebook_object_type: number;
+					public static com_facebook_style: number;
+					public static commitIcon: number;
+					public static contentDescription: number;
+					public static contentInsetEnd: number;
+					public static contentInsetEndWithActions: number;
+					public static contentInsetLeft: number;
+					public static contentInsetRight: number;
+					public static contentInsetStart: number;
+					public static contentInsetStartWithNavigation: number;
+					public static contentPadding: number;
+					public static contentPaddingBottom: number;
+					public static contentPaddingLeft: number;
+					public static contentPaddingRight: number;
+					public static contentPaddingTop: number;
+					public static controlBackground: number;
+					public static coordinatorLayoutStyle: number;
+					public static customNavigationLayout: number;
+					public static defaultQueryHint: number;
+					public static dialogCornerRadius: number;
+					public static dialogPreferredPadding: number;
+					public static dialogTheme: number;
+					public static displayOptions: number;
+					public static divider: number;
+					public static dividerHorizontal: number;
+					public static dividerPadding: number;
+					public static dividerVertical: number;
+					public static drawableBottomCompat: number;
+					public static drawableEndCompat: number;
+					public static drawableLeftCompat: number;
+					public static drawableRightCompat: number;
+					public static drawableSize: number;
+					public static drawableStartCompat: number;
+					public static drawableTint: number;
+					public static drawableTintMode: number;
+					public static drawableTopCompat: number;
+					public static drawerArrowStyle: number;
+					public static dropDownListViewStyle: number;
+					public static dropdownListPreferredItemHeight: number;
+					public static editTextBackground: number;
+					public static editTextColor: number;
+					public static editTextStyle: number;
+					public static elevation: number;
+					public static expandActivityOverflowButtonDrawable: number;
+					public static firstBaselineToTopHeight: number;
+					public static font: number;
+					public static fontFamily: number;
+					public static fontProviderAuthority: number;
+					public static fontProviderCerts: number;
+					public static fontProviderFetchStrategy: number;
+					public static fontProviderFetchTimeout: number;
+					public static fontProviderPackage: number;
+					public static fontProviderQuery: number;
+					public static fontStyle: number;
+					public static fontVariationSettings: number;
+					public static fontWeight: number;
+					public static gapBetweenBars: number;
+					public static goIcon: number;
+					public static height: number;
+					public static hideOnContentScroll: number;
+					public static homeAsUpIndicator: number;
+					public static homeLayout: number;
+					public static icon: number;
+					public static iconTint: number;
+					public static iconTintMode: number;
+					public static iconifiedByDefault: number;
+					public static imageButtonStyle: number;
+					public static indeterminateProgressStyle: number;
+					public static initialActivityCount: number;
+					public static isLightTheme: number;
+					public static itemPadding: number;
+					public static keylines: number;
+					public static lastBaselineToBottomHeight: number;
+					public static layout: number;
+					public static layout_anchor: number;
+					public static layout_anchorGravity: number;
+					public static layout_behavior: number;
+					public static layout_dodgeInsetEdges: number;
+					public static layout_insetEdge: number;
+					public static layout_keyline: number;
+					public static lineHeight: number;
+					public static listChoiceBackgroundIndicator: number;
+					public static listChoiceIndicatorMultipleAnimated: number;
+					public static listChoiceIndicatorSingleAnimated: number;
+					public static listDividerAlertDialog: number;
+					public static listItemLayout: number;
+					public static listLayout: number;
+					public static listMenuViewStyle: number;
+					public static listPopupWindowStyle: number;
+					public static listPreferredItemHeight: number;
+					public static listPreferredItemHeightLarge: number;
+					public static listPreferredItemHeightSmall: number;
+					public static listPreferredItemPaddingEnd: number;
+					public static listPreferredItemPaddingLeft: number;
+					public static listPreferredItemPaddingRight: number;
+					public static listPreferredItemPaddingStart: number;
+					public static logo: number;
+					public static logoDescription: number;
+					public static maxButtonHeight: number;
+					public static measureWithLargestChild: number;
+					public static menu: number;
+					public static multiChoiceItemLayout: number;
+					public static navigationContentDescription: number;
+					public static navigationIcon: number;
+					public static navigationMode: number;
+					public static numericModifiers: number;
+					public static overlapAnchor: number;
+					public static paddingBottomNoButtons: number;
+					public static paddingEnd: number;
+					public static paddingStart: number;
+					public static paddingTopNoTitle: number;
+					public static panelBackground: number;
+					public static panelMenuListTheme: number;
+					public static panelMenuListWidth: number;
+					public static popupMenuStyle: number;
+					public static popupTheme: number;
+					public static popupWindowStyle: number;
+					public static preserveIconSpacing: number;
+					public static progressBarPadding: number;
+					public static progressBarStyle: number;
+					public static queryBackground: number;
+					public static queryHint: number;
+					public static radioButtonStyle: number;
+					public static ratingBarStyle: number;
+					public static ratingBarStyleIndicator: number;
+					public static ratingBarStyleSmall: number;
+					public static searchHintIcon: number;
+					public static searchIcon: number;
+					public static searchViewStyle: number;
+					public static seekBarStyle: number;
+					public static selectableItemBackground: number;
+					public static selectableItemBackgroundBorderless: number;
+					public static showAsAction: number;
+					public static showDividers: number;
+					public static showText: number;
+					public static showTitle: number;
+					public static singleChoiceItemLayout: number;
+					public static spinBars: number;
+					public static spinnerDropDownItemStyle: number;
+					public static spinnerStyle: number;
+					public static splitTrack: number;
+					public static srcCompat: number;
+					public static state_above_anchor: number;
+					public static statusBarBackground: number;
+					public static subMenuArrow: number;
+					public static submitBackground: number;
+					public static subtitle: number;
+					public static subtitleTextAppearance: number;
+					public static subtitleTextColor: number;
+					public static subtitleTextStyle: number;
+					public static suggestionRowLayout: number;
+					public static switchMinWidth: number;
+					public static switchPadding: number;
+					public static switchStyle: number;
+					public static switchTextAppearance: number;
+					public static textAllCaps: number;
+					public static textAppearanceLargePopupMenu: number;
+					public static textAppearanceListItem: number;
+					public static textAppearanceListItemSecondary: number;
+					public static textAppearanceListItemSmall: number;
+					public static textAppearancePopupMenuHeader: number;
+					public static textAppearanceSearchResultSubtitle: number;
+					public static textAppearanceSearchResultTitle: number;
+					public static textAppearanceSmallPopupMenu: number;
+					public static textColorAlertDialogListItem: number;
+					public static textColorSearchUrl: number;
+					public static textLocale: number;
+					public static theme: number;
+					public static thickness: number;
+					public static thumbTextPadding: number;
+					public static thumbTint: number;
+					public static thumbTintMode: number;
+					public static tickMark: number;
+					public static tickMarkTint: number;
+					public static tickMarkTintMode: number;
+					public static tint: number;
+					public static tintMode: number;
+					public static title: number;
+					public static titleMargin: number;
+					public static titleMarginBottom: number;
+					public static titleMarginEnd: number;
+					public static titleMarginStart: number;
+					public static titleMarginTop: number;
+					public static titleMargins: number;
+					public static titleTextAppearance: number;
+					public static titleTextColor: number;
+					public static titleTextStyle: number;
+					public static toolbarNavigationButtonStyle: number;
+					public static toolbarStyle: number;
+					public static tooltipForegroundColor: number;
+					public static tooltipFrameBackground: number;
+					public static tooltipText: number;
+					public static track: number;
+					public static trackTint: number;
+					public static trackTintMode: number;
+					public static ttcIndex: number;
+					public static viewInflaterClass: number;
+					public static voiceIcon: number;
+					public static windowActionBar: number;
+					public static windowActionBarOverlay: number;
+					public static windowActionModeOverlay: number;
+					public static windowFixedHeightMajor: number;
+					public static windowFixedHeightMinor: number;
+					public static windowFixedWidthMajor: number;
+					public static windowFixedWidthMinor: number;
+					public static windowMinWidthMajor: number;
+					public static windowMinWidthMinor: number;
+					public static windowNoTitle: number;
+				}
+				export class bool {
+					public static class: java.lang.Class<com.facebook.gamingservices.R.bool>;
+					public static abc_action_bar_embed_tabs: number;
+					public static abc_config_actionMenuItemAllCaps: number;
+				}
+				export class color {
+					public static class: java.lang.Class<com.facebook.gamingservices.R.color>;
+					public static abc_background_cache_hint_selector_material_dark: number;
+					public static abc_background_cache_hint_selector_material_light: number;
+					public static abc_btn_colored_borderless_text_material: number;
+					public static abc_btn_colored_text_material: number;
+					public static abc_color_highlight_material: number;
+					public static abc_hint_foreground_material_dark: number;
+					public static abc_hint_foreground_material_light: number;
+					public static abc_primary_text_disable_only_material_dark: number;
+					public static abc_primary_text_disable_only_material_light: number;
+					public static abc_primary_text_material_dark: number;
+					public static abc_primary_text_material_light: number;
+					public static abc_search_url_text: number;
+					public static abc_search_url_text_normal: number;
+					public static abc_search_url_text_pressed: number;
+					public static abc_search_url_text_selected: number;
+					public static abc_secondary_text_material_dark: number;
+					public static abc_secondary_text_material_light: number;
+					public static abc_tint_btn_checkable: number;
+					public static abc_tint_default: number;
+					public static abc_tint_edittext: number;
+					public static abc_tint_seek_thumb: number;
+					public static abc_tint_spinner: number;
+					public static abc_tint_switch_track: number;
+					public static accent_material_dark: number;
+					public static accent_material_light: number;
+					public static androidx_core_ripple_material_light: number;
+					public static androidx_core_secondary_text_default_material_light: number;
+					public static background_floating_material_dark: number;
+					public static background_floating_material_light: number;
+					public static background_material_dark: number;
+					public static background_material_light: number;
+					public static bright_foreground_disabled_material_dark: number;
+					public static bright_foreground_disabled_material_light: number;
+					public static bright_foreground_inverse_material_dark: number;
+					public static bright_foreground_inverse_material_light: number;
+					public static bright_foreground_material_dark: number;
+					public static bright_foreground_material_light: number;
+					public static browser_actions_bg_grey: number;
+					public static browser_actions_divider_color: number;
+					public static browser_actions_text_color: number;
+					public static browser_actions_title_color: number;
+					public static button_material_dark: number;
+					public static button_material_light: number;
+					public static cardview_dark_background: number;
+					public static cardview_light_background: number;
+					public static cardview_shadow_end_color: number;
+					public static cardview_shadow_start_color: number;
+					public static com_facebook_blue: number;
+					public static com_facebook_button_background_color: number;
+					public static com_facebook_button_background_color_disabled: number;
+					public static com_facebook_button_background_color_pressed: number;
+					public static com_facebook_button_send_background_color: number;
+					public static com_facebook_button_send_background_color_pressed: number;
+					public static com_facebook_button_text_color: number;
+					public static com_facebook_device_auth_text: number;
+					public static com_facebook_likeboxcountview_border_color: number;
+					public static com_facebook_likeboxcountview_text_color: number;
+					public static com_facebook_likeview_text_color: number;
+					public static com_facebook_messenger_blue: number;
+					public static com_facebook_primary_button_disabled_text_color: number;
+					public static com_facebook_primary_button_pressed_text_color: number;
+					public static com_facebook_primary_button_text_color: number;
+					public static com_facebook_send_button_text_color: number;
+					public static com_smart_login_code: number;
+					public static dim_foreground_disabled_material_dark: number;
+					public static dim_foreground_disabled_material_light: number;
+					public static dim_foreground_material_dark: number;
+					public static dim_foreground_material_light: number;
+					public static error_color_material_dark: number;
+					public static error_color_material_light: number;
+					public static foreground_material_dark: number;
+					public static foreground_material_light: number;
+					public static highlighted_text_material_dark: number;
+					public static highlighted_text_material_light: number;
+					public static material_blue_grey_800: number;
+					public static material_blue_grey_900: number;
+					public static material_blue_grey_950: number;
+					public static material_deep_teal_200: number;
+					public static material_deep_teal_500: number;
+					public static material_grey_100: number;
+					public static material_grey_300: number;
+					public static material_grey_50: number;
+					public static material_grey_600: number;
+					public static material_grey_800: number;
+					public static material_grey_850: number;
+					public static material_grey_900: number;
+					public static notification_action_color_filter: number;
+					public static notification_icon_bg_color: number;
+					public static notification_material_background_media_default_color: number;
+					public static primary_dark_material_dark: number;
+					public static primary_dark_material_light: number;
+					public static primary_material_dark: number;
+					public static primary_material_light: number;
+					public static primary_text_default_material_dark: number;
+					public static primary_text_default_material_light: number;
+					public static primary_text_disabled_material_dark: number;
+					public static primary_text_disabled_material_light: number;
+					public static ripple_material_dark: number;
+					public static ripple_material_light: number;
+					public static secondary_text_default_material_dark: number;
+					public static secondary_text_default_material_light: number;
+					public static secondary_text_disabled_material_dark: number;
+					public static secondary_text_disabled_material_light: number;
+					public static switch_thumb_disabled_material_dark: number;
+					public static switch_thumb_disabled_material_light: number;
+					public static switch_thumb_material_dark: number;
+					public static switch_thumb_material_light: number;
+					public static switch_thumb_normal_material_dark: number;
+					public static switch_thumb_normal_material_light: number;
+					public static tooltip_background_dark: number;
+					public static tooltip_background_light: number;
+				}
+				export class dimen {
+					public static class: java.lang.Class<com.facebook.gamingservices.R.dimen>;
+					public static abc_action_bar_content_inset_material: number;
+					public static abc_action_bar_content_inset_with_nav: number;
+					public static abc_action_bar_default_height_material: number;
+					public static abc_action_bar_default_padding_end_material: number;
+					public static abc_action_bar_default_padding_start_material: number;
+					public static abc_action_bar_elevation_material: number;
+					public static abc_action_bar_icon_vertical_padding_material: number;
+					public static abc_action_bar_overflow_padding_end_material: number;
+					public static abc_action_bar_overflow_padding_start_material: number;
+					public static abc_action_bar_stacked_max_height: number;
+					public static abc_action_bar_stacked_tab_max_width: number;
+					public static abc_action_bar_subtitle_bottom_margin_material: number;
+					public static abc_action_bar_subtitle_top_margin_material: number;
+					public static abc_action_button_min_height_material: number;
+					public static abc_action_button_min_width_material: number;
+					public static abc_action_button_min_width_overflow_material: number;
+					public static abc_alert_dialog_button_bar_height: number;
+					public static abc_alert_dialog_button_dimen: number;
+					public static abc_button_inset_horizontal_material: number;
+					public static abc_button_inset_vertical_material: number;
+					public static abc_button_padding_horizontal_material: number;
+					public static abc_button_padding_vertical_material: number;
+					public static abc_cascading_menus_min_smallest_width: number;
+					public static abc_config_prefDialogWidth: number;
+					public static abc_control_corner_material: number;
+					public static abc_control_inset_material: number;
+					public static abc_control_padding_material: number;
+					public static abc_dialog_corner_radius_material: number;
+					public static abc_dialog_fixed_height_major: number;
+					public static abc_dialog_fixed_height_minor: number;
+					public static abc_dialog_fixed_width_major: number;
+					public static abc_dialog_fixed_width_minor: number;
+					public static abc_dialog_list_padding_bottom_no_buttons: number;
+					public static abc_dialog_list_padding_top_no_title: number;
+					public static abc_dialog_min_width_major: number;
+					public static abc_dialog_min_width_minor: number;
+					public static abc_dialog_padding_material: number;
+					public static abc_dialog_padding_top_material: number;
+					public static abc_dialog_title_divider_material: number;
+					public static abc_disabled_alpha_material_dark: number;
+					public static abc_disabled_alpha_material_light: number;
+					public static abc_dropdownitem_icon_width: number;
+					public static abc_dropdownitem_text_padding_left: number;
+					public static abc_dropdownitem_text_padding_right: number;
+					public static abc_edit_text_inset_bottom_material: number;
+					public static abc_edit_text_inset_horizontal_material: number;
+					public static abc_edit_text_inset_top_material: number;
+					public static abc_floating_window_z: number;
+					public static abc_list_item_height_large_material: number;
+					public static abc_list_item_height_material: number;
+					public static abc_list_item_height_small_material: number;
+					public static abc_list_item_padding_horizontal_material: number;
+					public static abc_panel_menu_list_width: number;
+					public static abc_progress_bar_height_material: number;
+					public static abc_search_view_preferred_height: number;
+					public static abc_search_view_preferred_width: number;
+					public static abc_seekbar_track_background_height_material: number;
+					public static abc_seekbar_track_progress_height_material: number;
+					public static abc_select_dialog_padding_start_material: number;
+					public static abc_switch_padding: number;
+					public static abc_text_size_body_1_material: number;
+					public static abc_text_size_body_2_material: number;
+					public static abc_text_size_button_material: number;
+					public static abc_text_size_caption_material: number;
+					public static abc_text_size_display_1_material: number;
+					public static abc_text_size_display_2_material: number;
+					public static abc_text_size_display_3_material: number;
+					public static abc_text_size_display_4_material: number;
+					public static abc_text_size_headline_material: number;
+					public static abc_text_size_large_material: number;
+					public static abc_text_size_medium_material: number;
+					public static abc_text_size_menu_header_material: number;
+					public static abc_text_size_menu_material: number;
+					public static abc_text_size_small_material: number;
+					public static abc_text_size_subhead_material: number;
+					public static abc_text_size_subtitle_material_toolbar: number;
+					public static abc_text_size_title_material: number;
+					public static abc_text_size_title_material_toolbar: number;
+					public static browser_actions_context_menu_max_width: number;
+					public static browser_actions_context_menu_min_padding: number;
+					public static cardview_compat_inset_shadow: number;
+					public static cardview_default_elevation: number;
+					public static cardview_default_radius: number;
+					public static com_facebook_auth_dialog_corner_radius: number;
+					public static com_facebook_auth_dialog_corner_radius_oversized: number;
+					public static com_facebook_button_corner_radius: number;
+					public static com_facebook_likeboxcountview_border_radius: number;
+					public static com_facebook_likeboxcountview_border_width: number;
+					public static com_facebook_likeboxcountview_caret_height: number;
+					public static com_facebook_likeboxcountview_caret_width: number;
+					public static com_facebook_likeboxcountview_text_padding: number;
+					public static com_facebook_likeboxcountview_text_size: number;
+					public static com_facebook_likeview_edge_padding: number;
+					public static com_facebook_likeview_internal_padding: number;
+					public static com_facebook_likeview_text_size: number;
+					public static compat_button_inset_horizontal_material: number;
+					public static compat_button_inset_vertical_material: number;
+					public static compat_button_padding_horizontal_material: number;
+					public static compat_button_padding_vertical_material: number;
+					public static compat_control_corner_material: number;
+					public static compat_notification_large_icon_max_height: number;
+					public static compat_notification_large_icon_max_width: number;
+					public static disabled_alpha_material_dark: number;
+					public static disabled_alpha_material_light: number;
+					public static highlight_alpha_material_colored: number;
+					public static highlight_alpha_material_dark: number;
+					public static highlight_alpha_material_light: number;
+					public static hint_alpha_material_dark: number;
+					public static hint_alpha_material_light: number;
+					public static hint_pressed_alpha_material_dark: number;
+					public static hint_pressed_alpha_material_light: number;
+					public static notification_action_icon_size: number;
+					public static notification_action_text_size: number;
+					public static notification_big_circle_margin: number;
+					public static notification_content_margin_start: number;
+					public static notification_large_icon_height: number;
+					public static notification_large_icon_width: number;
+					public static notification_main_column_padding_top: number;
+					public static notification_media_narrow_margin: number;
+					public static notification_right_icon_size: number;
+					public static notification_right_side_padding_top: number;
+					public static notification_small_icon_background_padding: number;
+					public static notification_small_icon_size_as_large: number;
+					public static notification_subtext_size: number;
+					public static notification_top_pad: number;
+					public static notification_top_pad_large_text: number;
+					public static subtitle_corner_radius: number;
+					public static subtitle_outline_width: number;
+					public static subtitle_shadow_offset: number;
+					public static subtitle_shadow_radius: number;
+					public static tooltip_corner_radius: number;
+					public static tooltip_horizontal_padding: number;
+					public static tooltip_margin: number;
+					public static tooltip_precise_anchor_extra_offset: number;
+					public static tooltip_precise_anchor_threshold: number;
+					public static tooltip_vertical_padding: number;
+					public static tooltip_y_offset_non_touch: number;
+					public static tooltip_y_offset_touch: number;
+				}
+				export class drawable {
+					public static class: java.lang.Class<com.facebook.gamingservices.R.drawable>;
+					public static abc_ab_share_pack_mtrl_alpha: number;
+					public static abc_action_bar_item_background_material: number;
+					public static abc_btn_borderless_material: number;
+					public static abc_btn_check_material: number;
+					public static abc_btn_check_material_anim: number;
+					public static abc_btn_check_to_on_mtrl_000: number;
+					public static abc_btn_check_to_on_mtrl_015: number;
+					public static abc_btn_colored_material: number;
+					public static abc_btn_default_mtrl_shape: number;
+					public static abc_btn_radio_material: number;
+					public static abc_btn_radio_material_anim: number;
+					public static abc_btn_radio_to_on_mtrl_000: number;
+					public static abc_btn_radio_to_on_mtrl_015: number;
+					public static abc_btn_switch_to_on_mtrl_00001: number;
+					public static abc_btn_switch_to_on_mtrl_00012: number;
+					public static abc_cab_background_internal_bg: number;
+					public static abc_cab_background_top_material: number;
+					public static abc_cab_background_top_mtrl_alpha: number;
+					public static abc_control_background_material: number;
+					public static abc_dialog_material_background: number;
+					public static abc_edit_text_material: number;
+					public static abc_ic_ab_back_material: number;
+					public static abc_ic_arrow_drop_right_black_24dp: number;
+					public static abc_ic_clear_material: number;
+					public static abc_ic_commit_search_api_mtrl_alpha: number;
+					public static abc_ic_go_search_api_material: number;
+					public static abc_ic_menu_copy_mtrl_am_alpha: number;
+					public static abc_ic_menu_cut_mtrl_alpha: number;
+					public static abc_ic_menu_overflow_material: number;
+					public static abc_ic_menu_paste_mtrl_am_alpha: number;
+					public static abc_ic_menu_selectall_mtrl_alpha: number;
+					public static abc_ic_menu_share_mtrl_alpha: number;
+					public static abc_ic_search_api_material: number;
+					public static abc_ic_voice_search_api_material: number;
+					public static abc_item_background_holo_dark: number;
+					public static abc_item_background_holo_light: number;
+					public static abc_list_divider_material: number;
+					public static abc_list_divider_mtrl_alpha: number;
+					public static abc_list_focused_holo: number;
+					public static abc_list_longpressed_holo: number;
+					public static abc_list_pressed_holo_dark: number;
+					public static abc_list_pressed_holo_light: number;
+					public static abc_list_selector_background_transition_holo_dark: number;
+					public static abc_list_selector_background_transition_holo_light: number;
+					public static abc_list_selector_disabled_holo_dark: number;
+					public static abc_list_selector_disabled_holo_light: number;
+					public static abc_list_selector_holo_dark: number;
+					public static abc_list_selector_holo_light: number;
+					public static abc_menu_hardkey_panel_mtrl_mult: number;
+					public static abc_popup_background_mtrl_mult: number;
+					public static abc_ratingbar_indicator_material: number;
+					public static abc_ratingbar_material: number;
+					public static abc_ratingbar_small_material: number;
+					public static abc_scrubber_control_off_mtrl_alpha: number;
+					public static abc_scrubber_control_to_pressed_mtrl_000: number;
+					public static abc_scrubber_control_to_pressed_mtrl_005: number;
+					public static abc_scrubber_primary_mtrl_alpha: number;
+					public static abc_scrubber_track_mtrl_alpha: number;
+					public static abc_seekbar_thumb_material: number;
+					public static abc_seekbar_tick_mark_material: number;
+					public static abc_seekbar_track_material: number;
+					public static abc_spinner_mtrl_am_alpha: number;
+					public static abc_spinner_textfield_background_material: number;
+					public static abc_switch_thumb_material: number;
+					public static abc_switch_track_mtrl_alpha: number;
+					public static abc_tab_indicator_material: number;
+					public static abc_tab_indicator_mtrl_alpha: number;
+					public static abc_text_cursor_material: number;
+					public static abc_textfield_activated_mtrl_alpha: number;
+					public static abc_textfield_default_mtrl_alpha: number;
+					public static abc_textfield_search_activated_mtrl_alpha: number;
+					public static abc_textfield_search_default_mtrl_alpha: number;
+					public static abc_textfield_search_material: number;
+					public static abc_vector_test: number;
+					public static btn_checkbox_checked_mtrl: number;
+					public static btn_checkbox_checked_to_unchecked_mtrl_animation: number;
+					public static btn_checkbox_unchecked_mtrl: number;
+					public static btn_checkbox_unchecked_to_checked_mtrl_animation: number;
+					public static btn_radio_off_mtrl: number;
+					public static btn_radio_off_to_on_mtrl_animation: number;
+					public static btn_radio_on_mtrl: number;
+					public static btn_radio_on_to_off_mtrl_animation: number;
+					public static com_facebook_auth_dialog_background: number;
+					public static com_facebook_auth_dialog_cancel_background: number;
+					public static com_facebook_auth_dialog_header_background: number;
+					public static com_facebook_button_background: number;
+					public static com_facebook_button_icon: number;
+					public static com_facebook_button_like_background: number;
+					public static com_facebook_button_like_icon_selected: number;
+					public static com_facebook_button_send_background: number;
+					public static com_facebook_button_send_icon_blue: number;
+					public static com_facebook_button_send_icon_white: number;
+					public static com_facebook_close: number;
+					public static com_facebook_favicon_blue: number;
+					public static com_facebook_send_button_icon: number;
+					public static notification_action_background: number;
+					public static notification_bg: number;
+					public static notification_bg_low: number;
+					public static notification_bg_low_normal: number;
+					public static notification_bg_low_pressed: number;
+					public static notification_bg_normal: number;
+					public static notification_bg_normal_pressed: number;
+					public static notification_icon_background: number;
+					public static notification_template_icon_bg: number;
+					public static notification_template_icon_low_bg: number;
+					public static notification_tile_bg: number;
+					public static notify_panel_notification_icon_bg: number;
+					public static tooltip_frame_dark: number;
+					public static tooltip_frame_light: number;
+				}
+				export class id {
+					public static class: java.lang.Class<com.facebook.gamingservices.R.id>;
+					public static accessibility_action_clickable_span: number;
+					public static accessibility_custom_action_0: number;
+					public static accessibility_custom_action_1: number;
+					public static accessibility_custom_action_10: number;
+					public static accessibility_custom_action_11: number;
+					public static accessibility_custom_action_12: number;
+					public static accessibility_custom_action_13: number;
+					public static accessibility_custom_action_14: number;
+					public static accessibility_custom_action_15: number;
+					public static accessibility_custom_action_16: number;
+					public static accessibility_custom_action_17: number;
+					public static accessibility_custom_action_18: number;
+					public static accessibility_custom_action_19: number;
+					public static accessibility_custom_action_2: number;
+					public static accessibility_custom_action_20: number;
+					public static accessibility_custom_action_21: number;
+					public static accessibility_custom_action_22: number;
+					public static accessibility_custom_action_23: number;
+					public static accessibility_custom_action_24: number;
+					public static accessibility_custom_action_25: number;
+					public static accessibility_custom_action_26: number;
+					public static accessibility_custom_action_27: number;
+					public static accessibility_custom_action_28: number;
+					public static accessibility_custom_action_29: number;
+					public static accessibility_custom_action_3: number;
+					public static accessibility_custom_action_30: number;
+					public static accessibility_custom_action_31: number;
+					public static accessibility_custom_action_4: number;
+					public static accessibility_custom_action_5: number;
+					public static accessibility_custom_action_6: number;
+					public static accessibility_custom_action_7: number;
+					public static accessibility_custom_action_8: number;
+					public static accessibility_custom_action_9: number;
+					public static action0: number;
+					public static action_bar: number;
+					public static action_bar_activity_content: number;
+					public static action_bar_container: number;
+					public static action_bar_root: number;
+					public static action_bar_spinner: number;
+					public static action_bar_subtitle: number;
+					public static action_bar_title: number;
+					public static action_container: number;
+					public static action_context_bar: number;
+					public static action_divider: number;
+					public static action_image: number;
+					public static action_menu_divider: number;
+					public static action_menu_presenter: number;
+					public static action_mode_bar: number;
+					public static action_mode_bar_stub: number;
+					public static action_mode_close_button: number;
+					public static action_text: number;
+					public static actions: number;
+					public static activity_chooser_view_content: number;
+					public static add: number;
+					public static alertTitle: number;
+					public static async: number;
+					public static blocking: number;
+					public static bottom: number;
+					public static box_count: number;
+					public static browser_actions_header_text: number;
+					public static browser_actions_menu_item_icon: number;
+					public static browser_actions_menu_item_text: number;
+					public static browser_actions_menu_items: number;
+					public static browser_actions_menu_view: number;
+					public static button: number;
+					public static buttonPanel: number;
+					public static cancel_action: number;
+					public static cancel_button: number;
+					public static center: number;
+					public static checkbox: number;
+					public static checked: number;
+					public static chronometer: number;
+					public static com_facebook_device_auth_instructions: number;
+					public static com_facebook_fragment_container: number;
+					public static com_facebook_login_fragment_progress_bar: number;
+					public static com_facebook_smart_instructions_0: number;
+					public static com_facebook_smart_instructions_or: number;
+					public static confirmation_code: number;
+					public static content: number;
+					public static contentPanel: number;
+					public static custom: number;
+					public static customPanel: number;
+					public static decor_content_parent: number;
+					public static default_activity_button: number;
+					public static dialog_button: number;
+					public static edit_query: number;
+					public static end: number;
+					public static end_padder: number;
+					public static expand_activities_button: number;
+					public static expanded_menu: number;
+					public static forever: number;
+					public static fragment_container_view_tag: number;
+					public static group_divider: number;
+					public static home: number;
+					public static icon: number;
+					public static icon_group: number;
+					public static image: number;
+					public static info: number;
+					public static inline: number;
+					public static italic: number;
+					public static left: number;
+					public static line1: number;
+					public static line3: number;
+					public static listMode: number;
+					public static list_item: number;
+					public static media_actions: number;
+					public static message: number;
+					public static multiply: number;
+					public static none: number;
+					public static normal: number;
+					public static notification_background: number;
+					public static notification_main_column: number;
+					public static notification_main_column_container: number;
+					public static off: number;
+					public static on: number;
+					public static open_graph: number;
+					public static page: number;
+					public static parentPanel: number;
+					public static progress_bar: number;
+					public static progress_circular: number;
+					public static progress_horizontal: number;
+					public static radio: number;
+					public static right: number;
+					public static right_icon: number;
+					public static right_side: number;
+					public static screen: number;
+					public static scrollIndicatorDown: number;
+					public static scrollIndicatorUp: number;
+					public static scrollView: number;
+					public static search_badge: number;
+					public static search_bar: number;
+					public static search_button: number;
+					public static search_close_btn: number;
+					public static search_edit_frame: number;
+					public static search_go_btn: number;
+					public static search_mag_icon: number;
+					public static search_plate: number;
+					public static search_src_text: number;
+					public static search_voice_btn: number;
+					public static select_dialog_listview: number;
+					public static shortcut: number;
+					public static spacer: number;
+					public static special_effects_controller_view_tag: number;
+					public static split_action_bar: number;
+					public static src_atop: number;
+					public static src_in: number;
+					public static src_over: number;
+					public static standard: number;
+					public static start: number;
+					public static status_bar_latest_event_content: number;
+					public static submenuarrow: number;
+					public static submit_area: number;
+					public static tabMode: number;
+					public static tag_accessibility_actions: number;
+					public static tag_accessibility_clickable_spans: number;
+					public static tag_accessibility_heading: number;
+					public static tag_accessibility_pane_title: number;
+					public static tag_screen_reader_focusable: number;
+					public static tag_transition_group: number;
+					public static tag_unhandled_key_event_manager: number;
+					public static tag_unhandled_key_listeners: number;
+					public static text: number;
+					public static text2: number;
+					public static textSpacerNoButtons: number;
+					public static textSpacerNoTitle: number;
+					public static time: number;
+					public static title: number;
+					public static titleDividerNoCustom: number;
+					public static title_template: number;
+					public static top: number;
+					public static topPanel: number;
+					public static unchecked: number;
+					public static uniform: number;
+					public static unknown: number;
+					public static up: number;
+					public static view_tree_lifecycle_owner: number;
+					public static view_tree_saved_state_registry_owner: number;
+					public static view_tree_view_model_store_owner: number;
+					public static visible_removing_fragment_view_tag: number;
+					public static wrap_content: number;
+				}
+				export class integer {
+					public static class: java.lang.Class<com.facebook.gamingservices.R.integer>;
+					public static abc_config_activityDefaultDur: number;
+					public static abc_config_activityShortDur: number;
+					public static cancel_button_image_alpha: number;
+					public static config_tooltipAnimTime: number;
+					public static status_bar_notification_info_maxnum: number;
+				}
+				export class interpolator {
+					public static class: java.lang.Class<com.facebook.gamingservices.R.interpolator>;
+					public static btn_checkbox_checked_mtrl_animation_interpolator_0: number;
+					public static btn_checkbox_checked_mtrl_animation_interpolator_1: number;
+					public static btn_checkbox_unchecked_mtrl_animation_interpolator_0: number;
+					public static btn_checkbox_unchecked_mtrl_animation_interpolator_1: number;
+					public static btn_radio_to_off_mtrl_animation_interpolator_0: number;
+					public static btn_radio_to_on_mtrl_animation_interpolator_0: number;
+					public static fast_out_slow_in: number;
+				}
+				export class layout {
+					public static class: java.lang.Class<com.facebook.gamingservices.R.layout>;
+					public static abc_action_bar_title_item: number;
+					public static abc_action_bar_up_container: number;
+					public static abc_action_menu_item_layout: number;
+					public static abc_action_menu_layout: number;
+					public static abc_action_mode_bar: number;
+					public static abc_action_mode_close_item_material: number;
+					public static abc_activity_chooser_view: number;
+					public static abc_activity_chooser_view_list_item: number;
+					public static abc_alert_dialog_button_bar_material: number;
+					public static abc_alert_dialog_material: number;
+					public static abc_alert_dialog_title_material: number;
+					public static abc_cascading_menu_item_layout: number;
+					public static abc_dialog_title_material: number;
+					public static abc_expanded_menu_layout: number;
+					public static abc_list_menu_item_checkbox: number;
+					public static abc_list_menu_item_icon: number;
+					public static abc_list_menu_item_layout: number;
+					public static abc_list_menu_item_radio: number;
+					public static abc_popup_menu_header_item_layout: number;
+					public static abc_popup_menu_item_layout: number;
+					public static abc_screen_content_include: number;
+					public static abc_screen_simple: number;
+					public static abc_screen_simple_overlay_action_mode: number;
+					public static abc_screen_toolbar: number;
+					public static abc_search_dropdown_item_icons_2line: number;
+					public static abc_search_view: number;
+					public static abc_select_dialog_material: number;
+					public static abc_tooltip: number;
+					public static browser_actions_context_menu_page: number;
+					public static browser_actions_context_menu_row: number;
+					public static com_facebook_activity_layout: number;
+					public static com_facebook_device_auth_dialog_fragment: number;
+					public static com_facebook_login_fragment: number;
+					public static com_facebook_smart_device_dialog_fragment: number;
+					public static custom_dialog: number;
+					public static notification_action: number;
+					public static notification_action_tombstone: number;
+					public static notification_media_action: number;
+					public static notification_media_cancel_action: number;
+					public static notification_template_big_media: number;
+					public static notification_template_big_media_custom: number;
+					public static notification_template_big_media_narrow: number;
+					public static notification_template_big_media_narrow_custom: number;
+					public static notification_template_custom_big: number;
+					public static notification_template_icon_group: number;
+					public static notification_template_lines_media: number;
+					public static notification_template_media: number;
+					public static notification_template_media_custom: number;
+					public static notification_template_part_chronometer: number;
+					public static notification_template_part_time: number;
+					public static select_dialog_item_material: number;
+					public static select_dialog_multichoice_material: number;
+					public static select_dialog_singlechoice_material: number;
+					public static support_simple_spinner_dropdown_item: number;
+				}
+				export class style {
+					public static class: java.lang.Class<com.facebook.gamingservices.R.style>;
+					public static AlertDialog_AppCompat: number;
+					public static AlertDialog_AppCompat_Light: number;
+					public static Animation_AppCompat_Dialog: number;
+					public static Animation_AppCompat_DropDownUp: number;
+					public static Animation_AppCompat_Tooltip: number;
+					public static Base_AlertDialog_AppCompat: number;
+					public static Base_AlertDialog_AppCompat_Light: number;
+					public static Base_Animation_AppCompat_Dialog: number;
+					public static Base_Animation_AppCompat_DropDownUp: number;
+					public static Base_Animation_AppCompat_Tooltip: number;
+					public static Base_CardView: number;
+					public static Base_DialogWindowTitleBackground_AppCompat: number;
+					public static Base_DialogWindowTitle_AppCompat: number;
+					public static Base_TextAppearance_AppCompat: number;
+					public static Base_TextAppearance_AppCompat_Body1: number;
+					public static Base_TextAppearance_AppCompat_Body2: number;
+					public static Base_TextAppearance_AppCompat_Button: number;
+					public static Base_TextAppearance_AppCompat_Caption: number;
+					public static Base_TextAppearance_AppCompat_Display1: number;
+					public static Base_TextAppearance_AppCompat_Display2: number;
+					public static Base_TextAppearance_AppCompat_Display3: number;
+					public static Base_TextAppearance_AppCompat_Display4: number;
+					public static Base_TextAppearance_AppCompat_Headline: number;
+					public static Base_TextAppearance_AppCompat_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Large: number;
+					public static Base_TextAppearance_AppCompat_Large_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large: number;
+					public static Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small: number;
+					public static Base_TextAppearance_AppCompat_Medium: number;
+					public static Base_TextAppearance_AppCompat_Medium_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Menu: number;
+					public static Base_TextAppearance_AppCompat_SearchResult: number;
+					public static Base_TextAppearance_AppCompat_SearchResult_Subtitle: number;
+					public static Base_TextAppearance_AppCompat_SearchResult_Title: number;
+					public static Base_TextAppearance_AppCompat_Small: number;
+					public static Base_TextAppearance_AppCompat_Small_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Subhead: number;
+					public static Base_TextAppearance_AppCompat_Subhead_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Title: number;
+					public static Base_TextAppearance_AppCompat_Title_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Tooltip: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Menu: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Title: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionMode_Title: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button_Colored: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Widget_DropDownItem: number;
+					public static Base_TextAppearance_AppCompat_Widget_PopupMenu_Header: number;
+					public static Base_TextAppearance_AppCompat_Widget_PopupMenu_Large: number;
+					public static Base_TextAppearance_AppCompat_Widget_PopupMenu_Small: number;
+					public static Base_TextAppearance_AppCompat_Widget_Switch: number;
+					public static Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem: number;
+					public static Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item: number;
+					public static Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle: number;
+					public static Base_TextAppearance_Widget_AppCompat_Toolbar_Title: number;
+					public static Base_ThemeOverlay_AppCompat: number;
+					public static Base_ThemeOverlay_AppCompat_ActionBar: number;
+					public static Base_ThemeOverlay_AppCompat_Dark: number;
+					public static Base_ThemeOverlay_AppCompat_Dark_ActionBar: number;
+					public static Base_ThemeOverlay_AppCompat_Dialog: number;
+					public static Base_ThemeOverlay_AppCompat_Dialog_Alert: number;
+					public static Base_ThemeOverlay_AppCompat_Light: number;
+					public static Base_Theme_AppCompat: number;
+					public static Base_Theme_AppCompat_CompactMenu: number;
+					public static Base_Theme_AppCompat_Dialog: number;
+					public static Base_Theme_AppCompat_DialogWhenLarge: number;
+					public static Base_Theme_AppCompat_Dialog_Alert: number;
+					public static Base_Theme_AppCompat_Dialog_FixedSize: number;
+					public static Base_Theme_AppCompat_Dialog_MinWidth: number;
+					public static Base_Theme_AppCompat_Light: number;
+					public static Base_Theme_AppCompat_Light_DarkActionBar: number;
+					public static Base_Theme_AppCompat_Light_Dialog: number;
+					public static Base_Theme_AppCompat_Light_DialogWhenLarge: number;
+					public static Base_Theme_AppCompat_Light_Dialog_Alert: number;
+					public static Base_Theme_AppCompat_Light_Dialog_FixedSize: number;
+					public static Base_Theme_AppCompat_Light_Dialog_MinWidth: number;
+					public static Base_V21_ThemeOverlay_AppCompat_Dialog: number;
+					public static Base_V21_Theme_AppCompat: number;
+					public static Base_V21_Theme_AppCompat_Dialog: number;
+					public static Base_V21_Theme_AppCompat_Light: number;
+					public static Base_V21_Theme_AppCompat_Light_Dialog: number;
+					public static Base_V22_Theme_AppCompat: number;
+					public static Base_V22_Theme_AppCompat_Light: number;
+					public static Base_V23_Theme_AppCompat: number;
+					public static Base_V23_Theme_AppCompat_Light: number;
+					public static Base_V26_Theme_AppCompat: number;
+					public static Base_V26_Theme_AppCompat_Light: number;
+					public static Base_V26_Widget_AppCompat_Toolbar: number;
+					public static Base_V28_Theme_AppCompat: number;
+					public static Base_V28_Theme_AppCompat_Light: number;
+					public static Base_V7_ThemeOverlay_AppCompat_Dialog: number;
+					public static Base_V7_Theme_AppCompat: number;
+					public static Base_V7_Theme_AppCompat_Dialog: number;
+					public static Base_V7_Theme_AppCompat_Light: number;
+					public static Base_V7_Theme_AppCompat_Light_Dialog: number;
+					public static Base_V7_Widget_AppCompat_AutoCompleteTextView: number;
+					public static Base_V7_Widget_AppCompat_EditText: number;
+					public static Base_V7_Widget_AppCompat_Toolbar: number;
+					public static Base_Widget_AppCompat_ActionBar: number;
+					public static Base_Widget_AppCompat_ActionBar_Solid: number;
+					public static Base_Widget_AppCompat_ActionBar_TabBar: number;
+					public static Base_Widget_AppCompat_ActionBar_TabText: number;
+					public static Base_Widget_AppCompat_ActionBar_TabView: number;
+					public static Base_Widget_AppCompat_ActionButton: number;
+					public static Base_Widget_AppCompat_ActionButton_CloseMode: number;
+					public static Base_Widget_AppCompat_ActionButton_Overflow: number;
+					public static Base_Widget_AppCompat_ActionMode: number;
+					public static Base_Widget_AppCompat_ActivityChooserView: number;
+					public static Base_Widget_AppCompat_AutoCompleteTextView: number;
+					public static Base_Widget_AppCompat_Button: number;
+					public static Base_Widget_AppCompat_ButtonBar: number;
+					public static Base_Widget_AppCompat_ButtonBar_AlertDialog: number;
+					public static Base_Widget_AppCompat_Button_Borderless: number;
+					public static Base_Widget_AppCompat_Button_Borderless_Colored: number;
+					public static Base_Widget_AppCompat_Button_ButtonBar_AlertDialog: number;
+					public static Base_Widget_AppCompat_Button_Colored: number;
+					public static Base_Widget_AppCompat_Button_Small: number;
+					public static Base_Widget_AppCompat_CompoundButton_CheckBox: number;
+					public static Base_Widget_AppCompat_CompoundButton_RadioButton: number;
+					public static Base_Widget_AppCompat_CompoundButton_Switch: number;
+					public static Base_Widget_AppCompat_DrawerArrowToggle: number;
+					public static Base_Widget_AppCompat_DrawerArrowToggle_Common: number;
+					public static Base_Widget_AppCompat_DropDownItem_Spinner: number;
+					public static Base_Widget_AppCompat_EditText: number;
+					public static Base_Widget_AppCompat_ImageButton: number;
+					public static Base_Widget_AppCompat_Light_ActionBar: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_Solid: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabBar: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabText: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabView: number;
+					public static Base_Widget_AppCompat_Light_PopupMenu: number;
+					public static Base_Widget_AppCompat_Light_PopupMenu_Overflow: number;
+					public static Base_Widget_AppCompat_ListMenuView: number;
+					public static Base_Widget_AppCompat_ListPopupWindow: number;
+					public static Base_Widget_AppCompat_ListView: number;
+					public static Base_Widget_AppCompat_ListView_DropDown: number;
+					public static Base_Widget_AppCompat_ListView_Menu: number;
+					public static Base_Widget_AppCompat_PopupMenu: number;
+					public static Base_Widget_AppCompat_PopupMenu_Overflow: number;
+					public static Base_Widget_AppCompat_PopupWindow: number;
+					public static Base_Widget_AppCompat_ProgressBar: number;
+					public static Base_Widget_AppCompat_ProgressBar_Horizontal: number;
+					public static Base_Widget_AppCompat_RatingBar: number;
+					public static Base_Widget_AppCompat_RatingBar_Indicator: number;
+					public static Base_Widget_AppCompat_RatingBar_Small: number;
+					public static Base_Widget_AppCompat_SearchView: number;
+					public static Base_Widget_AppCompat_SearchView_ActionBar: number;
+					public static Base_Widget_AppCompat_SeekBar: number;
+					public static Base_Widget_AppCompat_SeekBar_Discrete: number;
+					public static Base_Widget_AppCompat_Spinner: number;
+					public static Base_Widget_AppCompat_Spinner_Underlined: number;
+					public static Base_Widget_AppCompat_TextView: number;
+					public static Base_Widget_AppCompat_TextView_SpinnerItem: number;
+					public static Base_Widget_AppCompat_Toolbar: number;
+					public static Base_Widget_AppCompat_Toolbar_Button_Navigation: number;
+					public static CardView: number;
+					public static CardView_Dark: number;
+					public static CardView_Light: number;
+					public static Platform_AppCompat: number;
+					public static Platform_AppCompat_Light: number;
+					public static Platform_ThemeOverlay_AppCompat: number;
+					public static Platform_ThemeOverlay_AppCompat_Dark: number;
+					public static Platform_ThemeOverlay_AppCompat_Light: number;
+					public static Platform_V21_AppCompat: number;
+					public static Platform_V21_AppCompat_Light: number;
+					public static Platform_V25_AppCompat: number;
+					public static Platform_V25_AppCompat_Light: number;
+					public static Platform_Widget_AppCompat_Spinner: number;
+					public static RtlOverlay_DialogWindowTitle_AppCompat: number;
+					public static RtlOverlay_Widget_AppCompat_ActionBar_TitleItem: number;
+					public static RtlOverlay_Widget_AppCompat_DialogTitle_Icon: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_Text: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_Title: number;
+					public static RtlOverlay_Widget_AppCompat_SearchView_MagIcon: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Query: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Text: number;
+					public static RtlUnderlay_Widget_AppCompat_ActionButton: number;
+					public static RtlUnderlay_Widget_AppCompat_ActionButton_Overflow: number;
+					public static TextAppearance_AppCompat: number;
+					public static TextAppearance_AppCompat_Body1: number;
+					public static TextAppearance_AppCompat_Body2: number;
+					public static TextAppearance_AppCompat_Button: number;
+					public static TextAppearance_AppCompat_Caption: number;
+					public static TextAppearance_AppCompat_Display1: number;
+					public static TextAppearance_AppCompat_Display2: number;
+					public static TextAppearance_AppCompat_Display3: number;
+					public static TextAppearance_AppCompat_Display4: number;
+					public static TextAppearance_AppCompat_Headline: number;
+					public static TextAppearance_AppCompat_Inverse: number;
+					public static TextAppearance_AppCompat_Large: number;
+					public static TextAppearance_AppCompat_Large_Inverse: number;
+					public static TextAppearance_AppCompat_Light_SearchResult_Subtitle: number;
+					public static TextAppearance_AppCompat_Light_SearchResult_Title: number;
+					public static TextAppearance_AppCompat_Light_Widget_PopupMenu_Large: number;
+					public static TextAppearance_AppCompat_Light_Widget_PopupMenu_Small: number;
+					public static TextAppearance_AppCompat_Medium: number;
+					public static TextAppearance_AppCompat_Medium_Inverse: number;
+					public static TextAppearance_AppCompat_Menu: number;
+					public static TextAppearance_AppCompat_SearchResult_Subtitle: number;
+					public static TextAppearance_AppCompat_SearchResult_Title: number;
+					public static TextAppearance_AppCompat_Small: number;
+					public static TextAppearance_AppCompat_Small_Inverse: number;
+					public static TextAppearance_AppCompat_Subhead: number;
+					public static TextAppearance_AppCompat_Subhead_Inverse: number;
+					public static TextAppearance_AppCompat_Title: number;
+					public static TextAppearance_AppCompat_Title_Inverse: number;
+					public static TextAppearance_AppCompat_Tooltip: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Menu: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Subtitle: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Title: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Subtitle: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Title: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_Button: number;
+					public static TextAppearance_AppCompat_Widget_Button_Borderless_Colored: number;
+					public static TextAppearance_AppCompat_Widget_Button_Colored: number;
+					public static TextAppearance_AppCompat_Widget_Button_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_DropDownItem: number;
+					public static TextAppearance_AppCompat_Widget_PopupMenu_Header: number;
+					public static TextAppearance_AppCompat_Widget_PopupMenu_Large: number;
+					public static TextAppearance_AppCompat_Widget_PopupMenu_Small: number;
+					public static TextAppearance_AppCompat_Widget_Switch: number;
+					public static TextAppearance_AppCompat_Widget_TextView_SpinnerItem: number;
+					public static TextAppearance_Compat_Notification: number;
+					public static TextAppearance_Compat_Notification_Info: number;
+					public static TextAppearance_Compat_Notification_Info_Media: number;
+					public static TextAppearance_Compat_Notification_Line2: number;
+					public static TextAppearance_Compat_Notification_Line2_Media: number;
+					public static TextAppearance_Compat_Notification_Media: number;
+					public static TextAppearance_Compat_Notification_Time: number;
+					public static TextAppearance_Compat_Notification_Time_Media: number;
+					public static TextAppearance_Compat_Notification_Title: number;
+					public static TextAppearance_Compat_Notification_Title_Media: number;
+					public static TextAppearance_Widget_AppCompat_ExpandedMenu_Item: number;
+					public static TextAppearance_Widget_AppCompat_Toolbar_Subtitle: number;
+					public static TextAppearance_Widget_AppCompat_Toolbar_Title: number;
+					public static ThemeOverlay_AppCompat: number;
+					public static ThemeOverlay_AppCompat_ActionBar: number;
+					public static ThemeOverlay_AppCompat_Dark: number;
+					public static ThemeOverlay_AppCompat_Dark_ActionBar: number;
+					public static ThemeOverlay_AppCompat_DayNight: number;
+					public static ThemeOverlay_AppCompat_DayNight_ActionBar: number;
+					public static ThemeOverlay_AppCompat_Dialog: number;
+					public static ThemeOverlay_AppCompat_Dialog_Alert: number;
+					public static ThemeOverlay_AppCompat_Light: number;
+					public static Theme_AppCompat: number;
+					public static Theme_AppCompat_CompactMenu: number;
+					public static Theme_AppCompat_DayNight: number;
+					public static Theme_AppCompat_DayNight_DarkActionBar: number;
+					public static Theme_AppCompat_DayNight_Dialog: number;
+					public static Theme_AppCompat_DayNight_DialogWhenLarge: number;
+					public static Theme_AppCompat_DayNight_Dialog_Alert: number;
+					public static Theme_AppCompat_DayNight_Dialog_MinWidth: number;
+					public static Theme_AppCompat_DayNight_NoActionBar: number;
+					public static Theme_AppCompat_Dialog: number;
+					public static Theme_AppCompat_DialogWhenLarge: number;
+					public static Theme_AppCompat_Dialog_Alert: number;
+					public static Theme_AppCompat_Dialog_MinWidth: number;
+					public static Theme_AppCompat_Light: number;
+					public static Theme_AppCompat_Light_DarkActionBar: number;
+					public static Theme_AppCompat_Light_Dialog: number;
+					public static Theme_AppCompat_Light_DialogWhenLarge: number;
+					public static Theme_AppCompat_Light_Dialog_Alert: number;
+					public static Theme_AppCompat_Light_Dialog_MinWidth: number;
+					public static Theme_AppCompat_Light_NoActionBar: number;
+					public static Theme_AppCompat_NoActionBar: number;
+					public static Widget_AppCompat_ActionBar: number;
+					public static Widget_AppCompat_ActionBar_Solid: number;
+					public static Widget_AppCompat_ActionBar_TabBar: number;
+					public static Widget_AppCompat_ActionBar_TabText: number;
+					public static Widget_AppCompat_ActionBar_TabView: number;
+					public static Widget_AppCompat_ActionButton: number;
+					public static Widget_AppCompat_ActionButton_CloseMode: number;
+					public static Widget_AppCompat_ActionButton_Overflow: number;
+					public static Widget_AppCompat_ActionMode: number;
+					public static Widget_AppCompat_ActivityChooserView: number;
+					public static Widget_AppCompat_AutoCompleteTextView: number;
+					public static Widget_AppCompat_Button: number;
+					public static Widget_AppCompat_ButtonBar: number;
+					public static Widget_AppCompat_ButtonBar_AlertDialog: number;
+					public static Widget_AppCompat_Button_Borderless: number;
+					public static Widget_AppCompat_Button_Borderless_Colored: number;
+					public static Widget_AppCompat_Button_ButtonBar_AlertDialog: number;
+					public static Widget_AppCompat_Button_Colored: number;
+					public static Widget_AppCompat_Button_Small: number;
+					public static Widget_AppCompat_CompoundButton_CheckBox: number;
+					public static Widget_AppCompat_CompoundButton_RadioButton: number;
+					public static Widget_AppCompat_CompoundButton_Switch: number;
+					public static Widget_AppCompat_DrawerArrowToggle: number;
+					public static Widget_AppCompat_DropDownItem_Spinner: number;
+					public static Widget_AppCompat_EditText: number;
+					public static Widget_AppCompat_ImageButton: number;
+					public static Widget_AppCompat_Light_ActionBar: number;
+					public static Widget_AppCompat_Light_ActionBar_Solid: number;
+					public static Widget_AppCompat_Light_ActionBar_Solid_Inverse: number;
+					public static Widget_AppCompat_Light_ActionBar_TabBar: number;
+					public static Widget_AppCompat_Light_ActionBar_TabBar_Inverse: number;
+					public static Widget_AppCompat_Light_ActionBar_TabText: number;
+					public static Widget_AppCompat_Light_ActionBar_TabText_Inverse: number;
+					public static Widget_AppCompat_Light_ActionBar_TabView: number;
+					public static Widget_AppCompat_Light_ActionBar_TabView_Inverse: number;
+					public static Widget_AppCompat_Light_ActionButton: number;
+					public static Widget_AppCompat_Light_ActionButton_CloseMode: number;
+					public static Widget_AppCompat_Light_ActionButton_Overflow: number;
+					public static Widget_AppCompat_Light_ActionMode_Inverse: number;
+					public static Widget_AppCompat_Light_ActivityChooserView: number;
+					public static Widget_AppCompat_Light_AutoCompleteTextView: number;
+					public static Widget_AppCompat_Light_DropDownItem_Spinner: number;
+					public static Widget_AppCompat_Light_ListPopupWindow: number;
+					public static Widget_AppCompat_Light_ListView_DropDown: number;
+					public static Widget_AppCompat_Light_PopupMenu: number;
+					public static Widget_AppCompat_Light_PopupMenu_Overflow: number;
+					public static Widget_AppCompat_Light_SearchView: number;
+					public static Widget_AppCompat_Light_Spinner_DropDown_ActionBar: number;
+					public static Widget_AppCompat_ListMenuView: number;
+					public static Widget_AppCompat_ListPopupWindow: number;
+					public static Widget_AppCompat_ListView: number;
+					public static Widget_AppCompat_ListView_DropDown: number;
+					public static Widget_AppCompat_ListView_Menu: number;
+					public static Widget_AppCompat_PopupMenu: number;
+					public static Widget_AppCompat_PopupMenu_Overflow: number;
+					public static Widget_AppCompat_PopupWindow: number;
+					public static Widget_AppCompat_ProgressBar: number;
+					public static Widget_AppCompat_ProgressBar_Horizontal: number;
+					public static Widget_AppCompat_RatingBar: number;
+					public static Widget_AppCompat_RatingBar_Indicator: number;
+					public static Widget_AppCompat_RatingBar_Small: number;
+					public static Widget_AppCompat_SearchView: number;
+					public static Widget_AppCompat_SearchView_ActionBar: number;
+					public static Widget_AppCompat_SeekBar: number;
+					public static Widget_AppCompat_SeekBar_Discrete: number;
+					public static Widget_AppCompat_Spinner: number;
+					public static Widget_AppCompat_Spinner_DropDown: number;
+					public static Widget_AppCompat_Spinner_DropDown_ActionBar: number;
+					public static Widget_AppCompat_Spinner_Underlined: number;
+					public static Widget_AppCompat_TextView: number;
+					public static Widget_AppCompat_TextView_SpinnerItem: number;
+					public static Widget_AppCompat_Toolbar: number;
+					public static Widget_AppCompat_Toolbar_Button_Navigation: number;
+					public static Widget_Compat_NotificationActionContainer: number;
+					public static Widget_Compat_NotificationActionText: number;
+					public static Widget_Support_CoordinatorLayout: number;
+					public static com_facebook_activity_theme: number;
+					public static com_facebook_auth_dialog: number;
+					public static com_facebook_auth_dialog_instructions_textview: number;
+					public static com_facebook_button: number;
+					public static com_facebook_button_like: number;
+					public static com_facebook_button_send: number;
+					public static com_facebook_button_share: number;
+				}
+				export class styleable {
+					public static class: java.lang.Class<com.facebook.gamingservices.R.styleable>;
+					public static ActionBar: androidNative.Array<number>;
+					public static ActionBar_background: number;
+					public static ActionBar_backgroundSplit: number;
+					public static ActionBar_backgroundStacked: number;
+					public static ActionBar_contentInsetEnd: number;
+					public static ActionBar_contentInsetEndWithActions: number;
+					public static ActionBar_contentInsetLeft: number;
+					public static ActionBar_contentInsetRight: number;
+					public static ActionBar_contentInsetStart: number;
+					public static ActionBar_contentInsetStartWithNavigation: number;
+					public static ActionBar_customNavigationLayout: number;
+					public static ActionBar_displayOptions: number;
+					public static ActionBar_divider: number;
+					public static ActionBar_elevation: number;
+					public static ActionBar_height: number;
+					public static ActionBar_hideOnContentScroll: number;
+					public static ActionBar_homeAsUpIndicator: number;
+					public static ActionBar_homeLayout: number;
+					public static ActionBar_icon: number;
+					public static ActionBar_indeterminateProgressStyle: number;
+					public static ActionBar_itemPadding: number;
+					public static ActionBar_logo: number;
+					public static ActionBar_navigationMode: number;
+					public static ActionBar_popupTheme: number;
+					public static ActionBar_progressBarPadding: number;
+					public static ActionBar_progressBarStyle: number;
+					public static ActionBar_subtitle: number;
+					public static ActionBar_subtitleTextStyle: number;
+					public static ActionBar_title: number;
+					public static ActionBar_titleTextStyle: number;
+					public static ActionBarLayout: androidNative.Array<number>;
+					public static ActionBarLayout_android_layout_gravity: number;
+					public static ActionMenuItemView: androidNative.Array<number>;
+					public static ActionMenuItemView_android_minWidth: number;
+					public static ActionMenuView: androidNative.Array<number>;
+					public static ActionMode: androidNative.Array<number>;
+					public static ActionMode_background: number;
+					public static ActionMode_backgroundSplit: number;
+					public static ActionMode_closeItemLayout: number;
+					public static ActionMode_height: number;
+					public static ActionMode_subtitleTextStyle: number;
+					public static ActionMode_titleTextStyle: number;
+					public static ActivityChooserView: androidNative.Array<number>;
+					public static ActivityChooserView_expandActivityOverflowButtonDrawable: number;
+					public static ActivityChooserView_initialActivityCount: number;
+					public static AlertDialog: androidNative.Array<number>;
+					public static AlertDialog_android_layout: number;
+					public static AlertDialog_buttonIconDimen: number;
+					public static AlertDialog_buttonPanelSideLayout: number;
+					public static AlertDialog_listItemLayout: number;
+					public static AlertDialog_listLayout: number;
+					public static AlertDialog_multiChoiceItemLayout: number;
+					public static AlertDialog_showTitle: number;
+					public static AlertDialog_singleChoiceItemLayout: number;
+					public static AnimatedStateListDrawableCompat: androidNative.Array<number>;
+					public static AnimatedStateListDrawableCompat_android_dither: number;
+					public static AnimatedStateListDrawableCompat_android_visible: number;
+					public static AnimatedStateListDrawableCompat_android_variablePadding: number;
+					public static AnimatedStateListDrawableCompat_android_constantSize: number;
+					public static AnimatedStateListDrawableCompat_android_enterFadeDuration: number;
+					public static AnimatedStateListDrawableCompat_android_exitFadeDuration: number;
+					public static AnimatedStateListDrawableItem: androidNative.Array<number>;
+					public static AnimatedStateListDrawableItem_android_id: number;
+					public static AnimatedStateListDrawableItem_android_drawable: number;
+					public static AnimatedStateListDrawableTransition: androidNative.Array<number>;
+					public static AnimatedStateListDrawableTransition_android_drawable: number;
+					public static AnimatedStateListDrawableTransition_android_toId: number;
+					public static AnimatedStateListDrawableTransition_android_fromId: number;
+					public static AnimatedStateListDrawableTransition_android_reversible: number;
+					public static AppCompatImageView: androidNative.Array<number>;
+					public static AppCompatImageView_android_src: number;
+					public static AppCompatImageView_srcCompat: number;
+					public static AppCompatImageView_tint: number;
+					public static AppCompatImageView_tintMode: number;
+					public static AppCompatSeekBar: androidNative.Array<number>;
+					public static AppCompatSeekBar_android_thumb: number;
+					public static AppCompatSeekBar_tickMark: number;
+					public static AppCompatSeekBar_tickMarkTint: number;
+					public static AppCompatSeekBar_tickMarkTintMode: number;
+					public static AppCompatTextHelper: androidNative.Array<number>;
+					public static AppCompatTextHelper_android_textAppearance: number;
+					public static AppCompatTextHelper_android_drawableTop: number;
+					public static AppCompatTextHelper_android_drawableBottom: number;
+					public static AppCompatTextHelper_android_drawableLeft: number;
+					public static AppCompatTextHelper_android_drawableRight: number;
+					public static AppCompatTextHelper_android_drawableStart: number;
+					public static AppCompatTextHelper_android_drawableEnd: number;
+					public static AppCompatTextView: androidNative.Array<number>;
+					public static AppCompatTextView_android_textAppearance: number;
+					public static AppCompatTextView_autoSizeMaxTextSize: number;
+					public static AppCompatTextView_autoSizeMinTextSize: number;
+					public static AppCompatTextView_autoSizePresetSizes: number;
+					public static AppCompatTextView_autoSizeStepGranularity: number;
+					public static AppCompatTextView_autoSizeTextType: number;
+					public static AppCompatTextView_drawableBottomCompat: number;
+					public static AppCompatTextView_drawableEndCompat: number;
+					public static AppCompatTextView_drawableLeftCompat: number;
+					public static AppCompatTextView_drawableRightCompat: number;
+					public static AppCompatTextView_drawableStartCompat: number;
+					public static AppCompatTextView_drawableTint: number;
+					public static AppCompatTextView_drawableTintMode: number;
+					public static AppCompatTextView_drawableTopCompat: number;
+					public static AppCompatTextView_emojiCompatEnabled: number;
+					public static AppCompatTextView_firstBaselineToTopHeight: number;
+					public static AppCompatTextView_fontFamily: number;
+					public static AppCompatTextView_fontVariationSettings: number;
+					public static AppCompatTextView_lastBaselineToBottomHeight: number;
+					public static AppCompatTextView_lineHeight: number;
+					public static AppCompatTextView_textAllCaps: number;
+					public static AppCompatTextView_textLocale: number;
+					public static AppCompatTheme: androidNative.Array<number>;
+					public static AppCompatTheme_android_windowIsFloating: number;
+					public static AppCompatTheme_android_windowAnimationStyle: number;
+					public static AppCompatTheme_actionBarDivider: number;
+					public static AppCompatTheme_actionBarItemBackground: number;
+					public static AppCompatTheme_actionBarPopupTheme: number;
+					public static AppCompatTheme_actionBarSize: number;
+					public static AppCompatTheme_actionBarSplitStyle: number;
+					public static AppCompatTheme_actionBarStyle: number;
+					public static AppCompatTheme_actionBarTabBarStyle: number;
+					public static AppCompatTheme_actionBarTabStyle: number;
+					public static AppCompatTheme_actionBarTabTextStyle: number;
+					public static AppCompatTheme_actionBarTheme: number;
+					public static AppCompatTheme_actionBarWidgetTheme: number;
+					public static AppCompatTheme_actionButtonStyle: number;
+					public static AppCompatTheme_actionDropDownStyle: number;
+					public static AppCompatTheme_actionMenuTextAppearance: number;
+					public static AppCompatTheme_actionMenuTextColor: number;
+					public static AppCompatTheme_actionModeBackground: number;
+					public static AppCompatTheme_actionModeCloseButtonStyle: number;
+					public static AppCompatTheme_actionModeCloseContentDescription: number;
+					public static AppCompatTheme_actionModeCloseDrawable: number;
+					public static AppCompatTheme_actionModeCopyDrawable: number;
+					public static AppCompatTheme_actionModeCutDrawable: number;
+					public static AppCompatTheme_actionModeFindDrawable: number;
+					public static AppCompatTheme_actionModePasteDrawable: number;
+					public static AppCompatTheme_actionModePopupWindowStyle: number;
+					public static AppCompatTheme_actionModeSelectAllDrawable: number;
+					public static AppCompatTheme_actionModeShareDrawable: number;
+					public static AppCompatTheme_actionModeSplitBackground: number;
+					public static AppCompatTheme_actionModeStyle: number;
+					public static AppCompatTheme_actionModeTheme: number;
+					public static AppCompatTheme_actionModeWebSearchDrawable: number;
+					public static AppCompatTheme_actionOverflowButtonStyle: number;
+					public static AppCompatTheme_actionOverflowMenuStyle: number;
+					public static AppCompatTheme_activityChooserViewStyle: number;
+					public static AppCompatTheme_alertDialogButtonGroupStyle: number;
+					public static AppCompatTheme_alertDialogCenterButtons: number;
+					public static AppCompatTheme_alertDialogStyle: number;
+					public static AppCompatTheme_alertDialogTheme: number;
+					public static AppCompatTheme_autoCompleteTextViewStyle: number;
+					public static AppCompatTheme_borderlessButtonStyle: number;
+					public static AppCompatTheme_buttonBarButtonStyle: number;
+					public static AppCompatTheme_buttonBarNegativeButtonStyle: number;
+					public static AppCompatTheme_buttonBarNeutralButtonStyle: number;
+					public static AppCompatTheme_buttonBarPositiveButtonStyle: number;
+					public static AppCompatTheme_buttonBarStyle: number;
+					public static AppCompatTheme_buttonStyle: number;
+					public static AppCompatTheme_buttonStyleSmall: number;
+					public static AppCompatTheme_checkboxStyle: number;
+					public static AppCompatTheme_checkedTextViewStyle: number;
+					public static AppCompatTheme_colorAccent: number;
+					public static AppCompatTheme_colorBackgroundFloating: number;
+					public static AppCompatTheme_colorButtonNormal: number;
+					public static AppCompatTheme_colorControlActivated: number;
+					public static AppCompatTheme_colorControlHighlight: number;
+					public static AppCompatTheme_colorControlNormal: number;
+					public static AppCompatTheme_colorError: number;
+					public static AppCompatTheme_colorPrimary: number;
+					public static AppCompatTheme_colorPrimaryDark: number;
+					public static AppCompatTheme_colorSwitchThumbNormal: number;
+					public static AppCompatTheme_controlBackground: number;
+					public static AppCompatTheme_dialogCornerRadius: number;
+					public static AppCompatTheme_dialogPreferredPadding: number;
+					public static AppCompatTheme_dialogTheme: number;
+					public static AppCompatTheme_dividerHorizontal: number;
+					public static AppCompatTheme_dividerVertical: number;
+					public static AppCompatTheme_dropDownListViewStyle: number;
+					public static AppCompatTheme_dropdownListPreferredItemHeight: number;
+					public static AppCompatTheme_editTextBackground: number;
+					public static AppCompatTheme_editTextColor: number;
+					public static AppCompatTheme_editTextStyle: number;
+					public static AppCompatTheme_homeAsUpIndicator: number;
+					public static AppCompatTheme_imageButtonStyle: number;
+					public static AppCompatTheme_listChoiceBackgroundIndicator: number;
+					public static AppCompatTheme_listChoiceIndicatorMultipleAnimated: number;
+					public static AppCompatTheme_listChoiceIndicatorSingleAnimated: number;
+					public static AppCompatTheme_listDividerAlertDialog: number;
+					public static AppCompatTheme_listMenuViewStyle: number;
+					public static AppCompatTheme_listPopupWindowStyle: number;
+					public static AppCompatTheme_listPreferredItemHeight: number;
+					public static AppCompatTheme_listPreferredItemHeightLarge: number;
+					public static AppCompatTheme_listPreferredItemHeightSmall: number;
+					public static AppCompatTheme_listPreferredItemPaddingEnd: number;
+					public static AppCompatTheme_listPreferredItemPaddingLeft: number;
+					public static AppCompatTheme_listPreferredItemPaddingRight: number;
+					public static AppCompatTheme_listPreferredItemPaddingStart: number;
+					public static AppCompatTheme_panelBackground: number;
+					public static AppCompatTheme_panelMenuListTheme: number;
+					public static AppCompatTheme_panelMenuListWidth: number;
+					public static AppCompatTheme_popupMenuStyle: number;
+					public static AppCompatTheme_popupWindowStyle: number;
+					public static AppCompatTheme_radioButtonStyle: number;
+					public static AppCompatTheme_ratingBarStyle: number;
+					public static AppCompatTheme_ratingBarStyleIndicator: number;
+					public static AppCompatTheme_ratingBarStyleSmall: number;
+					public static AppCompatTheme_searchViewStyle: number;
+					public static AppCompatTheme_seekBarStyle: number;
+					public static AppCompatTheme_selectableItemBackground: number;
+					public static AppCompatTheme_selectableItemBackgroundBorderless: number;
+					public static AppCompatTheme_spinnerDropDownItemStyle: number;
+					public static AppCompatTheme_spinnerStyle: number;
+					public static AppCompatTheme_switchStyle: number;
+					public static AppCompatTheme_textAppearanceLargePopupMenu: number;
+					public static AppCompatTheme_textAppearanceListItem: number;
+					public static AppCompatTheme_textAppearanceListItemSecondary: number;
+					public static AppCompatTheme_textAppearanceListItemSmall: number;
+					public static AppCompatTheme_textAppearancePopupMenuHeader: number;
+					public static AppCompatTheme_textAppearanceSearchResultSubtitle: number;
+					public static AppCompatTheme_textAppearanceSearchResultTitle: number;
+					public static AppCompatTheme_textAppearanceSmallPopupMenu: number;
+					public static AppCompatTheme_textColorAlertDialogListItem: number;
+					public static AppCompatTheme_textColorSearchUrl: number;
+					public static AppCompatTheme_toolbarNavigationButtonStyle: number;
+					public static AppCompatTheme_toolbarStyle: number;
+					public static AppCompatTheme_tooltipForegroundColor: number;
+					public static AppCompatTheme_tooltipFrameBackground: number;
+					public static AppCompatTheme_viewInflaterClass: number;
+					public static AppCompatTheme_windowActionBar: number;
+					public static AppCompatTheme_windowActionBarOverlay: number;
+					public static AppCompatTheme_windowActionModeOverlay: number;
+					public static AppCompatTheme_windowFixedHeightMajor: number;
+					public static AppCompatTheme_windowFixedHeightMinor: number;
+					public static AppCompatTheme_windowFixedWidthMajor: number;
+					public static AppCompatTheme_windowFixedWidthMinor: number;
+					public static AppCompatTheme_windowMinWidthMajor: number;
+					public static AppCompatTheme_windowMinWidthMinor: number;
+					public static AppCompatTheme_windowNoTitle: number;
+					public static ButtonBarLayout: androidNative.Array<number>;
+					public static ButtonBarLayout_allowStacking: number;
+					public static CardView: androidNative.Array<number>;
+					public static CardView_android_minWidth: number;
+					public static CardView_android_minHeight: number;
+					public static CardView_cardBackgroundColor: number;
+					public static CardView_cardCornerRadius: number;
+					public static CardView_cardElevation: number;
+					public static CardView_cardMaxElevation: number;
+					public static CardView_cardPreventCornerOverlap: number;
+					public static CardView_cardUseCompatPadding: number;
+					public static CardView_contentPadding: number;
+					public static CardView_contentPaddingBottom: number;
+					public static CardView_contentPaddingLeft: number;
+					public static CardView_contentPaddingRight: number;
+					public static CardView_contentPaddingTop: number;
+					public static ColorStateListItem: androidNative.Array<number>;
+					public static ColorStateListItem_android_color: number;
+					public static ColorStateListItem_android_alpha: number;
+					public static ColorStateListItem_android_lStar: number;
+					public static ColorStateListItem_alpha: number;
+					public static ColorStateListItem_lStar: number;
+					public static CompoundButton: androidNative.Array<number>;
+					public static CompoundButton_android_button: number;
+					public static CompoundButton_buttonCompat: number;
+					public static CompoundButton_buttonTint: number;
+					public static CompoundButton_buttonTintMode: number;
+					public static CoordinatorLayout: androidNative.Array<number>;
+					public static CoordinatorLayout_keylines: number;
+					public static CoordinatorLayout_statusBarBackground: number;
+					public static CoordinatorLayout_Layout: androidNative.Array<number>;
+					public static CoordinatorLayout_Layout_android_layout_gravity: number;
+					public static CoordinatorLayout_Layout_layout_anchor: number;
+					public static CoordinatorLayout_Layout_layout_anchorGravity: number;
+					public static CoordinatorLayout_Layout_layout_behavior: number;
+					public static CoordinatorLayout_Layout_layout_dodgeInsetEdges: number;
+					public static CoordinatorLayout_Layout_layout_insetEdge: number;
+					public static CoordinatorLayout_Layout_layout_keyline: number;
+					public static DrawerArrowToggle: androidNative.Array<number>;
+					public static DrawerArrowToggle_arrowHeadLength: number;
+					public static DrawerArrowToggle_arrowShaftLength: number;
+					public static DrawerArrowToggle_barLength: number;
+					public static DrawerArrowToggle_color: number;
+					public static DrawerArrowToggle_drawableSize: number;
+					public static DrawerArrowToggle_gapBetweenBars: number;
+					public static DrawerArrowToggle_spinBars: number;
+					public static DrawerArrowToggle_thickness: number;
+					public static FontFamily: androidNative.Array<number>;
+					public static FontFamily_fontProviderAuthority: number;
+					public static FontFamily_fontProviderCerts: number;
+					public static FontFamily_fontProviderFetchStrategy: number;
+					public static FontFamily_fontProviderFetchTimeout: number;
+					public static FontFamily_fontProviderPackage: number;
+					public static FontFamily_fontProviderQuery: number;
+					public static FontFamily_fontProviderSystemFontFamily: number;
+					public static FontFamilyFont: androidNative.Array<number>;
+					public static FontFamilyFont_android_font: number;
+					public static FontFamilyFont_android_fontWeight: number;
+					public static FontFamilyFont_android_fontStyle: number;
+					public static FontFamilyFont_android_ttcIndex: number;
+					public static FontFamilyFont_android_fontVariationSettings: number;
+					public static FontFamilyFont_font: number;
+					public static FontFamilyFont_fontStyle: number;
+					public static FontFamilyFont_fontVariationSettings: number;
+					public static FontFamilyFont_fontWeight: number;
+					public static FontFamilyFont_ttcIndex: number;
+					public static Fragment: androidNative.Array<number>;
+					public static Fragment_android_name: number;
+					public static Fragment_android_id: number;
+					public static Fragment_android_tag: number;
+					public static FragmentContainerView: androidNative.Array<number>;
+					public static FragmentContainerView_android_name: number;
+					public static FragmentContainerView_android_tag: number;
+					public static GradientColor: androidNative.Array<number>;
+					public static GradientColor_android_startColor: number;
+					public static GradientColor_android_endColor: number;
+					public static GradientColor_android_type: number;
+					public static GradientColor_android_centerX: number;
+					public static GradientColor_android_centerY: number;
+					public static GradientColor_android_gradientRadius: number;
+					public static GradientColor_android_tileMode: number;
+					public static GradientColor_android_centerColor: number;
+					public static GradientColor_android_startX: number;
+					public static GradientColor_android_startY: number;
+					public static GradientColor_android_endX: number;
+					public static GradientColor_android_endY: number;
+					public static GradientColorItem: androidNative.Array<number>;
+					public static GradientColorItem_android_color: number;
+					public static GradientColorItem_android_offset: number;
+					public static LinearLayoutCompat: androidNative.Array<number>;
+					public static LinearLayoutCompat_android_gravity: number;
+					public static LinearLayoutCompat_android_orientation: number;
+					public static LinearLayoutCompat_android_baselineAligned: number;
+					public static LinearLayoutCompat_android_baselineAlignedChildIndex: number;
+					public static LinearLayoutCompat_android_weightSum: number;
+					public static LinearLayoutCompat_divider: number;
+					public static LinearLayoutCompat_dividerPadding: number;
+					public static LinearLayoutCompat_measureWithLargestChild: number;
+					public static LinearLayoutCompat_showDividers: number;
+					public static LinearLayoutCompat_Layout: androidNative.Array<number>;
+					public static LinearLayoutCompat_Layout_android_layout_gravity: number;
+					public static LinearLayoutCompat_Layout_android_layout_width: number;
+					public static LinearLayoutCompat_Layout_android_layout_height: number;
+					public static LinearLayoutCompat_Layout_android_layout_weight: number;
+					public static ListPopupWindow: androidNative.Array<number>;
+					public static ListPopupWindow_android_dropDownHorizontalOffset: number;
+					public static ListPopupWindow_android_dropDownVerticalOffset: number;
+					public static MenuGroup: androidNative.Array<number>;
+					public static MenuGroup_android_enabled: number;
+					public static MenuGroup_android_id: number;
+					public static MenuGroup_android_visible: number;
+					public static MenuGroup_android_menuCategory: number;
+					public static MenuGroup_android_orderInCategory: number;
+					public static MenuGroup_android_checkableBehavior: number;
+					public static MenuItem: androidNative.Array<number>;
+					public static MenuItem_android_icon: number;
+					public static MenuItem_android_enabled: number;
+					public static MenuItem_android_id: number;
+					public static MenuItem_android_checked: number;
+					public static MenuItem_android_visible: number;
+					public static MenuItem_android_menuCategory: number;
+					public static MenuItem_android_orderInCategory: number;
+					public static MenuItem_android_title: number;
+					public static MenuItem_android_titleCondensed: number;
+					public static MenuItem_android_alphabeticShortcut: number;
+					public static MenuItem_android_numericShortcut: number;
+					public static MenuItem_android_checkable: number;
+					public static MenuItem_android_onClick: number;
+					public static MenuItem_actionLayout: number;
+					public static MenuItem_actionProviderClass: number;
+					public static MenuItem_actionViewClass: number;
+					public static MenuItem_alphabeticModifiers: number;
+					public static MenuItem_contentDescription: number;
+					public static MenuItem_iconTint: number;
+					public static MenuItem_iconTintMode: number;
+					public static MenuItem_numericModifiers: number;
+					public static MenuItem_showAsAction: number;
+					public static MenuItem_tooltipText: number;
+					public static MenuView: androidNative.Array<number>;
+					public static MenuView_android_windowAnimationStyle: number;
+					public static MenuView_android_itemTextAppearance: number;
+					public static MenuView_android_horizontalDivider: number;
+					public static MenuView_android_verticalDivider: number;
+					public static MenuView_android_headerBackground: number;
+					public static MenuView_android_itemBackground: number;
+					public static MenuView_android_itemIconDisabledAlpha: number;
+					public static MenuView_preserveIconSpacing: number;
+					public static MenuView_subMenuArrow: number;
+					public static PopupWindow: androidNative.Array<number>;
+					public static PopupWindow_android_popupBackground: number;
+					public static PopupWindow_android_popupAnimationStyle: number;
+					public static PopupWindow_overlapAnchor: number;
+					public static PopupWindowBackgroundState: androidNative.Array<number>;
+					public static PopupWindowBackgroundState_state_above_anchor: number;
+					public static RecycleListView: androidNative.Array<number>;
+					public static RecycleListView_paddingBottomNoButtons: number;
+					public static RecycleListView_paddingTopNoTitle: number;
+					public static SearchView: androidNative.Array<number>;
+					public static SearchView_android_focusable: number;
+					public static SearchView_android_maxWidth: number;
+					public static SearchView_android_inputType: number;
+					public static SearchView_android_imeOptions: number;
+					public static SearchView_closeIcon: number;
+					public static SearchView_commitIcon: number;
+					public static SearchView_defaultQueryHint: number;
+					public static SearchView_goIcon: number;
+					public static SearchView_iconifiedByDefault: number;
+					public static SearchView_layout: number;
+					public static SearchView_queryBackground: number;
+					public static SearchView_queryHint: number;
+					public static SearchView_searchHintIcon: number;
+					public static SearchView_searchIcon: number;
+					public static SearchView_submitBackground: number;
+					public static SearchView_suggestionRowLayout: number;
+					public static SearchView_voiceIcon: number;
+					public static Spinner: androidNative.Array<number>;
+					public static Spinner_android_entries: number;
+					public static Spinner_android_popupBackground: number;
+					public static Spinner_android_prompt: number;
+					public static Spinner_android_dropDownWidth: number;
+					public static Spinner_popupTheme: number;
+					public static StateListDrawable: androidNative.Array<number>;
+					public static StateListDrawable_android_dither: number;
+					public static StateListDrawable_android_visible: number;
+					public static StateListDrawable_android_variablePadding: number;
+					public static StateListDrawable_android_constantSize: number;
+					public static StateListDrawable_android_enterFadeDuration: number;
+					public static StateListDrawable_android_exitFadeDuration: number;
+					public static StateListDrawableItem: androidNative.Array<number>;
+					public static StateListDrawableItem_android_drawable: number;
+					public static SwitchCompat: androidNative.Array<number>;
+					public static SwitchCompat_android_textOn: number;
+					public static SwitchCompat_android_textOff: number;
+					public static SwitchCompat_android_thumb: number;
+					public static SwitchCompat_showText: number;
+					public static SwitchCompat_splitTrack: number;
+					public static SwitchCompat_switchMinWidth: number;
+					public static SwitchCompat_switchPadding: number;
+					public static SwitchCompat_switchTextAppearance: number;
+					public static SwitchCompat_thumbTextPadding: number;
+					public static SwitchCompat_thumbTint: number;
+					public static SwitchCompat_thumbTintMode: number;
+					public static SwitchCompat_track: number;
+					public static SwitchCompat_trackTint: number;
+					public static SwitchCompat_trackTintMode: number;
+					public static TextAppearance: androidNative.Array<number>;
+					public static TextAppearance_android_textSize: number;
+					public static TextAppearance_android_typeface: number;
+					public static TextAppearance_android_textStyle: number;
+					public static TextAppearance_android_textColor: number;
+					public static TextAppearance_android_textColorHint: number;
+					public static TextAppearance_android_textColorLink: number;
+					public static TextAppearance_android_shadowColor: number;
+					public static TextAppearance_android_shadowDx: number;
+					public static TextAppearance_android_shadowDy: number;
+					public static TextAppearance_android_shadowRadius: number;
+					public static TextAppearance_android_fontFamily: number;
+					public static TextAppearance_android_textFontWeight: number;
+					public static TextAppearance_fontFamily: number;
+					public static TextAppearance_fontVariationSettings: number;
+					public static TextAppearance_textAllCaps: number;
+					public static TextAppearance_textLocale: number;
+					public static Toolbar: androidNative.Array<number>;
+					public static Toolbar_android_gravity: number;
+					public static Toolbar_android_minHeight: number;
+					public static Toolbar_buttonGravity: number;
+					public static Toolbar_collapseContentDescription: number;
+					public static Toolbar_collapseIcon: number;
+					public static Toolbar_contentInsetEnd: number;
+					public static Toolbar_contentInsetEndWithActions: number;
+					public static Toolbar_contentInsetLeft: number;
+					public static Toolbar_contentInsetRight: number;
+					public static Toolbar_contentInsetStart: number;
+					public static Toolbar_contentInsetStartWithNavigation: number;
+					public static Toolbar_logo: number;
+					public static Toolbar_logoDescription: number;
+					public static Toolbar_maxButtonHeight: number;
+					public static Toolbar_menu: number;
+					public static Toolbar_navigationContentDescription: number;
+					public static Toolbar_navigationIcon: number;
+					public static Toolbar_popupTheme: number;
+					public static Toolbar_subtitle: number;
+					public static Toolbar_subtitleTextAppearance: number;
+					public static Toolbar_subtitleTextColor: number;
+					public static Toolbar_title: number;
+					public static Toolbar_titleMargin: number;
+					public static Toolbar_titleMarginBottom: number;
+					public static Toolbar_titleMarginEnd: number;
+					public static Toolbar_titleMarginStart: number;
+					public static Toolbar_titleMarginTop: number;
+					public static Toolbar_titleMargins: number;
+					public static Toolbar_titleTextAppearance: number;
+					public static Toolbar_titleTextColor: number;
+					public static View: androidNative.Array<number>;
+					public static View_android_theme: number;
+					public static View_android_focusable: number;
+					public static View_paddingEnd: number;
+					public static View_paddingStart: number;
+					public static View_theme: number;
+					public static ViewBackgroundHelper: androidNative.Array<number>;
+					public static ViewBackgroundHelper_android_background: number;
+					public static ViewBackgroundHelper_backgroundTint: number;
+					public static ViewBackgroundHelper_backgroundTintMode: number;
+					public static ViewStubCompat: androidNative.Array<number>;
+					public static ViewStubCompat_android_id: number;
+					public static ViewStubCompat_android_layout: number;
+					public static ViewStubCompat_android_inflatedId: number;
+					public static com_facebook_like_view: androidNative.Array<number>;
+					public static com_facebook_like_view_com_facebook_auxiliary_view_position: number;
+					public static com_facebook_like_view_com_facebook_foreground_color: number;
+					public static com_facebook_like_view_com_facebook_horizontal_alignment: number;
+					public static com_facebook_like_view_com_facebook_object_id: number;
+					public static com_facebook_like_view_com_facebook_object_type: number;
+					public static com_facebook_like_view_com_facebook_style: number;
+					public static<clinit>(): void;
+				}
 			}
 		}
 	}
@@ -3857,8 +11028,36 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module internal {
+			export class AppCall {
+				public static class: java.lang.Class<com.facebook.internal.AppCall>;
+				public static Companion: com.facebook.internal.AppCall.Companion;
+				public static finishPendingCall(param0: java.util.UUID, param1: number): com.facebook.internal.AppCall;
+				public setRequestCode(param0: number): void;
+				public getCallId(): java.util.UUID;
+				public setRequestIntent(param0: globalAndroid.content.Intent): void;
+				public constructor(param0: number, param1: java.util.UUID);
+				public constructor(param0: number);
+				public getRequestCode(): number;
+				public setPending(): boolean;
+				public getRequestIntent(): globalAndroid.content.Intent;
+			}
+			export module AppCall {
+				export class Companion {
+					public static class: java.lang.Class<com.facebook.internal.AppCall.Companion>;
+					public finishPendingCall(param0: java.util.UUID, param1: number): com.facebook.internal.AppCall;
+					public getCurrentPendingCall(): com.facebook.internal.AppCall;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
 			export class AttributionIdentifiers {
 				public static class: java.lang.Class<com.facebook.internal.AttributionIdentifiers>;
+				public static Companion: com.facebook.internal.AttributionIdentifiers.Companion;
 				public static ATTRIBUTION_ID_CONTENT_PROVIDER: string;
 				public static cachedIdentifiers: com.facebook.internal.AttributionIdentifiers;
 				public static isTrackingLimited(param0: globalAndroid.content.Context): boolean;
@@ -3877,6 +11076,7 @@ declare module com {
 				}
 				export class GoogleAdInfo {
 					public static class: java.lang.Class<com.facebook.internal.AttributionIdentifiers.GoogleAdInfo>;
+					public static Companion: com.facebook.internal.AttributionIdentifiers.GoogleAdInfo.Companion;
 					public getAdvertiserId(): string;
 					public isTrackingLimited(): boolean;
 					public constructor(param0: globalAndroid.os.IBinder);
@@ -3904,6 +11104,7 @@ declare module com {
 		export module internal {
 			export class BoltsMeasurementEventListener {
 				public static class: java.lang.Class<com.facebook.internal.BoltsMeasurementEventListener>;
+				public static Companion: com.facebook.internal.BoltsMeasurementEventListener.Companion;
 				public static getInstance(param0: globalAndroid.content.Context): com.facebook.internal.BoltsMeasurementEventListener;
 				public finalize(): void;
 				public onReceive(param0: globalAndroid.content.Context, param1: globalAndroid.content.Intent): void;
@@ -3949,6 +11150,7 @@ declare module com {
 		export module internal {
 			export class CallbackManagerImpl extends com.facebook.CallbackManager {
 				public static class: java.lang.Class<com.facebook.internal.CallbackManagerImpl>;
+				public static Companion: com.facebook.internal.CallbackManagerImpl.Companion;
 				public onActivityResult(param0: number, param1: number, param2: globalAndroid.content.Intent): boolean;
 				public constructor();
 				public registerCallback(param0: number, param1: com.facebook.internal.CallbackManagerImpl.Callback): void;
@@ -3987,6 +11189,7 @@ declare module com {
 					public static GamingContextSwitch: com.facebook.internal.CallbackManagerImpl.RequestCodeOffset;
 					public static GamingContextChoose: com.facebook.internal.CallbackManagerImpl.RequestCodeOffset;
 					public static TournamentShareDialog: com.facebook.internal.CallbackManagerImpl.RequestCodeOffset;
+					public static TournamentJoinDialog: com.facebook.internal.CallbackManagerImpl.RequestCodeOffset;
 					public static values(): androidNative.Array<com.facebook.internal.CallbackManagerImpl.RequestCodeOffset>;
 					public toRequestCode(): number;
 					public static valueOf(param0: string): com.facebook.internal.CallbackManagerImpl.RequestCodeOffset;
@@ -3999,8 +11202,186 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module internal {
+			export class CustomTab {
+				public static class: java.lang.Class<com.facebook.internal.CustomTab>;
+				public static Companion: com.facebook.internal.CustomTab.Companion;
+				public getUri(): globalAndroid.net.Uri;
+				public constructor(param0: string, param1: globalAndroid.os.Bundle);
+				public static getURIForAction(param0: string, param1: globalAndroid.os.Bundle): globalAndroid.net.Uri;
+				public openCustomTab(param0: globalAndroid.app.Activity, param1: string): boolean;
+				public setUri(param0: globalAndroid.net.Uri): void;
+			}
+			export module CustomTab {
+				export class Companion {
+					public static class: java.lang.Class<com.facebook.internal.CustomTab.Companion>;
+					public getURIForAction(param0: string, param1: globalAndroid.os.Bundle): globalAndroid.net.Uri;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export class CustomTabUtils {
+				public static class: java.lang.Class<com.facebook.internal.CustomTabUtils>;
+				public static INSTANCE: com.facebook.internal.CustomTabUtils;
+				public static getChromePackage(): string;
+				public static getValidRedirectURI(param0: string): string;
+				public static getDefaultRedirectURI(): string;
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export class DialogFeature {
+				public static class: java.lang.Class<com.facebook.internal.DialogFeature>;
+				/**
+				 * Constructs a new instance of the com.facebook.internal.DialogFeature interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+				 */
+				public constructor(implementation: { getAction(): string; getMinVersion(): number; name(): string });
+				public constructor();
+				public getMinVersion(): number;
+				public name(): string;
+				public getAction(): string;
+			}
+			export module DialogFeature {
+				export class DefaultImpls {
+					public static class: java.lang.Class<com.facebook.internal.DialogFeature.DefaultImpls>;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export class DialogPresenter {
+				public static class: java.lang.Class<com.facebook.internal.DialogPresenter>;
+				public static INSTANCE: com.facebook.internal.DialogPresenter;
+				public static setupAppCallForNativeDialog(param0: com.facebook.internal.AppCall, param1: com.facebook.internal.DialogPresenter.ParameterProvider, param2: com.facebook.internal.DialogFeature): void;
+				public static setupAppCallForWebFallbackDialog(param0: com.facebook.internal.AppCall, param1: globalAndroid.os.Bundle, param2: com.facebook.internal.DialogFeature): void;
+				public static setupAppCallForErrorResult(param0: com.facebook.internal.AppCall, param1: com.facebook.FacebookException): void;
+				public static canPresentNativeDialogWithFeature(param0: com.facebook.internal.DialogFeature): boolean;
+				public static canPresentWebFallbackDialogWithFeature(param0: com.facebook.internal.DialogFeature): boolean;
+				public static present(param0: com.facebook.internal.AppCall, param1: androidx.activity.result.ActivityResultRegistry, param2: com.facebook.CallbackManager): void;
+				public static logDialogActivity(param0: globalAndroid.content.Context, param1: string, param2: string): void;
+				public static present(param0: com.facebook.internal.AppCall, param1: com.facebook.internal.FragmentWrapper): void;
+				public static startActivityForResultWithAndroidX(param0: androidx.activity.result.ActivityResultRegistry, param1: com.facebook.CallbackManager, param2: globalAndroid.content.Intent, param3: number): void;
+				public static getProtocolVersionForNativeDialog(param0: com.facebook.internal.DialogFeature): com.facebook.internal.NativeProtocol.ProtocolVersionQueryResult;
+				public static setupAppCallForCustomTabDialog(param0: com.facebook.internal.AppCall, param1: string, param2: globalAndroid.os.Bundle): void;
+				public static setupAppCallForWebDialog(param0: com.facebook.internal.AppCall, param1: string, param2: globalAndroid.os.Bundle): void;
+				public static setupAppCallForValidationError(param0: com.facebook.internal.AppCall, param1: com.facebook.FacebookException): void;
+				public static setupAppCallForCannotShowError(param0: com.facebook.internal.AppCall): void;
+				public static present(param0: com.facebook.internal.AppCall, param1: globalAndroid.app.Activity): void;
+			}
+			export module DialogPresenter {
+				export class ParameterProvider {
+					public static class: java.lang.Class<com.facebook.internal.DialogPresenter.ParameterProvider>;
+					/**
+					 * Constructs a new instance of the com.facebook.internal.DialogPresenter$ParameterProvider interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+					 */
+					public constructor(implementation: { getParameters(): globalAndroid.os.Bundle; getLegacyParameters(): globalAndroid.os.Bundle });
+					public constructor();
+					public getParameters(): globalAndroid.os.Bundle;
+					public getLegacyParameters(): globalAndroid.os.Bundle;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export abstract class FacebookDialogBase<CONTENT, RESULT> extends com.facebook.FacebookDialog<any, any> {
+				public static class: java.lang.Class<com.facebook.internal.FacebookDialogBase>;
+				public static Companion: com.facebook.internal.FacebookDialogBase.Companion;
+				public static BASE_AUTOMATIC_MODE: any;
+				public constructor(param0: com.facebook.internal.FragmentWrapper, param1: number);
+				public createActivityResultContractForShowingDialog(param0: com.facebook.CallbackManager, param1: any): androidx.activity.result.contract.ActivityResultContract<any, com.facebook.CallbackManager.ActivityResultParameters>;
+				public setCallbackManager(param0: com.facebook.CallbackManager): void;
+				public showImpl(param0: any, param1: any): void;
+				public registerCallback(param0: com.facebook.CallbackManager, param1: com.facebook.FacebookCallback<any>, param2: number): void;
+				public canShowImpl(param0: any, param1: any): boolean;
+				public canShow(param0: any): boolean;
+				public createActivityResultContractForShowingDialog(param0: com.facebook.CallbackManager): androidx.activity.result.contract.ActivityResultContract<any, com.facebook.CallbackManager.ActivityResultParameters>;
+				public constructor(param0: globalAndroid.app.Activity, param1: number);
+				public registerCallback(param0: com.facebook.CallbackManager, param1: com.facebook.FacebookCallback<any>): void;
+				public getOrderedModeHandlers(): java.util.List<com.facebook.internal.FacebookDialogBase.ModeHandler>;
+				public getCallbackManager$facebook_common_release(): com.facebook.CallbackManager;
+				public setCallbackManager$facebook_common_release(param0: com.facebook.CallbackManager): void;
+				public registerCallbackImpl(param0: com.facebook.internal.CallbackManagerImpl, param1: com.facebook.FacebookCallback<any>): void;
+				public setRequestCode(param0: number): void;
+				public show(param0: any): void;
+				public constructor(param0: number);
+				public startActivityForResult(param0: globalAndroid.content.Intent, param1: number): void;
+				public getActivityContext(): globalAndroid.app.Activity;
+				public createBaseAppCall(): com.facebook.internal.AppCall;
+				public getRequestCode(): number;
+			}
+			export module FacebookDialogBase {
+				export class Companion {
+					public static class: java.lang.Class<com.facebook.internal.FacebookDialogBase.Companion>;
+				}
+				export abstract class ModeHandler {
+					public static class: java.lang.Class<com.facebook.internal.FacebookDialogBase.ModeHandler>;
+					public getMode(): any;
+					public setMode(param0: any): void;
+					public canShow(param0: any, param1: boolean): boolean;
+					public createAppCall(param0: any): com.facebook.internal.AppCall;
+					public constructor(param0: com.facebook.internal.FacebookDialogBase);
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export class FacebookDialogFragment extends androidx.fragment.app.DialogFragment {
+				public static class: java.lang.Class<com.facebook.internal.FacebookDialogFragment>;
+				public static Companion: com.facebook.internal.FacebookDialogFragment.Companion;
+				public static TAG: string;
+				public getViewModelStore(): androidx.lifecycle.ViewModelStore;
+				public initDialog$facebook_common_release(): void;
+				public onResume(): void;
+				public registerForActivityResult(param0: androidx.activity.result.contract.ActivityResultContract, param1: androidx.activity.result.ActivityResultRegistry, param2: androidx.activity.result.ActivityResultCallback): androidx.activity.result.ActivityResultLauncher;
+				public onCreateDialog(param0: globalAndroid.os.Bundle): globalAndroid.app.Dialog;
+				public getLifecycle(): androidx.lifecycle.Lifecycle;
+				public constructor();
+				public getSavedStateRegistry(): androidx.savedstate.SavedStateRegistry;
+				public getDefaultViewModelProviderFactory(): androidx.lifecycle.ViewModelProvider.Factory;
+				public getInnerDialog(): globalAndroid.app.Dialog;
+				public onCreate(param0: globalAndroid.os.Bundle): void;
+				public getDefaultViewModelCreationExtras(): androidx.lifecycle.viewmodel.CreationExtras;
+				public constructor(param0: number);
+				public setInnerDialog(param0: globalAndroid.app.Dialog): void;
+				public onConfigurationChanged(param0: globalAndroid.content.res.Configuration): void;
+				public onDestroyView(): void;
+				public registerForActivityResult(param0: androidx.activity.result.contract.ActivityResultContract, param1: androidx.activity.result.ActivityResultCallback): androidx.activity.result.ActivityResultLauncher;
+			}
+			export module FacebookDialogFragment {
+				export class Companion {
+					public static class: java.lang.Class<com.facebook.internal.FacebookDialogFragment.Companion>;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
 			export class FacebookInitProvider {
 				public static class: java.lang.Class<com.facebook.internal.FacebookInitProvider>;
+				public static Companion: com.facebook.internal.FacebookInitProvider.Companion;
 				public getType(param0: globalAndroid.net.Uri): string;
 				public insert(param0: globalAndroid.net.Uri, param1: globalAndroid.content.ContentValues): globalAndroid.net.Uri;
 				public update(param0: globalAndroid.net.Uri, param1: globalAndroid.content.ContentValues, param2: string, param3: androidNative.Array<string>): number;
@@ -4023,6 +11404,7 @@ declare module com {
 		export module internal {
 			export class FacebookRequestErrorClassification {
 				public static class: java.lang.Class<com.facebook.internal.FacebookRequestErrorClassification>;
+				public static Companion: com.facebook.internal.FacebookRequestErrorClassification.Companion;
 				public static EC_SERVICE_UNAVAILABLE: number;
 				public static EC_APP_TOO_MANY_CALLS: number;
 				public static EC_RATE: number;
@@ -4076,6 +11458,28 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module internal {
+			export class FacebookWebFallbackDialog extends com.facebook.internal.WebDialog {
+				public static class: java.lang.Class<com.facebook.internal.FacebookWebFallbackDialog>;
+				public static Companion: com.facebook.internal.FacebookWebFallbackDialog.Companion;
+				public static newInstance(param0: globalAndroid.content.Context, param1: string, param2: globalAndroid.os.Bundle, param3: number, param4: com.facebook.login.LoginTargetApp, param5: com.facebook.internal.WebDialog.OnCompleteListener): com.facebook.internal.WebDialog;
+				public cancel(): void;
+				public parseResponseUri(param0: string): globalAndroid.os.Bundle;
+				public static newInstance(param0: globalAndroid.content.Context, param1: string, param2: globalAndroid.os.Bundle, param3: number, param4: com.facebook.internal.WebDialog.OnCompleteListener): com.facebook.internal.WebDialog;
+				public static newInstance(param0: globalAndroid.content.Context, param1: string, param2: string): com.facebook.internal.FacebookWebFallbackDialog;
+			}
+			export module FacebookWebFallbackDialog {
+				export class Companion {
+					public static class: java.lang.Class<com.facebook.internal.FacebookWebFallbackDialog.Companion>;
+					public newInstance(param0: globalAndroid.content.Context, param1: string, param2: string): com.facebook.internal.FacebookWebFallbackDialog;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
 			export class FeatureManager {
 				public static class: java.lang.Class<com.facebook.internal.FeatureManager>;
 				public static INSTANCE: com.facebook.internal.FeatureManager;
@@ -4096,6 +11500,7 @@ declare module com {
 				}
 				export class Feature {
 					public static class: java.lang.Class<com.facebook.internal.FeatureManager.Feature>;
+					public static Companion: com.facebook.internal.FeatureManager.Feature.Companion;
 					public static Unknown: com.facebook.internal.FeatureManager.Feature;
 					public static Core: com.facebook.internal.FeatureManager.Feature;
 					public static AppEvents: com.facebook.internal.FeatureManager.Feature;
@@ -4107,6 +11512,11 @@ declare module com {
 					public static SuggestedEvents: com.facebook.internal.FeatureManager.Feature;
 					public static IntelligentIntegrity: com.facebook.internal.FeatureManager.Feature;
 					public static ModelRequest: com.facebook.internal.FeatureManager.Feature;
+					public static ProtectedMode: com.facebook.internal.FeatureManager.Feature;
+					public static MACARuleMatching: com.facebook.internal.FeatureManager.Feature;
+					public static BlocklistEvents: com.facebook.internal.FeatureManager.Feature;
+					public static FilterRedactedEvents: com.facebook.internal.FeatureManager.Feature;
+					public static FilterSensitiveParams: com.facebook.internal.FeatureManager.Feature;
 					public static EventDeactivation: com.facebook.internal.FeatureManager.Feature;
 					public static OnDeviceEventProcessing: com.facebook.internal.FeatureManager.Feature;
 					public static OnDevicePostInstallEventProcessing: com.facebook.internal.FeatureManager.Feature;
@@ -4120,6 +11530,8 @@ declare module com {
 					public static AnrReport: com.facebook.internal.FeatureManager.Feature;
 					public static Monitoring: com.facebook.internal.FeatureManager.Feature;
 					public static ServiceUpdateCompliance: com.facebook.internal.FeatureManager.Feature;
+					public static Megatron: com.facebook.internal.FeatureManager.Feature;
+					public static Elora: com.facebook.internal.FeatureManager.Feature;
 					public static Login: com.facebook.internal.FeatureManager.Feature;
 					public static ChromeCustomTabsPrefetching: com.facebook.internal.FeatureManager.Feature;
 					public static IgnoreAppSwitchToLoggedOut: com.facebook.internal.FeatureManager.Feature;
@@ -4183,27 +11595,60 @@ declare module com {
 		export module internal {
 			export class FetchedAppSettings {
 				public static class: java.lang.Class<com.facebook.internal.FetchedAppSettings>;
-				public getErrorClassification(): com.facebook.internal.FacebookRequestErrorClassification;
+				public static Companion: com.facebook.internal.FetchedAppSettings.Companion;
+				public getSensitiveParams(): org.json.JSONArray;
 				public getSmartLoginMenuIconURL(): string;
-				public getEventBindings(): org.json.JSONArray;
-				public getSdkUpdateMessage(): string;
 				public getRestrictiveDataSetting(): string;
 				public getIAPAutomaticLoggingEnabled(): boolean;
 				public getCodelessEventsEnabled(): boolean;
-				public static getDialogFeatureConfig(param0: string, param1: string, param2: string): com.facebook.internal.FetchedAppSettings.DialogFeatureConfig;
-				public getNuxContent(): string;
+				public getProtectedModeStandardParamsSetting(): org.json.JSONArray;
 				public getSmartLoginOptions(): java.util.EnumSet<com.facebook.internal.SmartLoginOption>;
+				public getMACARuleMatchingSetting(): org.json.JSONArray;
 				public getTrackUninstallEnabled(): boolean;
-				public getSessionTimeoutInSeconds(): number;
-				public getDialogConfigurations(): java.util.Map<string, java.util.Map<string, com.facebook.internal.FetchedAppSettings.DialogFeatureConfig>>;
+				public constructor(
+					param0: boolean,
+					param1: string,
+					param2: boolean,
+					param3: number,
+					param4: java.util.EnumSet<com.facebook.internal.SmartLoginOption>,
+					param5: java.util.Map<string, any>,
+					param6: boolean,
+					param7: com.facebook.internal.FacebookRequestErrorClassification,
+					param8: string,
+					param9: string,
+					param10: boolean,
+					param11: boolean,
+					param12: org.json.JSONArray,
+					param13: string,
+					param14: boolean,
+					param15: boolean,
+					param16: string,
+					param17: string,
+					param18: string,
+					param19: org.json.JSONArray,
+					param20: org.json.JSONArray,
+					param21: java.util.Map<string, java.lang.Boolean>,
+					param22: org.json.JSONArray,
+					param23: org.json.JSONArray,
+					param24: org.json.JSONArray
+				);
 				public getMonitorViaDialogEnabled(): boolean;
 				public getAutomaticLoggingEnabled(): boolean;
 				public getSmartLoginBookmarkIconURL(): string;
 				public getSuggestedEventsSetting(): string;
 				public getRawAamRules(): string;
-				public constructor(param0: boolean, param1: string, param2: boolean, param3: number, param4: java.util.EnumSet<com.facebook.internal.SmartLoginOption>, param5: java.util.Map<string, any>, param6: boolean, param7: com.facebook.internal.FacebookRequestErrorClassification, param8: string, param9: string, param10: boolean, param11: boolean, param12: org.json.JSONArray, param13: string, param14: boolean, param15: boolean, param16: string, param17: string, param18: string);
+				public getErrorClassification(): com.facebook.internal.FacebookRequestErrorClassification;
+				public getMigratedAutoLogValues(): java.util.Map<string, java.lang.Boolean>;
+				public getEventBindings(): org.json.JSONArray;
+				public getSdkUpdateMessage(): string;
+				public static getDialogFeatureConfig(param0: string, param1: string, param2: string): com.facebook.internal.FetchedAppSettings.DialogFeatureConfig;
+				public getNuxContent(): string;
+				public getBlocklistEvents(): org.json.JSONArray;
+				public getSessionTimeoutInSeconds(): number;
+				public getDialogConfigurations(): java.util.Map<string, java.util.Map<string, com.facebook.internal.FetchedAppSettings.DialogFeatureConfig>>;
 				public getNuxEnabled(): boolean;
 				public supportsImplicitLogging(): boolean;
+				public getRedactedEvents(): org.json.JSONArray;
 			}
 			export module FetchedAppSettings {
 				export class Companion {
@@ -4212,6 +11657,7 @@ declare module com {
 				}
 				export class DialogFeatureConfig {
 					public static class: java.lang.Class<com.facebook.internal.FetchedAppSettings.DialogFeatureConfig>;
+					public static Companion: com.facebook.internal.FetchedAppSettings.DialogFeatureConfig.Companion;
 					public getFeatureName(): string;
 					public getFallbackUrl(): globalAndroid.net.Uri;
 					public getVersionSpec(): androidNative.Array<number>;
@@ -4234,11 +11680,14 @@ declare module com {
 			export class FetchedAppSettingsManager {
 				public static class: java.lang.Class<com.facebook.internal.FetchedAppSettingsManager>;
 				public static INSTANCE: com.facebook.internal.FetchedAppSettingsManager;
+				public static AUTO_LOG_APP_EVENTS_DEFAULT_FIELD: string;
+				public static AUTO_LOG_APP_EVENT_ENABLED_FIELD: string;
 				public static getAppSettingsAsync(param0: com.facebook.internal.FetchedAppSettingsManager.FetchedAppSettingsCallback): void;
 				public static getAppSettingsWithoutQuery(param0: string): com.facebook.internal.FetchedAppSettings;
 				public static setIsUnityInit(param0: boolean): void;
 				public parseAppSettingsFromJSON$facebook_core_release(param0: string, param1: org.json.JSONObject): com.facebook.internal.FetchedAppSettings;
 				public static loadAppSettingsAsync(): void;
+				public static getCachedMigratedAutoLogValuesInAppSettings(): java.util.Map<string, java.lang.Boolean>;
 				public static queryAppSettings(param0: string, param1: boolean): com.facebook.internal.FetchedAppSettings;
 			}
 			export module FetchedAppSettingsManager {
@@ -4271,6 +11720,7 @@ declare module com {
 		export module internal {
 			export class FileLruCache {
 				public static class: java.lang.Class<com.facebook.internal.FileLruCache>;
+				public static Companion: com.facebook.internal.FileLruCache.Companion;
 				public get(param0: string, param1: string): java.io.InputStream;
 				public constructor(param0: string, param1: com.facebook.internal.FileLruCache.Limits);
 				public openPutStream(param0: string, param1: string): java.io.OutputStream;
@@ -4331,6 +11781,7 @@ declare module com {
 				}
 				export class ModifiedFile extends java.lang.Comparable<com.facebook.internal.FileLruCache.ModifiedFile> {
 					public static class: java.lang.Class<com.facebook.internal.FileLruCache.ModifiedFile>;
+					public static Companion: com.facebook.internal.FileLruCache.ModifiedFile.Companion;
 					public equals(param0: any): boolean;
 					public compareTo(param0: com.facebook.internal.FileLruCache.ModifiedFile): number;
 					public getFile(): java.io.File;
@@ -4358,6 +11809,37 @@ declare module com {
 					public readHeader(param0: java.io.InputStream): org.json.JSONObject;
 					public writeHeader(param0: java.io.OutputStream, param1: org.json.JSONObject): void;
 				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export class FragmentWrapper {
+				public static class: java.lang.Class<com.facebook.internal.FragmentWrapper>;
+				public getSupportFragment(): androidx.fragment.app.Fragment;
+				public getActivity(): globalAndroid.app.Activity;
+				public constructor(param0: androidx.fragment.app.Fragment);
+				public startActivityForResult(param0: globalAndroid.content.Intent, param1: number): void;
+				public getNativeFragment(): globalAndroid.app.Fragment;
+				public constructor(param0: globalAndroid.app.Fragment);
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export class GamingAction {
+				public static class: java.lang.Class<com.facebook.internal.GamingAction>;
+				public static ContextChoose: com.facebook.internal.GamingAction;
+				public static JoinTournament: com.facebook.internal.GamingAction;
+				public static valueOf(param0: string): com.facebook.internal.GamingAction;
+				public static values(): androidNative.Array<com.facebook.internal.GamingAction>;
+				public getRawValue(): string;
 			}
 		}
 	}
@@ -4398,6 +11880,7 @@ declare module com {
 				}
 				export class RequestKey {
 					public static class: java.lang.Class<com.facebook.internal.ImageDownloader.RequestKey>;
+					public static Companion: com.facebook.internal.ImageDownloader.RequestKey.Companion;
 					public equals(param0: any): boolean;
 					public getTag(): any;
 					public getUri(): globalAndroid.net.Uri;
@@ -4421,6 +11904,7 @@ declare module com {
 		export module internal {
 			export class ImageRequest {
 				public static class: java.lang.Class<com.facebook.internal.ImageRequest>;
+				public static Companion: com.facebook.internal.ImageRequest.Companion;
 				public static UNSPECIFIED_DIMENSION: number;
 				public getContext(): globalAndroid.content.Context;
 				public getImageUri(): globalAndroid.net.Uri;
@@ -4506,6 +11990,24 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module internal {
+			export class InstagramCustomTab extends com.facebook.internal.CustomTab {
+				public static class: java.lang.Class<com.facebook.internal.InstagramCustomTab>;
+				public static Companion: com.facebook.internal.InstagramCustomTab.Companion;
+				public constructor(param0: string, param1: globalAndroid.os.Bundle);
+			}
+			export module InstagramCustomTab {
+				export class Companion {
+					public static class: java.lang.Class<com.facebook.internal.InstagramCustomTab.Companion>;
+					public getURIForAction(param0: string, param1: globalAndroid.os.Bundle): globalAndroid.net.Uri;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
 			export class InstallReferrerUtil {
 				public static class: java.lang.Class<com.facebook.internal.InstallReferrerUtil>;
 				public static INSTANCE: com.facebook.internal.InstallReferrerUtil;
@@ -4544,7 +12046,7 @@ declare module com {
 	export module facebook {
 		export module internal {
 			export class LockOnGetVariable<T> extends java.lang.Object {
-				public static class: java.lang.Class<com.facebook.internal.LockOnGetVariable<any>>;
+				public static class: java.lang.Class<com.facebook.internal.LockOnGetVariable>;
 				public constructor(param0: T);
 				public getValue(): T;
 				public constructor(param0: java.util.concurrent.Callable<T>);
@@ -4558,6 +12060,7 @@ declare module com {
 		export module internal {
 			export class Logger {
 				public static class: java.lang.Class<com.facebook.internal.Logger>;
+				public static Companion: com.facebook.internal.Logger.Companion;
 				public static LOG_TAG_BASE: string;
 				public getContents(): string;
 				public static log(param0: com.facebook.LoggingBehavior, param1: string, param2: string, param3: androidNative.Array<any>): void;
@@ -4807,6 +12310,7 @@ declare module com {
 				}
 				export class ProtocolVersionQueryResult {
 					public static class: java.lang.Class<com.facebook.internal.NativeProtocol.ProtocolVersionQueryResult>;
+					public static Companion: com.facebook.internal.NativeProtocol.ProtocolVersionQueryResult.Companion;
 					public static createEmpty(): com.facebook.internal.NativeProtocol.ProtocolVersionQueryResult;
 					public getProtocolVersion(): number;
 					public getAppInfo(): com.facebook.internal.NativeProtocol.NativeAppInfo;
@@ -4824,6 +12328,37 @@ declare module com {
 					public getPackage(): string;
 					public constructor();
 					public getLoginActivity(): string;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export abstract class PlatformServiceClient {
+				public static class: java.lang.Class<com.facebook.internal.PlatformServiceClient>;
+				public onServiceDisconnected(param0: globalAndroid.content.ComponentName): void;
+				public onServiceConnected(param0: globalAndroid.content.ComponentName, param1: globalAndroid.os.IBinder): void;
+				public setCompletedListener(param0: com.facebook.internal.PlatformServiceClient.CompletedListener): void;
+				public handleMessage(param0: globalAndroid.os.Message): void;
+				public constructor(param0: globalAndroid.content.Context, param1: number, param2: number, param3: number, param4: string, param5: string);
+				public getContext(): globalAndroid.content.Context;
+				public start(): boolean;
+				public cancel(): void;
+				public getNonce(): string;
+				public populateRequestBundle(param0: globalAndroid.os.Bundle): void;
+			}
+			export module PlatformServiceClient {
+				export class CompletedListener {
+					public static class: java.lang.Class<com.facebook.internal.PlatformServiceClient.CompletedListener>;
+					/**
+					 * Constructs a new instance of the com.facebook.internal.PlatformServiceClient$CompletedListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+					 */
+					public constructor(implementation: { completed(param0: globalAndroid.os.Bundle): void });
+					public constructor();
+					public completed(param0: globalAndroid.os.Bundle): void;
 				}
 			}
 		}
@@ -4905,6 +12440,7 @@ declare module com {
 				public static getErrorsUserCanceled(): java.util.Collection<string>;
 				public static getDefaultAPIVersion(): string;
 				public static getDialogAuthority(): string;
+				public static getGamingDialogAuthority(): string;
 				public static getFacebookGraphUrlBase(): string;
 				public static getQueryParamsForPlatformActivityIntentWebFallback(param0: string, param1: number, param2: globalAndroid.os.Bundle): globalAndroid.os.Bundle;
 				public static getErrorConnectionFailure(): string;
@@ -4919,6 +12455,7 @@ declare module com {
 		export module internal {
 			export class SmartLoginOption {
 				public static class: java.lang.Class<com.facebook.internal.SmartLoginOption>;
+				public static Companion: com.facebook.internal.SmartLoginOption.Companion;
 				public static None: com.facebook.internal.SmartLoginOption;
 				public static Enabled: com.facebook.internal.SmartLoginOption;
 				public static RequireConfirm: com.facebook.internal.SmartLoginOption;
@@ -4969,12 +12506,14 @@ declare module com {
 				public static jsonArrayToStringList(param0: org.json.JSONArray): java.util.List<string>;
 				public static logd(param0: string, param1: string, param2: java.lang.Throwable): void;
 				public static mapToJsonStr(param0: java.util.Map<string, string>): string;
+				public setAvailableExternalStorageGB(param0: number): void;
 				public static writeNonnullStringMapToParcel(param0: globalAndroid.os.Parcel, param1: java.util.Map<string, string>): void;
 				public static getResourceLocale(): java.util.Locale;
 				public static setAppEventExtendedDeviceInfoParameters(param0: org.json.JSONObject, param1: globalAndroid.content.Context): void;
 				public static writeStringMapToParcel(param0: globalAndroid.os.Parcel, param1: java.util.Map<string, string>): void;
 				public static getBundleLongAsDate(param0: globalAndroid.os.Bundle, param1: string, param2: java.util.Date): java.util.Date;
 				public static putJSONValueInBundle(param0: globalAndroid.os.Bundle, param1: string, param2: any): boolean;
+				public setVersionName(param0: string): void;
 				public static putCommaSeparatedStringList(param0: globalAndroid.os.Bundle, param1: string, param2: java.util.List<string>): void;
 				public static safeGetStringFromResponse(param0: org.json.JSONObject, param1: string): string;
 				public static isAutofillAvailable(param0: globalAndroid.content.Context): boolean;
@@ -4982,19 +12521,24 @@ declare module com {
 				public static getContentSize(param0: globalAndroid.net.Uri): number;
 				public static runOnNonUiThread(param0: java.lang.Runnable): void;
 				public static coerceValueIfNullOrEmpty(param0: string, param1: string): string;
+				public getCarrierName(): string;
 				public static isFileUri(param0: globalAndroid.net.Uri): boolean;
 				public static md5hash(param0: string): string;
 				public static getMethodQuietly(param0: java.lang.Class<any>, param1: string, param2: androidNative.Array<java.lang.Class<any>>): java.lang.reflect.Method;
 				public static getStringPropertyAsJSON(param0: org.json.JSONObject, param1: string, param2: string): any;
+				public getVersionName(): string;
 				public static sha256hash(param0: string): string;
 				public static readStreamToString(param0: java.io.InputStream): string;
 				public static copyAndCloseInputStream(param0: java.io.InputStream, param1: java.io.OutputStream): number;
 				public static isAutoAppLinkSetup(): boolean;
+				public getDeviceTimeZoneName(): string;
 				public static convertJSONObjectToHashMap(param0: org.json.JSONObject): java.util.Map<string, any>;
 				public static clearFacebookCookies(param0: globalAndroid.content.Context): void;
 				public static setAppEventAttributionParameters(param0: org.json.JSONObject, param1: com.facebook.internal.AttributionIdentifiers, param2: string, param3: boolean, param4: globalAndroid.content.Context): void;
 				public static tryGetJSONArrayFromResponse(param0: org.json.JSONObject, param1: string): org.json.JSONArray;
 				public static getCurrentLocale(): java.util.Locale;
+				public static convertJSONArrayToHashSet(param0: org.json.JSONArray): java.util.HashSet<string>;
+				public getLocale(): java.util.Locale;
 				public static mustFixWindowParamsForAutofill(param0: globalAndroid.content.Context): boolean;
 				public static parseUrlQueryString(param0: string): globalAndroid.os.Bundle;
 				public static getAppName(param0: globalAndroid.content.Context): string;
@@ -5004,8 +12548,10 @@ declare module com {
 				public static sha256hash(param0: androidNative.Array<number>): string;
 				public static jsonStrToMap(param0: string): java.util.Map<string, string>;
 				public static isContentUri(param0: globalAndroid.net.Uri): boolean;
+				public getAvailableExternalStorageGB(): number;
 				public static sha1hash(param0: androidNative.Array<number>): string;
 				public static readStringMapFromParcel(param0: globalAndroid.os.Parcel): java.util.Map<string, string>;
+				public setDeviceTimeZoneName(param0: string): void;
 				public static areObjectsEqual(param0: any, param1: any): boolean;
 				public static isChromeOS(param0: globalAndroid.content.Context): boolean;
 				public static putUri(param0: globalAndroid.os.Bundle, param1: string, param2: globalAndroid.net.Uri): void;
@@ -5023,11 +12569,13 @@ declare module com {
 				public static getGraphDomainFromTokenDomain(param0: string): string;
 				public static stringsEqualOrEmpty(param0: string, param1: string): boolean;
 				public static generateRandomString(param0: number): string;
+				public setLocale(param0: java.util.Locale): void;
 				public static buildUri(param0: string, param1: string, param2: globalAndroid.os.Bundle): globalAndroid.net.Uri;
 				public static jsonArrayToSet(param0: org.json.JSONArray): java.util.Set<string>;
 				public static isNullOrEmpty(param0: string): boolean;
 				public static putNonEmptyString(param0: globalAndroid.os.Bundle, param1: string, param2: string): void;
 				public static convertJSONObjectToStringMap(param0: org.json.JSONObject): java.util.Map<string, string>;
+				public setCarrierName(param0: string): void;
 			}
 			export module Utility {
 				export class GraphMeRequestWithCacheCallback {
@@ -5056,12 +12604,12 @@ declare module com {
 				public static hasContentProvider(param0: globalAndroid.content.Context): void;
 				public static containsNoNullOrEmpty(param0: java.util.Collection<string>, param1: string): void;
 				public static notNullOrEmpty(param0: string, param1: string): string;
-				public static notEmpty(param0: java.util.Collection<any>, param1: string): void;
+				public static notEmpty(param0: java.util.Collection, param1: string): void;
 				public static oneOf(param0: any, param1: string, param2: androidNative.Array<any>): void;
 				public static hasFacebookActivity(param0: globalAndroid.content.Context, param1: boolean): void;
 				public static hasInternetPermissions(param0: globalAndroid.content.Context): void;
 				public static hasCustomTabRedirectActivity(param0: globalAndroid.content.Context, param1: string): boolean;
-				public static containsNoNulls(param0: java.util.Collection<any>, param1: string): void;
+				public static containsNoNulls(param0: java.util.Collection, param1: string): void;
 				public static hasWiFiPermission(param0: globalAndroid.content.Context): boolean;
 				public static hasChangeWifiStatePermission(param0: globalAndroid.content.Context): boolean;
 				public static runningOnUiThread(): void;
@@ -5071,7 +12619,7 @@ declare module com {
 				public static notEmpty(param0: string, param1: string): void;
 				public static hasBluetoothPermission(param0: globalAndroid.content.Context): boolean;
 				public static hasClientToken(): string;
-				public static notEmptyAndContainsNoNulls(param0: java.util.Collection<any>, param1: string): void;
+				public static notEmptyAndContainsNoNulls(param0: java.util.Collection, param1: string): void;
 				public static sdkInitialized(): void;
 				public static hasLocationPermission(param0: globalAndroid.content.Context): boolean;
 				public static notNull(param0: any, param1: string): void;
@@ -5083,1377 +12631,9 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module internal {
-			export class WorkQueue {
-				public static class: java.lang.Class<com.facebook.internal.WorkQueue>;
-				public static DEFAULT_MAX_CONCURRENT: number;
-				public addActiveWorkItem(param0: java.lang.Runnable): com.facebook.internal.WorkQueue.WorkItem;
-				public constructor(param0: number);
-				public validate(): void;
-				public addActiveWorkItem(param0: java.lang.Runnable, param1: boolean): com.facebook.internal.WorkQueue.WorkItem;
-				public constructor(param0: number, param1: java.util.concurrent.Executor);
-				public constructor();
-			}
-			export module WorkQueue {
-				export class Companion {
-					public static class: java.lang.Class<com.facebook.internal.WorkQueue.Companion>;
-				}
-				export class WorkItem {
-					public static class: java.lang.Class<com.facebook.internal.WorkQueue.WorkItem>;
-					/**
-					 * Constructs a new instance of the com.facebook.internal.WorkQueue$WorkItem interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
-					 */
-					public constructor(implementation: { cancel(): boolean; isRunning(): boolean; moveToFront(): void });
-					public constructor();
-					public cancel(): boolean;
-					public isRunning(): boolean;
-					public moveToFront(): void;
-				}
-				export class WorkNode extends com.facebook.internal.WorkQueue.WorkItem {
-					public static class: java.lang.Class<com.facebook.internal.WorkQueue.WorkNode>;
-					public getNext(): com.facebook.internal.WorkQueue.WorkNode;
-					public cancel(): boolean;
-					public constructor(param0: java.lang.Runnable);
-					public addToList(param0: com.facebook.internal.WorkQueue.WorkNode, param1: boolean): com.facebook.internal.WorkQueue.WorkNode;
-					public getCallback(): java.lang.Runnable;
-					public isRunning(): boolean;
-					public removeFromList(param0: com.facebook.internal.WorkQueue.WorkNode): com.facebook.internal.WorkQueue.WorkNode;
-					public verify(param0: boolean): void;
-					public setRunning(param0: boolean): void;
-					public moveToFront(): void;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module gatekeeper {
-				export class GateKeeper {
-					public static class: java.lang.Class<com.facebook.internal.gatekeeper.GateKeeper>;
-					public equals(param0: any): boolean;
-					public toString(): string;
-					public component1(): string;
-					public getName(): string;
-					public getValue(): boolean;
-					public copy(param0: string, param1: boolean): com.facebook.internal.gatekeeper.GateKeeper;
-					public constructor(param0: string, param1: boolean);
-					public hashCode(): number;
-					public component2(): boolean;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module gatekeeper {
-				export class GateKeeperRuntimeCache {
-					public static class: java.lang.Class<com.facebook.internal.gatekeeper.GateKeeperRuntimeCache>;
-					public setGateKeepers(param0: string, param1: java.util.List<com.facebook.internal.gatekeeper.GateKeeper>): void;
-					public resetCache(param0: string): void;
-					public dumpGateKeepers(param0: string): java.util.List<com.facebook.internal.gatekeeper.GateKeeper>;
-					public constructor();
-					public setGateKeeper(param0: string, param1: com.facebook.internal.gatekeeper.GateKeeper): void;
-					public getGateKeeperValue(param0: string, param1: string, param2: boolean): boolean;
-					public getGateKeeper(param0: string, param1: string): com.facebook.internal.gatekeeper.GateKeeper;
-					public setGateKeeperValue(param0: string, param1: string, param2: boolean): void;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module instrument {
-				export class ExceptionAnalyzer {
-					public static class: java.lang.Class<com.facebook.internal.instrument.ExceptionAnalyzer>;
-					public static INSTANCE: com.facebook.internal.instrument.ExceptionAnalyzer;
-					public static execute(param0: java.lang.Throwable): void;
-					public static isDebug$facebook_core_release(): boolean;
-					public sendExceptionAnalysisReports$facebook_core_release(): void;
-					public static enable(): void;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module instrument {
-				export class InstrumentData {
-					public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentData>;
-					public toString(): string;
-					public save(): void;
-					public compareTo(param0: com.facebook.internal.instrument.InstrumentData): number;
-					public isValid(): boolean;
-					public clear(): void;
-				}
-				export module InstrumentData {
-					export class Builder {
-						public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentData.Builder>;
-						public static INSTANCE: com.facebook.internal.instrument.InstrumentData.Builder;
-						public static load(param0: java.io.File): com.facebook.internal.instrument.InstrumentData;
-						public static build(param0: java.lang.Throwable, param1: com.facebook.internal.instrument.InstrumentData.Type): com.facebook.internal.instrument.InstrumentData;
-						public static build(param0: string, param1: string): com.facebook.internal.instrument.InstrumentData;
-						public static build(param0: org.json.JSONArray): com.facebook.internal.instrument.InstrumentData;
-					}
-					export class Companion {
-						public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentData.Companion>;
-					}
-					export class Type {
-						public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentData.Type>;
-						public static Unknown: com.facebook.internal.instrument.InstrumentData.Type;
-						public static Analysis: com.facebook.internal.instrument.InstrumentData.Type;
-						public static AnrReport: com.facebook.internal.instrument.InstrumentData.Type;
-						public static CrashReport: com.facebook.internal.instrument.InstrumentData.Type;
-						public static CrashShield: com.facebook.internal.instrument.InstrumentData.Type;
-						public static ThreadCheck: com.facebook.internal.instrument.InstrumentData.Type;
-						public static valueOf(param0: string): com.facebook.internal.instrument.InstrumentData.Type;
-						public static values(): androidNative.Array<com.facebook.internal.instrument.InstrumentData.Type>;
-						public toString(): string;
-						public getLogPrefix(): string;
-					}
-					export module Type {
-						export class WhenMappings {
-							public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentData.Type.WhenMappings>;
-						}
-					}
-					export class WhenMappings {
-						public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentData.WhenMappings>;
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module instrument {
-				export class InstrumentManager {
-					public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentManager>;
-					public static INSTANCE: com.facebook.internal.instrument.InstrumentManager;
-					public static start(): void;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module instrument {
-				export class InstrumentUtility {
-					public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentUtility>;
-					public static INSTANCE: com.facebook.internal.instrument.InstrumentUtility;
-					public static ANALYSIS_REPORT_PREFIX: string;
-					public static ANR_REPORT_PREFIX: string;
-					public static CRASH_REPORT_PREFIX: string;
-					public static CRASH_SHIELD_PREFIX: string;
-					public static THREAD_CHECK_PREFIX: string;
-					public static ERROR_REPORT_PREFIX: string;
-					public static writeFile(param0: string, param1: string): void;
-					public static sendReports(param0: string, param1: org.json.JSONArray, param2: com.facebook.GraphRequest.Callback): void;
-					public static getInstrumentReportDir(): java.io.File;
-					public static getStackTrace(param0: java.lang.Thread): string;
-					public static isSDKRelatedThread(param0: java.lang.Thread): boolean;
-					public static listExceptionReportFiles(): androidNative.Array<java.io.File>;
-					public static deleteFile(param0: string): boolean;
-					public static getStackTrace(param0: java.lang.Throwable): string;
-					public static readFile(param0: string, param1: boolean): org.json.JSONObject;
-					public static listExceptionAnalysisReportFiles(): androidNative.Array<java.io.File>;
-					public static listAnrReportFiles(): androidNative.Array<java.io.File>;
-					public static getCause(param0: java.lang.Throwable): string;
-					public static isSDKRelatedException(param0: java.lang.Throwable): boolean;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module instrument {
-				export module anrreport {
-					export class ANRDetector {
-						public static class: java.lang.Class<com.facebook.internal.instrument.anrreport.ANRDetector>;
-						public static INSTANCE: com.facebook.internal.instrument.anrreport.ANRDetector;
-						public static checkProcessError(param0: globalAndroid.app.ActivityManager): void;
-						public static start(): void;
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module instrument {
-				export module anrreport {
-					export class ANRHandler {
-						public static class: java.lang.Class<com.facebook.internal.instrument.anrreport.ANRHandler>;
-						public static INSTANCE: com.facebook.internal.instrument.anrreport.ANRHandler;
-						public static enable(): void;
-						public static sendANRReports(): void;
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module instrument {
-				export module crashreport {
-					export class CrashHandler {
-						public static class: java.lang.Class<com.facebook.internal.instrument.crashreport.CrashHandler>;
-						public static enable(): void;
-						public uncaughtException(param0: java.lang.Thread, param1: java.lang.Throwable): void;
-					}
-					export module CrashHandler {
-						export class Companion {
-							public static class: java.lang.Class<com.facebook.internal.instrument.crashreport.CrashHandler.Companion>;
-							public enable(): void;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module instrument {
-				export module crashshield {
-					export class AutoHandleExceptions {
-						public static class: java.lang.Class<com.facebook.internal.instrument.crashshield.AutoHandleExceptions>;
-						/**
-						 * Constructs a new instance of the com.facebook.internal.instrument.crashshield.AutoHandleExceptions interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
-						 */
-						public constructor(implementation: {});
-						public constructor();
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module instrument {
-				export module crashshield {
-					export class CrashShieldHandler {
-						public static class: java.lang.Class<com.facebook.internal.instrument.crashshield.CrashShieldHandler>;
-						public static INSTANCE: com.facebook.internal.instrument.crashshield.CrashShieldHandler;
-						public static scheduleCrashInDebug(param0: java.lang.Throwable): void;
-						public static enable(): void;
-						public static methodFinished(param0: any): void;
-						public static isObjectCrashing(param0: any): boolean;
-						public static isDebug(): boolean;
-						public static resetCrashingObjects(): void;
-						public static reset(): void;
-						public static disable(): void;
-						public static handleThrowable(param0: java.lang.Throwable, param1: any): void;
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module instrument {
-				export module crashshield {
-					export class NoAutoExceptionHandling {
-						public static class: java.lang.Class<com.facebook.internal.instrument.crashshield.NoAutoExceptionHandling>;
-						/**
-						 * Constructs a new instance of the com.facebook.internal.instrument.crashshield.NoAutoExceptionHandling interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
-						 */
-						public constructor(implementation: {});
-						public constructor();
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module instrument {
-				export module errorreport {
-					export class ErrorReportData {
-						public static class: java.lang.Class<com.facebook.internal.instrument.errorreport.ErrorReportData>;
-						public constructor(param0: java.io.File);
-						public compareTo(param0: com.facebook.internal.instrument.errorreport.ErrorReportData): number;
-						public getParameters(): org.json.JSONObject;
-						public save(): void;
-						public clear(): void;
-						public toString(): string;
-						public constructor(param0: string);
-						public isValid(): boolean;
-					}
-					export module ErrorReportData {
-						export class Companion {
-							public static class: java.lang.Class<com.facebook.internal.instrument.errorreport.ErrorReportData.Companion>;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module instrument {
-				export module errorreport {
-					export class ErrorReportHandler {
-						public static class: java.lang.Class<com.facebook.internal.instrument.errorreport.ErrorReportHandler>;
-						public static INSTANCE: com.facebook.internal.instrument.errorreport.ErrorReportHandler;
-						public static save(param0: string): void;
-						public static enable(): void;
-						public static listErrorReportFiles(): androidNative.Array<java.io.File>;
-						public static sendErrorReports(): void;
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module instrument {
-				export module threadcheck {
-					export class ThreadCheckHandler {
-						public static class: java.lang.Class<com.facebook.internal.instrument.threadcheck.ThreadCheckHandler>;
-						public static INSTANCE: com.facebook.internal.instrument.threadcheck.ThreadCheckHandler;
-						public static enable(): void;
-						public static workerThreadViolationDetected(param0: java.lang.Class<any>, param1: string, param2: string): void;
-						public static uiThreadViolationDetected(param0: java.lang.Class<any>, param1: string, param2: string): void;
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module qualityvalidation {
-				export class Excuse {
-					public static class: java.lang.Class<com.facebook.internal.qualityvalidation.Excuse>;
-					/**
-					 * Constructs a new instance of the com.facebook.internal.qualityvalidation.Excuse interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
-					 */
-					public constructor(implementation: { type(): string; reason(): string });
-					public constructor();
-					public reason(): string;
-					public type(): string;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module qualityvalidation {
-				export class ExcusesForDesignViolations {
-					public static class: java.lang.Class<com.facebook.internal.qualityvalidation.ExcusesForDesignViolations>;
-					/**
-					 * Constructs a new instance of the com.facebook.internal.qualityvalidation.ExcusesForDesignViolations interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
-					 */
-					public constructor(implementation: { value(): androidNative.Array<com.facebook.internal.qualityvalidation.Excuse> });
-					public constructor();
-					public value(): androidNative.Array<com.facebook.internal.qualityvalidation.Excuse>;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module security {
-				export class CertificateUtil {
-					public static class: java.lang.Class<com.facebook.internal.security.CertificateUtil>;
-					public static INSTANCE: com.facebook.internal.security.CertificateUtil;
-					public static DELIMITER: string;
-					public static getCertificateHash(param0: globalAndroid.content.Context): string;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export module security {
-				export class OidcSecurityUtil {
-					public static class: java.lang.Class<com.facebook.internal.security.OidcSecurityUtil>;
-					public static INSTANCE: com.facebook.internal.security.OidcSecurityUtil;
-					public static SIGNATURE_ALGORITHM_SHA256: string;
-					public static TIMEOUT_IN_MILLISECONDS: number;
-					public static verify(param0: java.security.PublicKey, param1: string, param2: string): boolean;
-					public getOPENID_KEYS_PATH(): string;
-					public static getRawKeyFromEndPoint(param0: string): string;
-					public static getPublicKeyFromString(param0: string): java.security.PublicKey;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module login {
-			export class DefaultAudience {
-				public static class: java.lang.Class<com.facebook.login.DefaultAudience>;
-				public static NONE: com.facebook.login.DefaultAudience;
-				public static ONLY_ME: com.facebook.login.DefaultAudience;
-				public static FRIENDS: com.facebook.login.DefaultAudience;
-				public static EVERYONE: com.facebook.login.DefaultAudience;
-				public static values(): androidNative.Array<com.facebook.login.DefaultAudience>;
-				public getNativeProtocolAudience(): string;
-				public static valueOf(param0: string): com.facebook.login.DefaultAudience;
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module login {
-			export class LoginTargetApp {
-				public static class: java.lang.Class<com.facebook.login.LoginTargetApp>;
-				public static FACEBOOK: com.facebook.login.LoginTargetApp;
-				public static INSTAGRAM: com.facebook.login.LoginTargetApp;
-				public static valueOf(param0: string): com.facebook.login.LoginTargetApp;
-				public static values(): androidNative.Array<com.facebook.login.LoginTargetApp>;
-				public static fromString(param0: string): com.facebook.login.LoginTargetApp;
-				public toString(): string;
-			}
-			export module LoginTargetApp {
-				export class Companion {
-					public static class: java.lang.Class<com.facebook.login.LoginTargetApp.Companion>;
-					public fromString(param0: string): com.facebook.login.LoginTargetApp;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module ppml {
-			export module receiver {
-				export class IReceiverService {
-					public static class: java.lang.Class<com.facebook.ppml.receiver.IReceiverService>;
-					/**
-					 * Constructs a new instance of the com.facebook.ppml.receiver.IReceiverService interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
-					 */
-					public constructor(implementation: { sendEvents(param0: globalAndroid.os.Bundle): number });
-					public constructor();
-					public sendEvents(param0: globalAndroid.os.Bundle): number;
-				}
-				export module IReceiverService {
-					export class Default extends com.facebook.ppml.receiver.IReceiverService {
-						public static class: java.lang.Class<com.facebook.ppml.receiver.IReceiverService.Default>;
-						public constructor();
-						public sendEvents(param0: globalAndroid.os.Bundle): number;
-						public asBinder(): globalAndroid.os.IBinder;
-					}
-					export abstract class Stub implements com.facebook.ppml.receiver.IReceiverService {
-						public static class: java.lang.Class<com.facebook.ppml.receiver.IReceiverService.Stub>;
-						public constructor();
-						public sendEvents(param0: globalAndroid.os.Bundle): number;
-						public static setDefaultImpl(param0: com.facebook.ppml.receiver.IReceiverService): boolean;
-						public onTransact(param0: number, param1: globalAndroid.os.Parcel, param2: globalAndroid.os.Parcel, param3: number): boolean;
-						public asBinder(): globalAndroid.os.IBinder;
-						public static asInterface(param0: globalAndroid.os.IBinder): com.facebook.ppml.receiver.IReceiverService;
-						public static getDefaultImpl(): com.facebook.ppml.receiver.IReceiverService;
-					}
-					export module Stub {
-						export class Proxy extends com.facebook.ppml.receiver.IReceiverService {
-							public static class: java.lang.Class<com.facebook.ppml.receiver.IReceiverService.Stub.Proxy>;
-							public static sDefaultImpl: com.facebook.ppml.receiver.IReceiverService;
-							public getInterfaceDescriptor(): string;
-							public sendEvents(param0: globalAndroid.os.Bundle): number;
-							public asBinder(): globalAndroid.os.IBinder;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-//Generics information:
-//com.facebook.GraphRequest.ParcelableResourceWithMimeType:1
-//com.facebook.internal.LockOnGetVariable:1
-declare module com {
-	export module facebook {
-		export module login {
-			export class BuildConfig {
-				public static class: java.lang.Class<com.facebook.login.BuildConfig>;
-				public static DEBUG: boolean;
-				public static LIBRARY_PACKAGE_NAME: string;
-				public static BUILD_TYPE: string;
-				public constructor();
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module login {
-			export class DeviceLoginManager {
-				public static class: java.lang.Class<com.facebook.login.DeviceLoginManager>;
-				public getDeviceRedirectUri(): globalAndroid.net.Uri;
-				public createLoginRequest(param0: java.util.Collection<string>): com.facebook.login.LoginClient.Request;
-				public setDeviceRedirectUri(param0: globalAndroid.net.Uri): void;
-				public static getInstance(): com.facebook.login.DeviceLoginManager;
-				public setDeviceAuthTargetUserId(param0: string): void;
-				public getDeviceAuthTargetUserId(): string;
-				public constructor();
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module login {
-			export class Login {
-				public static class: java.lang.Class<com.facebook.login.Login>;
-				public constructor();
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module login {
-			export module widget {
-				export class DeviceLoginButton extends com.facebook.login.widget.LoginButton {
-					public static class: java.lang.Class<com.facebook.login.widget.DeviceLoginButton>;
-					public constructor(param0: globalAndroid.content.Context);
-					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet);
-					public getDeviceRedirectUri(): globalAndroid.net.Uri;
-					public getNewLoginClickListener(): com.facebook.login.widget.LoginButton.LoginClickListener;
-					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number, param4: string, param5: string);
-					public setDeviceRedirectUri(param0: globalAndroid.net.Uri): void;
-					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number);
-				}
-				export module DeviceLoginButton {
-					export class DeviceLoginClickListener extends com.facebook.login.widget.LoginButton.LoginClickListener {
-						public static class: java.lang.Class<com.facebook.login.widget.DeviceLoginButton.DeviceLoginClickListener>;
-						public getLoginManager(): com.facebook.login.LoginManager;
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module login {
-			export module widget {
-				export class LoginButton {
-					public static class: java.lang.Class<com.facebook.login.widget.LoginButton>;
-					public properties: com.facebook.login.widget.LoginButton.LoginButtonProperties;
-					public getLoggerID(): string;
-					public getShouldSkipAccountDeduplication(): boolean;
-					public onAttachedToWindow(): void;
-					public onVisibilityChanged(param0: globalAndroid.view.View, param1: number): void;
-					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet);
-					public getLoginBehavior(): com.facebook.login.LoginBehavior;
-					public getDefaultStyleResource(): number;
-					public getMessengerPageId(): string;
-					public getLoginButtonWidth(param0: number): number;
-					public getDefaultAudience(): com.facebook.login.DefaultAudience;
-					public setPermissions(param0: androidNative.Array<string>): void;
-					public registerCallback(param0: com.facebook.CallbackManager, param1: com.facebook.FacebookCallback<com.facebook.login.LoginResult>): void;
-					/** @deprecated */
-					public setPublishPermissions(param0: java.util.List<string>): void;
-					public setAuthType(param0: string): void;
-					public onDraw(param0: globalAndroid.graphics.Canvas): void;
-					public parseLoginButtonAttributes(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number): void;
-					public setLoginTargetApp(param0: com.facebook.login.LoginTargetApp): void;
-					public setResetMessengerState(param0: boolean): void;
-					public getToolTipDisplayTime(): number;
-					public configureButton(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number): void;
-					public setMessengerPageId(param0: string): void;
-					public setDefaultAudience(param0: com.facebook.login.DefaultAudience): void;
-					public getAuthType(): string;
-					public setButtonIcon(): void;
-					public setButtonText(): void;
-					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number, param4: string, param5: string);
-					public setLoginText(param0: string): void;
-					/** @deprecated */
-					public setReadPermissions(param0: java.util.List<string>): void;
-					public unregisterCallback(param0: com.facebook.CallbackManager): void;
-					public setToolTipStyle(param0: com.facebook.login.widget.ToolTipPopup.Style): void;
-					public setButtonTransparency(): void;
-					public setPermissions(param0: java.util.List<string>): void;
-					/** @deprecated */
-					public setPublishPermissions(param0: androidNative.Array<string>): void;
-					public setLogoutText(param0: string): void;
-					public clearPermissions(): void;
-					public getDefaultRequestCode(): number;
-					public setToolTipDisplayTime(param0: number): void;
-					public getResetMessengerState(): boolean;
-					public onDetachedFromWindow(): void;
-					public onMeasure(param0: number, param1: number): void;
-					public getToolTipMode(): com.facebook.login.widget.LoginButton.ToolTipMode;
-					public getLoginButtonContinueLabel(): number;
-					public dismissToolTip(): void;
-					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number);
-					public constructor(param0: globalAndroid.content.Context);
-					/** @deprecated */
-					public setReadPermissions(param0: androidNative.Array<string>): void;
-					public setButtonRadius(): void;
-					public getLoginTargetApp(): com.facebook.login.LoginTargetApp;
-					public getNewLoginClickListener(): com.facebook.login.widget.LoginButton.LoginClickListener;
-					public onLayout(param0: boolean, param1: number, param2: number, param3: number, param4: number): void;
-					public setToolTipMode(param0: com.facebook.login.widget.LoginButton.ToolTipMode): void;
-					public setLoginBehavior(param0: com.facebook.login.LoginBehavior): void;
-					public getCallbackManager(): com.facebook.CallbackManager;
-				}
-				export module LoginButton {
-					export class LoginButtonProperties {
-						public static class: java.lang.Class<com.facebook.login.widget.LoginButton.LoginButtonProperties>;
-						public setShouldSkipAccountDeduplication(param0: boolean): void;
-						public clearPermissions(): void;
-						public getMessengerPageId(): string;
-						public setResetMessengerState(param0: boolean): void;
-						public getResetMessengerState(): boolean;
-						public setPermissions(param0: java.util.List<string>): void;
-						public setLoginBehavior(param0: com.facebook.login.LoginBehavior): void;
-						public getDefaultAudience(): com.facebook.login.DefaultAudience;
-						public getShouldSkipAccountDeduplication(): boolean;
-						public getLoginTargetApp(): com.facebook.login.LoginTargetApp;
-						public getAuthType(): string;
-						public setMessengerPageId(param0: string): void;
-						public setDefaultAudience(param0: com.facebook.login.DefaultAudience): void;
-						public setAuthType(param0: string): void;
-						public setLoginTargetApp(param0: com.facebook.login.LoginTargetApp): void;
-						public getLoginBehavior(): com.facebook.login.LoginBehavior;
-					}
-					export class LoginClickListener {
-						public static class: java.lang.Class<com.facebook.login.widget.LoginButton.LoginClickListener>;
-						public constructor(param0: com.facebook.login.widget.LoginButton);
-						public performLogin(): void;
-						public isFamilyLogin(): boolean;
-						public getLoginTargetApp(): com.facebook.login.LoginTargetApp;
-						public performLogout(param0: globalAndroid.content.Context): void;
-						public onClick(param0: globalAndroid.view.View): void;
-						public getLoginManager(): com.facebook.login.LoginManager;
-					}
-					export class ToolTipMode {
-						public static class: java.lang.Class<com.facebook.login.widget.LoginButton.ToolTipMode>;
-						public static AUTOMATIC: com.facebook.login.widget.LoginButton.ToolTipMode;
-						public static DISPLAY_ALWAYS: com.facebook.login.widget.LoginButton.ToolTipMode;
-						public static NEVER_DISPLAY: com.facebook.login.widget.LoginButton.ToolTipMode;
-						public static DEFAULT: com.facebook.login.widget.LoginButton.ToolTipMode;
-						public static values(): androidNative.Array<com.facebook.login.widget.LoginButton.ToolTipMode>;
-						public static valueOf(param0: string): com.facebook.login.widget.LoginButton.ToolTipMode;
-						public static fromInt(param0: number): com.facebook.login.widget.LoginButton.ToolTipMode;
-						public toString(): string;
-						public getValue(): number;
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module login {
-			export module widget {
-				export class ProfilePictureView {
-					public static class: java.lang.Class<com.facebook.login.widget.ProfilePictureView>;
-					public static TAG: string;
-					public static CUSTOM: number;
-					public static SMALL: number;
-					public static NORMAL: number;
-					public static LARGE: number;
-					public onDetachedFromWindow(): void;
-					public onMeasure(param0: number, param1: number): void;
-					public getShouldUpdateOnProfileChange(): boolean;
-					public getPresetSize(): number;
-					public setProfileId(param0: string): void;
-					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number);
-					public getProfileId(): string;
-					public constructor(param0: globalAndroid.content.Context);
-					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet);
-					public setOnErrorListener(param0: com.facebook.login.widget.ProfilePictureView.OnErrorListener): void;
-					public setCropped(param0: boolean): void;
-					public getOnErrorListener(): com.facebook.login.widget.ProfilePictureView.OnErrorListener;
-					public onRestoreInstanceState(param0: globalAndroid.os.Parcelable): void;
-					public onLayout(param0: boolean, param1: number, param2: number, param3: number, param4: number): void;
-					public onSaveInstanceState(): globalAndroid.os.Parcelable;
-					public setPresetSize(param0: number): void;
-					public setShouldUpdateOnProfileChange(param0: boolean): void;
-					public isCropped(): boolean;
-					public setDefaultProfilePicture(param0: globalAndroid.graphics.Bitmap): void;
-				}
-				export module ProfilePictureView {
-					export class OnErrorListener {
-						public static class: java.lang.Class<com.facebook.login.widget.ProfilePictureView.OnErrorListener>;
-						/**
-						 * Constructs a new instance of the com.facebook.login.widget.ProfilePictureView$OnErrorListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
-						 */
-						public constructor(implementation: { onError(param0: com.facebook.FacebookException): void });
-						public constructor();
-						public onError(param0: com.facebook.FacebookException): void;
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module login {
-			export module widget {
-				export class ToolTipPopup {
-					public static class: java.lang.Class<com.facebook.login.widget.ToolTipPopup>;
-					public static DEFAULT_POPUP_DISPLAY_TIME: number;
-					public show(): void;
-					public setStyle(param0: com.facebook.login.widget.ToolTipPopup.Style): void;
-					public setNuxDisplayTime(param0: number): void;
-					public constructor(param0: string, param1: globalAndroid.view.View);
-					public dismiss(): void;
-				}
-				export module ToolTipPopup {
-					export class PopupContentView {
-						public static class: java.lang.Class<com.facebook.login.widget.ToolTipPopup.PopupContentView>;
-						public showTopArrow(): void;
-						public showBottomArrow(): void;
-						public constructor(param0: com.facebook.login.widget.ToolTipPopup, param1: globalAndroid.content.Context);
-					}
-					export class Style {
-						public static class: java.lang.Class<com.facebook.login.widget.ToolTipPopup.Style>;
-						public static BLUE: com.facebook.login.widget.ToolTipPopup.Style;
-						public static BLACK: com.facebook.login.widget.ToolTipPopup.Style;
-						public static values(): androidNative.Array<com.facebook.login.widget.ToolTipPopup.Style>;
-						public static valueOf(param0: string): com.facebook.login.widget.ToolTipPopup.Style;
-					}
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export abstract class AccessTokenTracker {
-			public static class: java.lang.Class<com.facebook.AccessTokenTracker>;
-			public onCurrentAccessTokenChanged(param0: com.facebook.AccessToken, param1: com.facebook.AccessToken): void;
-			public startTracking(): void;
-			public stopTracking(): void;
-			public constructor();
-			public isTracking(): boolean;
-		}
-		export module AccessTokenTracker {
-			export class Companion {
-				public static class: java.lang.Class<com.facebook.AccessTokenTracker.Companion>;
-			}
-			export class CurrentAccessTokenBroadcastReceiver {
-				public static class: java.lang.Class<com.facebook.AccessTokenTracker.CurrentAccessTokenBroadcastReceiver>;
-				public constructor(param0: com.facebook.AccessTokenTracker);
-				public onReceive(param0: globalAndroid.content.Context, param1: globalAndroid.content.Intent): void;
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export abstract class AuthenticationTokenTracker {
-			public static class: java.lang.Class<com.facebook.AuthenticationTokenTracker>;
-			public startTracking(): void;
-			public onCurrentAuthenticationTokenChanged(param0: com.facebook.AuthenticationToken, param1: com.facebook.AuthenticationToken): void;
-			public stopTracking(): void;
-			public constructor();
-			public isTracking(): boolean;
-		}
-		export module AuthenticationTokenTracker {
-			export class Companion {
-				public static class: java.lang.Class<com.facebook.AuthenticationTokenTracker.Companion>;
-			}
-			export class CurrentAuthenticationTokenBroadcastReceiver {
-				public static class: java.lang.Class<com.facebook.AuthenticationTokenTracker.CurrentAuthenticationTokenBroadcastReceiver>;
-				public onReceive(param0: globalAndroid.content.Context, param1: globalAndroid.content.Intent): void;
-				public constructor(param0: com.facebook.AuthenticationTokenTracker);
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export class CustomTabActivity {
-			public static class: java.lang.Class<com.facebook.CustomTabActivity>;
-			public static CUSTOM_TAB_REDIRECT_ACTION: string;
-			public static DESTROY_ACTION: string;
-			public onCreate(param0: globalAndroid.os.Bundle): void;
-			public onActivityResult(param0: number, param1: number, param2: globalAndroid.content.Intent): void;
-			public constructor();
-			public onDestroy(): void;
-		}
-		export module CustomTabActivity {
-			export class Companion {
-				public static class: java.lang.Class<com.facebook.CustomTabActivity.Companion>;
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export class CustomTabMainActivity {
-			public static class: java.lang.Class<com.facebook.CustomTabMainActivity>;
-			public static EXTRA_ACTION: string;
-			public static EXTRA_PARAMS: string;
-			public static EXTRA_CHROME_PACKAGE: string;
-			public static EXTRA_URL: string;
-			public static EXTRA_TARGET_APP: string;
-			public static REFRESH_ACTION: string;
-			public static NO_ACTIVITY_EXCEPTION: string;
-			public onResume(): void;
-			public onCreate(param0: globalAndroid.os.Bundle): void;
-			public constructor();
-			public onNewIntent(param0: globalAndroid.content.Intent): void;
-		}
-		export module CustomTabMainActivity {
-			export class Companion {
-				public static class: java.lang.Class<com.facebook.CustomTabMainActivity.Companion>;
-			}
-			export class WhenMappings {
-				public static class: java.lang.Class<com.facebook.CustomTabMainActivity.WhenMappings>;
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export class FacebookActivity {
-			public static class: java.lang.Class<com.facebook.FacebookActivity>;
-			public static PASS_THROUGH_CANCEL_ACTION: string;
-			public getFragment(): androidx.fragment.app.Fragment;
-			public onCreate(param0: globalAndroid.os.Bundle): void;
-			public onConfigurationChanged(param0: globalAndroid.content.res.Configuration): void;
-			public dump(param0: string, param1: java.io.FileDescriptor, param2: java.io.PrintWriter, param3: androidNative.Array<string>): void;
-			public constructor();
-			public getCurrentFragment(): androidx.fragment.app.Fragment;
-		}
-		export module FacebookActivity {
-			export class Companion {
-				public static class: java.lang.Class<com.facebook.FacebookActivity.Companion>;
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export class FacebookAuthorizationException {
-			public static class: java.lang.Class<com.facebook.FacebookAuthorizationException>;
-			public static serialVersionUID: number;
-			public constructor(param0: java.lang.Throwable);
-			public constructor(param0: string, param1: java.lang.Throwable);
-			public constructor();
-			public constructor(param0: string);
-		}
-		export module FacebookAuthorizationException {
-			export class Companion {
-				public static class: java.lang.Class<com.facebook.FacebookAuthorizationException.Companion>;
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export abstract class FacebookButtonBase {
-			public static class: java.lang.Class<com.facebook.FacebookButtonBase>;
-			public getAndroidxActivityResultRegistryOwner(): androidx.activity.result.ActivityResultRegistryOwner;
-			public getFragment(): androidx.fragment.app.Fragment;
-			public getCompoundPaddingLeft(): number;
-			public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number, param4: string, param5: string);
-			public getRequestCode(): number;
-			public logButtonTapped(param0: globalAndroid.content.Context): void;
-			public onDraw(param0: globalAndroid.graphics.Canvas): void;
-			public getCompoundPaddingRight(): number;
-			public configureButton(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number): void;
-			public logButtonCreated(param0: globalAndroid.content.Context): void;
-			public getAnalyticsButtonTappedEventName(): string;
-			public measureTextWidth(param0: string): number;
-			public getAnalyticsButtonCreatedEventName(): string;
-			public setFragment(param0: androidx.fragment.app.Fragment): void;
-			public getDefaultRequestCode(): number;
-			public getActivity(): globalAndroid.app.Activity;
-			public setInternalOnClickListener(param0: globalAndroid.view.View.OnClickListener): void;
-			public getNativeFragment(): globalAndroid.app.Fragment;
-			public setOnClickListener(param0: globalAndroid.view.View.OnClickListener): void;
-			public setFragment(param0: globalAndroid.app.Fragment): void;
-			public callExternalOnClickListener(param0: globalAndroid.view.View): void;
-			public onAttachedToWindow(): void;
-			public getDefaultStyleResource(): number;
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export class FacebookCallback<RESULT> extends java.lang.Object {
-			public static class: java.lang.Class<com.facebook.FacebookCallback<any>>;
-			/**
-			 * Constructs a new instance of the com.facebook.FacebookCallback<any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
-			 */
-			public constructor(implementation: { onSuccess(param0: RESULT): void; onCancel(): void; onError(param0: com.facebook.FacebookException): void });
-			public constructor();
-			public onCancel(): void;
-			public onSuccess(param0: RESULT): void;
-			public onError(param0: com.facebook.FacebookException): void;
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export class FacebookDialog<CONTENT, RESULT> extends java.lang.Object {
-			public static class: java.lang.Class<com.facebook.FacebookDialog<any, any>>;
-			/**
-			 * Constructs a new instance of the com.facebook.FacebookDialog<any,any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
-			 */
-			public constructor(implementation: { canShow(param0: CONTENT): boolean; show(param0: CONTENT): void; registerCallback(param0: com.facebook.CallbackManager, param1: com.facebook.FacebookCallback<RESULT>): void; registerCallback(param0: com.facebook.CallbackManager, param1: com.facebook.FacebookCallback<RESULT>, param2: number): void; createActivityResultContractForShowingDialog(param0: com.facebook.CallbackManager): androidx.activity.result.contract.ActivityResultContract<CONTENT, com.facebook.CallbackManager.ActivityResultParameters> });
-			public constructor();
-			public registerCallback(param0: com.facebook.CallbackManager, param1: com.facebook.FacebookCallback<RESULT>, param2: number): void;
-			public createActivityResultContractForShowingDialog(param0: com.facebook.CallbackManager): androidx.activity.result.contract.ActivityResultContract<CONTENT, com.facebook.CallbackManager.ActivityResultParameters>;
-			public canShow(param0: CONTENT): boolean;
-			public show(param0: CONTENT): void;
-			public registerCallback(param0: com.facebook.CallbackManager, param1: com.facebook.FacebookCallback<RESULT>): void;
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export class FacebookDialogException {
-			public static class: java.lang.Class<com.facebook.FacebookDialogException>;
-			public static serialVersionUID: number;
-			public constructor(param0: string, param1: number, param2: string);
-			public getErrorCode(): number;
-			public toString(): string;
-			public getFailingUrl(): string;
-		}
-		export module FacebookDialogException {
-			export class Companion {
-				public static class: java.lang.Class<com.facebook.FacebookDialogException.Companion>;
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export class LoginStatusCallback {
-			public static class: java.lang.Class<com.facebook.LoginStatusCallback>;
-			/**
-			 * Constructs a new instance of the com.facebook.LoginStatusCallback interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
-			 */
-			public constructor(implementation: { onCompleted(param0: com.facebook.AccessToken): void; onFailure(): void; onError(param0: java.lang.Exception): void });
-			public constructor();
-			public onCompleted(param0: com.facebook.AccessToken): void;
-			public onFailure(): void;
-			public onError(param0: java.lang.Exception): void;
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export class WebDialog {
-			public static class: java.lang.Class<com.facebook.WebDialog>;
-			public static INSTANCE: com.facebook.WebDialog;
-			public static setWebDialogTheme(param0: number): void;
-			public static getWebDialogTheme(): number;
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module common {
-			export class BuildConfig {
-				public static class: java.lang.Class<com.facebook.common.BuildConfig>;
-				public static DEBUG: boolean;
-				public static LIBRARY_PACKAGE_NAME: string;
-				public static BUILD_TYPE: string;
-				public constructor();
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module common {
-			export class Common {
-				public static class: java.lang.Class<com.facebook.common.Common>;
-				public constructor();
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module devicerequests {
-			export module internal {
-				export class DeviceRequestsHelper {
-					public static class: java.lang.Class<com.facebook.devicerequests.internal.DeviceRequestsHelper>;
-					public static INSTANCE: com.facebook.devicerequests.internal.DeviceRequestsHelper;
-					public static DEVICE_INFO_PARAM: string;
-					public static DEVICE_TARGET_USER_ID: string;
-					public static DEVICE_INFO_DEVICE: string;
-					public static DEVICE_INFO_MODEL: string;
-					public static SDK_HEADER: string;
-					public static SDK_FLAVOR: string;
-					public static SERVICE_TYPE: string;
-					public static getDeviceInfo(param0: java.util.Map<string, string>): string;
-					public static getDeviceInfo(): string;
-					public static generateQRCode(param0: string): globalAndroid.graphics.Bitmap;
-					public static cleanUpAdvertisementService(param0: string): void;
-					public static isAvailable(): boolean;
-					public static startAdvertisementService(param0: string): boolean;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export class AppCall {
-				public static class: java.lang.Class<com.facebook.internal.AppCall>;
-				public static finishPendingCall(param0: java.util.UUID, param1: number): com.facebook.internal.AppCall;
-				public setRequestCode(param0: number): void;
-				public getCallId(): java.util.UUID;
-				public setRequestIntent(param0: globalAndroid.content.Intent): void;
-				public constructor(param0: number, param1: java.util.UUID);
-				public constructor(param0: number);
-				public getRequestCode(): number;
-				public setPending(): boolean;
-				public getRequestIntent(): globalAndroid.content.Intent;
-			}
-			export module AppCall {
-				export class Companion {
-					public static class: java.lang.Class<com.facebook.internal.AppCall.Companion>;
-					public finishPendingCall(param0: java.util.UUID, param1: number): com.facebook.internal.AppCall;
-					public getCurrentPendingCall(): com.facebook.internal.AppCall;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export class CustomTab {
-				public static class: java.lang.Class<com.facebook.internal.CustomTab>;
-				public getUri(): globalAndroid.net.Uri;
-				public constructor(param0: string, param1: globalAndroid.os.Bundle);
-				public static getURIForAction(param0: string, param1: globalAndroid.os.Bundle): globalAndroid.net.Uri;
-				public openCustomTab(param0: globalAndroid.app.Activity, param1: string): boolean;
-				public setUri(param0: globalAndroid.net.Uri): void;
-			}
-			export module CustomTab {
-				export class Companion {
-					public static class: java.lang.Class<com.facebook.internal.CustomTab.Companion>;
-					public getURIForAction(param0: string, param1: globalAndroid.os.Bundle): globalAndroid.net.Uri;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export class CustomTabUtils {
-				public static class: java.lang.Class<com.facebook.internal.CustomTabUtils>;
-				public static INSTANCE: com.facebook.internal.CustomTabUtils;
-				public static getChromePackage(): string;
-				public static getValidRedirectURI(param0: string): string;
-				public static getDefaultRedirectURI(): string;
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export class DialogFeature {
-				public static class: java.lang.Class<com.facebook.internal.DialogFeature>;
-				/**
-				 * Constructs a new instance of the com.facebook.internal.DialogFeature interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
-				 */
-				public constructor(implementation: { getAction(): string; getMinVersion(): number; name(): string });
-				public constructor();
-				public getMinVersion(): number;
-				public name(): string;
-				public getAction(): string;
-			}
-			export module DialogFeature {
-				export class DefaultImpls {
-					public static class: java.lang.Class<com.facebook.internal.DialogFeature.DefaultImpls>;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export class DialogPresenter {
-				public static class: java.lang.Class<com.facebook.internal.DialogPresenter>;
-				public static INSTANCE: com.facebook.internal.DialogPresenter;
-				public static setupAppCallForNativeDialog(param0: com.facebook.internal.AppCall, param1: com.facebook.internal.DialogPresenter.ParameterProvider, param2: com.facebook.internal.DialogFeature): void;
-				public static setupAppCallForWebFallbackDialog(param0: com.facebook.internal.AppCall, param1: globalAndroid.os.Bundle, param2: com.facebook.internal.DialogFeature): void;
-				public static setupAppCallForErrorResult(param0: com.facebook.internal.AppCall, param1: com.facebook.FacebookException): void;
-				public static canPresentNativeDialogWithFeature(param0: com.facebook.internal.DialogFeature): boolean;
-				public static canPresentWebFallbackDialogWithFeature(param0: com.facebook.internal.DialogFeature): boolean;
-				public static present(param0: com.facebook.internal.AppCall, param1: androidx.activity.result.ActivityResultRegistry, param2: com.facebook.CallbackManager): void;
-				public static logDialogActivity(param0: globalAndroid.content.Context, param1: string, param2: string): void;
-				public static present(param0: com.facebook.internal.AppCall, param1: com.facebook.internal.FragmentWrapper): void;
-				public static startActivityForResultWithAndroidX(param0: androidx.activity.result.ActivityResultRegistry, param1: com.facebook.CallbackManager, param2: globalAndroid.content.Intent, param3: number): void;
-				public static getProtocolVersionForNativeDialog(param0: com.facebook.internal.DialogFeature): com.facebook.internal.NativeProtocol.ProtocolVersionQueryResult;
-				public static setupAppCallForCustomTabDialog(param0: com.facebook.internal.AppCall, param1: string, param2: globalAndroid.os.Bundle): void;
-				public static setupAppCallForWebDialog(param0: com.facebook.internal.AppCall, param1: string, param2: globalAndroid.os.Bundle): void;
-				public static setupAppCallForValidationError(param0: com.facebook.internal.AppCall, param1: com.facebook.FacebookException): void;
-				public static setupAppCallForCannotShowError(param0: com.facebook.internal.AppCall): void;
-				public static present(param0: com.facebook.internal.AppCall, param1: globalAndroid.app.Activity): void;
-			}
-			export module DialogPresenter {
-				export class ParameterProvider {
-					public static class: java.lang.Class<com.facebook.internal.DialogPresenter.ParameterProvider>;
-					/**
-					 * Constructs a new instance of the com.facebook.internal.DialogPresenter$ParameterProvider interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
-					 */
-					public constructor(implementation: { getParameters(): globalAndroid.os.Bundle; getLegacyParameters(): globalAndroid.os.Bundle });
-					public constructor();
-					public getParameters(): globalAndroid.os.Bundle;
-					public getLegacyParameters(): globalAndroid.os.Bundle;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export abstract class FacebookDialogBase<CONTENT, RESULT> extends com.facebook.FacebookDialog<any, any> {
-				public static class: java.lang.Class<com.facebook.internal.FacebookDialogBase<any, any>>;
-				public static BASE_AUTOMATIC_MODE: any;
-				public constructor(param0: com.facebook.internal.FragmentWrapper, param1: number);
-				public createActivityResultContractForShowingDialog(param0: com.facebook.CallbackManager, param1: any): androidx.activity.result.contract.ActivityResultContract<any, com.facebook.CallbackManager.ActivityResultParameters>;
-				public setCallbackManager(param0: com.facebook.CallbackManager): void;
-				public showImpl(param0: any, param1: any): void;
-				public registerCallback(param0: com.facebook.CallbackManager, param1: com.facebook.FacebookCallback<any>, param2: number): void;
-				public canShowImpl(param0: any, param1: any): boolean;
-				public canShow(param0: any): boolean;
-				public createActivityResultContractForShowingDialog(param0: com.facebook.CallbackManager): androidx.activity.result.contract.ActivityResultContract<any, com.facebook.CallbackManager.ActivityResultParameters>;
-				public constructor(param0: globalAndroid.app.Activity, param1: number);
-				public registerCallback(param0: com.facebook.CallbackManager, param1: com.facebook.FacebookCallback<any>): void;
-				public getOrderedModeHandlers(): java.util.List<com.facebook.internal.FacebookDialogBase.ModeHandler>;
-				public getCallbackManager$facebook_common_release(): com.facebook.CallbackManager;
-				public setCallbackManager$facebook_common_release(param0: com.facebook.CallbackManager): void;
-				public registerCallbackImpl(param0: com.facebook.internal.CallbackManagerImpl, param1: com.facebook.FacebookCallback<any>): void;
-				public setRequestCode(param0: number): void;
-				public show(param0: any): void;
-				public constructor(param0: number);
-				public startActivityForResult(param0: globalAndroid.content.Intent, param1: number): void;
-				public getActivityContext(): globalAndroid.app.Activity;
-				public createBaseAppCall(): com.facebook.internal.AppCall;
-				public getRequestCode(): number;
-			}
-			export module FacebookDialogBase {
-				export class Companion {
-					public static class: java.lang.Class<com.facebook.internal.FacebookDialogBase.Companion>;
-				}
-				export abstract class ModeHandler {
-					public static class: java.lang.Class<com.facebook.internal.FacebookDialogBase.ModeHandler>;
-					public getMode(): any;
-					public setMode(param0: any): void;
-					public canShow(param0: any, param1: boolean): boolean;
-					public createAppCall(param0: any): com.facebook.internal.AppCall;
-					public constructor(param0: com.facebook.internal.FacebookDialogBase<any, any>);
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export class FacebookDialogFragment {
-				public static class: java.lang.Class<com.facebook.internal.FacebookDialogFragment>;
-				public static TAG: string;
-				public getInnerDialog(): globalAndroid.app.Dialog;
-				public onCreate(param0: globalAndroid.os.Bundle): void;
-				public initDialog$facebook_common_release(): void;
-				public onResume(): void;
-				public setInnerDialog(param0: globalAndroid.app.Dialog): void;
-				public onConfigurationChanged(param0: globalAndroid.content.res.Configuration): void;
-				public onDestroyView(): void;
-				public onCreateDialog(param0: globalAndroid.os.Bundle): globalAndroid.app.Dialog;
-				public constructor();
-			}
-			export module FacebookDialogFragment {
-				export class Companion {
-					public static class: java.lang.Class<com.facebook.internal.FacebookDialogFragment.Companion>;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export class FacebookWebFallbackDialog extends com.facebook.internal.WebDialog {
-				public static class: java.lang.Class<com.facebook.internal.FacebookWebFallbackDialog>;
-				public static newInstance(param0: globalAndroid.content.Context, param1: string, param2: globalAndroid.os.Bundle, param3: number, param4: com.facebook.login.LoginTargetApp, param5: com.facebook.internal.WebDialog.OnCompleteListener): com.facebook.internal.WebDialog;
-				public cancel(): void;
-				public parseResponseUri(param0: string): globalAndroid.os.Bundle;
-				public static newInstance(param0: globalAndroid.content.Context, param1: string, param2: globalAndroid.os.Bundle, param3: number, param4: com.facebook.internal.WebDialog.OnCompleteListener): com.facebook.internal.WebDialog;
-				public static newInstance(param0: globalAndroid.content.Context, param1: string, param2: string): com.facebook.internal.FacebookWebFallbackDialog;
-			}
-			export module FacebookWebFallbackDialog {
-				export class Companion {
-					public static class: java.lang.Class<com.facebook.internal.FacebookWebFallbackDialog.Companion>;
-					public newInstance(param0: globalAndroid.content.Context, param1: string, param2: string): com.facebook.internal.FacebookWebFallbackDialog;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export class FragmentWrapper {
-				public static class: java.lang.Class<com.facebook.internal.FragmentWrapper>;
-				public getSupportFragment(): androidx.fragment.app.Fragment;
-				public getActivity(): globalAndroid.app.Activity;
-				public constructor(param0: androidx.fragment.app.Fragment);
-				public startActivityForResult(param0: globalAndroid.content.Intent, param1: number): void;
-				public getNativeFragment(): globalAndroid.app.Fragment;
-				public constructor(param0: globalAndroid.app.Fragment);
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export class InstagramCustomTab extends com.facebook.internal.CustomTab {
-				public static class: java.lang.Class<com.facebook.internal.InstagramCustomTab>;
-				public constructor(param0: string, param1: globalAndroid.os.Bundle);
-			}
-			export module InstagramCustomTab {
-				export class Companion {
-					public static class: java.lang.Class<com.facebook.internal.InstagramCustomTab.Companion>;
-					public getURIForAction(param0: string, param1: globalAndroid.os.Bundle): globalAndroid.net.Uri;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
-			export abstract class PlatformServiceClient {
-				public static class: java.lang.Class<com.facebook.internal.PlatformServiceClient>;
-				public onServiceDisconnected(param0: globalAndroid.content.ComponentName): void;
-				public onServiceConnected(param0: globalAndroid.content.ComponentName, param1: globalAndroid.os.IBinder): void;
-				public setCompletedListener(param0: com.facebook.internal.PlatformServiceClient.CompletedListener): void;
-				public handleMessage(param0: globalAndroid.os.Message): void;
-				public constructor(param0: globalAndroid.content.Context, param1: number, param2: number, param3: number, param4: string, param5: string);
-				public getContext(): globalAndroid.content.Context;
-				public start(): boolean;
-				public cancel(): void;
-				public getNonce(): string;
-				public populateRequestBundle(param0: globalAndroid.os.Bundle): void;
-			}
-			export module PlatformServiceClient {
-				export class CompletedListener {
-					public static class: java.lang.Class<com.facebook.internal.PlatformServiceClient.CompletedListener>;
-					/**
-					 * Constructs a new instance of the com.facebook.internal.PlatformServiceClient$CompletedListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
-					 */
-					public constructor(implementation: { completed(param0: globalAndroid.os.Bundle): void });
-					public constructor();
-					public completed(param0: globalAndroid.os.Bundle): void;
-				}
-			}
-		}
-	}
-}
-
-declare module com {
-	export module facebook {
-		export module internal {
 			export class WebDialog {
 				public static class: java.lang.Class<com.facebook.internal.WebDialog>;
+				public static Companion: com.facebook.internal.WebDialog.Companion;
 				public static DISABLE_SSL_CHECK_FOR_TESTING: boolean;
 				public isListenerCalled(): boolean;
 				public isPageFinished(): boolean;
@@ -6549,6 +12729,406 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module internal {
+			export class WorkQueue {
+				public static class: java.lang.Class<com.facebook.internal.WorkQueue>;
+				public static Companion: com.facebook.internal.WorkQueue.Companion;
+				public static DEFAULT_MAX_CONCURRENT: number;
+				public addActiveWorkItem(param0: java.lang.Runnable): com.facebook.internal.WorkQueue.WorkItem;
+				public constructor(param0: number);
+				public validate(): void;
+				public addActiveWorkItem(param0: java.lang.Runnable, param1: boolean): com.facebook.internal.WorkQueue.WorkItem;
+				public constructor(param0: number, param1: java.util.concurrent.Executor);
+				public constructor();
+			}
+			export module WorkQueue {
+				export class Companion {
+					public static class: java.lang.Class<com.facebook.internal.WorkQueue.Companion>;
+				}
+				export class WorkItem {
+					public static class: java.lang.Class<com.facebook.internal.WorkQueue.WorkItem>;
+					/**
+					 * Constructs a new instance of the com.facebook.internal.WorkQueue$WorkItem interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+					 */
+					public constructor(implementation: { cancel(): boolean; isRunning(): boolean; moveToFront(): void });
+					public constructor();
+					public cancel(): boolean;
+					public isRunning(): boolean;
+					public moveToFront(): void;
+				}
+				export class WorkNode extends com.facebook.internal.WorkQueue.WorkItem {
+					public static class: java.lang.Class<com.facebook.internal.WorkQueue.WorkNode>;
+					public getNext(): com.facebook.internal.WorkQueue.WorkNode;
+					public cancel(): boolean;
+					public constructor(param0: java.lang.Runnable);
+					public addToList(param0: com.facebook.internal.WorkQueue.WorkNode, param1: boolean): com.facebook.internal.WorkQueue.WorkNode;
+					public getCallback(): java.lang.Runnable;
+					public isRunning(): boolean;
+					public removeFromList(param0: com.facebook.internal.WorkQueue.WorkNode): com.facebook.internal.WorkQueue.WorkNode;
+					public verify(param0: boolean): void;
+					public setRunning(param0: boolean): void;
+					public moveToFront(): void;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module gatekeeper {
+				export class GateKeeper {
+					public static class: java.lang.Class<com.facebook.internal.gatekeeper.GateKeeper>;
+					public equals(param0: any): boolean;
+					public toString(): string;
+					public component1(): string;
+					public getName(): string;
+					public getValue(): boolean;
+					public copy(param0: string, param1: boolean): com.facebook.internal.gatekeeper.GateKeeper;
+					public constructor(param0: string, param1: boolean);
+					public hashCode(): number;
+					public component2(): boolean;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module gatekeeper {
+				export class GateKeeperRuntimeCache {
+					public static class: java.lang.Class<com.facebook.internal.gatekeeper.GateKeeperRuntimeCache>;
+					public setGateKeepers(param0: string, param1: java.util.List<com.facebook.internal.gatekeeper.GateKeeper>): void;
+					public resetCache(param0: string): void;
+					public dumpGateKeepers(param0: string): java.util.List<com.facebook.internal.gatekeeper.GateKeeper>;
+					public constructor();
+					public setGateKeeper(param0: string, param1: com.facebook.internal.gatekeeper.GateKeeper): void;
+					public getGateKeeperValue(param0: string, param1: string, param2: boolean): boolean;
+					public getGateKeeper(param0: string, param1: string): com.facebook.internal.gatekeeper.GateKeeper;
+					public setGateKeeperValue(param0: string, param1: string, param2: boolean): void;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module gatekeeper {
+				export class GateKeeperRuntimeCacheKt {
+					public static class: java.lang.Class<com.facebook.internal.gatekeeper.GateKeeperRuntimeCacheKt>;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module instrument {
+				export class ExceptionAnalyzer {
+					public static class: java.lang.Class<com.facebook.internal.instrument.ExceptionAnalyzer>;
+					public static INSTANCE: com.facebook.internal.instrument.ExceptionAnalyzer;
+					public static execute(param0: java.lang.Throwable): void;
+					public static isDebug$facebook_core_release(): boolean;
+					public sendExceptionAnalysisReports$facebook_core_release(): void;
+					public static enable(): void;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module instrument {
+				export class InstrumentData {
+					public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentData>;
+					public static Companion: com.facebook.internal.instrument.InstrumentData.Companion;
+					public toString(): string;
+					public save(): void;
+					public compareTo(param0: com.facebook.internal.instrument.InstrumentData): number;
+					public isValid(): boolean;
+					public clear(): void;
+				}
+				export module InstrumentData {
+					export class Builder {
+						public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentData.Builder>;
+						public static INSTANCE: com.facebook.internal.instrument.InstrumentData.Builder;
+						public static load(param0: java.io.File): com.facebook.internal.instrument.InstrumentData;
+						public static build(param0: java.lang.Throwable, param1: com.facebook.internal.instrument.InstrumentData.Type): com.facebook.internal.instrument.InstrumentData;
+						public static build(param0: string, param1: string): com.facebook.internal.instrument.InstrumentData;
+						public static build(param0: org.json.JSONArray): com.facebook.internal.instrument.InstrumentData;
+					}
+					export class Companion {
+						public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentData.Companion>;
+					}
+					export class Type {
+						public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentData.Type>;
+						public static Unknown: com.facebook.internal.instrument.InstrumentData.Type;
+						public static Analysis: com.facebook.internal.instrument.InstrumentData.Type;
+						public static AnrReport: com.facebook.internal.instrument.InstrumentData.Type;
+						public static CrashReport: com.facebook.internal.instrument.InstrumentData.Type;
+						public static CrashShield: com.facebook.internal.instrument.InstrumentData.Type;
+						public static ThreadCheck: com.facebook.internal.instrument.InstrumentData.Type;
+						public static valueOf(param0: string): com.facebook.internal.instrument.InstrumentData.Type;
+						public static values(): androidNative.Array<com.facebook.internal.instrument.InstrumentData.Type>;
+						public toString(): string;
+						public getLogPrefix(): string;
+					}
+					export module Type {
+						export class WhenMappings {
+							public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentData.Type.WhenMappings>;
+						}
+					}
+					export class WhenMappings {
+						public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentData.WhenMappings>;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module instrument {
+				export class InstrumentManager {
+					public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentManager>;
+					public static INSTANCE: com.facebook.internal.instrument.InstrumentManager;
+					public static start(): void;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module instrument {
+				export class InstrumentUtility {
+					public static class: java.lang.Class<com.facebook.internal.instrument.InstrumentUtility>;
+					public static INSTANCE: com.facebook.internal.instrument.InstrumentUtility;
+					public static ANALYSIS_REPORT_PREFIX: string;
+					public static ANR_REPORT_PREFIX: string;
+					public static CRASH_REPORT_PREFIX: string;
+					public static CRASH_SHIELD_PREFIX: string;
+					public static THREAD_CHECK_PREFIX: string;
+					public static ERROR_REPORT_PREFIX: string;
+					public static writeFile(param0: string, param1: string): void;
+					public static sendReports(param0: string, param1: org.json.JSONArray, param2: com.facebook.GraphRequest.Callback): void;
+					public static getInstrumentReportDir(): java.io.File;
+					public static getStackTrace(param0: java.lang.Thread): string;
+					public static isSDKRelatedThread(param0: java.lang.Thread): boolean;
+					public static listExceptionReportFiles(): androidNative.Array<java.io.File>;
+					public static deleteFile(param0: string): boolean;
+					public static getStackTrace(param0: java.lang.Throwable): string;
+					public static readFile(param0: string, param1: boolean): org.json.JSONObject;
+					public static listExceptionAnalysisReportFiles(): androidNative.Array<java.io.File>;
+					public static isFromFbOrMeta(param0: java.lang.StackTraceElement): boolean;
+					public static listAnrReportFiles(): androidNative.Array<java.io.File>;
+					public static getCause(param0: java.lang.Throwable): string;
+					public static isSDKRelatedException(param0: java.lang.Throwable): boolean;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module instrument {
+				export module anrreport {
+					export class ANRDetector {
+						public static class: java.lang.Class<com.facebook.internal.instrument.anrreport.ANRDetector>;
+						public static INSTANCE: com.facebook.internal.instrument.anrreport.ANRDetector;
+						public static checkProcessError(param0: globalAndroid.app.ActivityManager): void;
+						public static start(): void;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module instrument {
+				export module anrreport {
+					export class ANRHandler {
+						public static class: java.lang.Class<com.facebook.internal.instrument.anrreport.ANRHandler>;
+						public static INSTANCE: com.facebook.internal.instrument.anrreport.ANRHandler;
+						public static enable(): void;
+						public static sendANRReports(): void;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module instrument {
+				export module crashreport {
+					export class CrashHandler {
+						public static class: java.lang.Class<com.facebook.internal.instrument.crashreport.CrashHandler>;
+						public static Companion: com.facebook.internal.instrument.crashreport.CrashHandler.Companion;
+						public static enable(): void;
+						public uncaughtException(param0: java.lang.Thread, param1: java.lang.Throwable): void;
+					}
+					export module CrashHandler {
+						export class Companion {
+							public static class: java.lang.Class<com.facebook.internal.instrument.crashreport.CrashHandler.Companion>;
+							public enable(): void;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module instrument {
+				export module crashshield {
+					export class AutoHandleExceptions {
+						public static class: java.lang.Class<com.facebook.internal.instrument.crashshield.AutoHandleExceptions>;
+						/**
+						 * Constructs a new instance of the com.facebook.internal.instrument.crashshield.AutoHandleExceptions interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+						 */
+						public constructor(implementation: {});
+						public constructor();
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module instrument {
+				export module crashshield {
+					export class CrashShieldHandler {
+						public static class: java.lang.Class<com.facebook.internal.instrument.crashshield.CrashShieldHandler>;
+						public static INSTANCE: com.facebook.internal.instrument.crashshield.CrashShieldHandler;
+						public static scheduleCrashInDebug(param0: java.lang.Throwable): void;
+						public static enable(): void;
+						public static methodFinished(param0: any): void;
+						public static isObjectCrashing(param0: any): boolean;
+						public static isDebug(): boolean;
+						public static resetCrashingObjects(): void;
+						public static reset(): void;
+						public static disable(): void;
+						public static handleThrowable(param0: java.lang.Throwable, param1: any): void;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module instrument {
+				export module crashshield {
+					export class NoAutoExceptionHandling {
+						public static class: java.lang.Class<com.facebook.internal.instrument.crashshield.NoAutoExceptionHandling>;
+						/**
+						 * Constructs a new instance of the com.facebook.internal.instrument.crashshield.NoAutoExceptionHandling interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+						 */
+						public constructor(implementation: {});
+						public constructor();
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module instrument {
+				export module errorreport {
+					export class ErrorReportData {
+						public static class: java.lang.Class<com.facebook.internal.instrument.errorreport.ErrorReportData>;
+						public static Companion: com.facebook.internal.instrument.errorreport.ErrorReportData.Companion;
+						public constructor(param0: java.io.File);
+						public compareTo(param0: com.facebook.internal.instrument.errorreport.ErrorReportData): number;
+						public getParameters(): org.json.JSONObject;
+						public save(): void;
+						public clear(): void;
+						public toString(): string;
+						public constructor(param0: string);
+						public isValid(): boolean;
+					}
+					export module ErrorReportData {
+						export class Companion {
+							public static class: java.lang.Class<com.facebook.internal.instrument.errorreport.ErrorReportData.Companion>;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module instrument {
+				export module errorreport {
+					export class ErrorReportHandler {
+						public static class: java.lang.Class<com.facebook.internal.instrument.errorreport.ErrorReportHandler>;
+						public static INSTANCE: com.facebook.internal.instrument.errorreport.ErrorReportHandler;
+						public static save(param0: string): void;
+						public static enable(): void;
+						public static listErrorReportFiles(): androidNative.Array<java.io.File>;
+						public static sendErrorReports(): void;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module instrument {
+				export module threadcheck {
+					export class ThreadCheckHandler {
+						public static class: java.lang.Class<com.facebook.internal.instrument.threadcheck.ThreadCheckHandler>;
+						public static INSTANCE: com.facebook.internal.instrument.threadcheck.ThreadCheckHandler;
+						public static enable(): void;
+						public static workerThreadViolationDetected(param0: java.lang.Class<any>, param1: string, param2: string): void;
+						public static uiThreadViolationDetected(param0: java.lang.Class<any>, param1: string, param2: string): void;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
 			export module logging {
 				export module dumpsys {
 					export class EndToEndDumper {
@@ -6558,6 +13138,7 @@ declare module com {
 						 */
 						public constructor(implementation: { maybeDump(param0: string, param1: java.io.PrintWriter, param2: androidNative.Array<string>): boolean; <clinit>(): void });
 						public constructor();
+						public static Companion: com.facebook.internal.logging.dumpsys.EndToEndDumper.Companion;
 						public maybeDump(param0: string, param1: java.io.PrintWriter, param2: androidNative.Array<string>): boolean;
 					}
 					export module EndToEndDumper {
@@ -6568,6 +13149,91 @@ declare module com {
 						}
 					}
 				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module qualityvalidation {
+				export class Excuse {
+					public static class: java.lang.Class<com.facebook.internal.qualityvalidation.Excuse>;
+					/**
+					 * Constructs a new instance of the com.facebook.internal.qualityvalidation.Excuse interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+					 */
+					public constructor(implementation: { type(): string; reason(): string });
+					public constructor();
+					public reason(): string;
+					public type(): string;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module qualityvalidation {
+				export class ExcusesForDesignViolations {
+					public static class: java.lang.Class<com.facebook.internal.qualityvalidation.ExcusesForDesignViolations>;
+					/**
+					 * Constructs a new instance of the com.facebook.internal.qualityvalidation.ExcusesForDesignViolations interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+					 */
+					public constructor(implementation: { value(): androidNative.Array<com.facebook.internal.qualityvalidation.Excuse> });
+					public constructor();
+					public value(): androidNative.Array<com.facebook.internal.qualityvalidation.Excuse>;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module security {
+				export class CertificateUtil {
+					public static class: java.lang.Class<com.facebook.internal.security.CertificateUtil>;
+					public static INSTANCE: com.facebook.internal.security.CertificateUtil;
+					public static DELIMITER: string;
+					public static getCertificateHash(param0: globalAndroid.content.Context): string;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module internal {
+			export module security {
+				export class OidcSecurityUtil {
+					public static class: java.lang.Class<com.facebook.internal.security.OidcSecurityUtil>;
+					public static INSTANCE: com.facebook.internal.security.OidcSecurityUtil;
+					public static SIGNATURE_ALGORITHM_SHA256: string;
+					public static TIMEOUT_IN_MILLISECONDS: number;
+					public static verify(param0: java.security.PublicKey, param1: string, param2: string): boolean;
+					public getOPENID_KEYS_PATH(): string;
+					public static getRawKeyFromEndPoint(param0: string): string;
+					public static getPublicKeyFromString(param0: string): java.security.PublicKey;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module login {
+			export class BuildConfig {
+				public static class: java.lang.Class<com.facebook.login.BuildConfig>;
+				public static DEBUG: boolean;
+				public static LIBRARY_PACKAGE_NAME: string;
+				public static BUILD_TYPE: string;
+				public constructor();
 			}
 		}
 	}
@@ -6592,6 +13258,7 @@ declare module com {
 		export module login {
 			export class CustomTabLoginMethodHandler extends com.facebook.login.WebLoginMethodHandler {
 				public static class: java.lang.Class<com.facebook.login.CustomTabLoginMethodHandler>;
+				public static Companion: com.facebook.login.CustomTabLoginMethodHandler.Companion;
 				public static OAUTH_DIALOG: string;
 				public static calledThroughLoggedOutAppSwitch: boolean;
 				public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.login.CustomTabLoginMethodHandler>;
@@ -6619,8 +13286,9 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module login {
-			export class CustomTabPrefetchHelper {
+			export class CustomTabPrefetchHelper extends androidx.browser.customtabs.CustomTabsServiceConnection {
 				public static class: java.lang.Class<com.facebook.login.CustomTabPrefetchHelper>;
+				public static Companion: com.facebook.login.CustomTabPrefetchHelper.Companion;
 				public onServiceDisconnected(param0: globalAndroid.content.ComponentName): void;
 				public static getPreparedSessionOnce(): androidx.browser.customtabs.CustomTabsSession;
 				public static mayLaunchUrl(param0: globalAndroid.net.Uri): void;
@@ -6641,9 +13309,29 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module login {
-			export class DeviceAuthDialog {
+			export class DefaultAudience {
+				public static class: java.lang.Class<com.facebook.login.DefaultAudience>;
+				public static NONE: com.facebook.login.DefaultAudience;
+				public static ONLY_ME: com.facebook.login.DefaultAudience;
+				public static FRIENDS: com.facebook.login.DefaultAudience;
+				public static EVERYONE: com.facebook.login.DefaultAudience;
+				public static values(): androidNative.Array<com.facebook.login.DefaultAudience>;
+				public getNativeProtocolAudience(): string;
+				public static valueOf(param0: string): com.facebook.login.DefaultAudience;
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module login {
+			export class DeviceAuthDialog extends androidx.fragment.app.DialogFragment {
 				public static class: java.lang.Class<com.facebook.login.DeviceAuthDialog>;
+				public static Companion: com.facebook.login.DeviceAuthDialog.Companion;
+				public getViewModelStore(): androidx.lifecycle.ViewModelStore;
 				public onCancel(): void;
+				public registerForActivityResult(param0: androidx.activity.result.contract.ActivityResultContract, param1: androidx.activity.result.ActivityResultRegistry, param2: androidx.activity.result.ActivityResultCallback): androidx.activity.result.ActivityResultLauncher;
 				public getApplicationAccessToken(): string;
 				public onError(param0: com.facebook.FacebookException): void;
 				public onCreateView(param0: globalAndroid.view.LayoutInflater, param1: globalAndroid.view.ViewGroup, param2: globalAndroid.os.Bundle): globalAndroid.view.View;
@@ -6651,12 +13339,19 @@ declare module com {
 				public onSaveInstanceState(param0: globalAndroid.os.Bundle): void;
 				public onCreateDialog(param0: globalAndroid.os.Bundle): globalAndroid.app.Dialog;
 				public getLayoutResId(param0: boolean): number;
+				public getLifecycle(): androidx.lifecycle.Lifecycle;
 				public constructor();
+				public getSavedStateRegistry(): androidx.savedstate.SavedStateRegistry;
+				public getDefaultViewModelProviderFactory(): androidx.lifecycle.ViewModelProvider.Factory;
 				public onDismiss(param0: globalAndroid.content.DialogInterface): void;
 				public startLogin(param0: com.facebook.login.LoginClient.Request): void;
 				public onBackButtonPressed(): boolean;
+				public getDefaultViewModelCreationExtras(): androidx.lifecycle.viewmodel.CreationExtras;
+				public constructor(param0: number);
 				public onDestroyView(): void;
 				public initializeContentView(param0: boolean): globalAndroid.view.View;
+				public onCancel(param0: globalAndroid.content.DialogInterface): void;
+				public registerForActivityResult(param0: androidx.activity.result.contract.ActivityResultContract, param1: androidx.activity.result.ActivityResultCallback): androidx.activity.result.ActivityResultLauncher;
 			}
 			export module DeviceAuthDialog {
 				export class Companion {
@@ -6677,6 +13372,7 @@ declare module com {
 				}
 				export class RequestState {
 					public static class: java.lang.Class<com.facebook.login.DeviceAuthDialog.RequestState>;
+					public static Companion: com.facebook.login.DeviceAuthDialog.RequestState.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.login.DeviceAuthDialog.RequestState>;
 					public getRequestCode(): string;
 					public setInterval(param0: number): void;
@@ -6707,6 +13403,7 @@ declare module com {
 		export module login {
 			export class DeviceAuthMethodHandler extends com.facebook.login.LoginMethodHandler {
 				public static class: java.lang.Class<com.facebook.login.DeviceAuthMethodHandler>;
+				public static Companion: com.facebook.login.DeviceAuthMethodHandler.Companion;
 				public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.login.DeviceAuthMethodHandler>;
 				public createDeviceAuthDialog(): com.facebook.login.DeviceAuthDialog;
 				public constructor(param0: com.facebook.login.LoginClient);
@@ -6732,6 +13429,29 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module login {
+			export class DeviceLoginManager extends com.facebook.login.LoginManager {
+				public static class: java.lang.Class<com.facebook.login.DeviceLoginManager>;
+				public static Companion: com.facebook.login.DeviceLoginManager.Companion;
+				public getDeviceRedirectUri(): globalAndroid.net.Uri;
+				public createLoginRequest(param0: java.util.Collection<string>): com.facebook.login.LoginClient.Request;
+				public setDeviceRedirectUri(param0: globalAndroid.net.Uri): void;
+				public setDeviceAuthTargetUserId(param0: string): void;
+				public getDeviceAuthTargetUserId(): string;
+				public constructor();
+			}
+			export module DeviceLoginManager {
+				export class Companion {
+					public static class: java.lang.Class<com.facebook.login.DeviceLoginManager.Companion>;
+					public getInstance(): com.facebook.login.DeviceLoginManager;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module login {
 			export class GetTokenClient extends com.facebook.internal.PlatformServiceClient {
 				public static class: java.lang.Class<com.facebook.login.GetTokenClient>;
 				public constructor(param0: globalAndroid.content.Context, param1: number, param2: number, param3: number, param4: string, param5: string);
@@ -6747,6 +13467,7 @@ declare module com {
 		export module login {
 			export class GetTokenLoginMethodHandler extends com.facebook.login.LoginMethodHandler {
 				public static class: java.lang.Class<com.facebook.login.GetTokenLoginMethodHandler>;
+				public static Companion: com.facebook.login.GetTokenLoginMethodHandler.Companion;
 				public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.login.GetTokenLoginMethodHandler>;
 				public getTokenCompleted(param0: com.facebook.login.LoginClient.Request, param1: globalAndroid.os.Bundle): void;
 				public onComplete(param0: com.facebook.login.LoginClient.Request, param1: globalAndroid.os.Bundle): void;
@@ -6772,6 +13493,7 @@ declare module com {
 		export module login {
 			export class InstagramAppLoginMethodHandler extends com.facebook.login.NativeAppLoginMethodHandler {
 				public static class: java.lang.Class<com.facebook.login.InstagramAppLoginMethodHandler>;
+				public static Companion: com.facebook.login.InstagramAppLoginMethodHandler.Companion;
 				public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.login.InstagramAppLoginMethodHandler>;
 				public writeToParcel(param0: globalAndroid.os.Parcel, param1: number): void;
 				public constructor(param0: com.facebook.login.LoginClient);
@@ -6795,6 +13517,7 @@ declare module com {
 		export module login {
 			export class KatanaProxyLoginMethodHandler extends com.facebook.login.NativeAppLoginMethodHandler {
 				public static class: java.lang.Class<com.facebook.login.KatanaProxyLoginMethodHandler>;
+				public static Companion: com.facebook.login.KatanaProxyLoginMethodHandler.Companion;
 				public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.login.KatanaProxyLoginMethodHandler>;
 				public constructor(param0: com.facebook.login.LoginClient);
 				public tryAuthorize(param0: com.facebook.login.LoginClient.Request): number;
@@ -6815,13 +13538,23 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module login {
+			export class Login {
+				public static class: java.lang.Class<com.facebook.login.Login>;
+				public constructor();
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module login {
 			export class LoginBehavior {
 				public static class: java.lang.Class<com.facebook.login.LoginBehavior>;
 				public static NATIVE_WITH_FALLBACK: com.facebook.login.LoginBehavior;
 				public static NATIVE_ONLY: com.facebook.login.LoginBehavior;
 				public static KATANA_ONLY: com.facebook.login.LoginBehavior;
 				public static WEB_ONLY: com.facebook.login.LoginBehavior;
-				public static WEB_VIEW_ONLY: com.facebook.login.LoginBehavior;
 				public static DIALOG_ONLY: com.facebook.login.LoginBehavior;
 				public static DEVICE_AUTH: com.facebook.login.LoginBehavior;
 				public allowsGetTokenAuth(): boolean;
@@ -6843,6 +13576,7 @@ declare module com {
 		export module login {
 			export class LoginClient {
 				public static class: java.lang.Class<com.facebook.login.LoginClient>;
+				public static Companion: com.facebook.login.LoginClient.Companion;
 				public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.login.LoginClient>;
 				public getExtraData(): java.util.Map<string, string>;
 				public getInProgress(): boolean;
@@ -6913,6 +13647,7 @@ declare module com {
 				}
 				export class Request {
 					public static class: java.lang.Class<com.facebook.login.LoginClient.Request>;
+					public static Companion: com.facebook.login.LoginClient.Request.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.login.LoginClient.Request>;
 					public getAuthId(): string;
 					public setRerequest(param0: boolean): void;
@@ -6960,6 +13695,7 @@ declare module com {
 				}
 				export class Result {
 					public static class: java.lang.Class<com.facebook.login.LoginClient.Result>;
+					public static Companion: com.facebook.login.LoginClient.Result.Companion;
 					public code: com.facebook.login.LoginClient.Result.Code;
 					public token: com.facebook.AccessToken;
 					public authenticationToken: com.facebook.AuthenticationToken;
@@ -7008,6 +13744,7 @@ declare module com {
 		export module login {
 			export class LoginConfiguration {
 				public static class: java.lang.Class<com.facebook.login.LoginConfiguration>;
+				public static Companion: com.facebook.login.LoginConfiguration.Companion;
 				public static OPENID: string;
 				public getCodeVerifier(): string;
 				public constructor(param0: java.util.Collection<string>);
@@ -7028,24 +13765,36 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module login {
-			export class LoginFragment {
+			export class LoginFragment extends androidx.fragment.app.Fragment {
 				public static class: java.lang.Class<com.facebook.login.LoginFragment>;
+				public static Companion: com.facebook.login.LoginFragment.Companion;
 				public static RESULT_KEY: string;
 				public static REQUEST_KEY: string;
 				public static EXTRA_REQUEST: string;
 				public createLoginClient(): com.facebook.login.LoginClient;
+				/** @deprecated */
+				public onActivityResult(param0: number, param1: number, param2: globalAndroid.content.Intent): void;
+				public getViewModelStore(): androidx.lifecycle.ViewModelStore;
 				public getLoginClient(): com.facebook.login.LoginClient;
 				public onResume(): void;
 				public getLayoutResId(): number;
+				public registerForActivityResult(param0: androidx.activity.result.contract.ActivityResultContract, param1: androidx.activity.result.ActivityResultRegistry, param2: androidx.activity.result.ActivityResultCallback): androidx.activity.result.ActivityResultLauncher;
 				public onPause(): void;
 				public onCreateView(param0: globalAndroid.view.LayoutInflater, param1: globalAndroid.view.ViewGroup, param2: globalAndroid.os.Bundle): globalAndroid.view.View;
+				public getLauncher(): androidx.activity.result.ActivityResultLauncher<globalAndroid.content.Intent>;
 				public onSaveInstanceState(param0: globalAndroid.os.Bundle): void;
+				public getLifecycle(): androidx.lifecycle.Lifecycle;
 				public constructor();
+				public getSavedStateRegistry(): androidx.savedstate.SavedStateRegistry;
+				public getDefaultViewModelProviderFactory(): androidx.lifecycle.ViewModelProvider.Factory;
 				public onActivityResult(param0: number, param1: number, param2: globalAndroid.content.Intent): void;
 				public onCreate(param0: globalAndroid.os.Bundle): void;
 				public onSpinnerHidden(): void;
+				public getDefaultViewModelCreationExtras(): androidx.lifecycle.viewmodel.CreationExtras;
+				public constructor(param0: number);
 				public onSpinnerShown(): void;
 				public onDestroy(): void;
+				public registerForActivityResult(param0: androidx.activity.result.contract.ActivityResultContract, param1: androidx.activity.result.ActivityResultCallback): androidx.activity.result.ActivityResultLauncher;
 			}
 			export module LoginFragment {
 				export class Companion {
@@ -7061,6 +13810,7 @@ declare module com {
 		export module login {
 			export class LoginLogger {
 				public static class: java.lang.Class<com.facebook.login.LoginLogger>;
+				public static Companion: com.facebook.login.LoginLogger.Companion;
 				public static EVENT_NAME_LOGIN_METHOD_START: string;
 				public static EVENT_NAME_LOGIN_METHOD_COMPLETE: string;
 				public static EVENT_NAME_LOGIN_METHOD_NOT_TRIED: string;
@@ -7130,6 +13880,7 @@ declare module com {
 		export module login {
 			export class LoginManager {
 				public static class: java.lang.Class<com.facebook.login.LoginManager>;
+				public static Companion: com.facebook.login.LoginManager.Companion;
 				public setLoginTargetApp(param0: com.facebook.login.LoginTargetApp): com.facebook.login.LoginManager;
 				public setDefaultAudience(param0: com.facebook.login.DefaultAudience): com.facebook.login.LoginManager;
 				public constructor();
@@ -7233,10 +13984,13 @@ declare module com {
 					public getLoggerID(): string;
 					public setLoggerID(param0: string): void;
 					public setCallbackManager(param0: com.facebook.CallbackManager): void;
+					public constructor();
+					public parseResult(param0: number, param1: globalAndroid.content.Intent): any;
 					public parseResult(param0: number, param1: globalAndroid.content.Intent): com.facebook.CallbackManager.ActivityResultParameters;
 					public createIntent(param0: globalAndroid.content.Context, param1: java.util.Collection<string>): globalAndroid.content.Intent;
 					public constructor(param0: com.facebook.CallbackManager, param1: string);
 					public getCallbackManager(): com.facebook.CallbackManager;
+					public createIntent(param0: globalAndroid.content.Context, param1: any): globalAndroid.content.Intent;
 				}
 				export class FragmentStartActivityDelegate extends com.facebook.login.StartActivityDelegate {
 					public static class: java.lang.Class<com.facebook.login.LoginManager.FragmentStartActivityDelegate>;
@@ -7259,6 +14013,7 @@ declare module com {
 		export module login {
 			export abstract class LoginMethodHandler {
 				public static class: java.lang.Class<com.facebook.login.LoginMethodHandler>;
+				public static Companion: com.facebook.login.LoginMethodHandler.Companion;
 				public loginClient: com.facebook.login.LoginClient;
 				public static USER_CANCELED_LOG_IN_ERROR_MESSAGE: string;
 				public static NO_SIGNED_REQUEST_ERROR_MESSAGE: string;
@@ -7331,6 +14086,7 @@ declare module com {
 		export module login {
 			export class LoginStatusClient extends com.facebook.internal.PlatformServiceClient {
 				public static class: java.lang.Class<com.facebook.login.LoginStatusClient>;
+				public static Companion: com.facebook.login.LoginStatusClient.Companion;
 				public static DEFAULT_TOAST_DURATION_MS: number;
 				public constructor(param0: globalAndroid.content.Context, param1: number, param2: number, param3: number, param4: string, param5: string);
 				public constructor(param0: globalAndroid.content.Context, param1: string, param2: string, param3: string, param4: number, param5: string);
@@ -7340,6 +14096,29 @@ declare module com {
 				export class Companion {
 					public static class: java.lang.Class<com.facebook.login.LoginStatusClient.Companion>;
 					public newInstance$facebook_common_release(param0: globalAndroid.content.Context, param1: string, param2: string, param3: string, param4: number, param5: string): com.facebook.login.LoginStatusClient;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module login {
+			export class LoginTargetApp {
+				public static class: java.lang.Class<com.facebook.login.LoginTargetApp>;
+				public static Companion: com.facebook.login.LoginTargetApp.Companion;
+				public static FACEBOOK: com.facebook.login.LoginTargetApp;
+				public static INSTAGRAM: com.facebook.login.LoginTargetApp;
+				public static valueOf(param0: string): com.facebook.login.LoginTargetApp;
+				public static values(): androidNative.Array<com.facebook.login.LoginTargetApp>;
+				public static fromString(param0: string): com.facebook.login.LoginTargetApp;
+				public toString(): string;
+			}
+			export module LoginTargetApp {
+				export class Companion {
+					public static class: java.lang.Class<com.facebook.login.LoginTargetApp.Companion>;
+					public fromString(param0: string): com.facebook.login.LoginTargetApp;
 				}
 			}
 		}
@@ -7397,6 +14176,1913 @@ declare module com {
 declare module com {
 	export module facebook {
 		export module login {
+			export class R {
+				public static class: java.lang.Class<com.facebook.login.R>;
+			}
+			export module R {
+				export class anim {
+					public static class: java.lang.Class<com.facebook.login.R.anim>;
+					public static abc_fade_in: number;
+					public static abc_fade_out: number;
+					public static abc_grow_fade_in_from_bottom: number;
+					public static abc_popup_enter: number;
+					public static abc_popup_exit: number;
+					public static abc_shrink_fade_out_from_bottom: number;
+					public static abc_slide_in_bottom: number;
+					public static abc_slide_in_top: number;
+					public static abc_slide_out_bottom: number;
+					public static abc_slide_out_top: number;
+					public static abc_tooltip_enter: number;
+					public static abc_tooltip_exit: number;
+					public static btn_checkbox_to_checked_box_inner_merged_animation: number;
+					public static btn_checkbox_to_checked_box_outer_merged_animation: number;
+					public static btn_checkbox_to_checked_icon_null_animation: number;
+					public static btn_checkbox_to_unchecked_box_inner_merged_animation: number;
+					public static btn_checkbox_to_unchecked_check_path_merged_animation: number;
+					public static btn_checkbox_to_unchecked_icon_null_animation: number;
+					public static btn_radio_to_off_mtrl_dot_group_animation: number;
+					public static btn_radio_to_off_mtrl_ring_outer_animation: number;
+					public static btn_radio_to_off_mtrl_ring_outer_path_animation: number;
+					public static btn_radio_to_on_mtrl_dot_group_animation: number;
+					public static btn_radio_to_on_mtrl_ring_outer_animation: number;
+					public static btn_radio_to_on_mtrl_ring_outer_path_animation: number;
+					public static fragment_fast_out_extra_slow_in: number;
+				}
+				export class animator {
+					public static class: java.lang.Class<com.facebook.login.R.animator>;
+					public static fragment_close_enter: number;
+					public static fragment_close_exit: number;
+					public static fragment_fade_enter: number;
+					public static fragment_fade_exit: number;
+					public static fragment_open_enter: number;
+					public static fragment_open_exit: number;
+				}
+				export class attr {
+					public static class: java.lang.Class<com.facebook.login.R.attr>;
+					public static actionBarDivider: number;
+					public static actionBarItemBackground: number;
+					public static actionBarPopupTheme: number;
+					public static actionBarSize: number;
+					public static actionBarSplitStyle: number;
+					public static actionBarStyle: number;
+					public static actionBarTabBarStyle: number;
+					public static actionBarTabStyle: number;
+					public static actionBarTabTextStyle: number;
+					public static actionBarTheme: number;
+					public static actionBarWidgetTheme: number;
+					public static actionButtonStyle: number;
+					public static actionDropDownStyle: number;
+					public static actionLayout: number;
+					public static actionMenuTextAppearance: number;
+					public static actionMenuTextColor: number;
+					public static actionModeBackground: number;
+					public static actionModeCloseButtonStyle: number;
+					public static actionModeCloseDrawable: number;
+					public static actionModeCopyDrawable: number;
+					public static actionModeCutDrawable: number;
+					public static actionModeFindDrawable: number;
+					public static actionModePasteDrawable: number;
+					public static actionModePopupWindowStyle: number;
+					public static actionModeSelectAllDrawable: number;
+					public static actionModeShareDrawable: number;
+					public static actionModeSplitBackground: number;
+					public static actionModeStyle: number;
+					public static actionModeWebSearchDrawable: number;
+					public static actionOverflowButtonStyle: number;
+					public static actionOverflowMenuStyle: number;
+					public static actionProviderClass: number;
+					public static actionViewClass: number;
+					public static activityChooserViewStyle: number;
+					public static alertDialogButtonGroupStyle: number;
+					public static alertDialogCenterButtons: number;
+					public static alertDialogStyle: number;
+					public static alertDialogTheme: number;
+					public static allowStacking: number;
+					public static alpha: number;
+					public static alphabeticModifiers: number;
+					public static arrowHeadLength: number;
+					public static arrowShaftLength: number;
+					public static autoCompleteTextViewStyle: number;
+					public static autoSizeMaxTextSize: number;
+					public static autoSizeMinTextSize: number;
+					public static autoSizePresetSizes: number;
+					public static autoSizeStepGranularity: number;
+					public static autoSizeTextType: number;
+					public static background: number;
+					public static backgroundSplit: number;
+					public static backgroundStacked: number;
+					public static backgroundTint: number;
+					public static backgroundTintMode: number;
+					public static barLength: number;
+					public static borderlessButtonStyle: number;
+					public static buttonBarButtonStyle: number;
+					public static buttonBarNegativeButtonStyle: number;
+					public static buttonBarNeutralButtonStyle: number;
+					public static buttonBarPositiveButtonStyle: number;
+					public static buttonBarStyle: number;
+					public static buttonCompat: number;
+					public static buttonGravity: number;
+					public static buttonIconDimen: number;
+					public static buttonPanelSideLayout: number;
+					public static buttonStyle: number;
+					public static buttonStyleSmall: number;
+					public static buttonTint: number;
+					public static buttonTintMode: number;
+					public static cardBackgroundColor: number;
+					public static cardCornerRadius: number;
+					public static cardElevation: number;
+					public static cardMaxElevation: number;
+					public static cardPreventCornerOverlap: number;
+					public static cardUseCompatPadding: number;
+					public static cardViewStyle: number;
+					public static checkboxStyle: number;
+					public static checkedTextViewStyle: number;
+					public static closeIcon: number;
+					public static closeItemLayout: number;
+					public static collapseContentDescription: number;
+					public static collapseIcon: number;
+					public static color: number;
+					public static colorAccent: number;
+					public static colorBackgroundFloating: number;
+					public static colorButtonNormal: number;
+					public static colorControlActivated: number;
+					public static colorControlHighlight: number;
+					public static colorControlNormal: number;
+					public static colorError: number;
+					public static colorPrimary: number;
+					public static colorPrimaryDark: number;
+					public static colorSwitchThumbNormal: number;
+					public static com_facebook_auxiliary_view_position: number;
+					public static com_facebook_confirm_logout: number;
+					public static com_facebook_foreground_color: number;
+					public static com_facebook_horizontal_alignment: number;
+					public static com_facebook_is_cropped: number;
+					public static com_facebook_login_button_radius: number;
+					public static com_facebook_login_button_transparency: number;
+					public static com_facebook_login_text: number;
+					public static com_facebook_logout_text: number;
+					public static com_facebook_object_id: number;
+					public static com_facebook_object_type: number;
+					public static com_facebook_preset_size: number;
+					public static com_facebook_style: number;
+					public static com_facebook_tooltip_mode: number;
+					public static commitIcon: number;
+					public static contentDescription: number;
+					public static contentInsetEnd: number;
+					public static contentInsetEndWithActions: number;
+					public static contentInsetLeft: number;
+					public static contentInsetRight: number;
+					public static contentInsetStart: number;
+					public static contentInsetStartWithNavigation: number;
+					public static contentPadding: number;
+					public static contentPaddingBottom: number;
+					public static contentPaddingLeft: number;
+					public static contentPaddingRight: number;
+					public static contentPaddingTop: number;
+					public static controlBackground: number;
+					public static coordinatorLayoutStyle: number;
+					public static customNavigationLayout: number;
+					public static defaultQueryHint: number;
+					public static dialogCornerRadius: number;
+					public static dialogPreferredPadding: number;
+					public static dialogTheme: number;
+					public static displayOptions: number;
+					public static divider: number;
+					public static dividerHorizontal: number;
+					public static dividerPadding: number;
+					public static dividerVertical: number;
+					public static drawableBottomCompat: number;
+					public static drawableEndCompat: number;
+					public static drawableLeftCompat: number;
+					public static drawableRightCompat: number;
+					public static drawableSize: number;
+					public static drawableStartCompat: number;
+					public static drawableTint: number;
+					public static drawableTintMode: number;
+					public static drawableTopCompat: number;
+					public static drawerArrowStyle: number;
+					public static dropDownListViewStyle: number;
+					public static dropdownListPreferredItemHeight: number;
+					public static editTextBackground: number;
+					public static editTextColor: number;
+					public static editTextStyle: number;
+					public static elevation: number;
+					public static expandActivityOverflowButtonDrawable: number;
+					public static firstBaselineToTopHeight: number;
+					public static font: number;
+					public static fontFamily: number;
+					public static fontProviderAuthority: number;
+					public static fontProviderCerts: number;
+					public static fontProviderFetchStrategy: number;
+					public static fontProviderFetchTimeout: number;
+					public static fontProviderPackage: number;
+					public static fontProviderQuery: number;
+					public static fontStyle: number;
+					public static fontVariationSettings: number;
+					public static fontWeight: number;
+					public static gapBetweenBars: number;
+					public static goIcon: number;
+					public static height: number;
+					public static hideOnContentScroll: number;
+					public static homeAsUpIndicator: number;
+					public static homeLayout: number;
+					public static icon: number;
+					public static iconTint: number;
+					public static iconTintMode: number;
+					public static iconifiedByDefault: number;
+					public static imageButtonStyle: number;
+					public static indeterminateProgressStyle: number;
+					public static initialActivityCount: number;
+					public static isLightTheme: number;
+					public static itemPadding: number;
+					public static keylines: number;
+					public static lastBaselineToBottomHeight: number;
+					public static layout: number;
+					public static layout_anchor: number;
+					public static layout_anchorGravity: number;
+					public static layout_behavior: number;
+					public static layout_dodgeInsetEdges: number;
+					public static layout_insetEdge: number;
+					public static layout_keyline: number;
+					public static lineHeight: number;
+					public static listChoiceBackgroundIndicator: number;
+					public static listChoiceIndicatorMultipleAnimated: number;
+					public static listChoiceIndicatorSingleAnimated: number;
+					public static listDividerAlertDialog: number;
+					public static listItemLayout: number;
+					public static listLayout: number;
+					public static listMenuViewStyle: number;
+					public static listPopupWindowStyle: number;
+					public static listPreferredItemHeight: number;
+					public static listPreferredItemHeightLarge: number;
+					public static listPreferredItemHeightSmall: number;
+					public static listPreferredItemPaddingEnd: number;
+					public static listPreferredItemPaddingLeft: number;
+					public static listPreferredItemPaddingRight: number;
+					public static listPreferredItemPaddingStart: number;
+					public static logo: number;
+					public static logoDescription: number;
+					public static maxButtonHeight: number;
+					public static measureWithLargestChild: number;
+					public static menu: number;
+					public static multiChoiceItemLayout: number;
+					public static navigationContentDescription: number;
+					public static navigationIcon: number;
+					public static navigationMode: number;
+					public static numericModifiers: number;
+					public static overlapAnchor: number;
+					public static paddingBottomNoButtons: number;
+					public static paddingEnd: number;
+					public static paddingStart: number;
+					public static paddingTopNoTitle: number;
+					public static panelBackground: number;
+					public static panelMenuListTheme: number;
+					public static panelMenuListWidth: number;
+					public static popupMenuStyle: number;
+					public static popupTheme: number;
+					public static popupWindowStyle: number;
+					public static preserveIconSpacing: number;
+					public static progressBarPadding: number;
+					public static progressBarStyle: number;
+					public static queryBackground: number;
+					public static queryHint: number;
+					public static radioButtonStyle: number;
+					public static ratingBarStyle: number;
+					public static ratingBarStyleIndicator: number;
+					public static ratingBarStyleSmall: number;
+					public static searchHintIcon: number;
+					public static searchIcon: number;
+					public static searchViewStyle: number;
+					public static seekBarStyle: number;
+					public static selectableItemBackground: number;
+					public static selectableItemBackgroundBorderless: number;
+					public static showAsAction: number;
+					public static showDividers: number;
+					public static showText: number;
+					public static showTitle: number;
+					public static singleChoiceItemLayout: number;
+					public static spinBars: number;
+					public static spinnerDropDownItemStyle: number;
+					public static spinnerStyle: number;
+					public static splitTrack: number;
+					public static srcCompat: number;
+					public static state_above_anchor: number;
+					public static statusBarBackground: number;
+					public static subMenuArrow: number;
+					public static submitBackground: number;
+					public static subtitle: number;
+					public static subtitleTextAppearance: number;
+					public static subtitleTextColor: number;
+					public static subtitleTextStyle: number;
+					public static suggestionRowLayout: number;
+					public static switchMinWidth: number;
+					public static switchPadding: number;
+					public static switchStyle: number;
+					public static switchTextAppearance: number;
+					public static textAllCaps: number;
+					public static textAppearanceLargePopupMenu: number;
+					public static textAppearanceListItem: number;
+					public static textAppearanceListItemSecondary: number;
+					public static textAppearanceListItemSmall: number;
+					public static textAppearancePopupMenuHeader: number;
+					public static textAppearanceSearchResultSubtitle: number;
+					public static textAppearanceSearchResultTitle: number;
+					public static textAppearanceSmallPopupMenu: number;
+					public static textColorAlertDialogListItem: number;
+					public static textColorSearchUrl: number;
+					public static textLocale: number;
+					public static theme: number;
+					public static thickness: number;
+					public static thumbTextPadding: number;
+					public static thumbTint: number;
+					public static thumbTintMode: number;
+					public static tickMark: number;
+					public static tickMarkTint: number;
+					public static tickMarkTintMode: number;
+					public static tint: number;
+					public static tintMode: number;
+					public static title: number;
+					public static titleMargin: number;
+					public static titleMarginBottom: number;
+					public static titleMarginEnd: number;
+					public static titleMarginStart: number;
+					public static titleMarginTop: number;
+					public static titleMargins: number;
+					public static titleTextAppearance: number;
+					public static titleTextColor: number;
+					public static titleTextStyle: number;
+					public static toolbarNavigationButtonStyle: number;
+					public static toolbarStyle: number;
+					public static tooltipForegroundColor: number;
+					public static tooltipFrameBackground: number;
+					public static tooltipText: number;
+					public static track: number;
+					public static trackTint: number;
+					public static trackTintMode: number;
+					public static ttcIndex: number;
+					public static viewInflaterClass: number;
+					public static voiceIcon: number;
+					public static windowActionBar: number;
+					public static windowActionBarOverlay: number;
+					public static windowActionModeOverlay: number;
+					public static windowFixedHeightMajor: number;
+					public static windowFixedHeightMinor: number;
+					public static windowFixedWidthMajor: number;
+					public static windowFixedWidthMinor: number;
+					public static windowMinWidthMajor: number;
+					public static windowMinWidthMinor: number;
+					public static windowNoTitle: number;
+				}
+				export class bool {
+					public static class: java.lang.Class<com.facebook.login.R.bool>;
+					public static abc_action_bar_embed_tabs: number;
+					public static abc_config_actionMenuItemAllCaps: number;
+				}
+				export class color {
+					public static class: java.lang.Class<com.facebook.login.R.color>;
+					public static abc_background_cache_hint_selector_material_dark: number;
+					public static abc_background_cache_hint_selector_material_light: number;
+					public static abc_btn_colored_borderless_text_material: number;
+					public static abc_btn_colored_text_material: number;
+					public static abc_color_highlight_material: number;
+					public static abc_hint_foreground_material_dark: number;
+					public static abc_hint_foreground_material_light: number;
+					public static abc_primary_text_disable_only_material_dark: number;
+					public static abc_primary_text_disable_only_material_light: number;
+					public static abc_primary_text_material_dark: number;
+					public static abc_primary_text_material_light: number;
+					public static abc_search_url_text: number;
+					public static abc_search_url_text_normal: number;
+					public static abc_search_url_text_pressed: number;
+					public static abc_search_url_text_selected: number;
+					public static abc_secondary_text_material_dark: number;
+					public static abc_secondary_text_material_light: number;
+					public static abc_tint_btn_checkable: number;
+					public static abc_tint_default: number;
+					public static abc_tint_edittext: number;
+					public static abc_tint_seek_thumb: number;
+					public static abc_tint_spinner: number;
+					public static abc_tint_switch_track: number;
+					public static accent_material_dark: number;
+					public static accent_material_light: number;
+					public static androidx_core_ripple_material_light: number;
+					public static androidx_core_secondary_text_default_material_light: number;
+					public static background_floating_material_dark: number;
+					public static background_floating_material_light: number;
+					public static background_material_dark: number;
+					public static background_material_light: number;
+					public static bright_foreground_disabled_material_dark: number;
+					public static bright_foreground_disabled_material_light: number;
+					public static bright_foreground_inverse_material_dark: number;
+					public static bright_foreground_inverse_material_light: number;
+					public static bright_foreground_material_dark: number;
+					public static bright_foreground_material_light: number;
+					public static browser_actions_bg_grey: number;
+					public static browser_actions_divider_color: number;
+					public static browser_actions_text_color: number;
+					public static browser_actions_title_color: number;
+					public static button_material_dark: number;
+					public static button_material_light: number;
+					public static cardview_dark_background: number;
+					public static cardview_light_background: number;
+					public static cardview_shadow_end_color: number;
+					public static cardview_shadow_start_color: number;
+					public static com_facebook_blue: number;
+					public static com_facebook_button_background_color: number;
+					public static com_facebook_button_background_color_disabled: number;
+					public static com_facebook_button_background_color_pressed: number;
+					public static com_facebook_button_text_color: number;
+					public static com_facebook_device_auth_text: number;
+					public static com_facebook_likeboxcountview_border_color: number;
+					public static com_facebook_likeboxcountview_text_color: number;
+					public static com_facebook_likeview_text_color: number;
+					public static com_facebook_primary_button_disabled_text_color: number;
+					public static com_facebook_primary_button_pressed_text_color: number;
+					public static com_facebook_primary_button_text_color: number;
+					public static com_smart_login_code: number;
+					public static dim_foreground_disabled_material_dark: number;
+					public static dim_foreground_disabled_material_light: number;
+					public static dim_foreground_material_dark: number;
+					public static dim_foreground_material_light: number;
+					public static error_color_material_dark: number;
+					public static error_color_material_light: number;
+					public static foreground_material_dark: number;
+					public static foreground_material_light: number;
+					public static highlighted_text_material_dark: number;
+					public static highlighted_text_material_light: number;
+					public static material_blue_grey_800: number;
+					public static material_blue_grey_900: number;
+					public static material_blue_grey_950: number;
+					public static material_deep_teal_200: number;
+					public static material_deep_teal_500: number;
+					public static material_grey_100: number;
+					public static material_grey_300: number;
+					public static material_grey_50: number;
+					public static material_grey_600: number;
+					public static material_grey_800: number;
+					public static material_grey_850: number;
+					public static material_grey_900: number;
+					public static notification_action_color_filter: number;
+					public static notification_icon_bg_color: number;
+					public static notification_material_background_media_default_color: number;
+					public static primary_dark_material_dark: number;
+					public static primary_dark_material_light: number;
+					public static primary_material_dark: number;
+					public static primary_material_light: number;
+					public static primary_text_default_material_dark: number;
+					public static primary_text_default_material_light: number;
+					public static primary_text_disabled_material_dark: number;
+					public static primary_text_disabled_material_light: number;
+					public static ripple_material_dark: number;
+					public static ripple_material_light: number;
+					public static secondary_text_default_material_dark: number;
+					public static secondary_text_default_material_light: number;
+					public static secondary_text_disabled_material_dark: number;
+					public static secondary_text_disabled_material_light: number;
+					public static switch_thumb_disabled_material_dark: number;
+					public static switch_thumb_disabled_material_light: number;
+					public static switch_thumb_material_dark: number;
+					public static switch_thumb_material_light: number;
+					public static switch_thumb_normal_material_dark: number;
+					public static switch_thumb_normal_material_light: number;
+					public static tooltip_background_dark: number;
+					public static tooltip_background_light: number;
+				}
+				export class dimen {
+					public static class: java.lang.Class<com.facebook.login.R.dimen>;
+					public static abc_action_bar_content_inset_material: number;
+					public static abc_action_bar_content_inset_with_nav: number;
+					public static abc_action_bar_default_height_material: number;
+					public static abc_action_bar_default_padding_end_material: number;
+					public static abc_action_bar_default_padding_start_material: number;
+					public static abc_action_bar_elevation_material: number;
+					public static abc_action_bar_icon_vertical_padding_material: number;
+					public static abc_action_bar_overflow_padding_end_material: number;
+					public static abc_action_bar_overflow_padding_start_material: number;
+					public static abc_action_bar_stacked_max_height: number;
+					public static abc_action_bar_stacked_tab_max_width: number;
+					public static abc_action_bar_subtitle_bottom_margin_material: number;
+					public static abc_action_bar_subtitle_top_margin_material: number;
+					public static abc_action_button_min_height_material: number;
+					public static abc_action_button_min_width_material: number;
+					public static abc_action_button_min_width_overflow_material: number;
+					public static abc_alert_dialog_button_bar_height: number;
+					public static abc_alert_dialog_button_dimen: number;
+					public static abc_button_inset_horizontal_material: number;
+					public static abc_button_inset_vertical_material: number;
+					public static abc_button_padding_horizontal_material: number;
+					public static abc_button_padding_vertical_material: number;
+					public static abc_cascading_menus_min_smallest_width: number;
+					public static abc_config_prefDialogWidth: number;
+					public static abc_control_corner_material: number;
+					public static abc_control_inset_material: number;
+					public static abc_control_padding_material: number;
+					public static abc_dialog_corner_radius_material: number;
+					public static abc_dialog_fixed_height_major: number;
+					public static abc_dialog_fixed_height_minor: number;
+					public static abc_dialog_fixed_width_major: number;
+					public static abc_dialog_fixed_width_minor: number;
+					public static abc_dialog_list_padding_bottom_no_buttons: number;
+					public static abc_dialog_list_padding_top_no_title: number;
+					public static abc_dialog_min_width_major: number;
+					public static abc_dialog_min_width_minor: number;
+					public static abc_dialog_padding_material: number;
+					public static abc_dialog_padding_top_material: number;
+					public static abc_dialog_title_divider_material: number;
+					public static abc_disabled_alpha_material_dark: number;
+					public static abc_disabled_alpha_material_light: number;
+					public static abc_dropdownitem_icon_width: number;
+					public static abc_dropdownitem_text_padding_left: number;
+					public static abc_dropdownitem_text_padding_right: number;
+					public static abc_edit_text_inset_bottom_material: number;
+					public static abc_edit_text_inset_horizontal_material: number;
+					public static abc_edit_text_inset_top_material: number;
+					public static abc_floating_window_z: number;
+					public static abc_list_item_height_large_material: number;
+					public static abc_list_item_height_material: number;
+					public static abc_list_item_height_small_material: number;
+					public static abc_list_item_padding_horizontal_material: number;
+					public static abc_panel_menu_list_width: number;
+					public static abc_progress_bar_height_material: number;
+					public static abc_search_view_preferred_height: number;
+					public static abc_search_view_preferred_width: number;
+					public static abc_seekbar_track_background_height_material: number;
+					public static abc_seekbar_track_progress_height_material: number;
+					public static abc_select_dialog_padding_start_material: number;
+					public static abc_switch_padding: number;
+					public static abc_text_size_body_1_material: number;
+					public static abc_text_size_body_2_material: number;
+					public static abc_text_size_button_material: number;
+					public static abc_text_size_caption_material: number;
+					public static abc_text_size_display_1_material: number;
+					public static abc_text_size_display_2_material: number;
+					public static abc_text_size_display_3_material: number;
+					public static abc_text_size_display_4_material: number;
+					public static abc_text_size_headline_material: number;
+					public static abc_text_size_large_material: number;
+					public static abc_text_size_medium_material: number;
+					public static abc_text_size_menu_header_material: number;
+					public static abc_text_size_menu_material: number;
+					public static abc_text_size_small_material: number;
+					public static abc_text_size_subhead_material: number;
+					public static abc_text_size_subtitle_material_toolbar: number;
+					public static abc_text_size_title_material: number;
+					public static abc_text_size_title_material_toolbar: number;
+					public static browser_actions_context_menu_max_width: number;
+					public static browser_actions_context_menu_min_padding: number;
+					public static cardview_compat_inset_shadow: number;
+					public static cardview_default_elevation: number;
+					public static cardview_default_radius: number;
+					public static com_facebook_auth_dialog_corner_radius: number;
+					public static com_facebook_auth_dialog_corner_radius_oversized: number;
+					public static com_facebook_button_corner_radius: number;
+					public static com_facebook_button_login_corner_radius: number;
+					public static com_facebook_likeboxcountview_border_radius: number;
+					public static com_facebook_likeboxcountview_border_width: number;
+					public static com_facebook_likeboxcountview_caret_height: number;
+					public static com_facebook_likeboxcountview_caret_width: number;
+					public static com_facebook_likeboxcountview_text_padding: number;
+					public static com_facebook_likeboxcountview_text_size: number;
+					public static com_facebook_likeview_edge_padding: number;
+					public static com_facebook_likeview_internal_padding: number;
+					public static com_facebook_likeview_text_size: number;
+					public static com_facebook_profilepictureview_preset_size_large: number;
+					public static com_facebook_profilepictureview_preset_size_normal: number;
+					public static com_facebook_profilepictureview_preset_size_small: number;
+					public static compat_button_inset_horizontal_material: number;
+					public static compat_button_inset_vertical_material: number;
+					public static compat_button_padding_horizontal_material: number;
+					public static compat_button_padding_vertical_material: number;
+					public static compat_control_corner_material: number;
+					public static compat_notification_large_icon_max_height: number;
+					public static compat_notification_large_icon_max_width: number;
+					public static disabled_alpha_material_dark: number;
+					public static disabled_alpha_material_light: number;
+					public static highlight_alpha_material_colored: number;
+					public static highlight_alpha_material_dark: number;
+					public static highlight_alpha_material_light: number;
+					public static hint_alpha_material_dark: number;
+					public static hint_alpha_material_light: number;
+					public static hint_pressed_alpha_material_dark: number;
+					public static hint_pressed_alpha_material_light: number;
+					public static notification_action_icon_size: number;
+					public static notification_action_text_size: number;
+					public static notification_big_circle_margin: number;
+					public static notification_content_margin_start: number;
+					public static notification_large_icon_height: number;
+					public static notification_large_icon_width: number;
+					public static notification_main_column_padding_top: number;
+					public static notification_media_narrow_margin: number;
+					public static notification_right_icon_size: number;
+					public static notification_right_side_padding_top: number;
+					public static notification_small_icon_background_padding: number;
+					public static notification_small_icon_size_as_large: number;
+					public static notification_subtext_size: number;
+					public static notification_top_pad: number;
+					public static notification_top_pad_large_text: number;
+					public static subtitle_corner_radius: number;
+					public static subtitle_outline_width: number;
+					public static subtitle_shadow_offset: number;
+					public static subtitle_shadow_radius: number;
+					public static tooltip_corner_radius: number;
+					public static tooltip_horizontal_padding: number;
+					public static tooltip_margin: number;
+					public static tooltip_precise_anchor_extra_offset: number;
+					public static tooltip_precise_anchor_threshold: number;
+					public static tooltip_vertical_padding: number;
+					public static tooltip_y_offset_non_touch: number;
+					public static tooltip_y_offset_touch: number;
+				}
+				export class drawable {
+					public static class: java.lang.Class<com.facebook.login.R.drawable>;
+					public static abc_ab_share_pack_mtrl_alpha: number;
+					public static abc_action_bar_item_background_material: number;
+					public static abc_btn_borderless_material: number;
+					public static abc_btn_check_material: number;
+					public static abc_btn_check_material_anim: number;
+					public static abc_btn_check_to_on_mtrl_000: number;
+					public static abc_btn_check_to_on_mtrl_015: number;
+					public static abc_btn_colored_material: number;
+					public static abc_btn_default_mtrl_shape: number;
+					public static abc_btn_radio_material: number;
+					public static abc_btn_radio_material_anim: number;
+					public static abc_btn_radio_to_on_mtrl_000: number;
+					public static abc_btn_radio_to_on_mtrl_015: number;
+					public static abc_btn_switch_to_on_mtrl_00001: number;
+					public static abc_btn_switch_to_on_mtrl_00012: number;
+					public static abc_cab_background_internal_bg: number;
+					public static abc_cab_background_top_material: number;
+					public static abc_cab_background_top_mtrl_alpha: number;
+					public static abc_control_background_material: number;
+					public static abc_dialog_material_background: number;
+					public static abc_edit_text_material: number;
+					public static abc_ic_ab_back_material: number;
+					public static abc_ic_arrow_drop_right_black_24dp: number;
+					public static abc_ic_clear_material: number;
+					public static abc_ic_commit_search_api_mtrl_alpha: number;
+					public static abc_ic_go_search_api_material: number;
+					public static abc_ic_menu_copy_mtrl_am_alpha: number;
+					public static abc_ic_menu_cut_mtrl_alpha: number;
+					public static abc_ic_menu_overflow_material: number;
+					public static abc_ic_menu_paste_mtrl_am_alpha: number;
+					public static abc_ic_menu_selectall_mtrl_alpha: number;
+					public static abc_ic_menu_share_mtrl_alpha: number;
+					public static abc_ic_search_api_material: number;
+					public static abc_ic_voice_search_api_material: number;
+					public static abc_item_background_holo_dark: number;
+					public static abc_item_background_holo_light: number;
+					public static abc_list_divider_material: number;
+					public static abc_list_divider_mtrl_alpha: number;
+					public static abc_list_focused_holo: number;
+					public static abc_list_longpressed_holo: number;
+					public static abc_list_pressed_holo_dark: number;
+					public static abc_list_pressed_holo_light: number;
+					public static abc_list_selector_background_transition_holo_dark: number;
+					public static abc_list_selector_background_transition_holo_light: number;
+					public static abc_list_selector_disabled_holo_dark: number;
+					public static abc_list_selector_disabled_holo_light: number;
+					public static abc_list_selector_holo_dark: number;
+					public static abc_list_selector_holo_light: number;
+					public static abc_menu_hardkey_panel_mtrl_mult: number;
+					public static abc_popup_background_mtrl_mult: number;
+					public static abc_ratingbar_indicator_material: number;
+					public static abc_ratingbar_material: number;
+					public static abc_ratingbar_small_material: number;
+					public static abc_scrubber_control_off_mtrl_alpha: number;
+					public static abc_scrubber_control_to_pressed_mtrl_000: number;
+					public static abc_scrubber_control_to_pressed_mtrl_005: number;
+					public static abc_scrubber_primary_mtrl_alpha: number;
+					public static abc_scrubber_track_mtrl_alpha: number;
+					public static abc_seekbar_thumb_material: number;
+					public static abc_seekbar_tick_mark_material: number;
+					public static abc_seekbar_track_material: number;
+					public static abc_spinner_mtrl_am_alpha: number;
+					public static abc_spinner_textfield_background_material: number;
+					public static abc_switch_thumb_material: number;
+					public static abc_switch_track_mtrl_alpha: number;
+					public static abc_tab_indicator_material: number;
+					public static abc_tab_indicator_mtrl_alpha: number;
+					public static abc_text_cursor_material: number;
+					public static abc_textfield_activated_mtrl_alpha: number;
+					public static abc_textfield_default_mtrl_alpha: number;
+					public static abc_textfield_search_activated_mtrl_alpha: number;
+					public static abc_textfield_search_default_mtrl_alpha: number;
+					public static abc_textfield_search_material: number;
+					public static abc_vector_test: number;
+					public static btn_checkbox_checked_mtrl: number;
+					public static btn_checkbox_checked_to_unchecked_mtrl_animation: number;
+					public static btn_checkbox_unchecked_mtrl: number;
+					public static btn_checkbox_unchecked_to_checked_mtrl_animation: number;
+					public static btn_radio_off_mtrl: number;
+					public static btn_radio_off_to_on_mtrl_animation: number;
+					public static btn_radio_on_mtrl: number;
+					public static btn_radio_on_to_off_mtrl_animation: number;
+					public static com_facebook_auth_dialog_background: number;
+					public static com_facebook_auth_dialog_cancel_background: number;
+					public static com_facebook_auth_dialog_header_background: number;
+					public static com_facebook_button_background: number;
+					public static com_facebook_button_icon: number;
+					public static com_facebook_button_like_background: number;
+					public static com_facebook_button_like_icon_selected: number;
+					public static com_facebook_close: number;
+					public static com_facebook_favicon_blue: number;
+					public static com_facebook_profile_picture_blank_portrait: number;
+					public static com_facebook_profile_picture_blank_square: number;
+					public static com_facebook_tooltip_black_background: number;
+					public static com_facebook_tooltip_black_bottomnub: number;
+					public static com_facebook_tooltip_black_topnub: number;
+					public static com_facebook_tooltip_black_xout: number;
+					public static com_facebook_tooltip_blue_background: number;
+					public static com_facebook_tooltip_blue_bottomnub: number;
+					public static com_facebook_tooltip_blue_topnub: number;
+					public static com_facebook_tooltip_blue_xout: number;
+					public static notification_action_background: number;
+					public static notification_bg: number;
+					public static notification_bg_low: number;
+					public static notification_bg_low_normal: number;
+					public static notification_bg_low_pressed: number;
+					public static notification_bg_normal: number;
+					public static notification_bg_normal_pressed: number;
+					public static notification_icon_background: number;
+					public static notification_template_icon_bg: number;
+					public static notification_template_icon_low_bg: number;
+					public static notification_tile_bg: number;
+					public static notify_panel_notification_icon_bg: number;
+					public static tooltip_frame_dark: number;
+					public static tooltip_frame_light: number;
+				}
+				export class id {
+					public static class: java.lang.Class<com.facebook.login.R.id>;
+					public static accessibility_action_clickable_span: number;
+					public static accessibility_custom_action_0: number;
+					public static accessibility_custom_action_1: number;
+					public static accessibility_custom_action_10: number;
+					public static accessibility_custom_action_11: number;
+					public static accessibility_custom_action_12: number;
+					public static accessibility_custom_action_13: number;
+					public static accessibility_custom_action_14: number;
+					public static accessibility_custom_action_15: number;
+					public static accessibility_custom_action_16: number;
+					public static accessibility_custom_action_17: number;
+					public static accessibility_custom_action_18: number;
+					public static accessibility_custom_action_19: number;
+					public static accessibility_custom_action_2: number;
+					public static accessibility_custom_action_20: number;
+					public static accessibility_custom_action_21: number;
+					public static accessibility_custom_action_22: number;
+					public static accessibility_custom_action_23: number;
+					public static accessibility_custom_action_24: number;
+					public static accessibility_custom_action_25: number;
+					public static accessibility_custom_action_26: number;
+					public static accessibility_custom_action_27: number;
+					public static accessibility_custom_action_28: number;
+					public static accessibility_custom_action_29: number;
+					public static accessibility_custom_action_3: number;
+					public static accessibility_custom_action_30: number;
+					public static accessibility_custom_action_31: number;
+					public static accessibility_custom_action_4: number;
+					public static accessibility_custom_action_5: number;
+					public static accessibility_custom_action_6: number;
+					public static accessibility_custom_action_7: number;
+					public static accessibility_custom_action_8: number;
+					public static accessibility_custom_action_9: number;
+					public static action0: number;
+					public static action_bar: number;
+					public static action_bar_activity_content: number;
+					public static action_bar_container: number;
+					public static action_bar_root: number;
+					public static action_bar_spinner: number;
+					public static action_bar_subtitle: number;
+					public static action_bar_title: number;
+					public static action_container: number;
+					public static action_context_bar: number;
+					public static action_divider: number;
+					public static action_image: number;
+					public static action_menu_divider: number;
+					public static action_menu_presenter: number;
+					public static action_mode_bar: number;
+					public static action_mode_bar_stub: number;
+					public static action_mode_close_button: number;
+					public static action_text: number;
+					public static actions: number;
+					public static activity_chooser_view_content: number;
+					public static add: number;
+					public static alertTitle: number;
+					public static async: number;
+					public static automatic: number;
+					public static blocking: number;
+					public static bottom: number;
+					public static box_count: number;
+					public static browser_actions_header_text: number;
+					public static browser_actions_menu_item_icon: number;
+					public static browser_actions_menu_item_text: number;
+					public static browser_actions_menu_items: number;
+					public static browser_actions_menu_view: number;
+					public static button: number;
+					public static buttonPanel: number;
+					public static cancel_action: number;
+					public static cancel_button: number;
+					public static center: number;
+					public static checkbox: number;
+					public static checked: number;
+					public static chronometer: number;
+					public static com_facebook_body_frame: number;
+					public static com_facebook_button_xout: number;
+					public static com_facebook_device_auth_instructions: number;
+					public static com_facebook_fragment_container: number;
+					public static com_facebook_login_fragment_progress_bar: number;
+					public static com_facebook_smart_instructions_0: number;
+					public static com_facebook_smart_instructions_or: number;
+					public static com_facebook_tooltip_bubble_view_bottom_pointer: number;
+					public static com_facebook_tooltip_bubble_view_text_body: number;
+					public static com_facebook_tooltip_bubble_view_top_pointer: number;
+					public static confirmation_code: number;
+					public static content: number;
+					public static contentPanel: number;
+					public static custom: number;
+					public static customPanel: number;
+					public static decor_content_parent: number;
+					public static default_activity_button: number;
+					public static dialog_button: number;
+					public static display_always: number;
+					public static edit_query: number;
+					public static end: number;
+					public static end_padder: number;
+					public static expand_activities_button: number;
+					public static expanded_menu: number;
+					public static forever: number;
+					public static fragment_container_view_tag: number;
+					public static group_divider: number;
+					public static home: number;
+					public static icon: number;
+					public static icon_group: number;
+					public static image: number;
+					public static info: number;
+					public static inline: number;
+					public static italic: number;
+					public static large: number;
+					public static left: number;
+					public static line1: number;
+					public static line3: number;
+					public static listMode: number;
+					public static list_item: number;
+					public static media_actions: number;
+					public static message: number;
+					public static multiply: number;
+					public static never_display: number;
+					public static none: number;
+					public static normal: number;
+					public static notification_background: number;
+					public static notification_main_column: number;
+					public static notification_main_column_container: number;
+					public static off: number;
+					public static on: number;
+					public static open_graph: number;
+					public static page: number;
+					public static parentPanel: number;
+					public static progress_bar: number;
+					public static progress_circular: number;
+					public static progress_horizontal: number;
+					public static radio: number;
+					public static right: number;
+					public static right_icon: number;
+					public static right_side: number;
+					public static screen: number;
+					public static scrollIndicatorDown: number;
+					public static scrollIndicatorUp: number;
+					public static scrollView: number;
+					public static search_badge: number;
+					public static search_bar: number;
+					public static search_button: number;
+					public static search_close_btn: number;
+					public static search_edit_frame: number;
+					public static search_go_btn: number;
+					public static search_mag_icon: number;
+					public static search_plate: number;
+					public static search_src_text: number;
+					public static search_voice_btn: number;
+					public static select_dialog_listview: number;
+					public static shortcut: number;
+					public static small: number;
+					public static spacer: number;
+					public static special_effects_controller_view_tag: number;
+					public static split_action_bar: number;
+					public static src_atop: number;
+					public static src_in: number;
+					public static src_over: number;
+					public static standard: number;
+					public static start: number;
+					public static status_bar_latest_event_content: number;
+					public static submenuarrow: number;
+					public static submit_area: number;
+					public static tabMode: number;
+					public static tag_accessibility_actions: number;
+					public static tag_accessibility_clickable_spans: number;
+					public static tag_accessibility_heading: number;
+					public static tag_accessibility_pane_title: number;
+					public static tag_screen_reader_focusable: number;
+					public static tag_transition_group: number;
+					public static tag_unhandled_key_event_manager: number;
+					public static tag_unhandled_key_listeners: number;
+					public static text: number;
+					public static text2: number;
+					public static textSpacerNoButtons: number;
+					public static textSpacerNoTitle: number;
+					public static time: number;
+					public static title: number;
+					public static titleDividerNoCustom: number;
+					public static title_template: number;
+					public static top: number;
+					public static topPanel: number;
+					public static unchecked: number;
+					public static uniform: number;
+					public static unknown: number;
+					public static up: number;
+					public static view_tree_lifecycle_owner: number;
+					public static view_tree_saved_state_registry_owner: number;
+					public static view_tree_view_model_store_owner: number;
+					public static visible_removing_fragment_view_tag: number;
+					public static wrap_content: number;
+				}
+				export class integer {
+					public static class: java.lang.Class<com.facebook.login.R.integer>;
+					public static abc_config_activityDefaultDur: number;
+					public static abc_config_activityShortDur: number;
+					public static cancel_button_image_alpha: number;
+					public static config_tooltipAnimTime: number;
+					public static status_bar_notification_info_maxnum: number;
+				}
+				export class interpolator {
+					public static class: java.lang.Class<com.facebook.login.R.interpolator>;
+					public static btn_checkbox_checked_mtrl_animation_interpolator_0: number;
+					public static btn_checkbox_checked_mtrl_animation_interpolator_1: number;
+					public static btn_checkbox_unchecked_mtrl_animation_interpolator_0: number;
+					public static btn_checkbox_unchecked_mtrl_animation_interpolator_1: number;
+					public static btn_radio_to_off_mtrl_animation_interpolator_0: number;
+					public static btn_radio_to_on_mtrl_animation_interpolator_0: number;
+					public static fast_out_slow_in: number;
+				}
+				export class layout {
+					public static class: java.lang.Class<com.facebook.login.R.layout>;
+					public static abc_action_bar_title_item: number;
+					public static abc_action_bar_up_container: number;
+					public static abc_action_menu_item_layout: number;
+					public static abc_action_menu_layout: number;
+					public static abc_action_mode_bar: number;
+					public static abc_action_mode_close_item_material: number;
+					public static abc_activity_chooser_view: number;
+					public static abc_activity_chooser_view_list_item: number;
+					public static abc_alert_dialog_button_bar_material: number;
+					public static abc_alert_dialog_material: number;
+					public static abc_alert_dialog_title_material: number;
+					public static abc_cascading_menu_item_layout: number;
+					public static abc_dialog_title_material: number;
+					public static abc_expanded_menu_layout: number;
+					public static abc_list_menu_item_checkbox: number;
+					public static abc_list_menu_item_icon: number;
+					public static abc_list_menu_item_layout: number;
+					public static abc_list_menu_item_radio: number;
+					public static abc_popup_menu_header_item_layout: number;
+					public static abc_popup_menu_item_layout: number;
+					public static abc_screen_content_include: number;
+					public static abc_screen_simple: number;
+					public static abc_screen_simple_overlay_action_mode: number;
+					public static abc_screen_toolbar: number;
+					public static abc_search_dropdown_item_icons_2line: number;
+					public static abc_search_view: number;
+					public static abc_select_dialog_material: number;
+					public static abc_tooltip: number;
+					public static browser_actions_context_menu_page: number;
+					public static browser_actions_context_menu_row: number;
+					public static com_facebook_activity_layout: number;
+					public static com_facebook_device_auth_dialog_fragment: number;
+					public static com_facebook_login_fragment: number;
+					public static com_facebook_smart_device_dialog_fragment: number;
+					public static com_facebook_tooltip_bubble: number;
+					public static custom_dialog: number;
+					public static notification_action: number;
+					public static notification_action_tombstone: number;
+					public static notification_media_action: number;
+					public static notification_media_cancel_action: number;
+					public static notification_template_big_media: number;
+					public static notification_template_big_media_custom: number;
+					public static notification_template_big_media_narrow: number;
+					public static notification_template_big_media_narrow_custom: number;
+					public static notification_template_custom_big: number;
+					public static notification_template_icon_group: number;
+					public static notification_template_lines_media: number;
+					public static notification_template_media: number;
+					public static notification_template_media_custom: number;
+					public static notification_template_part_chronometer: number;
+					public static notification_template_part_time: number;
+					public static select_dialog_item_material: number;
+					public static select_dialog_multichoice_material: number;
+					public static select_dialog_singlechoice_material: number;
+					public static support_simple_spinner_dropdown_item: number;
+				}
+				export class style {
+					public static class: java.lang.Class<com.facebook.login.R.style>;
+					public static AlertDialog_AppCompat: number;
+					public static AlertDialog_AppCompat_Light: number;
+					public static Animation_AppCompat_Dialog: number;
+					public static Animation_AppCompat_DropDownUp: number;
+					public static Animation_AppCompat_Tooltip: number;
+					public static Base_AlertDialog_AppCompat: number;
+					public static Base_AlertDialog_AppCompat_Light: number;
+					public static Base_Animation_AppCompat_Dialog: number;
+					public static Base_Animation_AppCompat_DropDownUp: number;
+					public static Base_Animation_AppCompat_Tooltip: number;
+					public static Base_CardView: number;
+					public static Base_DialogWindowTitleBackground_AppCompat: number;
+					public static Base_DialogWindowTitle_AppCompat: number;
+					public static Base_TextAppearance_AppCompat: number;
+					public static Base_TextAppearance_AppCompat_Body1: number;
+					public static Base_TextAppearance_AppCompat_Body2: number;
+					public static Base_TextAppearance_AppCompat_Button: number;
+					public static Base_TextAppearance_AppCompat_Caption: number;
+					public static Base_TextAppearance_AppCompat_Display1: number;
+					public static Base_TextAppearance_AppCompat_Display2: number;
+					public static Base_TextAppearance_AppCompat_Display3: number;
+					public static Base_TextAppearance_AppCompat_Display4: number;
+					public static Base_TextAppearance_AppCompat_Headline: number;
+					public static Base_TextAppearance_AppCompat_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Large: number;
+					public static Base_TextAppearance_AppCompat_Large_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large: number;
+					public static Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small: number;
+					public static Base_TextAppearance_AppCompat_Medium: number;
+					public static Base_TextAppearance_AppCompat_Medium_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Menu: number;
+					public static Base_TextAppearance_AppCompat_SearchResult: number;
+					public static Base_TextAppearance_AppCompat_SearchResult_Subtitle: number;
+					public static Base_TextAppearance_AppCompat_SearchResult_Title: number;
+					public static Base_TextAppearance_AppCompat_Small: number;
+					public static Base_TextAppearance_AppCompat_Small_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Subhead: number;
+					public static Base_TextAppearance_AppCompat_Subhead_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Title: number;
+					public static Base_TextAppearance_AppCompat_Title_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Tooltip: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Menu: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Title: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionMode_Title: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button_Colored: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Widget_DropDownItem: number;
+					public static Base_TextAppearance_AppCompat_Widget_PopupMenu_Header: number;
+					public static Base_TextAppearance_AppCompat_Widget_PopupMenu_Large: number;
+					public static Base_TextAppearance_AppCompat_Widget_PopupMenu_Small: number;
+					public static Base_TextAppearance_AppCompat_Widget_Switch: number;
+					public static Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem: number;
+					public static Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item: number;
+					public static Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle: number;
+					public static Base_TextAppearance_Widget_AppCompat_Toolbar_Title: number;
+					public static Base_ThemeOverlay_AppCompat: number;
+					public static Base_ThemeOverlay_AppCompat_ActionBar: number;
+					public static Base_ThemeOverlay_AppCompat_Dark: number;
+					public static Base_ThemeOverlay_AppCompat_Dark_ActionBar: number;
+					public static Base_ThemeOverlay_AppCompat_Dialog: number;
+					public static Base_ThemeOverlay_AppCompat_Dialog_Alert: number;
+					public static Base_ThemeOverlay_AppCompat_Light: number;
+					public static Base_Theme_AppCompat: number;
+					public static Base_Theme_AppCompat_CompactMenu: number;
+					public static Base_Theme_AppCompat_Dialog: number;
+					public static Base_Theme_AppCompat_DialogWhenLarge: number;
+					public static Base_Theme_AppCompat_Dialog_Alert: number;
+					public static Base_Theme_AppCompat_Dialog_FixedSize: number;
+					public static Base_Theme_AppCompat_Dialog_MinWidth: number;
+					public static Base_Theme_AppCompat_Light: number;
+					public static Base_Theme_AppCompat_Light_DarkActionBar: number;
+					public static Base_Theme_AppCompat_Light_Dialog: number;
+					public static Base_Theme_AppCompat_Light_DialogWhenLarge: number;
+					public static Base_Theme_AppCompat_Light_Dialog_Alert: number;
+					public static Base_Theme_AppCompat_Light_Dialog_FixedSize: number;
+					public static Base_Theme_AppCompat_Light_Dialog_MinWidth: number;
+					public static Base_V21_ThemeOverlay_AppCompat_Dialog: number;
+					public static Base_V21_Theme_AppCompat: number;
+					public static Base_V21_Theme_AppCompat_Dialog: number;
+					public static Base_V21_Theme_AppCompat_Light: number;
+					public static Base_V21_Theme_AppCompat_Light_Dialog: number;
+					public static Base_V22_Theme_AppCompat: number;
+					public static Base_V22_Theme_AppCompat_Light: number;
+					public static Base_V23_Theme_AppCompat: number;
+					public static Base_V23_Theme_AppCompat_Light: number;
+					public static Base_V26_Theme_AppCompat: number;
+					public static Base_V26_Theme_AppCompat_Light: number;
+					public static Base_V26_Widget_AppCompat_Toolbar: number;
+					public static Base_V28_Theme_AppCompat: number;
+					public static Base_V28_Theme_AppCompat_Light: number;
+					public static Base_V7_ThemeOverlay_AppCompat_Dialog: number;
+					public static Base_V7_Theme_AppCompat: number;
+					public static Base_V7_Theme_AppCompat_Dialog: number;
+					public static Base_V7_Theme_AppCompat_Light: number;
+					public static Base_V7_Theme_AppCompat_Light_Dialog: number;
+					public static Base_V7_Widget_AppCompat_AutoCompleteTextView: number;
+					public static Base_V7_Widget_AppCompat_EditText: number;
+					public static Base_V7_Widget_AppCompat_Toolbar: number;
+					public static Base_Widget_AppCompat_ActionBar: number;
+					public static Base_Widget_AppCompat_ActionBar_Solid: number;
+					public static Base_Widget_AppCompat_ActionBar_TabBar: number;
+					public static Base_Widget_AppCompat_ActionBar_TabText: number;
+					public static Base_Widget_AppCompat_ActionBar_TabView: number;
+					public static Base_Widget_AppCompat_ActionButton: number;
+					public static Base_Widget_AppCompat_ActionButton_CloseMode: number;
+					public static Base_Widget_AppCompat_ActionButton_Overflow: number;
+					public static Base_Widget_AppCompat_ActionMode: number;
+					public static Base_Widget_AppCompat_ActivityChooserView: number;
+					public static Base_Widget_AppCompat_AutoCompleteTextView: number;
+					public static Base_Widget_AppCompat_Button: number;
+					public static Base_Widget_AppCompat_ButtonBar: number;
+					public static Base_Widget_AppCompat_ButtonBar_AlertDialog: number;
+					public static Base_Widget_AppCompat_Button_Borderless: number;
+					public static Base_Widget_AppCompat_Button_Borderless_Colored: number;
+					public static Base_Widget_AppCompat_Button_ButtonBar_AlertDialog: number;
+					public static Base_Widget_AppCompat_Button_Colored: number;
+					public static Base_Widget_AppCompat_Button_Small: number;
+					public static Base_Widget_AppCompat_CompoundButton_CheckBox: number;
+					public static Base_Widget_AppCompat_CompoundButton_RadioButton: number;
+					public static Base_Widget_AppCompat_CompoundButton_Switch: number;
+					public static Base_Widget_AppCompat_DrawerArrowToggle: number;
+					public static Base_Widget_AppCompat_DrawerArrowToggle_Common: number;
+					public static Base_Widget_AppCompat_DropDownItem_Spinner: number;
+					public static Base_Widget_AppCompat_EditText: number;
+					public static Base_Widget_AppCompat_ImageButton: number;
+					public static Base_Widget_AppCompat_Light_ActionBar: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_Solid: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabBar: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabText: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabView: number;
+					public static Base_Widget_AppCompat_Light_PopupMenu: number;
+					public static Base_Widget_AppCompat_Light_PopupMenu_Overflow: number;
+					public static Base_Widget_AppCompat_ListMenuView: number;
+					public static Base_Widget_AppCompat_ListPopupWindow: number;
+					public static Base_Widget_AppCompat_ListView: number;
+					public static Base_Widget_AppCompat_ListView_DropDown: number;
+					public static Base_Widget_AppCompat_ListView_Menu: number;
+					public static Base_Widget_AppCompat_PopupMenu: number;
+					public static Base_Widget_AppCompat_PopupMenu_Overflow: number;
+					public static Base_Widget_AppCompat_PopupWindow: number;
+					public static Base_Widget_AppCompat_ProgressBar: number;
+					public static Base_Widget_AppCompat_ProgressBar_Horizontal: number;
+					public static Base_Widget_AppCompat_RatingBar: number;
+					public static Base_Widget_AppCompat_RatingBar_Indicator: number;
+					public static Base_Widget_AppCompat_RatingBar_Small: number;
+					public static Base_Widget_AppCompat_SearchView: number;
+					public static Base_Widget_AppCompat_SearchView_ActionBar: number;
+					public static Base_Widget_AppCompat_SeekBar: number;
+					public static Base_Widget_AppCompat_SeekBar_Discrete: number;
+					public static Base_Widget_AppCompat_Spinner: number;
+					public static Base_Widget_AppCompat_Spinner_Underlined: number;
+					public static Base_Widget_AppCompat_TextView: number;
+					public static Base_Widget_AppCompat_TextView_SpinnerItem: number;
+					public static Base_Widget_AppCompat_Toolbar: number;
+					public static Base_Widget_AppCompat_Toolbar_Button_Navigation: number;
+					public static CardView: number;
+					public static CardView_Dark: number;
+					public static CardView_Light: number;
+					public static Platform_AppCompat: number;
+					public static Platform_AppCompat_Light: number;
+					public static Platform_ThemeOverlay_AppCompat: number;
+					public static Platform_ThemeOverlay_AppCompat_Dark: number;
+					public static Platform_ThemeOverlay_AppCompat_Light: number;
+					public static Platform_V21_AppCompat: number;
+					public static Platform_V21_AppCompat_Light: number;
+					public static Platform_V25_AppCompat: number;
+					public static Platform_V25_AppCompat_Light: number;
+					public static Platform_Widget_AppCompat_Spinner: number;
+					public static RtlOverlay_DialogWindowTitle_AppCompat: number;
+					public static RtlOverlay_Widget_AppCompat_ActionBar_TitleItem: number;
+					public static RtlOverlay_Widget_AppCompat_DialogTitle_Icon: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_Text: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_Title: number;
+					public static RtlOverlay_Widget_AppCompat_SearchView_MagIcon: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Query: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Text: number;
+					public static RtlUnderlay_Widget_AppCompat_ActionButton: number;
+					public static RtlUnderlay_Widget_AppCompat_ActionButton_Overflow: number;
+					public static TextAppearance_AppCompat: number;
+					public static TextAppearance_AppCompat_Body1: number;
+					public static TextAppearance_AppCompat_Body2: number;
+					public static TextAppearance_AppCompat_Button: number;
+					public static TextAppearance_AppCompat_Caption: number;
+					public static TextAppearance_AppCompat_Display1: number;
+					public static TextAppearance_AppCompat_Display2: number;
+					public static TextAppearance_AppCompat_Display3: number;
+					public static TextAppearance_AppCompat_Display4: number;
+					public static TextAppearance_AppCompat_Headline: number;
+					public static TextAppearance_AppCompat_Inverse: number;
+					public static TextAppearance_AppCompat_Large: number;
+					public static TextAppearance_AppCompat_Large_Inverse: number;
+					public static TextAppearance_AppCompat_Light_SearchResult_Subtitle: number;
+					public static TextAppearance_AppCompat_Light_SearchResult_Title: number;
+					public static TextAppearance_AppCompat_Light_Widget_PopupMenu_Large: number;
+					public static TextAppearance_AppCompat_Light_Widget_PopupMenu_Small: number;
+					public static TextAppearance_AppCompat_Medium: number;
+					public static TextAppearance_AppCompat_Medium_Inverse: number;
+					public static TextAppearance_AppCompat_Menu: number;
+					public static TextAppearance_AppCompat_SearchResult_Subtitle: number;
+					public static TextAppearance_AppCompat_SearchResult_Title: number;
+					public static TextAppearance_AppCompat_Small: number;
+					public static TextAppearance_AppCompat_Small_Inverse: number;
+					public static TextAppearance_AppCompat_Subhead: number;
+					public static TextAppearance_AppCompat_Subhead_Inverse: number;
+					public static TextAppearance_AppCompat_Title: number;
+					public static TextAppearance_AppCompat_Title_Inverse: number;
+					public static TextAppearance_AppCompat_Tooltip: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Menu: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Subtitle: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Title: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Subtitle: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Title: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_Button: number;
+					public static TextAppearance_AppCompat_Widget_Button_Borderless_Colored: number;
+					public static TextAppearance_AppCompat_Widget_Button_Colored: number;
+					public static TextAppearance_AppCompat_Widget_Button_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_DropDownItem: number;
+					public static TextAppearance_AppCompat_Widget_PopupMenu_Header: number;
+					public static TextAppearance_AppCompat_Widget_PopupMenu_Large: number;
+					public static TextAppearance_AppCompat_Widget_PopupMenu_Small: number;
+					public static TextAppearance_AppCompat_Widget_Switch: number;
+					public static TextAppearance_AppCompat_Widget_TextView_SpinnerItem: number;
+					public static TextAppearance_Compat_Notification: number;
+					public static TextAppearance_Compat_Notification_Info: number;
+					public static TextAppearance_Compat_Notification_Info_Media: number;
+					public static TextAppearance_Compat_Notification_Line2: number;
+					public static TextAppearance_Compat_Notification_Line2_Media: number;
+					public static TextAppearance_Compat_Notification_Media: number;
+					public static TextAppearance_Compat_Notification_Time: number;
+					public static TextAppearance_Compat_Notification_Time_Media: number;
+					public static TextAppearance_Compat_Notification_Title: number;
+					public static TextAppearance_Compat_Notification_Title_Media: number;
+					public static TextAppearance_Widget_AppCompat_ExpandedMenu_Item: number;
+					public static TextAppearance_Widget_AppCompat_Toolbar_Subtitle: number;
+					public static TextAppearance_Widget_AppCompat_Toolbar_Title: number;
+					public static ThemeOverlay_AppCompat: number;
+					public static ThemeOverlay_AppCompat_ActionBar: number;
+					public static ThemeOverlay_AppCompat_Dark: number;
+					public static ThemeOverlay_AppCompat_Dark_ActionBar: number;
+					public static ThemeOverlay_AppCompat_DayNight: number;
+					public static ThemeOverlay_AppCompat_DayNight_ActionBar: number;
+					public static ThemeOverlay_AppCompat_Dialog: number;
+					public static ThemeOverlay_AppCompat_Dialog_Alert: number;
+					public static ThemeOverlay_AppCompat_Light: number;
+					public static Theme_AppCompat: number;
+					public static Theme_AppCompat_CompactMenu: number;
+					public static Theme_AppCompat_DayNight: number;
+					public static Theme_AppCompat_DayNight_DarkActionBar: number;
+					public static Theme_AppCompat_DayNight_Dialog: number;
+					public static Theme_AppCompat_DayNight_DialogWhenLarge: number;
+					public static Theme_AppCompat_DayNight_Dialog_Alert: number;
+					public static Theme_AppCompat_DayNight_Dialog_MinWidth: number;
+					public static Theme_AppCompat_DayNight_NoActionBar: number;
+					public static Theme_AppCompat_Dialog: number;
+					public static Theme_AppCompat_DialogWhenLarge: number;
+					public static Theme_AppCompat_Dialog_Alert: number;
+					public static Theme_AppCompat_Dialog_MinWidth: number;
+					public static Theme_AppCompat_Light: number;
+					public static Theme_AppCompat_Light_DarkActionBar: number;
+					public static Theme_AppCompat_Light_Dialog: number;
+					public static Theme_AppCompat_Light_DialogWhenLarge: number;
+					public static Theme_AppCompat_Light_Dialog_Alert: number;
+					public static Theme_AppCompat_Light_Dialog_MinWidth: number;
+					public static Theme_AppCompat_Light_NoActionBar: number;
+					public static Theme_AppCompat_NoActionBar: number;
+					public static Widget_AppCompat_ActionBar: number;
+					public static Widget_AppCompat_ActionBar_Solid: number;
+					public static Widget_AppCompat_ActionBar_TabBar: number;
+					public static Widget_AppCompat_ActionBar_TabText: number;
+					public static Widget_AppCompat_ActionBar_TabView: number;
+					public static Widget_AppCompat_ActionButton: number;
+					public static Widget_AppCompat_ActionButton_CloseMode: number;
+					public static Widget_AppCompat_ActionButton_Overflow: number;
+					public static Widget_AppCompat_ActionMode: number;
+					public static Widget_AppCompat_ActivityChooserView: number;
+					public static Widget_AppCompat_AutoCompleteTextView: number;
+					public static Widget_AppCompat_Button: number;
+					public static Widget_AppCompat_ButtonBar: number;
+					public static Widget_AppCompat_ButtonBar_AlertDialog: number;
+					public static Widget_AppCompat_Button_Borderless: number;
+					public static Widget_AppCompat_Button_Borderless_Colored: number;
+					public static Widget_AppCompat_Button_ButtonBar_AlertDialog: number;
+					public static Widget_AppCompat_Button_Colored: number;
+					public static Widget_AppCompat_Button_Small: number;
+					public static Widget_AppCompat_CompoundButton_CheckBox: number;
+					public static Widget_AppCompat_CompoundButton_RadioButton: number;
+					public static Widget_AppCompat_CompoundButton_Switch: number;
+					public static Widget_AppCompat_DrawerArrowToggle: number;
+					public static Widget_AppCompat_DropDownItem_Spinner: number;
+					public static Widget_AppCompat_EditText: number;
+					public static Widget_AppCompat_ImageButton: number;
+					public static Widget_AppCompat_Light_ActionBar: number;
+					public static Widget_AppCompat_Light_ActionBar_Solid: number;
+					public static Widget_AppCompat_Light_ActionBar_Solid_Inverse: number;
+					public static Widget_AppCompat_Light_ActionBar_TabBar: number;
+					public static Widget_AppCompat_Light_ActionBar_TabBar_Inverse: number;
+					public static Widget_AppCompat_Light_ActionBar_TabText: number;
+					public static Widget_AppCompat_Light_ActionBar_TabText_Inverse: number;
+					public static Widget_AppCompat_Light_ActionBar_TabView: number;
+					public static Widget_AppCompat_Light_ActionBar_TabView_Inverse: number;
+					public static Widget_AppCompat_Light_ActionButton: number;
+					public static Widget_AppCompat_Light_ActionButton_CloseMode: number;
+					public static Widget_AppCompat_Light_ActionButton_Overflow: number;
+					public static Widget_AppCompat_Light_ActionMode_Inverse: number;
+					public static Widget_AppCompat_Light_ActivityChooserView: number;
+					public static Widget_AppCompat_Light_AutoCompleteTextView: number;
+					public static Widget_AppCompat_Light_DropDownItem_Spinner: number;
+					public static Widget_AppCompat_Light_ListPopupWindow: number;
+					public static Widget_AppCompat_Light_ListView_DropDown: number;
+					public static Widget_AppCompat_Light_PopupMenu: number;
+					public static Widget_AppCompat_Light_PopupMenu_Overflow: number;
+					public static Widget_AppCompat_Light_SearchView: number;
+					public static Widget_AppCompat_Light_Spinner_DropDown_ActionBar: number;
+					public static Widget_AppCompat_ListMenuView: number;
+					public static Widget_AppCompat_ListPopupWindow: number;
+					public static Widget_AppCompat_ListView: number;
+					public static Widget_AppCompat_ListView_DropDown: number;
+					public static Widget_AppCompat_ListView_Menu: number;
+					public static Widget_AppCompat_PopupMenu: number;
+					public static Widget_AppCompat_PopupMenu_Overflow: number;
+					public static Widget_AppCompat_PopupWindow: number;
+					public static Widget_AppCompat_ProgressBar: number;
+					public static Widget_AppCompat_ProgressBar_Horizontal: number;
+					public static Widget_AppCompat_RatingBar: number;
+					public static Widget_AppCompat_RatingBar_Indicator: number;
+					public static Widget_AppCompat_RatingBar_Small: number;
+					public static Widget_AppCompat_SearchView: number;
+					public static Widget_AppCompat_SearchView_ActionBar: number;
+					public static Widget_AppCompat_SeekBar: number;
+					public static Widget_AppCompat_SeekBar_Discrete: number;
+					public static Widget_AppCompat_Spinner: number;
+					public static Widget_AppCompat_Spinner_DropDown: number;
+					public static Widget_AppCompat_Spinner_DropDown_ActionBar: number;
+					public static Widget_AppCompat_Spinner_Underlined: number;
+					public static Widget_AppCompat_TextView: number;
+					public static Widget_AppCompat_TextView_SpinnerItem: number;
+					public static Widget_AppCompat_Toolbar: number;
+					public static Widget_AppCompat_Toolbar_Button_Navigation: number;
+					public static Widget_Compat_NotificationActionContainer: number;
+					public static Widget_Compat_NotificationActionText: number;
+					public static Widget_Support_CoordinatorLayout: number;
+					public static com_facebook_activity_theme: number;
+					public static com_facebook_auth_dialog: number;
+					public static com_facebook_auth_dialog_instructions_textview: number;
+					public static com_facebook_button: number;
+					public static com_facebook_button_like: number;
+					public static com_facebook_loginview_default_style: number;
+					public static tooltip_bubble_text: number;
+				}
+				export class styleable {
+					public static class: java.lang.Class<com.facebook.login.R.styleable>;
+					public static ActionBar: androidNative.Array<number>;
+					public static ActionBar_background: number;
+					public static ActionBar_backgroundSplit: number;
+					public static ActionBar_backgroundStacked: number;
+					public static ActionBar_contentInsetEnd: number;
+					public static ActionBar_contentInsetEndWithActions: number;
+					public static ActionBar_contentInsetLeft: number;
+					public static ActionBar_contentInsetRight: number;
+					public static ActionBar_contentInsetStart: number;
+					public static ActionBar_contentInsetStartWithNavigation: number;
+					public static ActionBar_customNavigationLayout: number;
+					public static ActionBar_displayOptions: number;
+					public static ActionBar_divider: number;
+					public static ActionBar_elevation: number;
+					public static ActionBar_height: number;
+					public static ActionBar_hideOnContentScroll: number;
+					public static ActionBar_homeAsUpIndicator: number;
+					public static ActionBar_homeLayout: number;
+					public static ActionBar_icon: number;
+					public static ActionBar_indeterminateProgressStyle: number;
+					public static ActionBar_itemPadding: number;
+					public static ActionBar_logo: number;
+					public static ActionBar_navigationMode: number;
+					public static ActionBar_popupTheme: number;
+					public static ActionBar_progressBarPadding: number;
+					public static ActionBar_progressBarStyle: number;
+					public static ActionBar_subtitle: number;
+					public static ActionBar_subtitleTextStyle: number;
+					public static ActionBar_title: number;
+					public static ActionBar_titleTextStyle: number;
+					public static ActionBarLayout: androidNative.Array<number>;
+					public static ActionBarLayout_android_layout_gravity: number;
+					public static ActionMenuItemView: androidNative.Array<number>;
+					public static ActionMenuItemView_android_minWidth: number;
+					public static ActionMenuView: androidNative.Array<number>;
+					public static ActionMode: androidNative.Array<number>;
+					public static ActionMode_background: number;
+					public static ActionMode_backgroundSplit: number;
+					public static ActionMode_closeItemLayout: number;
+					public static ActionMode_height: number;
+					public static ActionMode_subtitleTextStyle: number;
+					public static ActionMode_titleTextStyle: number;
+					public static ActivityChooserView: androidNative.Array<number>;
+					public static ActivityChooserView_expandActivityOverflowButtonDrawable: number;
+					public static ActivityChooserView_initialActivityCount: number;
+					public static AlertDialog: androidNative.Array<number>;
+					public static AlertDialog_android_layout: number;
+					public static AlertDialog_buttonIconDimen: number;
+					public static AlertDialog_buttonPanelSideLayout: number;
+					public static AlertDialog_listItemLayout: number;
+					public static AlertDialog_listLayout: number;
+					public static AlertDialog_multiChoiceItemLayout: number;
+					public static AlertDialog_showTitle: number;
+					public static AlertDialog_singleChoiceItemLayout: number;
+					public static AnimatedStateListDrawableCompat: androidNative.Array<number>;
+					public static AnimatedStateListDrawableCompat_android_dither: number;
+					public static AnimatedStateListDrawableCompat_android_visible: number;
+					public static AnimatedStateListDrawableCompat_android_variablePadding: number;
+					public static AnimatedStateListDrawableCompat_android_constantSize: number;
+					public static AnimatedStateListDrawableCompat_android_enterFadeDuration: number;
+					public static AnimatedStateListDrawableCompat_android_exitFadeDuration: number;
+					public static AnimatedStateListDrawableItem: androidNative.Array<number>;
+					public static AnimatedStateListDrawableItem_android_id: number;
+					public static AnimatedStateListDrawableItem_android_drawable: number;
+					public static AnimatedStateListDrawableTransition: androidNative.Array<number>;
+					public static AnimatedStateListDrawableTransition_android_drawable: number;
+					public static AnimatedStateListDrawableTransition_android_toId: number;
+					public static AnimatedStateListDrawableTransition_android_fromId: number;
+					public static AnimatedStateListDrawableTransition_android_reversible: number;
+					public static AppCompatImageView: androidNative.Array<number>;
+					public static AppCompatImageView_android_src: number;
+					public static AppCompatImageView_srcCompat: number;
+					public static AppCompatImageView_tint: number;
+					public static AppCompatImageView_tintMode: number;
+					public static AppCompatSeekBar: androidNative.Array<number>;
+					public static AppCompatSeekBar_android_thumb: number;
+					public static AppCompatSeekBar_tickMark: number;
+					public static AppCompatSeekBar_tickMarkTint: number;
+					public static AppCompatSeekBar_tickMarkTintMode: number;
+					public static AppCompatTextHelper: androidNative.Array<number>;
+					public static AppCompatTextHelper_android_textAppearance: number;
+					public static AppCompatTextHelper_android_drawableTop: number;
+					public static AppCompatTextHelper_android_drawableBottom: number;
+					public static AppCompatTextHelper_android_drawableLeft: number;
+					public static AppCompatTextHelper_android_drawableRight: number;
+					public static AppCompatTextHelper_android_drawableStart: number;
+					public static AppCompatTextHelper_android_drawableEnd: number;
+					public static AppCompatTextView: androidNative.Array<number>;
+					public static AppCompatTextView_android_textAppearance: number;
+					public static AppCompatTextView_autoSizeMaxTextSize: number;
+					public static AppCompatTextView_autoSizeMinTextSize: number;
+					public static AppCompatTextView_autoSizePresetSizes: number;
+					public static AppCompatTextView_autoSizeStepGranularity: number;
+					public static AppCompatTextView_autoSizeTextType: number;
+					public static AppCompatTextView_drawableBottomCompat: number;
+					public static AppCompatTextView_drawableEndCompat: number;
+					public static AppCompatTextView_drawableLeftCompat: number;
+					public static AppCompatTextView_drawableRightCompat: number;
+					public static AppCompatTextView_drawableStartCompat: number;
+					public static AppCompatTextView_drawableTint: number;
+					public static AppCompatTextView_drawableTintMode: number;
+					public static AppCompatTextView_drawableTopCompat: number;
+					public static AppCompatTextView_emojiCompatEnabled: number;
+					public static AppCompatTextView_firstBaselineToTopHeight: number;
+					public static AppCompatTextView_fontFamily: number;
+					public static AppCompatTextView_fontVariationSettings: number;
+					public static AppCompatTextView_lastBaselineToBottomHeight: number;
+					public static AppCompatTextView_lineHeight: number;
+					public static AppCompatTextView_textAllCaps: number;
+					public static AppCompatTextView_textLocale: number;
+					public static AppCompatTheme: androidNative.Array<number>;
+					public static AppCompatTheme_android_windowIsFloating: number;
+					public static AppCompatTheme_android_windowAnimationStyle: number;
+					public static AppCompatTheme_actionBarDivider: number;
+					public static AppCompatTheme_actionBarItemBackground: number;
+					public static AppCompatTheme_actionBarPopupTheme: number;
+					public static AppCompatTheme_actionBarSize: number;
+					public static AppCompatTheme_actionBarSplitStyle: number;
+					public static AppCompatTheme_actionBarStyle: number;
+					public static AppCompatTheme_actionBarTabBarStyle: number;
+					public static AppCompatTheme_actionBarTabStyle: number;
+					public static AppCompatTheme_actionBarTabTextStyle: number;
+					public static AppCompatTheme_actionBarTheme: number;
+					public static AppCompatTheme_actionBarWidgetTheme: number;
+					public static AppCompatTheme_actionButtonStyle: number;
+					public static AppCompatTheme_actionDropDownStyle: number;
+					public static AppCompatTheme_actionMenuTextAppearance: number;
+					public static AppCompatTheme_actionMenuTextColor: number;
+					public static AppCompatTheme_actionModeBackground: number;
+					public static AppCompatTheme_actionModeCloseButtonStyle: number;
+					public static AppCompatTheme_actionModeCloseContentDescription: number;
+					public static AppCompatTheme_actionModeCloseDrawable: number;
+					public static AppCompatTheme_actionModeCopyDrawable: number;
+					public static AppCompatTheme_actionModeCutDrawable: number;
+					public static AppCompatTheme_actionModeFindDrawable: number;
+					public static AppCompatTheme_actionModePasteDrawable: number;
+					public static AppCompatTheme_actionModePopupWindowStyle: number;
+					public static AppCompatTheme_actionModeSelectAllDrawable: number;
+					public static AppCompatTheme_actionModeShareDrawable: number;
+					public static AppCompatTheme_actionModeSplitBackground: number;
+					public static AppCompatTheme_actionModeStyle: number;
+					public static AppCompatTheme_actionModeTheme: number;
+					public static AppCompatTheme_actionModeWebSearchDrawable: number;
+					public static AppCompatTheme_actionOverflowButtonStyle: number;
+					public static AppCompatTheme_actionOverflowMenuStyle: number;
+					public static AppCompatTheme_activityChooserViewStyle: number;
+					public static AppCompatTheme_alertDialogButtonGroupStyle: number;
+					public static AppCompatTheme_alertDialogCenterButtons: number;
+					public static AppCompatTheme_alertDialogStyle: number;
+					public static AppCompatTheme_alertDialogTheme: number;
+					public static AppCompatTheme_autoCompleteTextViewStyle: number;
+					public static AppCompatTheme_borderlessButtonStyle: number;
+					public static AppCompatTheme_buttonBarButtonStyle: number;
+					public static AppCompatTheme_buttonBarNegativeButtonStyle: number;
+					public static AppCompatTheme_buttonBarNeutralButtonStyle: number;
+					public static AppCompatTheme_buttonBarPositiveButtonStyle: number;
+					public static AppCompatTheme_buttonBarStyle: number;
+					public static AppCompatTheme_buttonStyle: number;
+					public static AppCompatTheme_buttonStyleSmall: number;
+					public static AppCompatTheme_checkboxStyle: number;
+					public static AppCompatTheme_checkedTextViewStyle: number;
+					public static AppCompatTheme_colorAccent: number;
+					public static AppCompatTheme_colorBackgroundFloating: number;
+					public static AppCompatTheme_colorButtonNormal: number;
+					public static AppCompatTheme_colorControlActivated: number;
+					public static AppCompatTheme_colorControlHighlight: number;
+					public static AppCompatTheme_colorControlNormal: number;
+					public static AppCompatTheme_colorError: number;
+					public static AppCompatTheme_colorPrimary: number;
+					public static AppCompatTheme_colorPrimaryDark: number;
+					public static AppCompatTheme_colorSwitchThumbNormal: number;
+					public static AppCompatTheme_controlBackground: number;
+					public static AppCompatTheme_dialogCornerRadius: number;
+					public static AppCompatTheme_dialogPreferredPadding: number;
+					public static AppCompatTheme_dialogTheme: number;
+					public static AppCompatTheme_dividerHorizontal: number;
+					public static AppCompatTheme_dividerVertical: number;
+					public static AppCompatTheme_dropDownListViewStyle: number;
+					public static AppCompatTheme_dropdownListPreferredItemHeight: number;
+					public static AppCompatTheme_editTextBackground: number;
+					public static AppCompatTheme_editTextColor: number;
+					public static AppCompatTheme_editTextStyle: number;
+					public static AppCompatTheme_homeAsUpIndicator: number;
+					public static AppCompatTheme_imageButtonStyle: number;
+					public static AppCompatTheme_listChoiceBackgroundIndicator: number;
+					public static AppCompatTheme_listChoiceIndicatorMultipleAnimated: number;
+					public static AppCompatTheme_listChoiceIndicatorSingleAnimated: number;
+					public static AppCompatTheme_listDividerAlertDialog: number;
+					public static AppCompatTheme_listMenuViewStyle: number;
+					public static AppCompatTheme_listPopupWindowStyle: number;
+					public static AppCompatTheme_listPreferredItemHeight: number;
+					public static AppCompatTheme_listPreferredItemHeightLarge: number;
+					public static AppCompatTheme_listPreferredItemHeightSmall: number;
+					public static AppCompatTheme_listPreferredItemPaddingEnd: number;
+					public static AppCompatTheme_listPreferredItemPaddingLeft: number;
+					public static AppCompatTheme_listPreferredItemPaddingRight: number;
+					public static AppCompatTheme_listPreferredItemPaddingStart: number;
+					public static AppCompatTheme_panelBackground: number;
+					public static AppCompatTheme_panelMenuListTheme: number;
+					public static AppCompatTheme_panelMenuListWidth: number;
+					public static AppCompatTheme_popupMenuStyle: number;
+					public static AppCompatTheme_popupWindowStyle: number;
+					public static AppCompatTheme_radioButtonStyle: number;
+					public static AppCompatTheme_ratingBarStyle: number;
+					public static AppCompatTheme_ratingBarStyleIndicator: number;
+					public static AppCompatTheme_ratingBarStyleSmall: number;
+					public static AppCompatTheme_searchViewStyle: number;
+					public static AppCompatTheme_seekBarStyle: number;
+					public static AppCompatTheme_selectableItemBackground: number;
+					public static AppCompatTheme_selectableItemBackgroundBorderless: number;
+					public static AppCompatTheme_spinnerDropDownItemStyle: number;
+					public static AppCompatTheme_spinnerStyle: number;
+					public static AppCompatTheme_switchStyle: number;
+					public static AppCompatTheme_textAppearanceLargePopupMenu: number;
+					public static AppCompatTheme_textAppearanceListItem: number;
+					public static AppCompatTheme_textAppearanceListItemSecondary: number;
+					public static AppCompatTheme_textAppearanceListItemSmall: number;
+					public static AppCompatTheme_textAppearancePopupMenuHeader: number;
+					public static AppCompatTheme_textAppearanceSearchResultSubtitle: number;
+					public static AppCompatTheme_textAppearanceSearchResultTitle: number;
+					public static AppCompatTheme_textAppearanceSmallPopupMenu: number;
+					public static AppCompatTheme_textColorAlertDialogListItem: number;
+					public static AppCompatTheme_textColorSearchUrl: number;
+					public static AppCompatTheme_toolbarNavigationButtonStyle: number;
+					public static AppCompatTheme_toolbarStyle: number;
+					public static AppCompatTheme_tooltipForegroundColor: number;
+					public static AppCompatTheme_tooltipFrameBackground: number;
+					public static AppCompatTheme_viewInflaterClass: number;
+					public static AppCompatTheme_windowActionBar: number;
+					public static AppCompatTheme_windowActionBarOverlay: number;
+					public static AppCompatTheme_windowActionModeOverlay: number;
+					public static AppCompatTheme_windowFixedHeightMajor: number;
+					public static AppCompatTheme_windowFixedHeightMinor: number;
+					public static AppCompatTheme_windowFixedWidthMajor: number;
+					public static AppCompatTheme_windowFixedWidthMinor: number;
+					public static AppCompatTheme_windowMinWidthMajor: number;
+					public static AppCompatTheme_windowMinWidthMinor: number;
+					public static AppCompatTheme_windowNoTitle: number;
+					public static ButtonBarLayout: androidNative.Array<number>;
+					public static ButtonBarLayout_allowStacking: number;
+					public static CardView: androidNative.Array<number>;
+					public static CardView_android_minWidth: number;
+					public static CardView_android_minHeight: number;
+					public static CardView_cardBackgroundColor: number;
+					public static CardView_cardCornerRadius: number;
+					public static CardView_cardElevation: number;
+					public static CardView_cardMaxElevation: number;
+					public static CardView_cardPreventCornerOverlap: number;
+					public static CardView_cardUseCompatPadding: number;
+					public static CardView_contentPadding: number;
+					public static CardView_contentPaddingBottom: number;
+					public static CardView_contentPaddingLeft: number;
+					public static CardView_contentPaddingRight: number;
+					public static CardView_contentPaddingTop: number;
+					public static ColorStateListItem: androidNative.Array<number>;
+					public static ColorStateListItem_android_color: number;
+					public static ColorStateListItem_android_alpha: number;
+					public static ColorStateListItem_android_lStar: number;
+					public static ColorStateListItem_alpha: number;
+					public static ColorStateListItem_lStar: number;
+					public static CompoundButton: androidNative.Array<number>;
+					public static CompoundButton_android_button: number;
+					public static CompoundButton_buttonCompat: number;
+					public static CompoundButton_buttonTint: number;
+					public static CompoundButton_buttonTintMode: number;
+					public static CoordinatorLayout: androidNative.Array<number>;
+					public static CoordinatorLayout_keylines: number;
+					public static CoordinatorLayout_statusBarBackground: number;
+					public static CoordinatorLayout_Layout: androidNative.Array<number>;
+					public static CoordinatorLayout_Layout_android_layout_gravity: number;
+					public static CoordinatorLayout_Layout_layout_anchor: number;
+					public static CoordinatorLayout_Layout_layout_anchorGravity: number;
+					public static CoordinatorLayout_Layout_layout_behavior: number;
+					public static CoordinatorLayout_Layout_layout_dodgeInsetEdges: number;
+					public static CoordinatorLayout_Layout_layout_insetEdge: number;
+					public static CoordinatorLayout_Layout_layout_keyline: number;
+					public static DrawerArrowToggle: androidNative.Array<number>;
+					public static DrawerArrowToggle_arrowHeadLength: number;
+					public static DrawerArrowToggle_arrowShaftLength: number;
+					public static DrawerArrowToggle_barLength: number;
+					public static DrawerArrowToggle_color: number;
+					public static DrawerArrowToggle_drawableSize: number;
+					public static DrawerArrowToggle_gapBetweenBars: number;
+					public static DrawerArrowToggle_spinBars: number;
+					public static DrawerArrowToggle_thickness: number;
+					public static FontFamily: androidNative.Array<number>;
+					public static FontFamily_fontProviderAuthority: number;
+					public static FontFamily_fontProviderCerts: number;
+					public static FontFamily_fontProviderFetchStrategy: number;
+					public static FontFamily_fontProviderFetchTimeout: number;
+					public static FontFamily_fontProviderPackage: number;
+					public static FontFamily_fontProviderQuery: number;
+					public static FontFamily_fontProviderSystemFontFamily: number;
+					public static FontFamilyFont: androidNative.Array<number>;
+					public static FontFamilyFont_android_font: number;
+					public static FontFamilyFont_android_fontWeight: number;
+					public static FontFamilyFont_android_fontStyle: number;
+					public static FontFamilyFont_android_ttcIndex: number;
+					public static FontFamilyFont_android_fontVariationSettings: number;
+					public static FontFamilyFont_font: number;
+					public static FontFamilyFont_fontStyle: number;
+					public static FontFamilyFont_fontVariationSettings: number;
+					public static FontFamilyFont_fontWeight: number;
+					public static FontFamilyFont_ttcIndex: number;
+					public static Fragment: androidNative.Array<number>;
+					public static Fragment_android_name: number;
+					public static Fragment_android_id: number;
+					public static Fragment_android_tag: number;
+					public static FragmentContainerView: androidNative.Array<number>;
+					public static FragmentContainerView_android_name: number;
+					public static FragmentContainerView_android_tag: number;
+					public static GradientColor: androidNative.Array<number>;
+					public static GradientColor_android_startColor: number;
+					public static GradientColor_android_endColor: number;
+					public static GradientColor_android_type: number;
+					public static GradientColor_android_centerX: number;
+					public static GradientColor_android_centerY: number;
+					public static GradientColor_android_gradientRadius: number;
+					public static GradientColor_android_tileMode: number;
+					public static GradientColor_android_centerColor: number;
+					public static GradientColor_android_startX: number;
+					public static GradientColor_android_startY: number;
+					public static GradientColor_android_endX: number;
+					public static GradientColor_android_endY: number;
+					public static GradientColorItem: androidNative.Array<number>;
+					public static GradientColorItem_android_color: number;
+					public static GradientColorItem_android_offset: number;
+					public static LinearLayoutCompat: androidNative.Array<number>;
+					public static LinearLayoutCompat_android_gravity: number;
+					public static LinearLayoutCompat_android_orientation: number;
+					public static LinearLayoutCompat_android_baselineAligned: number;
+					public static LinearLayoutCompat_android_baselineAlignedChildIndex: number;
+					public static LinearLayoutCompat_android_weightSum: number;
+					public static LinearLayoutCompat_divider: number;
+					public static LinearLayoutCompat_dividerPadding: number;
+					public static LinearLayoutCompat_measureWithLargestChild: number;
+					public static LinearLayoutCompat_showDividers: number;
+					public static LinearLayoutCompat_Layout: androidNative.Array<number>;
+					public static LinearLayoutCompat_Layout_android_layout_gravity: number;
+					public static LinearLayoutCompat_Layout_android_layout_width: number;
+					public static LinearLayoutCompat_Layout_android_layout_height: number;
+					public static LinearLayoutCompat_Layout_android_layout_weight: number;
+					public static ListPopupWindow: androidNative.Array<number>;
+					public static ListPopupWindow_android_dropDownHorizontalOffset: number;
+					public static ListPopupWindow_android_dropDownVerticalOffset: number;
+					public static MenuGroup: androidNative.Array<number>;
+					public static MenuGroup_android_enabled: number;
+					public static MenuGroup_android_id: number;
+					public static MenuGroup_android_visible: number;
+					public static MenuGroup_android_menuCategory: number;
+					public static MenuGroup_android_orderInCategory: number;
+					public static MenuGroup_android_checkableBehavior: number;
+					public static MenuItem: androidNative.Array<number>;
+					public static MenuItem_android_icon: number;
+					public static MenuItem_android_enabled: number;
+					public static MenuItem_android_id: number;
+					public static MenuItem_android_checked: number;
+					public static MenuItem_android_visible: number;
+					public static MenuItem_android_menuCategory: number;
+					public static MenuItem_android_orderInCategory: number;
+					public static MenuItem_android_title: number;
+					public static MenuItem_android_titleCondensed: number;
+					public static MenuItem_android_alphabeticShortcut: number;
+					public static MenuItem_android_numericShortcut: number;
+					public static MenuItem_android_checkable: number;
+					public static MenuItem_android_onClick: number;
+					public static MenuItem_actionLayout: number;
+					public static MenuItem_actionProviderClass: number;
+					public static MenuItem_actionViewClass: number;
+					public static MenuItem_alphabeticModifiers: number;
+					public static MenuItem_contentDescription: number;
+					public static MenuItem_iconTint: number;
+					public static MenuItem_iconTintMode: number;
+					public static MenuItem_numericModifiers: number;
+					public static MenuItem_showAsAction: number;
+					public static MenuItem_tooltipText: number;
+					public static MenuView: androidNative.Array<number>;
+					public static MenuView_android_windowAnimationStyle: number;
+					public static MenuView_android_itemTextAppearance: number;
+					public static MenuView_android_horizontalDivider: number;
+					public static MenuView_android_verticalDivider: number;
+					public static MenuView_android_headerBackground: number;
+					public static MenuView_android_itemBackground: number;
+					public static MenuView_android_itemIconDisabledAlpha: number;
+					public static MenuView_preserveIconSpacing: number;
+					public static MenuView_subMenuArrow: number;
+					public static PopupWindow: androidNative.Array<number>;
+					public static PopupWindow_android_popupBackground: number;
+					public static PopupWindow_android_popupAnimationStyle: number;
+					public static PopupWindow_overlapAnchor: number;
+					public static PopupWindowBackgroundState: androidNative.Array<number>;
+					public static PopupWindowBackgroundState_state_above_anchor: number;
+					public static RecycleListView: androidNative.Array<number>;
+					public static RecycleListView_paddingBottomNoButtons: number;
+					public static RecycleListView_paddingTopNoTitle: number;
+					public static SearchView: androidNative.Array<number>;
+					public static SearchView_android_focusable: number;
+					public static SearchView_android_maxWidth: number;
+					public static SearchView_android_inputType: number;
+					public static SearchView_android_imeOptions: number;
+					public static SearchView_closeIcon: number;
+					public static SearchView_commitIcon: number;
+					public static SearchView_defaultQueryHint: number;
+					public static SearchView_goIcon: number;
+					public static SearchView_iconifiedByDefault: number;
+					public static SearchView_layout: number;
+					public static SearchView_queryBackground: number;
+					public static SearchView_queryHint: number;
+					public static SearchView_searchHintIcon: number;
+					public static SearchView_searchIcon: number;
+					public static SearchView_submitBackground: number;
+					public static SearchView_suggestionRowLayout: number;
+					public static SearchView_voiceIcon: number;
+					public static Spinner: androidNative.Array<number>;
+					public static Spinner_android_entries: number;
+					public static Spinner_android_popupBackground: number;
+					public static Spinner_android_prompt: number;
+					public static Spinner_android_dropDownWidth: number;
+					public static Spinner_popupTheme: number;
+					public static StateListDrawable: androidNative.Array<number>;
+					public static StateListDrawable_android_dither: number;
+					public static StateListDrawable_android_visible: number;
+					public static StateListDrawable_android_variablePadding: number;
+					public static StateListDrawable_android_constantSize: number;
+					public static StateListDrawable_android_enterFadeDuration: number;
+					public static StateListDrawable_android_exitFadeDuration: number;
+					public static StateListDrawableItem: androidNative.Array<number>;
+					public static StateListDrawableItem_android_drawable: number;
+					public static SwitchCompat: androidNative.Array<number>;
+					public static SwitchCompat_android_textOn: number;
+					public static SwitchCompat_android_textOff: number;
+					public static SwitchCompat_android_thumb: number;
+					public static SwitchCompat_showText: number;
+					public static SwitchCompat_splitTrack: number;
+					public static SwitchCompat_switchMinWidth: number;
+					public static SwitchCompat_switchPadding: number;
+					public static SwitchCompat_switchTextAppearance: number;
+					public static SwitchCompat_thumbTextPadding: number;
+					public static SwitchCompat_thumbTint: number;
+					public static SwitchCompat_thumbTintMode: number;
+					public static SwitchCompat_track: number;
+					public static SwitchCompat_trackTint: number;
+					public static SwitchCompat_trackTintMode: number;
+					public static TextAppearance: androidNative.Array<number>;
+					public static TextAppearance_android_textSize: number;
+					public static TextAppearance_android_typeface: number;
+					public static TextAppearance_android_textStyle: number;
+					public static TextAppearance_android_textColor: number;
+					public static TextAppearance_android_textColorHint: number;
+					public static TextAppearance_android_textColorLink: number;
+					public static TextAppearance_android_shadowColor: number;
+					public static TextAppearance_android_shadowDx: number;
+					public static TextAppearance_android_shadowDy: number;
+					public static TextAppearance_android_shadowRadius: number;
+					public static TextAppearance_android_fontFamily: number;
+					public static TextAppearance_android_textFontWeight: number;
+					public static TextAppearance_fontFamily: number;
+					public static TextAppearance_fontVariationSettings: number;
+					public static TextAppearance_textAllCaps: number;
+					public static TextAppearance_textLocale: number;
+					public static Toolbar: androidNative.Array<number>;
+					public static Toolbar_android_gravity: number;
+					public static Toolbar_android_minHeight: number;
+					public static Toolbar_buttonGravity: number;
+					public static Toolbar_collapseContentDescription: number;
+					public static Toolbar_collapseIcon: number;
+					public static Toolbar_contentInsetEnd: number;
+					public static Toolbar_contentInsetEndWithActions: number;
+					public static Toolbar_contentInsetLeft: number;
+					public static Toolbar_contentInsetRight: number;
+					public static Toolbar_contentInsetStart: number;
+					public static Toolbar_contentInsetStartWithNavigation: number;
+					public static Toolbar_logo: number;
+					public static Toolbar_logoDescription: number;
+					public static Toolbar_maxButtonHeight: number;
+					public static Toolbar_menu: number;
+					public static Toolbar_navigationContentDescription: number;
+					public static Toolbar_navigationIcon: number;
+					public static Toolbar_popupTheme: number;
+					public static Toolbar_subtitle: number;
+					public static Toolbar_subtitleTextAppearance: number;
+					public static Toolbar_subtitleTextColor: number;
+					public static Toolbar_title: number;
+					public static Toolbar_titleMargin: number;
+					public static Toolbar_titleMarginBottom: number;
+					public static Toolbar_titleMarginEnd: number;
+					public static Toolbar_titleMarginStart: number;
+					public static Toolbar_titleMarginTop: number;
+					public static Toolbar_titleMargins: number;
+					public static Toolbar_titleTextAppearance: number;
+					public static Toolbar_titleTextColor: number;
+					public static View: androidNative.Array<number>;
+					public static View_android_theme: number;
+					public static View_android_focusable: number;
+					public static View_paddingEnd: number;
+					public static View_paddingStart: number;
+					public static View_theme: number;
+					public static ViewBackgroundHelper: androidNative.Array<number>;
+					public static ViewBackgroundHelper_android_background: number;
+					public static ViewBackgroundHelper_backgroundTint: number;
+					public static ViewBackgroundHelper_backgroundTintMode: number;
+					public static ViewStubCompat: androidNative.Array<number>;
+					public static ViewStubCompat_android_id: number;
+					public static ViewStubCompat_android_layout: number;
+					public static ViewStubCompat_android_inflatedId: number;
+					public static com_facebook_like_view: androidNative.Array<number>;
+					public static com_facebook_like_view_com_facebook_auxiliary_view_position: number;
+					public static com_facebook_like_view_com_facebook_foreground_color: number;
+					public static com_facebook_like_view_com_facebook_horizontal_alignment: number;
+					public static com_facebook_like_view_com_facebook_object_id: number;
+					public static com_facebook_like_view_com_facebook_object_type: number;
+					public static com_facebook_like_view_com_facebook_style: number;
+					public static com_facebook_login_view: androidNative.Array<number>;
+					public static com_facebook_login_view_com_facebook_confirm_logout: number;
+					public static com_facebook_login_view_com_facebook_login_button_radius: number;
+					public static com_facebook_login_view_com_facebook_login_button_transparency: number;
+					public static com_facebook_login_view_com_facebook_login_text: number;
+					public static com_facebook_login_view_com_facebook_logout_text: number;
+					public static com_facebook_login_view_com_facebook_tooltip_mode: number;
+					public static com_facebook_profile_picture_view: androidNative.Array<number>;
+					public static com_facebook_profile_picture_view_com_facebook_is_cropped: number;
+					public static com_facebook_profile_picture_view_com_facebook_preset_size: number;
+					public static<clinit>(): void;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module login {
 			export class StartActivityDelegate {
 				public static class: java.lang.Class<com.facebook.login.StartActivityDelegate>;
 				/**
@@ -7416,6 +16102,7 @@ declare module com {
 		export module login {
 			export abstract class WebLoginMethodHandler extends com.facebook.login.LoginMethodHandler {
 				public static class: java.lang.Class<com.facebook.login.WebLoginMethodHandler>;
+				public static Companion: com.facebook.login.WebLoginMethodHandler.Companion;
 				public constructor(param0: com.facebook.login.LoginClient);
 				public getParameters(param0: com.facebook.login.LoginClient.Request): globalAndroid.os.Bundle;
 				public getTokenSource(): com.facebook.AccessTokenSource;
@@ -7438,6 +16125,7 @@ declare module com {
 		export module login {
 			export class WebViewLoginMethodHandler extends com.facebook.login.WebLoginMethodHandler {
 				public static class: java.lang.Class<com.facebook.login.WebViewLoginMethodHandler>;
+				public static Companion: com.facebook.login.WebViewLoginMethodHandler.Companion;
 				public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.login.WebViewLoginMethodHandler>;
 				public writeToParcel(param0: globalAndroid.os.Parcel, param1: number): void;
 				public constructor(param0: com.facebook.login.LoginClient);
@@ -7485,11 +16173,2426 @@ declare module com {
 
 declare module com {
 	export module facebook {
+		export module login {
+			export module widget {
+				export class DeviceLoginButton extends com.facebook.login.widget.LoginButton {
+					public static class: java.lang.Class<com.facebook.login.widget.DeviceLoginButton>;
+					public getDeviceRedirectUri(): globalAndroid.net.Uri;
+					public constructor(param0: globalAndroid.content.Context);
+					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet);
+					public getNewLoginClickListener(): com.facebook.login.widget.LoginButton.LoginClickListener;
+					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number, param4: string, param5: string);
+					public setDeviceRedirectUri(param0: globalAndroid.net.Uri): void;
+					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number);
+				}
+				export module DeviceLoginButton {
+					export class DeviceLoginClickListener extends com.facebook.login.widget.LoginButton.LoginClickListener {
+						public static class: java.lang.Class<com.facebook.login.widget.DeviceLoginButton.DeviceLoginClickListener>;
+						public constructor(param0: com.facebook.login.widget.LoginButton);
+						public constructor(param0: com.facebook.login.widget.DeviceLoginButton);
+						public getLoginManager(): com.facebook.login.LoginManager;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module login {
+			export module widget {
+				export class LoginButton extends com.facebook.FacebookButtonBase {
+					public static class: java.lang.Class<com.facebook.login.widget.LoginButton>;
+					public static Companion: com.facebook.login.widget.LoginButton.Companion;
+					public getLoggerID(): string;
+					public getPermissions(): java.util.List<string>;
+					public getShouldSkipAccountDeduplication(): boolean;
+					public onAttachedToWindow(): void;
+					public onVisibilityChanged(param0: globalAndroid.view.View, param1: number): void;
+					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet);
+					public getLoginBehavior(): com.facebook.login.LoginBehavior;
+					public getDefaultStyleResource(): number;
+					public getMessengerPageId(): string;
+					public getToolTipStyle(): com.facebook.login.widget.ToolTipPopup.Style;
+					public getLoginButtonWidth(param0: number): number;
+					public getDefaultAudience(): com.facebook.login.DefaultAudience;
+					public setPermissions(param0: androidNative.Array<string>): void;
+					public registerCallback(param0: com.facebook.CallbackManager, param1: com.facebook.FacebookCallback<com.facebook.login.LoginResult>): void;
+					/** @deprecated */
+					public setPublishPermissions(param0: java.util.List<string>): void;
+					public setAuthType(param0: string): void;
+					public onDraw(param0: globalAndroid.graphics.Canvas): void;
+					public parseLoginButtonAttributes(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number): void;
+					public setLoginTargetApp(param0: com.facebook.login.LoginTargetApp): void;
+					public getToolTipDisplayTime(): number;
+					public setResetMessengerState(param0: boolean): void;
+					public configureButton(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number): void;
+					public setMessengerPageId(param0: string): void;
+					public setDefaultAudience(param0: com.facebook.login.DefaultAudience): void;
+					public getAuthType(): string;
+					public setButtonIcon(): void;
+					public getLoginText(): string;
+					public setButtonText(): void;
+					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number, param3: number, param4: string, param5: string);
+					public setLoginText(param0: string): void;
+					/** @deprecated */
+					public setReadPermissions(param0: java.util.List<string>): void;
+					public unregisterCallback(param0: com.facebook.CallbackManager): void;
+					public setToolTipStyle(param0: com.facebook.login.widget.ToolTipPopup.Style): void;
+					public setButtonTransparency(): void;
+					public setPermissions(param0: java.util.List<string>): void;
+					/** @deprecated */
+					public setPublishPermissions(param0: androidNative.Array<string>): void;
+					public setLogoutText(param0: string): void;
+					public getProperties(): com.facebook.login.widget.LoginButton.LoginButtonProperties;
+					public clearPermissions(): void;
+					public getDefaultRequestCode(): number;
+					public setToolTipDisplayTime(param0: number): void;
+					public getLoginManagerLazy(): kotlin.Lazy<com.facebook.login.LoginManager>;
+					public getResetMessengerState(): boolean;
+					public onDetachedFromWindow(): void;
+					public onMeasure(param0: number, param1: number): void;
+					public getLogoutText(): string;
+					public getToolTipMode(): com.facebook.login.widget.LoginButton.ToolTipMode;
+					public getLoginButtonContinueLabel(): number;
+					public dismissToolTip(): void;
+					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number);
+					public constructor(param0: globalAndroid.content.Context);
+					/** @deprecated */
+					public setReadPermissions(param0: androidNative.Array<string>): void;
+					public setButtonRadius(): void;
+					public getLoginTargetApp(): com.facebook.login.LoginTargetApp;
+					public getNewLoginClickListener(): com.facebook.login.widget.LoginButton.LoginClickListener;
+					public onLayout(param0: boolean, param1: number, param2: number, param3: number, param4: number): void;
+					public setToolTipMode(param0: com.facebook.login.widget.LoginButton.ToolTipMode): void;
+					public setLoginManagerLazy(param0: kotlin.Lazy<any>): void;
+					public setLoginBehavior(param0: com.facebook.login.LoginBehavior): void;
+					public getCallbackManager(): com.facebook.CallbackManager;
+				}
+				export module LoginButton {
+					export class Companion {
+						public static class: java.lang.Class<com.facebook.login.widget.LoginButton.Companion>;
+					}
+					export class LoginButtonProperties {
+						public static class: java.lang.Class<com.facebook.login.widget.LoginButton.LoginButtonProperties>;
+						public setShouldSkipAccountDeduplication(param0: boolean): void;
+						public getPermissions(): java.util.List<string>;
+						public clearPermissions(): void;
+						public constructor();
+						public getMessengerPageId(): string;
+						public setResetMessengerState(param0: boolean): void;
+						public getResetMessengerState(): boolean;
+						public setPermissions(param0: java.util.List<string>): void;
+						public setLoginBehavior(param0: com.facebook.login.LoginBehavior): void;
+						public getDefaultAudience(): com.facebook.login.DefaultAudience;
+						public getShouldSkipAccountDeduplication(): boolean;
+						public getLoginTargetApp(): com.facebook.login.LoginTargetApp;
+						public getAuthType(): string;
+						public setMessengerPageId(param0: string): void;
+						public setDefaultAudience(param0: com.facebook.login.DefaultAudience): void;
+						public setAuthType(param0: string): void;
+						public setLoginTargetApp(param0: com.facebook.login.LoginTargetApp): void;
+						public getLoginBehavior(): com.facebook.login.LoginBehavior;
+					}
+					export class LoginClickListener {
+						public static class: java.lang.Class<com.facebook.login.widget.LoginButton.LoginClickListener>;
+						public constructor(param0: com.facebook.login.widget.LoginButton);
+						public performLogin(): void;
+						public isFamilyLogin(): boolean;
+						public getLoginTargetApp(): com.facebook.login.LoginTargetApp;
+						public performLogout(param0: globalAndroid.content.Context): void;
+						public onClick(param0: globalAndroid.view.View): void;
+						public getLoginManager(): com.facebook.login.LoginManager;
+					}
+					export class ToolTipMode {
+						public static class: java.lang.Class<com.facebook.login.widget.LoginButton.ToolTipMode>;
+						public static Companion: com.facebook.login.widget.LoginButton.ToolTipMode.Companion;
+						public static AUTOMATIC: com.facebook.login.widget.LoginButton.ToolTipMode;
+						public static DISPLAY_ALWAYS: com.facebook.login.widget.LoginButton.ToolTipMode;
+						public static NEVER_DISPLAY: com.facebook.login.widget.LoginButton.ToolTipMode;
+						public static values(): androidNative.Array<com.facebook.login.widget.LoginButton.ToolTipMode>;
+						public toString(): string;
+						public static valueOf(param0: string): com.facebook.login.widget.LoginButton.ToolTipMode;
+						public getIntValue(): number;
+					}
+					export module ToolTipMode {
+						export class Companion {
+							public static class: java.lang.Class<com.facebook.login.widget.LoginButton.ToolTipMode.Companion>;
+							public getDEFAULT(): com.facebook.login.widget.LoginButton.ToolTipMode;
+							public fromInt(param0: number): com.facebook.login.widget.LoginButton.ToolTipMode;
+						}
+					}
+					export class WhenMappings {
+						public static class: java.lang.Class<com.facebook.login.widget.LoginButton.WhenMappings>;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module login {
+			export module widget {
+				export class ProfilePictureView {
+					public static class: java.lang.Class<com.facebook.login.widget.ProfilePictureView>;
+					public static Companion: com.facebook.login.widget.ProfilePictureView.Companion;
+					public static CUSTOM: number;
+					public static SMALL: number;
+					public static NORMAL: number;
+					public static LARGE: number;
+					public onDetachedFromWindow(): void;
+					public onMeasure(param0: number, param1: number): void;
+					public getShouldUpdateOnProfileChange(): boolean;
+					public setProfileId(param0: string): void;
+					public getPresetSize(): number;
+					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet, param2: number);
+					public getProfileId(): string;
+					public constructor(param0: globalAndroid.content.Context);
+					public constructor(param0: globalAndroid.content.Context, param1: globalAndroid.util.AttributeSet);
+					public setOnErrorListener(param0: com.facebook.login.widget.ProfilePictureView.OnErrorListener): void;
+					public setCropped(param0: boolean): void;
+					public getOnErrorListener(): com.facebook.login.widget.ProfilePictureView.OnErrorListener;
+					public onRestoreInstanceState(param0: globalAndroid.os.Parcelable): void;
+					public onLayout(param0: boolean, param1: number, param2: number, param3: number, param4: number): void;
+					public onSaveInstanceState(): globalAndroid.os.Parcelable;
+					public setPresetSize(param0: number): void;
+					public setShouldUpdateOnProfileChange(param0: boolean): void;
+					public isCropped(): boolean;
+					public setDefaultProfilePicture(param0: globalAndroid.graphics.Bitmap): void;
+				}
+				export module ProfilePictureView {
+					export class Companion {
+						public static class: java.lang.Class<com.facebook.login.widget.ProfilePictureView.Companion>;
+						public getTAG(): string;
+					}
+					export class OnErrorListener {
+						public static class: java.lang.Class<com.facebook.login.widget.ProfilePictureView.OnErrorListener>;
+						/**
+						 * Constructs a new instance of the com.facebook.login.widget.ProfilePictureView$OnErrorListener interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+						 */
+						public constructor(implementation: { onError(param0: com.facebook.FacebookException): void });
+						public constructor();
+						public onError(param0: com.facebook.FacebookException): void;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module login {
+			export module widget {
+				export class ToolTipPopup {
+					public static class: java.lang.Class<com.facebook.login.widget.ToolTipPopup>;
+					public static Companion: com.facebook.login.widget.ToolTipPopup.Companion;
+					public static DEFAULT_POPUP_DISPLAY_TIME: number;
+					public show(): void;
+					public setStyle(param0: com.facebook.login.widget.ToolTipPopup.Style): void;
+					public setNuxDisplayTime(param0: number): void;
+					public constructor(param0: string, param1: globalAndroid.view.View);
+					public dismiss(): void;
+				}
+				export module ToolTipPopup {
+					export class Companion {
+						public static class: java.lang.Class<com.facebook.login.widget.ToolTipPopup.Companion>;
+					}
+					export class PopupContentView {
+						public static class: java.lang.Class<com.facebook.login.widget.ToolTipPopup.PopupContentView>;
+						public getTopArrow(): globalAndroid.widget.ImageView;
+						public getBodyFrame(): globalAndroid.view.View;
+						public constructor(param0: globalAndroid.content.Context);
+						public getBottomArrow(): globalAndroid.widget.ImageView;
+						public showTopArrow(): void;
+						public showBottomArrow(): void;
+						public getXOut(): globalAndroid.widget.ImageView;
+					}
+					export class Style {
+						public static class: java.lang.Class<com.facebook.login.widget.ToolTipPopup.Style>;
+						public static BLUE: com.facebook.login.widget.ToolTipPopup.Style;
+						public static BLACK: com.facebook.login.widget.ToolTipPopup.Style;
+						public static values(): androidNative.Array<com.facebook.login.widget.ToolTipPopup.Style>;
+						public static valueOf(param0: string): com.facebook.login.widget.ToolTipPopup.Style;
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module messenger {
+			export class R {
+				public static class: java.lang.Class<com.facebook.messenger.R>;
+			}
+			export module R {
+				export class attr {
+					public static class: java.lang.Class<com.facebook.messenger.R.attr>;
+					public static alpha: number;
+					public static font: number;
+					public static fontProviderAuthority: number;
+					public static fontProviderCerts: number;
+					public static fontProviderFetchStrategy: number;
+					public static fontProviderFetchTimeout: number;
+					public static fontProviderPackage: number;
+					public static fontProviderQuery: number;
+					public static fontStyle: number;
+					public static fontVariationSettings: number;
+					public static fontWeight: number;
+					public static ttcIndex: number;
+				}
+				export class color {
+					public static class: java.lang.Class<com.facebook.messenger.R.color>;
+					public static androidx_core_ripple_material_light: number;
+					public static androidx_core_secondary_text_default_material_light: number;
+					public static notification_action_color_filter: number;
+					public static notification_icon_bg_color: number;
+					public static ripple_material_light: number;
+					public static secondary_text_default_material_light: number;
+				}
+				export class dimen {
+					public static class: java.lang.Class<com.facebook.messenger.R.dimen>;
+					public static compat_button_inset_horizontal_material: number;
+					public static compat_button_inset_vertical_material: number;
+					public static compat_button_padding_horizontal_material: number;
+					public static compat_button_padding_vertical_material: number;
+					public static compat_control_corner_material: number;
+					public static compat_notification_large_icon_max_height: number;
+					public static compat_notification_large_icon_max_width: number;
+					public static notification_action_icon_size: number;
+					public static notification_action_text_size: number;
+					public static notification_big_circle_margin: number;
+					public static notification_content_margin_start: number;
+					public static notification_large_icon_height: number;
+					public static notification_large_icon_width: number;
+					public static notification_main_column_padding_top: number;
+					public static notification_media_narrow_margin: number;
+					public static notification_right_icon_size: number;
+					public static notification_right_side_padding_top: number;
+					public static notification_small_icon_background_padding: number;
+					public static notification_small_icon_size_as_large: number;
+					public static notification_subtext_size: number;
+					public static notification_top_pad: number;
+					public static notification_top_pad_large_text: number;
+				}
+				export class drawable {
+					public static class: java.lang.Class<com.facebook.messenger.R.drawable>;
+					public static messenger_bubble_large_blue: number;
+					public static messenger_bubble_large_white: number;
+					public static messenger_bubble_small_blue: number;
+					public static messenger_bubble_small_white: number;
+					public static messenger_button_blue_bg_round: number;
+					public static messenger_button_blue_bg_selector: number;
+					public static messenger_button_send_round_shadow: number;
+					public static messenger_button_white_bg_round: number;
+					public static messenger_button_white_bg_selector: number;
+					public static notification_action_background: number;
+					public static notification_bg: number;
+					public static notification_bg_low: number;
+					public static notification_bg_low_normal: number;
+					public static notification_bg_low_pressed: number;
+					public static notification_bg_normal: number;
+					public static notification_bg_normal_pressed: number;
+					public static notification_icon_background: number;
+					public static notification_template_icon_bg: number;
+					public static notification_template_icon_low_bg: number;
+					public static notification_tile_bg: number;
+					public static notify_panel_notification_icon_bg: number;
+				}
+				export class id {
+					public static class: java.lang.Class<com.facebook.messenger.R.id>;
+					public static accessibility_action_clickable_span: number;
+					public static accessibility_custom_action_0: number;
+					public static accessibility_custom_action_1: number;
+					public static accessibility_custom_action_10: number;
+					public static accessibility_custom_action_11: number;
+					public static accessibility_custom_action_12: number;
+					public static accessibility_custom_action_13: number;
+					public static accessibility_custom_action_14: number;
+					public static accessibility_custom_action_15: number;
+					public static accessibility_custom_action_16: number;
+					public static accessibility_custom_action_17: number;
+					public static accessibility_custom_action_18: number;
+					public static accessibility_custom_action_19: number;
+					public static accessibility_custom_action_2: number;
+					public static accessibility_custom_action_20: number;
+					public static accessibility_custom_action_21: number;
+					public static accessibility_custom_action_22: number;
+					public static accessibility_custom_action_23: number;
+					public static accessibility_custom_action_24: number;
+					public static accessibility_custom_action_25: number;
+					public static accessibility_custom_action_26: number;
+					public static accessibility_custom_action_27: number;
+					public static accessibility_custom_action_28: number;
+					public static accessibility_custom_action_29: number;
+					public static accessibility_custom_action_3: number;
+					public static accessibility_custom_action_30: number;
+					public static accessibility_custom_action_31: number;
+					public static accessibility_custom_action_4: number;
+					public static accessibility_custom_action_5: number;
+					public static accessibility_custom_action_6: number;
+					public static accessibility_custom_action_7: number;
+					public static accessibility_custom_action_8: number;
+					public static accessibility_custom_action_9: number;
+					public static action_container: number;
+					public static action_divider: number;
+					public static action_image: number;
+					public static action_text: number;
+					public static actions: number;
+					public static async: number;
+					public static blocking: number;
+					public static chronometer: number;
+					public static dialog_button: number;
+					public static forever: number;
+					public static icon: number;
+					public static icon_group: number;
+					public static info: number;
+					public static italic: number;
+					public static line1: number;
+					public static line3: number;
+					public static messenger_send_button: number;
+					public static normal: number;
+					public static notification_background: number;
+					public static notification_main_column: number;
+					public static notification_main_column_container: number;
+					public static right_icon: number;
+					public static right_side: number;
+					public static tag_accessibility_actions: number;
+					public static tag_accessibility_clickable_spans: number;
+					public static tag_accessibility_heading: number;
+					public static tag_accessibility_pane_title: number;
+					public static tag_screen_reader_focusable: number;
+					public static tag_transition_group: number;
+					public static tag_unhandled_key_event_manager: number;
+					public static tag_unhandled_key_listeners: number;
+					public static text: number;
+					public static text2: number;
+					public static time: number;
+					public static title: number;
+				}
+				export class integer {
+					public static class: java.lang.Class<com.facebook.messenger.R.integer>;
+					public static status_bar_notification_info_maxnum: number;
+				}
+				export class layout {
+					public static class: java.lang.Class<com.facebook.messenger.R.layout>;
+					public static custom_dialog: number;
+					public static messenger_button_send_blue_large: number;
+					public static messenger_button_send_blue_round: number;
+					public static messenger_button_send_blue_small: number;
+					public static messenger_button_send_white_large: number;
+					public static messenger_button_send_white_round: number;
+					public static messenger_button_send_white_small: number;
+					public static notification_action: number;
+					public static notification_action_tombstone: number;
+					public static notification_template_custom_big: number;
+					public static notification_template_icon_group: number;
+					public static notification_template_part_chronometer: number;
+					public static notification_template_part_time: number;
+				}
+				export class style {
+					public static class: java.lang.Class<com.facebook.messenger.R.style>;
+					public static MessengerButton: number;
+					public static MessengerButtonText: number;
+					public static MessengerButtonText_Blue: number;
+					public static MessengerButtonText_Blue_Large: number;
+					public static MessengerButtonText_Blue_Small: number;
+					public static MessengerButtonText_White: number;
+					public static MessengerButtonText_White_Large: number;
+					public static MessengerButtonText_White_Small: number;
+					public static MessengerButton_Blue: number;
+					public static MessengerButton_Blue_Large: number;
+					public static MessengerButton_Blue_Small: number;
+					public static MessengerButton_White: number;
+					public static MessengerButton_White_Large: number;
+					public static MessengerButton_White_Small: number;
+					public static TextAppearance_Compat_Notification: number;
+					public static TextAppearance_Compat_Notification_Info: number;
+					public static TextAppearance_Compat_Notification_Line2: number;
+					public static TextAppearance_Compat_Notification_Time: number;
+					public static TextAppearance_Compat_Notification_Title: number;
+					public static Widget_Compat_NotificationActionContainer: number;
+					public static Widget_Compat_NotificationActionText: number;
+				}
+				export class styleable {
+					public static class: java.lang.Class<com.facebook.messenger.R.styleable>;
+					public static ColorStateListItem: androidNative.Array<number>;
+					public static ColorStateListItem_android_color: number;
+					public static ColorStateListItem_android_alpha: number;
+					public static ColorStateListItem_android_lStar: number;
+					public static ColorStateListItem_alpha: number;
+					public static ColorStateListItem_lStar: number;
+					public static FontFamily: androidNative.Array<number>;
+					public static FontFamily_fontProviderAuthority: number;
+					public static FontFamily_fontProviderCerts: number;
+					public static FontFamily_fontProviderFetchStrategy: number;
+					public static FontFamily_fontProviderFetchTimeout: number;
+					public static FontFamily_fontProviderPackage: number;
+					public static FontFamily_fontProviderQuery: number;
+					public static FontFamily_fontProviderSystemFontFamily: number;
+					public static FontFamilyFont: androidNative.Array<number>;
+					public static FontFamilyFont_android_font: number;
+					public static FontFamilyFont_android_fontWeight: number;
+					public static FontFamilyFont_android_fontStyle: number;
+					public static FontFamilyFont_android_ttcIndex: number;
+					public static FontFamilyFont_android_fontVariationSettings: number;
+					public static FontFamilyFont_font: number;
+					public static FontFamilyFont_fontStyle: number;
+					public static FontFamilyFont_fontVariationSettings: number;
+					public static FontFamilyFont_fontWeight: number;
+					public static FontFamilyFont_ttcIndex: number;
+					public static GradientColor: androidNative.Array<number>;
+					public static GradientColor_android_startColor: number;
+					public static GradientColor_android_endColor: number;
+					public static GradientColor_android_type: number;
+					public static GradientColor_android_centerX: number;
+					public static GradientColor_android_centerY: number;
+					public static GradientColor_android_gradientRadius: number;
+					public static GradientColor_android_tileMode: number;
+					public static GradientColor_android_centerColor: number;
+					public static GradientColor_android_startX: number;
+					public static GradientColor_android_startY: number;
+					public static GradientColor_android_endX: number;
+					public static GradientColor_android_endY: number;
+					public static GradientColorItem: androidNative.Array<number>;
+					public static GradientColorItem_android_color: number;
+					public static GradientColorItem_android_offset: number;
+					public static<clinit>(): void;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module ppml {
+			export module receiver {
+				export class IReceiverService {
+					public static class: java.lang.Class<com.facebook.ppml.receiver.IReceiverService>;
+					/**
+					 * Constructs a new instance of the com.facebook.ppml.receiver.IReceiverService interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+					 */
+					public constructor(implementation: { sendEvents(param0: globalAndroid.os.Bundle): number });
+					public constructor();
+					public sendEvents(param0: globalAndroid.os.Bundle): number;
+				}
+				export module IReceiverService {
+					export class Default extends com.facebook.ppml.receiver.IReceiverService {
+						public static class: java.lang.Class<com.facebook.ppml.receiver.IReceiverService.Default>;
+						public constructor();
+						public sendEvents(param0: globalAndroid.os.Bundle): number;
+						public asBinder(): globalAndroid.os.IBinder;
+					}
+					export abstract class Stub implements com.facebook.ppml.receiver.IReceiverService {
+						public static class: java.lang.Class<com.facebook.ppml.receiver.IReceiverService.Stub>;
+						public constructor();
+						public sendEvents(param0: globalAndroid.os.Bundle): number;
+						public static setDefaultImpl(param0: com.facebook.ppml.receiver.IReceiverService): boolean;
+						public onTransact(param0: number, param1: globalAndroid.os.Parcel, param2: globalAndroid.os.Parcel, param3: number): boolean;
+						public asBinder(): globalAndroid.os.IBinder;
+						public static asInterface(param0: globalAndroid.os.IBinder): com.facebook.ppml.receiver.IReceiverService;
+						public static getDefaultImpl(): com.facebook.ppml.receiver.IReceiverService;
+					}
+					export module Stub {
+						export class Proxy extends com.facebook.ppml.receiver.IReceiverService {
+							public static class: java.lang.Class<com.facebook.ppml.receiver.IReceiverService.Stub.Proxy>;
+							public static sDefaultImpl: com.facebook.ppml.receiver.IReceiverService;
+							public getInterfaceDescriptor(): string;
+							public sendEvents(param0: globalAndroid.os.Bundle): number;
+							public asBinder(): globalAndroid.os.IBinder;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
+		export module share {
+			export class R {
+				public static class: java.lang.Class<com.facebook.share.R>;
+			}
+			export module R {
+				export class anim {
+					public static class: java.lang.Class<com.facebook.share.R.anim>;
+					public static abc_fade_in: number;
+					public static abc_fade_out: number;
+					public static abc_grow_fade_in_from_bottom: number;
+					public static abc_popup_enter: number;
+					public static abc_popup_exit: number;
+					public static abc_shrink_fade_out_from_bottom: number;
+					public static abc_slide_in_bottom: number;
+					public static abc_slide_in_top: number;
+					public static abc_slide_out_bottom: number;
+					public static abc_slide_out_top: number;
+					public static abc_tooltip_enter: number;
+					public static abc_tooltip_exit: number;
+					public static btn_checkbox_to_checked_box_inner_merged_animation: number;
+					public static btn_checkbox_to_checked_box_outer_merged_animation: number;
+					public static btn_checkbox_to_checked_icon_null_animation: number;
+					public static btn_checkbox_to_unchecked_box_inner_merged_animation: number;
+					public static btn_checkbox_to_unchecked_check_path_merged_animation: number;
+					public static btn_checkbox_to_unchecked_icon_null_animation: number;
+					public static btn_radio_to_off_mtrl_dot_group_animation: number;
+					public static btn_radio_to_off_mtrl_ring_outer_animation: number;
+					public static btn_radio_to_off_mtrl_ring_outer_path_animation: number;
+					public static btn_radio_to_on_mtrl_dot_group_animation: number;
+					public static btn_radio_to_on_mtrl_ring_outer_animation: number;
+					public static btn_radio_to_on_mtrl_ring_outer_path_animation: number;
+					public static fragment_fast_out_extra_slow_in: number;
+				}
+				export class animator {
+					public static class: java.lang.Class<com.facebook.share.R.animator>;
+					public static fragment_close_enter: number;
+					public static fragment_close_exit: number;
+					public static fragment_fade_enter: number;
+					public static fragment_fade_exit: number;
+					public static fragment_open_enter: number;
+					public static fragment_open_exit: number;
+				}
+				export class attr {
+					public static class: java.lang.Class<com.facebook.share.R.attr>;
+					public static actionBarDivider: number;
+					public static actionBarItemBackground: number;
+					public static actionBarPopupTheme: number;
+					public static actionBarSize: number;
+					public static actionBarSplitStyle: number;
+					public static actionBarStyle: number;
+					public static actionBarTabBarStyle: number;
+					public static actionBarTabStyle: number;
+					public static actionBarTabTextStyle: number;
+					public static actionBarTheme: number;
+					public static actionBarWidgetTheme: number;
+					public static actionButtonStyle: number;
+					public static actionDropDownStyle: number;
+					public static actionLayout: number;
+					public static actionMenuTextAppearance: number;
+					public static actionMenuTextColor: number;
+					public static actionModeBackground: number;
+					public static actionModeCloseButtonStyle: number;
+					public static actionModeCloseDrawable: number;
+					public static actionModeCopyDrawable: number;
+					public static actionModeCutDrawable: number;
+					public static actionModeFindDrawable: number;
+					public static actionModePasteDrawable: number;
+					public static actionModePopupWindowStyle: number;
+					public static actionModeSelectAllDrawable: number;
+					public static actionModeShareDrawable: number;
+					public static actionModeSplitBackground: number;
+					public static actionModeStyle: number;
+					public static actionModeWebSearchDrawable: number;
+					public static actionOverflowButtonStyle: number;
+					public static actionOverflowMenuStyle: number;
+					public static actionProviderClass: number;
+					public static actionViewClass: number;
+					public static activityChooserViewStyle: number;
+					public static alertDialogButtonGroupStyle: number;
+					public static alertDialogCenterButtons: number;
+					public static alertDialogStyle: number;
+					public static alertDialogTheme: number;
+					public static allowStacking: number;
+					public static alpha: number;
+					public static alphabeticModifiers: number;
+					public static arrowHeadLength: number;
+					public static arrowShaftLength: number;
+					public static autoCompleteTextViewStyle: number;
+					public static autoSizeMaxTextSize: number;
+					public static autoSizeMinTextSize: number;
+					public static autoSizePresetSizes: number;
+					public static autoSizeStepGranularity: number;
+					public static autoSizeTextType: number;
+					public static background: number;
+					public static backgroundSplit: number;
+					public static backgroundStacked: number;
+					public static backgroundTint: number;
+					public static backgroundTintMode: number;
+					public static barLength: number;
+					public static borderlessButtonStyle: number;
+					public static buttonBarButtonStyle: number;
+					public static buttonBarNegativeButtonStyle: number;
+					public static buttonBarNeutralButtonStyle: number;
+					public static buttonBarPositiveButtonStyle: number;
+					public static buttonBarStyle: number;
+					public static buttonCompat: number;
+					public static buttonGravity: number;
+					public static buttonIconDimen: number;
+					public static buttonPanelSideLayout: number;
+					public static buttonStyle: number;
+					public static buttonStyleSmall: number;
+					public static buttonTint: number;
+					public static buttonTintMode: number;
+					public static cardBackgroundColor: number;
+					public static cardCornerRadius: number;
+					public static cardElevation: number;
+					public static cardMaxElevation: number;
+					public static cardPreventCornerOverlap: number;
+					public static cardUseCompatPadding: number;
+					public static cardViewStyle: number;
+					public static checkboxStyle: number;
+					public static checkedTextViewStyle: number;
+					public static closeIcon: number;
+					public static closeItemLayout: number;
+					public static collapseContentDescription: number;
+					public static collapseIcon: number;
+					public static color: number;
+					public static colorAccent: number;
+					public static colorBackgroundFloating: number;
+					public static colorButtonNormal: number;
+					public static colorControlActivated: number;
+					public static colorControlHighlight: number;
+					public static colorControlNormal: number;
+					public static colorError: number;
+					public static colorPrimary: number;
+					public static colorPrimaryDark: number;
+					public static colorSwitchThumbNormal: number;
+					public static com_facebook_auxiliary_view_position: number;
+					public static com_facebook_foreground_color: number;
+					public static com_facebook_horizontal_alignment: number;
+					public static com_facebook_object_id: number;
+					public static com_facebook_object_type: number;
+					public static com_facebook_style: number;
+					public static commitIcon: number;
+					public static contentDescription: number;
+					public static contentInsetEnd: number;
+					public static contentInsetEndWithActions: number;
+					public static contentInsetLeft: number;
+					public static contentInsetRight: number;
+					public static contentInsetStart: number;
+					public static contentInsetStartWithNavigation: number;
+					public static contentPadding: number;
+					public static contentPaddingBottom: number;
+					public static contentPaddingLeft: number;
+					public static contentPaddingRight: number;
+					public static contentPaddingTop: number;
+					public static controlBackground: number;
+					public static coordinatorLayoutStyle: number;
+					public static customNavigationLayout: number;
+					public static defaultQueryHint: number;
+					public static dialogCornerRadius: number;
+					public static dialogPreferredPadding: number;
+					public static dialogTheme: number;
+					public static displayOptions: number;
+					public static divider: number;
+					public static dividerHorizontal: number;
+					public static dividerPadding: number;
+					public static dividerVertical: number;
+					public static drawableBottomCompat: number;
+					public static drawableEndCompat: number;
+					public static drawableLeftCompat: number;
+					public static drawableRightCompat: number;
+					public static drawableSize: number;
+					public static drawableStartCompat: number;
+					public static drawableTint: number;
+					public static drawableTintMode: number;
+					public static drawableTopCompat: number;
+					public static drawerArrowStyle: number;
+					public static dropDownListViewStyle: number;
+					public static dropdownListPreferredItemHeight: number;
+					public static editTextBackground: number;
+					public static editTextColor: number;
+					public static editTextStyle: number;
+					public static elevation: number;
+					public static expandActivityOverflowButtonDrawable: number;
+					public static firstBaselineToTopHeight: number;
+					public static font: number;
+					public static fontFamily: number;
+					public static fontProviderAuthority: number;
+					public static fontProviderCerts: number;
+					public static fontProviderFetchStrategy: number;
+					public static fontProviderFetchTimeout: number;
+					public static fontProviderPackage: number;
+					public static fontProviderQuery: number;
+					public static fontStyle: number;
+					public static fontVariationSettings: number;
+					public static fontWeight: number;
+					public static gapBetweenBars: number;
+					public static goIcon: number;
+					public static height: number;
+					public static hideOnContentScroll: number;
+					public static homeAsUpIndicator: number;
+					public static homeLayout: number;
+					public static icon: number;
+					public static iconTint: number;
+					public static iconTintMode: number;
+					public static iconifiedByDefault: number;
+					public static imageButtonStyle: number;
+					public static indeterminateProgressStyle: number;
+					public static initialActivityCount: number;
+					public static isLightTheme: number;
+					public static itemPadding: number;
+					public static keylines: number;
+					public static lastBaselineToBottomHeight: number;
+					public static layout: number;
+					public static layout_anchor: number;
+					public static layout_anchorGravity: number;
+					public static layout_behavior: number;
+					public static layout_dodgeInsetEdges: number;
+					public static layout_insetEdge: number;
+					public static layout_keyline: number;
+					public static lineHeight: number;
+					public static listChoiceBackgroundIndicator: number;
+					public static listChoiceIndicatorMultipleAnimated: number;
+					public static listChoiceIndicatorSingleAnimated: number;
+					public static listDividerAlertDialog: number;
+					public static listItemLayout: number;
+					public static listLayout: number;
+					public static listMenuViewStyle: number;
+					public static listPopupWindowStyle: number;
+					public static listPreferredItemHeight: number;
+					public static listPreferredItemHeightLarge: number;
+					public static listPreferredItemHeightSmall: number;
+					public static listPreferredItemPaddingEnd: number;
+					public static listPreferredItemPaddingLeft: number;
+					public static listPreferredItemPaddingRight: number;
+					public static listPreferredItemPaddingStart: number;
+					public static logo: number;
+					public static logoDescription: number;
+					public static maxButtonHeight: number;
+					public static measureWithLargestChild: number;
+					public static menu: number;
+					public static multiChoiceItemLayout: number;
+					public static navigationContentDescription: number;
+					public static navigationIcon: number;
+					public static navigationMode: number;
+					public static numericModifiers: number;
+					public static overlapAnchor: number;
+					public static paddingBottomNoButtons: number;
+					public static paddingEnd: number;
+					public static paddingStart: number;
+					public static paddingTopNoTitle: number;
+					public static panelBackground: number;
+					public static panelMenuListTheme: number;
+					public static panelMenuListWidth: number;
+					public static popupMenuStyle: number;
+					public static popupTheme: number;
+					public static popupWindowStyle: number;
+					public static preserveIconSpacing: number;
+					public static progressBarPadding: number;
+					public static progressBarStyle: number;
+					public static queryBackground: number;
+					public static queryHint: number;
+					public static radioButtonStyle: number;
+					public static ratingBarStyle: number;
+					public static ratingBarStyleIndicator: number;
+					public static ratingBarStyleSmall: number;
+					public static searchHintIcon: number;
+					public static searchIcon: number;
+					public static searchViewStyle: number;
+					public static seekBarStyle: number;
+					public static selectableItemBackground: number;
+					public static selectableItemBackgroundBorderless: number;
+					public static showAsAction: number;
+					public static showDividers: number;
+					public static showText: number;
+					public static showTitle: number;
+					public static singleChoiceItemLayout: number;
+					public static spinBars: number;
+					public static spinnerDropDownItemStyle: number;
+					public static spinnerStyle: number;
+					public static splitTrack: number;
+					public static srcCompat: number;
+					public static state_above_anchor: number;
+					public static statusBarBackground: number;
+					public static subMenuArrow: number;
+					public static submitBackground: number;
+					public static subtitle: number;
+					public static subtitleTextAppearance: number;
+					public static subtitleTextColor: number;
+					public static subtitleTextStyle: number;
+					public static suggestionRowLayout: number;
+					public static switchMinWidth: number;
+					public static switchPadding: number;
+					public static switchStyle: number;
+					public static switchTextAppearance: number;
+					public static textAllCaps: number;
+					public static textAppearanceLargePopupMenu: number;
+					public static textAppearanceListItem: number;
+					public static textAppearanceListItemSecondary: number;
+					public static textAppearanceListItemSmall: number;
+					public static textAppearancePopupMenuHeader: number;
+					public static textAppearanceSearchResultSubtitle: number;
+					public static textAppearanceSearchResultTitle: number;
+					public static textAppearanceSmallPopupMenu: number;
+					public static textColorAlertDialogListItem: number;
+					public static textColorSearchUrl: number;
+					public static textLocale: number;
+					public static theme: number;
+					public static thickness: number;
+					public static thumbTextPadding: number;
+					public static thumbTint: number;
+					public static thumbTintMode: number;
+					public static tickMark: number;
+					public static tickMarkTint: number;
+					public static tickMarkTintMode: number;
+					public static tint: number;
+					public static tintMode: number;
+					public static title: number;
+					public static titleMargin: number;
+					public static titleMarginBottom: number;
+					public static titleMarginEnd: number;
+					public static titleMarginStart: number;
+					public static titleMarginTop: number;
+					public static titleMargins: number;
+					public static titleTextAppearance: number;
+					public static titleTextColor: number;
+					public static titleTextStyle: number;
+					public static toolbarNavigationButtonStyle: number;
+					public static toolbarStyle: number;
+					public static tooltipForegroundColor: number;
+					public static tooltipFrameBackground: number;
+					public static tooltipText: number;
+					public static track: number;
+					public static trackTint: number;
+					public static trackTintMode: number;
+					public static ttcIndex: number;
+					public static viewInflaterClass: number;
+					public static voiceIcon: number;
+					public static windowActionBar: number;
+					public static windowActionBarOverlay: number;
+					public static windowActionModeOverlay: number;
+					public static windowFixedHeightMajor: number;
+					public static windowFixedHeightMinor: number;
+					public static windowFixedWidthMajor: number;
+					public static windowFixedWidthMinor: number;
+					public static windowMinWidthMajor: number;
+					public static windowMinWidthMinor: number;
+					public static windowNoTitle: number;
+				}
+				export class bool {
+					public static class: java.lang.Class<com.facebook.share.R.bool>;
+					public static abc_action_bar_embed_tabs: number;
+					public static abc_config_actionMenuItemAllCaps: number;
+				}
+				export class color {
+					public static class: java.lang.Class<com.facebook.share.R.color>;
+					public static abc_background_cache_hint_selector_material_dark: number;
+					public static abc_background_cache_hint_selector_material_light: number;
+					public static abc_btn_colored_borderless_text_material: number;
+					public static abc_btn_colored_text_material: number;
+					public static abc_color_highlight_material: number;
+					public static abc_hint_foreground_material_dark: number;
+					public static abc_hint_foreground_material_light: number;
+					public static abc_primary_text_disable_only_material_dark: number;
+					public static abc_primary_text_disable_only_material_light: number;
+					public static abc_primary_text_material_dark: number;
+					public static abc_primary_text_material_light: number;
+					public static abc_search_url_text: number;
+					public static abc_search_url_text_normal: number;
+					public static abc_search_url_text_pressed: number;
+					public static abc_search_url_text_selected: number;
+					public static abc_secondary_text_material_dark: number;
+					public static abc_secondary_text_material_light: number;
+					public static abc_tint_btn_checkable: number;
+					public static abc_tint_default: number;
+					public static abc_tint_edittext: number;
+					public static abc_tint_seek_thumb: number;
+					public static abc_tint_spinner: number;
+					public static abc_tint_switch_track: number;
+					public static accent_material_dark: number;
+					public static accent_material_light: number;
+					public static androidx_core_ripple_material_light: number;
+					public static androidx_core_secondary_text_default_material_light: number;
+					public static background_floating_material_dark: number;
+					public static background_floating_material_light: number;
+					public static background_material_dark: number;
+					public static background_material_light: number;
+					public static bright_foreground_disabled_material_dark: number;
+					public static bright_foreground_disabled_material_light: number;
+					public static bright_foreground_inverse_material_dark: number;
+					public static bright_foreground_inverse_material_light: number;
+					public static bright_foreground_material_dark: number;
+					public static bright_foreground_material_light: number;
+					public static browser_actions_bg_grey: number;
+					public static browser_actions_divider_color: number;
+					public static browser_actions_text_color: number;
+					public static browser_actions_title_color: number;
+					public static button_material_dark: number;
+					public static button_material_light: number;
+					public static cardview_dark_background: number;
+					public static cardview_light_background: number;
+					public static cardview_shadow_end_color: number;
+					public static cardview_shadow_start_color: number;
+					public static com_facebook_blue: number;
+					public static com_facebook_button_background_color: number;
+					public static com_facebook_button_background_color_disabled: number;
+					public static com_facebook_button_background_color_pressed: number;
+					public static com_facebook_button_send_background_color: number;
+					public static com_facebook_button_send_background_color_pressed: number;
+					public static com_facebook_button_text_color: number;
+					public static com_facebook_device_auth_text: number;
+					public static com_facebook_likeboxcountview_border_color: number;
+					public static com_facebook_likeboxcountview_text_color: number;
+					public static com_facebook_likeview_text_color: number;
+					public static com_facebook_messenger_blue: number;
+					public static com_facebook_primary_button_disabled_text_color: number;
+					public static com_facebook_primary_button_pressed_text_color: number;
+					public static com_facebook_primary_button_text_color: number;
+					public static com_facebook_send_button_text_color: number;
+					public static com_smart_login_code: number;
+					public static dim_foreground_disabled_material_dark: number;
+					public static dim_foreground_disabled_material_light: number;
+					public static dim_foreground_material_dark: number;
+					public static dim_foreground_material_light: number;
+					public static error_color_material_dark: number;
+					public static error_color_material_light: number;
+					public static foreground_material_dark: number;
+					public static foreground_material_light: number;
+					public static highlighted_text_material_dark: number;
+					public static highlighted_text_material_light: number;
+					public static material_blue_grey_800: number;
+					public static material_blue_grey_900: number;
+					public static material_blue_grey_950: number;
+					public static material_deep_teal_200: number;
+					public static material_deep_teal_500: number;
+					public static material_grey_100: number;
+					public static material_grey_300: number;
+					public static material_grey_50: number;
+					public static material_grey_600: number;
+					public static material_grey_800: number;
+					public static material_grey_850: number;
+					public static material_grey_900: number;
+					public static notification_action_color_filter: number;
+					public static notification_icon_bg_color: number;
+					public static notification_material_background_media_default_color: number;
+					public static primary_dark_material_dark: number;
+					public static primary_dark_material_light: number;
+					public static primary_material_dark: number;
+					public static primary_material_light: number;
+					public static primary_text_default_material_dark: number;
+					public static primary_text_default_material_light: number;
+					public static primary_text_disabled_material_dark: number;
+					public static primary_text_disabled_material_light: number;
+					public static ripple_material_dark: number;
+					public static ripple_material_light: number;
+					public static secondary_text_default_material_dark: number;
+					public static secondary_text_default_material_light: number;
+					public static secondary_text_disabled_material_dark: number;
+					public static secondary_text_disabled_material_light: number;
+					public static switch_thumb_disabled_material_dark: number;
+					public static switch_thumb_disabled_material_light: number;
+					public static switch_thumb_material_dark: number;
+					public static switch_thumb_material_light: number;
+					public static switch_thumb_normal_material_dark: number;
+					public static switch_thumb_normal_material_light: number;
+					public static tooltip_background_dark: number;
+					public static tooltip_background_light: number;
+				}
+				export class dimen {
+					public static class: java.lang.Class<com.facebook.share.R.dimen>;
+					public static abc_action_bar_content_inset_material: number;
+					public static abc_action_bar_content_inset_with_nav: number;
+					public static abc_action_bar_default_height_material: number;
+					public static abc_action_bar_default_padding_end_material: number;
+					public static abc_action_bar_default_padding_start_material: number;
+					public static abc_action_bar_elevation_material: number;
+					public static abc_action_bar_icon_vertical_padding_material: number;
+					public static abc_action_bar_overflow_padding_end_material: number;
+					public static abc_action_bar_overflow_padding_start_material: number;
+					public static abc_action_bar_stacked_max_height: number;
+					public static abc_action_bar_stacked_tab_max_width: number;
+					public static abc_action_bar_subtitle_bottom_margin_material: number;
+					public static abc_action_bar_subtitle_top_margin_material: number;
+					public static abc_action_button_min_height_material: number;
+					public static abc_action_button_min_width_material: number;
+					public static abc_action_button_min_width_overflow_material: number;
+					public static abc_alert_dialog_button_bar_height: number;
+					public static abc_alert_dialog_button_dimen: number;
+					public static abc_button_inset_horizontal_material: number;
+					public static abc_button_inset_vertical_material: number;
+					public static abc_button_padding_horizontal_material: number;
+					public static abc_button_padding_vertical_material: number;
+					public static abc_cascading_menus_min_smallest_width: number;
+					public static abc_config_prefDialogWidth: number;
+					public static abc_control_corner_material: number;
+					public static abc_control_inset_material: number;
+					public static abc_control_padding_material: number;
+					public static abc_dialog_corner_radius_material: number;
+					public static abc_dialog_fixed_height_major: number;
+					public static abc_dialog_fixed_height_minor: number;
+					public static abc_dialog_fixed_width_major: number;
+					public static abc_dialog_fixed_width_minor: number;
+					public static abc_dialog_list_padding_bottom_no_buttons: number;
+					public static abc_dialog_list_padding_top_no_title: number;
+					public static abc_dialog_min_width_major: number;
+					public static abc_dialog_min_width_minor: number;
+					public static abc_dialog_padding_material: number;
+					public static abc_dialog_padding_top_material: number;
+					public static abc_dialog_title_divider_material: number;
+					public static abc_disabled_alpha_material_dark: number;
+					public static abc_disabled_alpha_material_light: number;
+					public static abc_dropdownitem_icon_width: number;
+					public static abc_dropdownitem_text_padding_left: number;
+					public static abc_dropdownitem_text_padding_right: number;
+					public static abc_edit_text_inset_bottom_material: number;
+					public static abc_edit_text_inset_horizontal_material: number;
+					public static abc_edit_text_inset_top_material: number;
+					public static abc_floating_window_z: number;
+					public static abc_list_item_height_large_material: number;
+					public static abc_list_item_height_material: number;
+					public static abc_list_item_height_small_material: number;
+					public static abc_list_item_padding_horizontal_material: number;
+					public static abc_panel_menu_list_width: number;
+					public static abc_progress_bar_height_material: number;
+					public static abc_search_view_preferred_height: number;
+					public static abc_search_view_preferred_width: number;
+					public static abc_seekbar_track_background_height_material: number;
+					public static abc_seekbar_track_progress_height_material: number;
+					public static abc_select_dialog_padding_start_material: number;
+					public static abc_switch_padding: number;
+					public static abc_text_size_body_1_material: number;
+					public static abc_text_size_body_2_material: number;
+					public static abc_text_size_button_material: number;
+					public static abc_text_size_caption_material: number;
+					public static abc_text_size_display_1_material: number;
+					public static abc_text_size_display_2_material: number;
+					public static abc_text_size_display_3_material: number;
+					public static abc_text_size_display_4_material: number;
+					public static abc_text_size_headline_material: number;
+					public static abc_text_size_large_material: number;
+					public static abc_text_size_medium_material: number;
+					public static abc_text_size_menu_header_material: number;
+					public static abc_text_size_menu_material: number;
+					public static abc_text_size_small_material: number;
+					public static abc_text_size_subhead_material: number;
+					public static abc_text_size_subtitle_material_toolbar: number;
+					public static abc_text_size_title_material: number;
+					public static abc_text_size_title_material_toolbar: number;
+					public static browser_actions_context_menu_max_width: number;
+					public static browser_actions_context_menu_min_padding: number;
+					public static cardview_compat_inset_shadow: number;
+					public static cardview_default_elevation: number;
+					public static cardview_default_radius: number;
+					public static com_facebook_auth_dialog_corner_radius: number;
+					public static com_facebook_auth_dialog_corner_radius_oversized: number;
+					public static com_facebook_button_corner_radius: number;
+					public static com_facebook_likeboxcountview_border_radius: number;
+					public static com_facebook_likeboxcountview_border_width: number;
+					public static com_facebook_likeboxcountview_caret_height: number;
+					public static com_facebook_likeboxcountview_caret_width: number;
+					public static com_facebook_likeboxcountview_text_padding: number;
+					public static com_facebook_likeboxcountview_text_size: number;
+					public static com_facebook_likeview_edge_padding: number;
+					public static com_facebook_likeview_internal_padding: number;
+					public static com_facebook_likeview_text_size: number;
+					public static compat_button_inset_horizontal_material: number;
+					public static compat_button_inset_vertical_material: number;
+					public static compat_button_padding_horizontal_material: number;
+					public static compat_button_padding_vertical_material: number;
+					public static compat_control_corner_material: number;
+					public static compat_notification_large_icon_max_height: number;
+					public static compat_notification_large_icon_max_width: number;
+					public static disabled_alpha_material_dark: number;
+					public static disabled_alpha_material_light: number;
+					public static highlight_alpha_material_colored: number;
+					public static highlight_alpha_material_dark: number;
+					public static highlight_alpha_material_light: number;
+					public static hint_alpha_material_dark: number;
+					public static hint_alpha_material_light: number;
+					public static hint_pressed_alpha_material_dark: number;
+					public static hint_pressed_alpha_material_light: number;
+					public static notification_action_icon_size: number;
+					public static notification_action_text_size: number;
+					public static notification_big_circle_margin: number;
+					public static notification_content_margin_start: number;
+					public static notification_large_icon_height: number;
+					public static notification_large_icon_width: number;
+					public static notification_main_column_padding_top: number;
+					public static notification_media_narrow_margin: number;
+					public static notification_right_icon_size: number;
+					public static notification_right_side_padding_top: number;
+					public static notification_small_icon_background_padding: number;
+					public static notification_small_icon_size_as_large: number;
+					public static notification_subtext_size: number;
+					public static notification_top_pad: number;
+					public static notification_top_pad_large_text: number;
+					public static subtitle_corner_radius: number;
+					public static subtitle_outline_width: number;
+					public static subtitle_shadow_offset: number;
+					public static subtitle_shadow_radius: number;
+					public static tooltip_corner_radius: number;
+					public static tooltip_horizontal_padding: number;
+					public static tooltip_margin: number;
+					public static tooltip_precise_anchor_extra_offset: number;
+					public static tooltip_precise_anchor_threshold: number;
+					public static tooltip_vertical_padding: number;
+					public static tooltip_y_offset_non_touch: number;
+					public static tooltip_y_offset_touch: number;
+				}
+				export class drawable {
+					public static class: java.lang.Class<com.facebook.share.R.drawable>;
+					public static abc_ab_share_pack_mtrl_alpha: number;
+					public static abc_action_bar_item_background_material: number;
+					public static abc_btn_borderless_material: number;
+					public static abc_btn_check_material: number;
+					public static abc_btn_check_material_anim: number;
+					public static abc_btn_check_to_on_mtrl_000: number;
+					public static abc_btn_check_to_on_mtrl_015: number;
+					public static abc_btn_colored_material: number;
+					public static abc_btn_default_mtrl_shape: number;
+					public static abc_btn_radio_material: number;
+					public static abc_btn_radio_material_anim: number;
+					public static abc_btn_radio_to_on_mtrl_000: number;
+					public static abc_btn_radio_to_on_mtrl_015: number;
+					public static abc_btn_switch_to_on_mtrl_00001: number;
+					public static abc_btn_switch_to_on_mtrl_00012: number;
+					public static abc_cab_background_internal_bg: number;
+					public static abc_cab_background_top_material: number;
+					public static abc_cab_background_top_mtrl_alpha: number;
+					public static abc_control_background_material: number;
+					public static abc_dialog_material_background: number;
+					public static abc_edit_text_material: number;
+					public static abc_ic_ab_back_material: number;
+					public static abc_ic_arrow_drop_right_black_24dp: number;
+					public static abc_ic_clear_material: number;
+					public static abc_ic_commit_search_api_mtrl_alpha: number;
+					public static abc_ic_go_search_api_material: number;
+					public static abc_ic_menu_copy_mtrl_am_alpha: number;
+					public static abc_ic_menu_cut_mtrl_alpha: number;
+					public static abc_ic_menu_overflow_material: number;
+					public static abc_ic_menu_paste_mtrl_am_alpha: number;
+					public static abc_ic_menu_selectall_mtrl_alpha: number;
+					public static abc_ic_menu_share_mtrl_alpha: number;
+					public static abc_ic_search_api_material: number;
+					public static abc_ic_voice_search_api_material: number;
+					public static abc_item_background_holo_dark: number;
+					public static abc_item_background_holo_light: number;
+					public static abc_list_divider_material: number;
+					public static abc_list_divider_mtrl_alpha: number;
+					public static abc_list_focused_holo: number;
+					public static abc_list_longpressed_holo: number;
+					public static abc_list_pressed_holo_dark: number;
+					public static abc_list_pressed_holo_light: number;
+					public static abc_list_selector_background_transition_holo_dark: number;
+					public static abc_list_selector_background_transition_holo_light: number;
+					public static abc_list_selector_disabled_holo_dark: number;
+					public static abc_list_selector_disabled_holo_light: number;
+					public static abc_list_selector_holo_dark: number;
+					public static abc_list_selector_holo_light: number;
+					public static abc_menu_hardkey_panel_mtrl_mult: number;
+					public static abc_popup_background_mtrl_mult: number;
+					public static abc_ratingbar_indicator_material: number;
+					public static abc_ratingbar_material: number;
+					public static abc_ratingbar_small_material: number;
+					public static abc_scrubber_control_off_mtrl_alpha: number;
+					public static abc_scrubber_control_to_pressed_mtrl_000: number;
+					public static abc_scrubber_control_to_pressed_mtrl_005: number;
+					public static abc_scrubber_primary_mtrl_alpha: number;
+					public static abc_scrubber_track_mtrl_alpha: number;
+					public static abc_seekbar_thumb_material: number;
+					public static abc_seekbar_tick_mark_material: number;
+					public static abc_seekbar_track_material: number;
+					public static abc_spinner_mtrl_am_alpha: number;
+					public static abc_spinner_textfield_background_material: number;
+					public static abc_switch_thumb_material: number;
+					public static abc_switch_track_mtrl_alpha: number;
+					public static abc_tab_indicator_material: number;
+					public static abc_tab_indicator_mtrl_alpha: number;
+					public static abc_text_cursor_material: number;
+					public static abc_textfield_activated_mtrl_alpha: number;
+					public static abc_textfield_default_mtrl_alpha: number;
+					public static abc_textfield_search_activated_mtrl_alpha: number;
+					public static abc_textfield_search_default_mtrl_alpha: number;
+					public static abc_textfield_search_material: number;
+					public static abc_vector_test: number;
+					public static btn_checkbox_checked_mtrl: number;
+					public static btn_checkbox_checked_to_unchecked_mtrl_animation: number;
+					public static btn_checkbox_unchecked_mtrl: number;
+					public static btn_checkbox_unchecked_to_checked_mtrl_animation: number;
+					public static btn_radio_off_mtrl: number;
+					public static btn_radio_off_to_on_mtrl_animation: number;
+					public static btn_radio_on_mtrl: number;
+					public static btn_radio_on_to_off_mtrl_animation: number;
+					public static com_facebook_auth_dialog_background: number;
+					public static com_facebook_auth_dialog_cancel_background: number;
+					public static com_facebook_auth_dialog_header_background: number;
+					public static com_facebook_button_background: number;
+					public static com_facebook_button_icon: number;
+					public static com_facebook_button_like_background: number;
+					public static com_facebook_button_like_icon_selected: number;
+					public static com_facebook_button_send_background: number;
+					public static com_facebook_button_send_icon_blue: number;
+					public static com_facebook_button_send_icon_white: number;
+					public static com_facebook_close: number;
+					public static com_facebook_favicon_blue: number;
+					public static com_facebook_send_button_icon: number;
+					public static notification_action_background: number;
+					public static notification_bg: number;
+					public static notification_bg_low: number;
+					public static notification_bg_low_normal: number;
+					public static notification_bg_low_pressed: number;
+					public static notification_bg_normal: number;
+					public static notification_bg_normal_pressed: number;
+					public static notification_icon_background: number;
+					public static notification_template_icon_bg: number;
+					public static notification_template_icon_low_bg: number;
+					public static notification_tile_bg: number;
+					public static notify_panel_notification_icon_bg: number;
+					public static tooltip_frame_dark: number;
+					public static tooltip_frame_light: number;
+				}
+				export class id {
+					public static class: java.lang.Class<com.facebook.share.R.id>;
+					public static accessibility_action_clickable_span: number;
+					public static accessibility_custom_action_0: number;
+					public static accessibility_custom_action_1: number;
+					public static accessibility_custom_action_10: number;
+					public static accessibility_custom_action_11: number;
+					public static accessibility_custom_action_12: number;
+					public static accessibility_custom_action_13: number;
+					public static accessibility_custom_action_14: number;
+					public static accessibility_custom_action_15: number;
+					public static accessibility_custom_action_16: number;
+					public static accessibility_custom_action_17: number;
+					public static accessibility_custom_action_18: number;
+					public static accessibility_custom_action_19: number;
+					public static accessibility_custom_action_2: number;
+					public static accessibility_custom_action_20: number;
+					public static accessibility_custom_action_21: number;
+					public static accessibility_custom_action_22: number;
+					public static accessibility_custom_action_23: number;
+					public static accessibility_custom_action_24: number;
+					public static accessibility_custom_action_25: number;
+					public static accessibility_custom_action_26: number;
+					public static accessibility_custom_action_27: number;
+					public static accessibility_custom_action_28: number;
+					public static accessibility_custom_action_29: number;
+					public static accessibility_custom_action_3: number;
+					public static accessibility_custom_action_30: number;
+					public static accessibility_custom_action_31: number;
+					public static accessibility_custom_action_4: number;
+					public static accessibility_custom_action_5: number;
+					public static accessibility_custom_action_6: number;
+					public static accessibility_custom_action_7: number;
+					public static accessibility_custom_action_8: number;
+					public static accessibility_custom_action_9: number;
+					public static action0: number;
+					public static action_bar: number;
+					public static action_bar_activity_content: number;
+					public static action_bar_container: number;
+					public static action_bar_root: number;
+					public static action_bar_spinner: number;
+					public static action_bar_subtitle: number;
+					public static action_bar_title: number;
+					public static action_container: number;
+					public static action_context_bar: number;
+					public static action_divider: number;
+					public static action_image: number;
+					public static action_menu_divider: number;
+					public static action_menu_presenter: number;
+					public static action_mode_bar: number;
+					public static action_mode_bar_stub: number;
+					public static action_mode_close_button: number;
+					public static action_text: number;
+					public static actions: number;
+					public static activity_chooser_view_content: number;
+					public static add: number;
+					public static alertTitle: number;
+					public static async: number;
+					public static blocking: number;
+					public static bottom: number;
+					public static box_count: number;
+					public static browser_actions_header_text: number;
+					public static browser_actions_menu_item_icon: number;
+					public static browser_actions_menu_item_text: number;
+					public static browser_actions_menu_items: number;
+					public static browser_actions_menu_view: number;
+					public static button: number;
+					public static buttonPanel: number;
+					public static cancel_action: number;
+					public static cancel_button: number;
+					public static center: number;
+					public static checkbox: number;
+					public static checked: number;
+					public static chronometer: number;
+					public static com_facebook_device_auth_instructions: number;
+					public static com_facebook_fragment_container: number;
+					public static com_facebook_login_fragment_progress_bar: number;
+					public static com_facebook_smart_instructions_0: number;
+					public static com_facebook_smart_instructions_or: number;
+					public static confirmation_code: number;
+					public static content: number;
+					public static contentPanel: number;
+					public static custom: number;
+					public static customPanel: number;
+					public static decor_content_parent: number;
+					public static default_activity_button: number;
+					public static dialog_button: number;
+					public static edit_query: number;
+					public static end: number;
+					public static end_padder: number;
+					public static expand_activities_button: number;
+					public static expanded_menu: number;
+					public static forever: number;
+					public static fragment_container_view_tag: number;
+					public static group_divider: number;
+					public static home: number;
+					public static icon: number;
+					public static icon_group: number;
+					public static image: number;
+					public static info: number;
+					public static inline: number;
+					public static italic: number;
+					public static left: number;
+					public static line1: number;
+					public static line3: number;
+					public static listMode: number;
+					public static list_item: number;
+					public static media_actions: number;
+					public static message: number;
+					public static multiply: number;
+					public static none: number;
+					public static normal: number;
+					public static notification_background: number;
+					public static notification_main_column: number;
+					public static notification_main_column_container: number;
+					public static off: number;
+					public static on: number;
+					public static open_graph: number;
+					public static page: number;
+					public static parentPanel: number;
+					public static progress_bar: number;
+					public static progress_circular: number;
+					public static progress_horizontal: number;
+					public static radio: number;
+					public static right: number;
+					public static right_icon: number;
+					public static right_side: number;
+					public static screen: number;
+					public static scrollIndicatorDown: number;
+					public static scrollIndicatorUp: number;
+					public static scrollView: number;
+					public static search_badge: number;
+					public static search_bar: number;
+					public static search_button: number;
+					public static search_close_btn: number;
+					public static search_edit_frame: number;
+					public static search_go_btn: number;
+					public static search_mag_icon: number;
+					public static search_plate: number;
+					public static search_src_text: number;
+					public static search_voice_btn: number;
+					public static select_dialog_listview: number;
+					public static shortcut: number;
+					public static spacer: number;
+					public static special_effects_controller_view_tag: number;
+					public static split_action_bar: number;
+					public static src_atop: number;
+					public static src_in: number;
+					public static src_over: number;
+					public static standard: number;
+					public static start: number;
+					public static status_bar_latest_event_content: number;
+					public static submenuarrow: number;
+					public static submit_area: number;
+					public static tabMode: number;
+					public static tag_accessibility_actions: number;
+					public static tag_accessibility_clickable_spans: number;
+					public static tag_accessibility_heading: number;
+					public static tag_accessibility_pane_title: number;
+					public static tag_screen_reader_focusable: number;
+					public static tag_transition_group: number;
+					public static tag_unhandled_key_event_manager: number;
+					public static tag_unhandled_key_listeners: number;
+					public static text: number;
+					public static text2: number;
+					public static textSpacerNoButtons: number;
+					public static textSpacerNoTitle: number;
+					public static time: number;
+					public static title: number;
+					public static titleDividerNoCustom: number;
+					public static title_template: number;
+					public static top: number;
+					public static topPanel: number;
+					public static unchecked: number;
+					public static uniform: number;
+					public static unknown: number;
+					public static up: number;
+					public static view_tree_lifecycle_owner: number;
+					public static view_tree_saved_state_registry_owner: number;
+					public static view_tree_view_model_store_owner: number;
+					public static visible_removing_fragment_view_tag: number;
+					public static wrap_content: number;
+				}
+				export class integer {
+					public static class: java.lang.Class<com.facebook.share.R.integer>;
+					public static abc_config_activityDefaultDur: number;
+					public static abc_config_activityShortDur: number;
+					public static cancel_button_image_alpha: number;
+					public static config_tooltipAnimTime: number;
+					public static status_bar_notification_info_maxnum: number;
+				}
+				export class interpolator {
+					public static class: java.lang.Class<com.facebook.share.R.interpolator>;
+					public static btn_checkbox_checked_mtrl_animation_interpolator_0: number;
+					public static btn_checkbox_checked_mtrl_animation_interpolator_1: number;
+					public static btn_checkbox_unchecked_mtrl_animation_interpolator_0: number;
+					public static btn_checkbox_unchecked_mtrl_animation_interpolator_1: number;
+					public static btn_radio_to_off_mtrl_animation_interpolator_0: number;
+					public static btn_radio_to_on_mtrl_animation_interpolator_0: number;
+					public static fast_out_slow_in: number;
+				}
+				export class layout {
+					public static class: java.lang.Class<com.facebook.share.R.layout>;
+					public static abc_action_bar_title_item: number;
+					public static abc_action_bar_up_container: number;
+					public static abc_action_menu_item_layout: number;
+					public static abc_action_menu_layout: number;
+					public static abc_action_mode_bar: number;
+					public static abc_action_mode_close_item_material: number;
+					public static abc_activity_chooser_view: number;
+					public static abc_activity_chooser_view_list_item: number;
+					public static abc_alert_dialog_button_bar_material: number;
+					public static abc_alert_dialog_material: number;
+					public static abc_alert_dialog_title_material: number;
+					public static abc_cascading_menu_item_layout: number;
+					public static abc_dialog_title_material: number;
+					public static abc_expanded_menu_layout: number;
+					public static abc_list_menu_item_checkbox: number;
+					public static abc_list_menu_item_icon: number;
+					public static abc_list_menu_item_layout: number;
+					public static abc_list_menu_item_radio: number;
+					public static abc_popup_menu_header_item_layout: number;
+					public static abc_popup_menu_item_layout: number;
+					public static abc_screen_content_include: number;
+					public static abc_screen_simple: number;
+					public static abc_screen_simple_overlay_action_mode: number;
+					public static abc_screen_toolbar: number;
+					public static abc_search_dropdown_item_icons_2line: number;
+					public static abc_search_view: number;
+					public static abc_select_dialog_material: number;
+					public static abc_tooltip: number;
+					public static browser_actions_context_menu_page: number;
+					public static browser_actions_context_menu_row: number;
+					public static com_facebook_activity_layout: number;
+					public static com_facebook_device_auth_dialog_fragment: number;
+					public static com_facebook_login_fragment: number;
+					public static com_facebook_smart_device_dialog_fragment: number;
+					public static custom_dialog: number;
+					public static notification_action: number;
+					public static notification_action_tombstone: number;
+					public static notification_media_action: number;
+					public static notification_media_cancel_action: number;
+					public static notification_template_big_media: number;
+					public static notification_template_big_media_custom: number;
+					public static notification_template_big_media_narrow: number;
+					public static notification_template_big_media_narrow_custom: number;
+					public static notification_template_custom_big: number;
+					public static notification_template_icon_group: number;
+					public static notification_template_lines_media: number;
+					public static notification_template_media: number;
+					public static notification_template_media_custom: number;
+					public static notification_template_part_chronometer: number;
+					public static notification_template_part_time: number;
+					public static select_dialog_item_material: number;
+					public static select_dialog_multichoice_material: number;
+					public static select_dialog_singlechoice_material: number;
+					public static support_simple_spinner_dropdown_item: number;
+				}
+				export class style {
+					public static class: java.lang.Class<com.facebook.share.R.style>;
+					public static AlertDialog_AppCompat: number;
+					public static AlertDialog_AppCompat_Light: number;
+					public static Animation_AppCompat_Dialog: number;
+					public static Animation_AppCompat_DropDownUp: number;
+					public static Animation_AppCompat_Tooltip: number;
+					public static Base_AlertDialog_AppCompat: number;
+					public static Base_AlertDialog_AppCompat_Light: number;
+					public static Base_Animation_AppCompat_Dialog: number;
+					public static Base_Animation_AppCompat_DropDownUp: number;
+					public static Base_Animation_AppCompat_Tooltip: number;
+					public static Base_CardView: number;
+					public static Base_DialogWindowTitleBackground_AppCompat: number;
+					public static Base_DialogWindowTitle_AppCompat: number;
+					public static Base_TextAppearance_AppCompat: number;
+					public static Base_TextAppearance_AppCompat_Body1: number;
+					public static Base_TextAppearance_AppCompat_Body2: number;
+					public static Base_TextAppearance_AppCompat_Button: number;
+					public static Base_TextAppearance_AppCompat_Caption: number;
+					public static Base_TextAppearance_AppCompat_Display1: number;
+					public static Base_TextAppearance_AppCompat_Display2: number;
+					public static Base_TextAppearance_AppCompat_Display3: number;
+					public static Base_TextAppearance_AppCompat_Display4: number;
+					public static Base_TextAppearance_AppCompat_Headline: number;
+					public static Base_TextAppearance_AppCompat_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Large: number;
+					public static Base_TextAppearance_AppCompat_Large_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large: number;
+					public static Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small: number;
+					public static Base_TextAppearance_AppCompat_Medium: number;
+					public static Base_TextAppearance_AppCompat_Medium_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Menu: number;
+					public static Base_TextAppearance_AppCompat_SearchResult: number;
+					public static Base_TextAppearance_AppCompat_SearchResult_Subtitle: number;
+					public static Base_TextAppearance_AppCompat_SearchResult_Title: number;
+					public static Base_TextAppearance_AppCompat_Small: number;
+					public static Base_TextAppearance_AppCompat_Small_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Subhead: number;
+					public static Base_TextAppearance_AppCompat_Subhead_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Title: number;
+					public static Base_TextAppearance_AppCompat_Title_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Tooltip: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Menu: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Title: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle: number;
+					public static Base_TextAppearance_AppCompat_Widget_ActionMode_Title: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button_Colored: number;
+					public static Base_TextAppearance_AppCompat_Widget_Button_Inverse: number;
+					public static Base_TextAppearance_AppCompat_Widget_DropDownItem: number;
+					public static Base_TextAppearance_AppCompat_Widget_PopupMenu_Header: number;
+					public static Base_TextAppearance_AppCompat_Widget_PopupMenu_Large: number;
+					public static Base_TextAppearance_AppCompat_Widget_PopupMenu_Small: number;
+					public static Base_TextAppearance_AppCompat_Widget_Switch: number;
+					public static Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem: number;
+					public static Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item: number;
+					public static Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle: number;
+					public static Base_TextAppearance_Widget_AppCompat_Toolbar_Title: number;
+					public static Base_ThemeOverlay_AppCompat: number;
+					public static Base_ThemeOverlay_AppCompat_ActionBar: number;
+					public static Base_ThemeOverlay_AppCompat_Dark: number;
+					public static Base_ThemeOverlay_AppCompat_Dark_ActionBar: number;
+					public static Base_ThemeOverlay_AppCompat_Dialog: number;
+					public static Base_ThemeOverlay_AppCompat_Dialog_Alert: number;
+					public static Base_ThemeOverlay_AppCompat_Light: number;
+					public static Base_Theme_AppCompat: number;
+					public static Base_Theme_AppCompat_CompactMenu: number;
+					public static Base_Theme_AppCompat_Dialog: number;
+					public static Base_Theme_AppCompat_DialogWhenLarge: number;
+					public static Base_Theme_AppCompat_Dialog_Alert: number;
+					public static Base_Theme_AppCompat_Dialog_FixedSize: number;
+					public static Base_Theme_AppCompat_Dialog_MinWidth: number;
+					public static Base_Theme_AppCompat_Light: number;
+					public static Base_Theme_AppCompat_Light_DarkActionBar: number;
+					public static Base_Theme_AppCompat_Light_Dialog: number;
+					public static Base_Theme_AppCompat_Light_DialogWhenLarge: number;
+					public static Base_Theme_AppCompat_Light_Dialog_Alert: number;
+					public static Base_Theme_AppCompat_Light_Dialog_FixedSize: number;
+					public static Base_Theme_AppCompat_Light_Dialog_MinWidth: number;
+					public static Base_V21_ThemeOverlay_AppCompat_Dialog: number;
+					public static Base_V21_Theme_AppCompat: number;
+					public static Base_V21_Theme_AppCompat_Dialog: number;
+					public static Base_V21_Theme_AppCompat_Light: number;
+					public static Base_V21_Theme_AppCompat_Light_Dialog: number;
+					public static Base_V22_Theme_AppCompat: number;
+					public static Base_V22_Theme_AppCompat_Light: number;
+					public static Base_V23_Theme_AppCompat: number;
+					public static Base_V23_Theme_AppCompat_Light: number;
+					public static Base_V26_Theme_AppCompat: number;
+					public static Base_V26_Theme_AppCompat_Light: number;
+					public static Base_V26_Widget_AppCompat_Toolbar: number;
+					public static Base_V28_Theme_AppCompat: number;
+					public static Base_V28_Theme_AppCompat_Light: number;
+					public static Base_V7_ThemeOverlay_AppCompat_Dialog: number;
+					public static Base_V7_Theme_AppCompat: number;
+					public static Base_V7_Theme_AppCompat_Dialog: number;
+					public static Base_V7_Theme_AppCompat_Light: number;
+					public static Base_V7_Theme_AppCompat_Light_Dialog: number;
+					public static Base_V7_Widget_AppCompat_AutoCompleteTextView: number;
+					public static Base_V7_Widget_AppCompat_EditText: number;
+					public static Base_V7_Widget_AppCompat_Toolbar: number;
+					public static Base_Widget_AppCompat_ActionBar: number;
+					public static Base_Widget_AppCompat_ActionBar_Solid: number;
+					public static Base_Widget_AppCompat_ActionBar_TabBar: number;
+					public static Base_Widget_AppCompat_ActionBar_TabText: number;
+					public static Base_Widget_AppCompat_ActionBar_TabView: number;
+					public static Base_Widget_AppCompat_ActionButton: number;
+					public static Base_Widget_AppCompat_ActionButton_CloseMode: number;
+					public static Base_Widget_AppCompat_ActionButton_Overflow: number;
+					public static Base_Widget_AppCompat_ActionMode: number;
+					public static Base_Widget_AppCompat_ActivityChooserView: number;
+					public static Base_Widget_AppCompat_AutoCompleteTextView: number;
+					public static Base_Widget_AppCompat_Button: number;
+					public static Base_Widget_AppCompat_ButtonBar: number;
+					public static Base_Widget_AppCompat_ButtonBar_AlertDialog: number;
+					public static Base_Widget_AppCompat_Button_Borderless: number;
+					public static Base_Widget_AppCompat_Button_Borderless_Colored: number;
+					public static Base_Widget_AppCompat_Button_ButtonBar_AlertDialog: number;
+					public static Base_Widget_AppCompat_Button_Colored: number;
+					public static Base_Widget_AppCompat_Button_Small: number;
+					public static Base_Widget_AppCompat_CompoundButton_CheckBox: number;
+					public static Base_Widget_AppCompat_CompoundButton_RadioButton: number;
+					public static Base_Widget_AppCompat_CompoundButton_Switch: number;
+					public static Base_Widget_AppCompat_DrawerArrowToggle: number;
+					public static Base_Widget_AppCompat_DrawerArrowToggle_Common: number;
+					public static Base_Widget_AppCompat_DropDownItem_Spinner: number;
+					public static Base_Widget_AppCompat_EditText: number;
+					public static Base_Widget_AppCompat_ImageButton: number;
+					public static Base_Widget_AppCompat_Light_ActionBar: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_Solid: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabBar: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabText: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse: number;
+					public static Base_Widget_AppCompat_Light_ActionBar_TabView: number;
+					public static Base_Widget_AppCompat_Light_PopupMenu: number;
+					public static Base_Widget_AppCompat_Light_PopupMenu_Overflow: number;
+					public static Base_Widget_AppCompat_ListMenuView: number;
+					public static Base_Widget_AppCompat_ListPopupWindow: number;
+					public static Base_Widget_AppCompat_ListView: number;
+					public static Base_Widget_AppCompat_ListView_DropDown: number;
+					public static Base_Widget_AppCompat_ListView_Menu: number;
+					public static Base_Widget_AppCompat_PopupMenu: number;
+					public static Base_Widget_AppCompat_PopupMenu_Overflow: number;
+					public static Base_Widget_AppCompat_PopupWindow: number;
+					public static Base_Widget_AppCompat_ProgressBar: number;
+					public static Base_Widget_AppCompat_ProgressBar_Horizontal: number;
+					public static Base_Widget_AppCompat_RatingBar: number;
+					public static Base_Widget_AppCompat_RatingBar_Indicator: number;
+					public static Base_Widget_AppCompat_RatingBar_Small: number;
+					public static Base_Widget_AppCompat_SearchView: number;
+					public static Base_Widget_AppCompat_SearchView_ActionBar: number;
+					public static Base_Widget_AppCompat_SeekBar: number;
+					public static Base_Widget_AppCompat_SeekBar_Discrete: number;
+					public static Base_Widget_AppCompat_Spinner: number;
+					public static Base_Widget_AppCompat_Spinner_Underlined: number;
+					public static Base_Widget_AppCompat_TextView: number;
+					public static Base_Widget_AppCompat_TextView_SpinnerItem: number;
+					public static Base_Widget_AppCompat_Toolbar: number;
+					public static Base_Widget_AppCompat_Toolbar_Button_Navigation: number;
+					public static CardView: number;
+					public static CardView_Dark: number;
+					public static CardView_Light: number;
+					public static Platform_AppCompat: number;
+					public static Platform_AppCompat_Light: number;
+					public static Platform_ThemeOverlay_AppCompat: number;
+					public static Platform_ThemeOverlay_AppCompat_Dark: number;
+					public static Platform_ThemeOverlay_AppCompat_Light: number;
+					public static Platform_V21_AppCompat: number;
+					public static Platform_V21_AppCompat_Light: number;
+					public static Platform_V25_AppCompat: number;
+					public static Platform_V25_AppCompat_Light: number;
+					public static Platform_Widget_AppCompat_Spinner: number;
+					public static RtlOverlay_DialogWindowTitle_AppCompat: number;
+					public static RtlOverlay_Widget_AppCompat_ActionBar_TitleItem: number;
+					public static RtlOverlay_Widget_AppCompat_DialogTitle_Icon: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_Shortcut: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_SubmenuArrow: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_Text: number;
+					public static RtlOverlay_Widget_AppCompat_PopupMenuItem_Title: number;
+					public static RtlOverlay_Widget_AppCompat_SearchView_MagIcon: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Query: number;
+					public static RtlOverlay_Widget_AppCompat_Search_DropDown_Text: number;
+					public static RtlUnderlay_Widget_AppCompat_ActionButton: number;
+					public static RtlUnderlay_Widget_AppCompat_ActionButton_Overflow: number;
+					public static TextAppearance_AppCompat: number;
+					public static TextAppearance_AppCompat_Body1: number;
+					public static TextAppearance_AppCompat_Body2: number;
+					public static TextAppearance_AppCompat_Button: number;
+					public static TextAppearance_AppCompat_Caption: number;
+					public static TextAppearance_AppCompat_Display1: number;
+					public static TextAppearance_AppCompat_Display2: number;
+					public static TextAppearance_AppCompat_Display3: number;
+					public static TextAppearance_AppCompat_Display4: number;
+					public static TextAppearance_AppCompat_Headline: number;
+					public static TextAppearance_AppCompat_Inverse: number;
+					public static TextAppearance_AppCompat_Large: number;
+					public static TextAppearance_AppCompat_Large_Inverse: number;
+					public static TextAppearance_AppCompat_Light_SearchResult_Subtitle: number;
+					public static TextAppearance_AppCompat_Light_SearchResult_Title: number;
+					public static TextAppearance_AppCompat_Light_Widget_PopupMenu_Large: number;
+					public static TextAppearance_AppCompat_Light_Widget_PopupMenu_Small: number;
+					public static TextAppearance_AppCompat_Medium: number;
+					public static TextAppearance_AppCompat_Medium_Inverse: number;
+					public static TextAppearance_AppCompat_Menu: number;
+					public static TextAppearance_AppCompat_SearchResult_Subtitle: number;
+					public static TextAppearance_AppCompat_SearchResult_Title: number;
+					public static TextAppearance_AppCompat_Small: number;
+					public static TextAppearance_AppCompat_Small_Inverse: number;
+					public static TextAppearance_AppCompat_Subhead: number;
+					public static TextAppearance_AppCompat_Subhead_Inverse: number;
+					public static TextAppearance_AppCompat_Title: number;
+					public static TextAppearance_AppCompat_Title_Inverse: number;
+					public static TextAppearance_AppCompat_Tooltip: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Menu: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Subtitle: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Title: number;
+					public static TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Subtitle: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Title: number;
+					public static TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_Button: number;
+					public static TextAppearance_AppCompat_Widget_Button_Borderless_Colored: number;
+					public static TextAppearance_AppCompat_Widget_Button_Colored: number;
+					public static TextAppearance_AppCompat_Widget_Button_Inverse: number;
+					public static TextAppearance_AppCompat_Widget_DropDownItem: number;
+					public static TextAppearance_AppCompat_Widget_PopupMenu_Header: number;
+					public static TextAppearance_AppCompat_Widget_PopupMenu_Large: number;
+					public static TextAppearance_AppCompat_Widget_PopupMenu_Small: number;
+					public static TextAppearance_AppCompat_Widget_Switch: number;
+					public static TextAppearance_AppCompat_Widget_TextView_SpinnerItem: number;
+					public static TextAppearance_Compat_Notification: number;
+					public static TextAppearance_Compat_Notification_Info: number;
+					public static TextAppearance_Compat_Notification_Info_Media: number;
+					public static TextAppearance_Compat_Notification_Line2: number;
+					public static TextAppearance_Compat_Notification_Line2_Media: number;
+					public static TextAppearance_Compat_Notification_Media: number;
+					public static TextAppearance_Compat_Notification_Time: number;
+					public static TextAppearance_Compat_Notification_Time_Media: number;
+					public static TextAppearance_Compat_Notification_Title: number;
+					public static TextAppearance_Compat_Notification_Title_Media: number;
+					public static TextAppearance_Widget_AppCompat_ExpandedMenu_Item: number;
+					public static TextAppearance_Widget_AppCompat_Toolbar_Subtitle: number;
+					public static TextAppearance_Widget_AppCompat_Toolbar_Title: number;
+					public static ThemeOverlay_AppCompat: number;
+					public static ThemeOverlay_AppCompat_ActionBar: number;
+					public static ThemeOverlay_AppCompat_Dark: number;
+					public static ThemeOverlay_AppCompat_Dark_ActionBar: number;
+					public static ThemeOverlay_AppCompat_DayNight: number;
+					public static ThemeOverlay_AppCompat_DayNight_ActionBar: number;
+					public static ThemeOverlay_AppCompat_Dialog: number;
+					public static ThemeOverlay_AppCompat_Dialog_Alert: number;
+					public static ThemeOverlay_AppCompat_Light: number;
+					public static Theme_AppCompat: number;
+					public static Theme_AppCompat_CompactMenu: number;
+					public static Theme_AppCompat_DayNight: number;
+					public static Theme_AppCompat_DayNight_DarkActionBar: number;
+					public static Theme_AppCompat_DayNight_Dialog: number;
+					public static Theme_AppCompat_DayNight_DialogWhenLarge: number;
+					public static Theme_AppCompat_DayNight_Dialog_Alert: number;
+					public static Theme_AppCompat_DayNight_Dialog_MinWidth: number;
+					public static Theme_AppCompat_DayNight_NoActionBar: number;
+					public static Theme_AppCompat_Dialog: number;
+					public static Theme_AppCompat_DialogWhenLarge: number;
+					public static Theme_AppCompat_Dialog_Alert: number;
+					public static Theme_AppCompat_Dialog_MinWidth: number;
+					public static Theme_AppCompat_Light: number;
+					public static Theme_AppCompat_Light_DarkActionBar: number;
+					public static Theme_AppCompat_Light_Dialog: number;
+					public static Theme_AppCompat_Light_DialogWhenLarge: number;
+					public static Theme_AppCompat_Light_Dialog_Alert: number;
+					public static Theme_AppCompat_Light_Dialog_MinWidth: number;
+					public static Theme_AppCompat_Light_NoActionBar: number;
+					public static Theme_AppCompat_NoActionBar: number;
+					public static Widget_AppCompat_ActionBar: number;
+					public static Widget_AppCompat_ActionBar_Solid: number;
+					public static Widget_AppCompat_ActionBar_TabBar: number;
+					public static Widget_AppCompat_ActionBar_TabText: number;
+					public static Widget_AppCompat_ActionBar_TabView: number;
+					public static Widget_AppCompat_ActionButton: number;
+					public static Widget_AppCompat_ActionButton_CloseMode: number;
+					public static Widget_AppCompat_ActionButton_Overflow: number;
+					public static Widget_AppCompat_ActionMode: number;
+					public static Widget_AppCompat_ActivityChooserView: number;
+					public static Widget_AppCompat_AutoCompleteTextView: number;
+					public static Widget_AppCompat_Button: number;
+					public static Widget_AppCompat_ButtonBar: number;
+					public static Widget_AppCompat_ButtonBar_AlertDialog: number;
+					public static Widget_AppCompat_Button_Borderless: number;
+					public static Widget_AppCompat_Button_Borderless_Colored: number;
+					public static Widget_AppCompat_Button_ButtonBar_AlertDialog: number;
+					public static Widget_AppCompat_Button_Colored: number;
+					public static Widget_AppCompat_Button_Small: number;
+					public static Widget_AppCompat_CompoundButton_CheckBox: number;
+					public static Widget_AppCompat_CompoundButton_RadioButton: number;
+					public static Widget_AppCompat_CompoundButton_Switch: number;
+					public static Widget_AppCompat_DrawerArrowToggle: number;
+					public static Widget_AppCompat_DropDownItem_Spinner: number;
+					public static Widget_AppCompat_EditText: number;
+					public static Widget_AppCompat_ImageButton: number;
+					public static Widget_AppCompat_Light_ActionBar: number;
+					public static Widget_AppCompat_Light_ActionBar_Solid: number;
+					public static Widget_AppCompat_Light_ActionBar_Solid_Inverse: number;
+					public static Widget_AppCompat_Light_ActionBar_TabBar: number;
+					public static Widget_AppCompat_Light_ActionBar_TabBar_Inverse: number;
+					public static Widget_AppCompat_Light_ActionBar_TabText: number;
+					public static Widget_AppCompat_Light_ActionBar_TabText_Inverse: number;
+					public static Widget_AppCompat_Light_ActionBar_TabView: number;
+					public static Widget_AppCompat_Light_ActionBar_TabView_Inverse: number;
+					public static Widget_AppCompat_Light_ActionButton: number;
+					public static Widget_AppCompat_Light_ActionButton_CloseMode: number;
+					public static Widget_AppCompat_Light_ActionButton_Overflow: number;
+					public static Widget_AppCompat_Light_ActionMode_Inverse: number;
+					public static Widget_AppCompat_Light_ActivityChooserView: number;
+					public static Widget_AppCompat_Light_AutoCompleteTextView: number;
+					public static Widget_AppCompat_Light_DropDownItem_Spinner: number;
+					public static Widget_AppCompat_Light_ListPopupWindow: number;
+					public static Widget_AppCompat_Light_ListView_DropDown: number;
+					public static Widget_AppCompat_Light_PopupMenu: number;
+					public static Widget_AppCompat_Light_PopupMenu_Overflow: number;
+					public static Widget_AppCompat_Light_SearchView: number;
+					public static Widget_AppCompat_Light_Spinner_DropDown_ActionBar: number;
+					public static Widget_AppCompat_ListMenuView: number;
+					public static Widget_AppCompat_ListPopupWindow: number;
+					public static Widget_AppCompat_ListView: number;
+					public static Widget_AppCompat_ListView_DropDown: number;
+					public static Widget_AppCompat_ListView_Menu: number;
+					public static Widget_AppCompat_PopupMenu: number;
+					public static Widget_AppCompat_PopupMenu_Overflow: number;
+					public static Widget_AppCompat_PopupWindow: number;
+					public static Widget_AppCompat_ProgressBar: number;
+					public static Widget_AppCompat_ProgressBar_Horizontal: number;
+					public static Widget_AppCompat_RatingBar: number;
+					public static Widget_AppCompat_RatingBar_Indicator: number;
+					public static Widget_AppCompat_RatingBar_Small: number;
+					public static Widget_AppCompat_SearchView: number;
+					public static Widget_AppCompat_SearchView_ActionBar: number;
+					public static Widget_AppCompat_SeekBar: number;
+					public static Widget_AppCompat_SeekBar_Discrete: number;
+					public static Widget_AppCompat_Spinner: number;
+					public static Widget_AppCompat_Spinner_DropDown: number;
+					public static Widget_AppCompat_Spinner_DropDown_ActionBar: number;
+					public static Widget_AppCompat_Spinner_Underlined: number;
+					public static Widget_AppCompat_TextView: number;
+					public static Widget_AppCompat_TextView_SpinnerItem: number;
+					public static Widget_AppCompat_Toolbar: number;
+					public static Widget_AppCompat_Toolbar_Button_Navigation: number;
+					public static Widget_Compat_NotificationActionContainer: number;
+					public static Widget_Compat_NotificationActionText: number;
+					public static Widget_Support_CoordinatorLayout: number;
+					public static com_facebook_activity_theme: number;
+					public static com_facebook_auth_dialog: number;
+					public static com_facebook_auth_dialog_instructions_textview: number;
+					public static com_facebook_button: number;
+					public static com_facebook_button_like: number;
+					public static com_facebook_button_send: number;
+					public static com_facebook_button_share: number;
+				}
+				export class styleable {
+					public static class: java.lang.Class<com.facebook.share.R.styleable>;
+					public static ActionBar: androidNative.Array<number>;
+					public static ActionBar_background: number;
+					public static ActionBar_backgroundSplit: number;
+					public static ActionBar_backgroundStacked: number;
+					public static ActionBar_contentInsetEnd: number;
+					public static ActionBar_contentInsetEndWithActions: number;
+					public static ActionBar_contentInsetLeft: number;
+					public static ActionBar_contentInsetRight: number;
+					public static ActionBar_contentInsetStart: number;
+					public static ActionBar_contentInsetStartWithNavigation: number;
+					public static ActionBar_customNavigationLayout: number;
+					public static ActionBar_displayOptions: number;
+					public static ActionBar_divider: number;
+					public static ActionBar_elevation: number;
+					public static ActionBar_height: number;
+					public static ActionBar_hideOnContentScroll: number;
+					public static ActionBar_homeAsUpIndicator: number;
+					public static ActionBar_homeLayout: number;
+					public static ActionBar_icon: number;
+					public static ActionBar_indeterminateProgressStyle: number;
+					public static ActionBar_itemPadding: number;
+					public static ActionBar_logo: number;
+					public static ActionBar_navigationMode: number;
+					public static ActionBar_popupTheme: number;
+					public static ActionBar_progressBarPadding: number;
+					public static ActionBar_progressBarStyle: number;
+					public static ActionBar_subtitle: number;
+					public static ActionBar_subtitleTextStyle: number;
+					public static ActionBar_title: number;
+					public static ActionBar_titleTextStyle: number;
+					public static ActionBarLayout: androidNative.Array<number>;
+					public static ActionBarLayout_android_layout_gravity: number;
+					public static ActionMenuItemView: androidNative.Array<number>;
+					public static ActionMenuItemView_android_minWidth: number;
+					public static ActionMenuView: androidNative.Array<number>;
+					public static ActionMode: androidNative.Array<number>;
+					public static ActionMode_background: number;
+					public static ActionMode_backgroundSplit: number;
+					public static ActionMode_closeItemLayout: number;
+					public static ActionMode_height: number;
+					public static ActionMode_subtitleTextStyle: number;
+					public static ActionMode_titleTextStyle: number;
+					public static ActivityChooserView: androidNative.Array<number>;
+					public static ActivityChooserView_expandActivityOverflowButtonDrawable: number;
+					public static ActivityChooserView_initialActivityCount: number;
+					public static AlertDialog: androidNative.Array<number>;
+					public static AlertDialog_android_layout: number;
+					public static AlertDialog_buttonIconDimen: number;
+					public static AlertDialog_buttonPanelSideLayout: number;
+					public static AlertDialog_listItemLayout: number;
+					public static AlertDialog_listLayout: number;
+					public static AlertDialog_multiChoiceItemLayout: number;
+					public static AlertDialog_showTitle: number;
+					public static AlertDialog_singleChoiceItemLayout: number;
+					public static AnimatedStateListDrawableCompat: androidNative.Array<number>;
+					public static AnimatedStateListDrawableCompat_android_dither: number;
+					public static AnimatedStateListDrawableCompat_android_visible: number;
+					public static AnimatedStateListDrawableCompat_android_variablePadding: number;
+					public static AnimatedStateListDrawableCompat_android_constantSize: number;
+					public static AnimatedStateListDrawableCompat_android_enterFadeDuration: number;
+					public static AnimatedStateListDrawableCompat_android_exitFadeDuration: number;
+					public static AnimatedStateListDrawableItem: androidNative.Array<number>;
+					public static AnimatedStateListDrawableItem_android_id: number;
+					public static AnimatedStateListDrawableItem_android_drawable: number;
+					public static AnimatedStateListDrawableTransition: androidNative.Array<number>;
+					public static AnimatedStateListDrawableTransition_android_drawable: number;
+					public static AnimatedStateListDrawableTransition_android_toId: number;
+					public static AnimatedStateListDrawableTransition_android_fromId: number;
+					public static AnimatedStateListDrawableTransition_android_reversible: number;
+					public static AppCompatImageView: androidNative.Array<number>;
+					public static AppCompatImageView_android_src: number;
+					public static AppCompatImageView_srcCompat: number;
+					public static AppCompatImageView_tint: number;
+					public static AppCompatImageView_tintMode: number;
+					public static AppCompatSeekBar: androidNative.Array<number>;
+					public static AppCompatSeekBar_android_thumb: number;
+					public static AppCompatSeekBar_tickMark: number;
+					public static AppCompatSeekBar_tickMarkTint: number;
+					public static AppCompatSeekBar_tickMarkTintMode: number;
+					public static AppCompatTextHelper: androidNative.Array<number>;
+					public static AppCompatTextHelper_android_textAppearance: number;
+					public static AppCompatTextHelper_android_drawableTop: number;
+					public static AppCompatTextHelper_android_drawableBottom: number;
+					public static AppCompatTextHelper_android_drawableLeft: number;
+					public static AppCompatTextHelper_android_drawableRight: number;
+					public static AppCompatTextHelper_android_drawableStart: number;
+					public static AppCompatTextHelper_android_drawableEnd: number;
+					public static AppCompatTextView: androidNative.Array<number>;
+					public static AppCompatTextView_android_textAppearance: number;
+					public static AppCompatTextView_autoSizeMaxTextSize: number;
+					public static AppCompatTextView_autoSizeMinTextSize: number;
+					public static AppCompatTextView_autoSizePresetSizes: number;
+					public static AppCompatTextView_autoSizeStepGranularity: number;
+					public static AppCompatTextView_autoSizeTextType: number;
+					public static AppCompatTextView_drawableBottomCompat: number;
+					public static AppCompatTextView_drawableEndCompat: number;
+					public static AppCompatTextView_drawableLeftCompat: number;
+					public static AppCompatTextView_drawableRightCompat: number;
+					public static AppCompatTextView_drawableStartCompat: number;
+					public static AppCompatTextView_drawableTint: number;
+					public static AppCompatTextView_drawableTintMode: number;
+					public static AppCompatTextView_drawableTopCompat: number;
+					public static AppCompatTextView_emojiCompatEnabled: number;
+					public static AppCompatTextView_firstBaselineToTopHeight: number;
+					public static AppCompatTextView_fontFamily: number;
+					public static AppCompatTextView_fontVariationSettings: number;
+					public static AppCompatTextView_lastBaselineToBottomHeight: number;
+					public static AppCompatTextView_lineHeight: number;
+					public static AppCompatTextView_textAllCaps: number;
+					public static AppCompatTextView_textLocale: number;
+					public static AppCompatTheme: androidNative.Array<number>;
+					public static AppCompatTheme_android_windowIsFloating: number;
+					public static AppCompatTheme_android_windowAnimationStyle: number;
+					public static AppCompatTheme_actionBarDivider: number;
+					public static AppCompatTheme_actionBarItemBackground: number;
+					public static AppCompatTheme_actionBarPopupTheme: number;
+					public static AppCompatTheme_actionBarSize: number;
+					public static AppCompatTheme_actionBarSplitStyle: number;
+					public static AppCompatTheme_actionBarStyle: number;
+					public static AppCompatTheme_actionBarTabBarStyle: number;
+					public static AppCompatTheme_actionBarTabStyle: number;
+					public static AppCompatTheme_actionBarTabTextStyle: number;
+					public static AppCompatTheme_actionBarTheme: number;
+					public static AppCompatTheme_actionBarWidgetTheme: number;
+					public static AppCompatTheme_actionButtonStyle: number;
+					public static AppCompatTheme_actionDropDownStyle: number;
+					public static AppCompatTheme_actionMenuTextAppearance: number;
+					public static AppCompatTheme_actionMenuTextColor: number;
+					public static AppCompatTheme_actionModeBackground: number;
+					public static AppCompatTheme_actionModeCloseButtonStyle: number;
+					public static AppCompatTheme_actionModeCloseContentDescription: number;
+					public static AppCompatTheme_actionModeCloseDrawable: number;
+					public static AppCompatTheme_actionModeCopyDrawable: number;
+					public static AppCompatTheme_actionModeCutDrawable: number;
+					public static AppCompatTheme_actionModeFindDrawable: number;
+					public static AppCompatTheme_actionModePasteDrawable: number;
+					public static AppCompatTheme_actionModePopupWindowStyle: number;
+					public static AppCompatTheme_actionModeSelectAllDrawable: number;
+					public static AppCompatTheme_actionModeShareDrawable: number;
+					public static AppCompatTheme_actionModeSplitBackground: number;
+					public static AppCompatTheme_actionModeStyle: number;
+					public static AppCompatTheme_actionModeTheme: number;
+					public static AppCompatTheme_actionModeWebSearchDrawable: number;
+					public static AppCompatTheme_actionOverflowButtonStyle: number;
+					public static AppCompatTheme_actionOverflowMenuStyle: number;
+					public static AppCompatTheme_activityChooserViewStyle: number;
+					public static AppCompatTheme_alertDialogButtonGroupStyle: number;
+					public static AppCompatTheme_alertDialogCenterButtons: number;
+					public static AppCompatTheme_alertDialogStyle: number;
+					public static AppCompatTheme_alertDialogTheme: number;
+					public static AppCompatTheme_autoCompleteTextViewStyle: number;
+					public static AppCompatTheme_borderlessButtonStyle: number;
+					public static AppCompatTheme_buttonBarButtonStyle: number;
+					public static AppCompatTheme_buttonBarNegativeButtonStyle: number;
+					public static AppCompatTheme_buttonBarNeutralButtonStyle: number;
+					public static AppCompatTheme_buttonBarPositiveButtonStyle: number;
+					public static AppCompatTheme_buttonBarStyle: number;
+					public static AppCompatTheme_buttonStyle: number;
+					public static AppCompatTheme_buttonStyleSmall: number;
+					public static AppCompatTheme_checkboxStyle: number;
+					public static AppCompatTheme_checkedTextViewStyle: number;
+					public static AppCompatTheme_colorAccent: number;
+					public static AppCompatTheme_colorBackgroundFloating: number;
+					public static AppCompatTheme_colorButtonNormal: number;
+					public static AppCompatTheme_colorControlActivated: number;
+					public static AppCompatTheme_colorControlHighlight: number;
+					public static AppCompatTheme_colorControlNormal: number;
+					public static AppCompatTheme_colorError: number;
+					public static AppCompatTheme_colorPrimary: number;
+					public static AppCompatTheme_colorPrimaryDark: number;
+					public static AppCompatTheme_colorSwitchThumbNormal: number;
+					public static AppCompatTheme_controlBackground: number;
+					public static AppCompatTheme_dialogCornerRadius: number;
+					public static AppCompatTheme_dialogPreferredPadding: number;
+					public static AppCompatTheme_dialogTheme: number;
+					public static AppCompatTheme_dividerHorizontal: number;
+					public static AppCompatTheme_dividerVertical: number;
+					public static AppCompatTheme_dropDownListViewStyle: number;
+					public static AppCompatTheme_dropdownListPreferredItemHeight: number;
+					public static AppCompatTheme_editTextBackground: number;
+					public static AppCompatTheme_editTextColor: number;
+					public static AppCompatTheme_editTextStyle: number;
+					public static AppCompatTheme_homeAsUpIndicator: number;
+					public static AppCompatTheme_imageButtonStyle: number;
+					public static AppCompatTheme_listChoiceBackgroundIndicator: number;
+					public static AppCompatTheme_listChoiceIndicatorMultipleAnimated: number;
+					public static AppCompatTheme_listChoiceIndicatorSingleAnimated: number;
+					public static AppCompatTheme_listDividerAlertDialog: number;
+					public static AppCompatTheme_listMenuViewStyle: number;
+					public static AppCompatTheme_listPopupWindowStyle: number;
+					public static AppCompatTheme_listPreferredItemHeight: number;
+					public static AppCompatTheme_listPreferredItemHeightLarge: number;
+					public static AppCompatTheme_listPreferredItemHeightSmall: number;
+					public static AppCompatTheme_listPreferredItemPaddingEnd: number;
+					public static AppCompatTheme_listPreferredItemPaddingLeft: number;
+					public static AppCompatTheme_listPreferredItemPaddingRight: number;
+					public static AppCompatTheme_listPreferredItemPaddingStart: number;
+					public static AppCompatTheme_panelBackground: number;
+					public static AppCompatTheme_panelMenuListTheme: number;
+					public static AppCompatTheme_panelMenuListWidth: number;
+					public static AppCompatTheme_popupMenuStyle: number;
+					public static AppCompatTheme_popupWindowStyle: number;
+					public static AppCompatTheme_radioButtonStyle: number;
+					public static AppCompatTheme_ratingBarStyle: number;
+					public static AppCompatTheme_ratingBarStyleIndicator: number;
+					public static AppCompatTheme_ratingBarStyleSmall: number;
+					public static AppCompatTheme_searchViewStyle: number;
+					public static AppCompatTheme_seekBarStyle: number;
+					public static AppCompatTheme_selectableItemBackground: number;
+					public static AppCompatTheme_selectableItemBackgroundBorderless: number;
+					public static AppCompatTheme_spinnerDropDownItemStyle: number;
+					public static AppCompatTheme_spinnerStyle: number;
+					public static AppCompatTheme_switchStyle: number;
+					public static AppCompatTheme_textAppearanceLargePopupMenu: number;
+					public static AppCompatTheme_textAppearanceListItem: number;
+					public static AppCompatTheme_textAppearanceListItemSecondary: number;
+					public static AppCompatTheme_textAppearanceListItemSmall: number;
+					public static AppCompatTheme_textAppearancePopupMenuHeader: number;
+					public static AppCompatTheme_textAppearanceSearchResultSubtitle: number;
+					public static AppCompatTheme_textAppearanceSearchResultTitle: number;
+					public static AppCompatTheme_textAppearanceSmallPopupMenu: number;
+					public static AppCompatTheme_textColorAlertDialogListItem: number;
+					public static AppCompatTheme_textColorSearchUrl: number;
+					public static AppCompatTheme_toolbarNavigationButtonStyle: number;
+					public static AppCompatTheme_toolbarStyle: number;
+					public static AppCompatTheme_tooltipForegroundColor: number;
+					public static AppCompatTheme_tooltipFrameBackground: number;
+					public static AppCompatTheme_viewInflaterClass: number;
+					public static AppCompatTheme_windowActionBar: number;
+					public static AppCompatTheme_windowActionBarOverlay: number;
+					public static AppCompatTheme_windowActionModeOverlay: number;
+					public static AppCompatTheme_windowFixedHeightMajor: number;
+					public static AppCompatTheme_windowFixedHeightMinor: number;
+					public static AppCompatTheme_windowFixedWidthMajor: number;
+					public static AppCompatTheme_windowFixedWidthMinor: number;
+					public static AppCompatTheme_windowMinWidthMajor: number;
+					public static AppCompatTheme_windowMinWidthMinor: number;
+					public static AppCompatTheme_windowNoTitle: number;
+					public static ButtonBarLayout: androidNative.Array<number>;
+					public static ButtonBarLayout_allowStacking: number;
+					public static CardView: androidNative.Array<number>;
+					public static CardView_android_minWidth: number;
+					public static CardView_android_minHeight: number;
+					public static CardView_cardBackgroundColor: number;
+					public static CardView_cardCornerRadius: number;
+					public static CardView_cardElevation: number;
+					public static CardView_cardMaxElevation: number;
+					public static CardView_cardPreventCornerOverlap: number;
+					public static CardView_cardUseCompatPadding: number;
+					public static CardView_contentPadding: number;
+					public static CardView_contentPaddingBottom: number;
+					public static CardView_contentPaddingLeft: number;
+					public static CardView_contentPaddingRight: number;
+					public static CardView_contentPaddingTop: number;
+					public static ColorStateListItem: androidNative.Array<number>;
+					public static ColorStateListItem_android_color: number;
+					public static ColorStateListItem_android_alpha: number;
+					public static ColorStateListItem_android_lStar: number;
+					public static ColorStateListItem_alpha: number;
+					public static ColorStateListItem_lStar: number;
+					public static CompoundButton: androidNative.Array<number>;
+					public static CompoundButton_android_button: number;
+					public static CompoundButton_buttonCompat: number;
+					public static CompoundButton_buttonTint: number;
+					public static CompoundButton_buttonTintMode: number;
+					public static CoordinatorLayout: androidNative.Array<number>;
+					public static CoordinatorLayout_keylines: number;
+					public static CoordinatorLayout_statusBarBackground: number;
+					public static CoordinatorLayout_Layout: androidNative.Array<number>;
+					public static CoordinatorLayout_Layout_android_layout_gravity: number;
+					public static CoordinatorLayout_Layout_layout_anchor: number;
+					public static CoordinatorLayout_Layout_layout_anchorGravity: number;
+					public static CoordinatorLayout_Layout_layout_behavior: number;
+					public static CoordinatorLayout_Layout_layout_dodgeInsetEdges: number;
+					public static CoordinatorLayout_Layout_layout_insetEdge: number;
+					public static CoordinatorLayout_Layout_layout_keyline: number;
+					public static DrawerArrowToggle: androidNative.Array<number>;
+					public static DrawerArrowToggle_arrowHeadLength: number;
+					public static DrawerArrowToggle_arrowShaftLength: number;
+					public static DrawerArrowToggle_barLength: number;
+					public static DrawerArrowToggle_color: number;
+					public static DrawerArrowToggle_drawableSize: number;
+					public static DrawerArrowToggle_gapBetweenBars: number;
+					public static DrawerArrowToggle_spinBars: number;
+					public static DrawerArrowToggle_thickness: number;
+					public static FontFamily: androidNative.Array<number>;
+					public static FontFamily_fontProviderAuthority: number;
+					public static FontFamily_fontProviderCerts: number;
+					public static FontFamily_fontProviderFetchStrategy: number;
+					public static FontFamily_fontProviderFetchTimeout: number;
+					public static FontFamily_fontProviderPackage: number;
+					public static FontFamily_fontProviderQuery: number;
+					public static FontFamily_fontProviderSystemFontFamily: number;
+					public static FontFamilyFont: androidNative.Array<number>;
+					public static FontFamilyFont_android_font: number;
+					public static FontFamilyFont_android_fontWeight: number;
+					public static FontFamilyFont_android_fontStyle: number;
+					public static FontFamilyFont_android_ttcIndex: number;
+					public static FontFamilyFont_android_fontVariationSettings: number;
+					public static FontFamilyFont_font: number;
+					public static FontFamilyFont_fontStyle: number;
+					public static FontFamilyFont_fontVariationSettings: number;
+					public static FontFamilyFont_fontWeight: number;
+					public static FontFamilyFont_ttcIndex: number;
+					public static Fragment: androidNative.Array<number>;
+					public static Fragment_android_name: number;
+					public static Fragment_android_id: number;
+					public static Fragment_android_tag: number;
+					public static FragmentContainerView: androidNative.Array<number>;
+					public static FragmentContainerView_android_name: number;
+					public static FragmentContainerView_android_tag: number;
+					public static GradientColor: androidNative.Array<number>;
+					public static GradientColor_android_startColor: number;
+					public static GradientColor_android_endColor: number;
+					public static GradientColor_android_type: number;
+					public static GradientColor_android_centerX: number;
+					public static GradientColor_android_centerY: number;
+					public static GradientColor_android_gradientRadius: number;
+					public static GradientColor_android_tileMode: number;
+					public static GradientColor_android_centerColor: number;
+					public static GradientColor_android_startX: number;
+					public static GradientColor_android_startY: number;
+					public static GradientColor_android_endX: number;
+					public static GradientColor_android_endY: number;
+					public static GradientColorItem: androidNative.Array<number>;
+					public static GradientColorItem_android_color: number;
+					public static GradientColorItem_android_offset: number;
+					public static LinearLayoutCompat: androidNative.Array<number>;
+					public static LinearLayoutCompat_android_gravity: number;
+					public static LinearLayoutCompat_android_orientation: number;
+					public static LinearLayoutCompat_android_baselineAligned: number;
+					public static LinearLayoutCompat_android_baselineAlignedChildIndex: number;
+					public static LinearLayoutCompat_android_weightSum: number;
+					public static LinearLayoutCompat_divider: number;
+					public static LinearLayoutCompat_dividerPadding: number;
+					public static LinearLayoutCompat_measureWithLargestChild: number;
+					public static LinearLayoutCompat_showDividers: number;
+					public static LinearLayoutCompat_Layout: androidNative.Array<number>;
+					public static LinearLayoutCompat_Layout_android_layout_gravity: number;
+					public static LinearLayoutCompat_Layout_android_layout_width: number;
+					public static LinearLayoutCompat_Layout_android_layout_height: number;
+					public static LinearLayoutCompat_Layout_android_layout_weight: number;
+					public static ListPopupWindow: androidNative.Array<number>;
+					public static ListPopupWindow_android_dropDownHorizontalOffset: number;
+					public static ListPopupWindow_android_dropDownVerticalOffset: number;
+					public static MenuGroup: androidNative.Array<number>;
+					public static MenuGroup_android_enabled: number;
+					public static MenuGroup_android_id: number;
+					public static MenuGroup_android_visible: number;
+					public static MenuGroup_android_menuCategory: number;
+					public static MenuGroup_android_orderInCategory: number;
+					public static MenuGroup_android_checkableBehavior: number;
+					public static MenuItem: androidNative.Array<number>;
+					public static MenuItem_android_icon: number;
+					public static MenuItem_android_enabled: number;
+					public static MenuItem_android_id: number;
+					public static MenuItem_android_checked: number;
+					public static MenuItem_android_visible: number;
+					public static MenuItem_android_menuCategory: number;
+					public static MenuItem_android_orderInCategory: number;
+					public static MenuItem_android_title: number;
+					public static MenuItem_android_titleCondensed: number;
+					public static MenuItem_android_alphabeticShortcut: number;
+					public static MenuItem_android_numericShortcut: number;
+					public static MenuItem_android_checkable: number;
+					public static MenuItem_android_onClick: number;
+					public static MenuItem_actionLayout: number;
+					public static MenuItem_actionProviderClass: number;
+					public static MenuItem_actionViewClass: number;
+					public static MenuItem_alphabeticModifiers: number;
+					public static MenuItem_contentDescription: number;
+					public static MenuItem_iconTint: number;
+					public static MenuItem_iconTintMode: number;
+					public static MenuItem_numericModifiers: number;
+					public static MenuItem_showAsAction: number;
+					public static MenuItem_tooltipText: number;
+					public static MenuView: androidNative.Array<number>;
+					public static MenuView_android_windowAnimationStyle: number;
+					public static MenuView_android_itemTextAppearance: number;
+					public static MenuView_android_horizontalDivider: number;
+					public static MenuView_android_verticalDivider: number;
+					public static MenuView_android_headerBackground: number;
+					public static MenuView_android_itemBackground: number;
+					public static MenuView_android_itemIconDisabledAlpha: number;
+					public static MenuView_preserveIconSpacing: number;
+					public static MenuView_subMenuArrow: number;
+					public static PopupWindow: androidNative.Array<number>;
+					public static PopupWindow_android_popupBackground: number;
+					public static PopupWindow_android_popupAnimationStyle: number;
+					public static PopupWindow_overlapAnchor: number;
+					public static PopupWindowBackgroundState: androidNative.Array<number>;
+					public static PopupWindowBackgroundState_state_above_anchor: number;
+					public static RecycleListView: androidNative.Array<number>;
+					public static RecycleListView_paddingBottomNoButtons: number;
+					public static RecycleListView_paddingTopNoTitle: number;
+					public static SearchView: androidNative.Array<number>;
+					public static SearchView_android_focusable: number;
+					public static SearchView_android_maxWidth: number;
+					public static SearchView_android_inputType: number;
+					public static SearchView_android_imeOptions: number;
+					public static SearchView_closeIcon: number;
+					public static SearchView_commitIcon: number;
+					public static SearchView_defaultQueryHint: number;
+					public static SearchView_goIcon: number;
+					public static SearchView_iconifiedByDefault: number;
+					public static SearchView_layout: number;
+					public static SearchView_queryBackground: number;
+					public static SearchView_queryHint: number;
+					public static SearchView_searchHintIcon: number;
+					public static SearchView_searchIcon: number;
+					public static SearchView_submitBackground: number;
+					public static SearchView_suggestionRowLayout: number;
+					public static SearchView_voiceIcon: number;
+					public static Spinner: androidNative.Array<number>;
+					public static Spinner_android_entries: number;
+					public static Spinner_android_popupBackground: number;
+					public static Spinner_android_prompt: number;
+					public static Spinner_android_dropDownWidth: number;
+					public static Spinner_popupTheme: number;
+					public static StateListDrawable: androidNative.Array<number>;
+					public static StateListDrawable_android_dither: number;
+					public static StateListDrawable_android_visible: number;
+					public static StateListDrawable_android_variablePadding: number;
+					public static StateListDrawable_android_constantSize: number;
+					public static StateListDrawable_android_enterFadeDuration: number;
+					public static StateListDrawable_android_exitFadeDuration: number;
+					public static StateListDrawableItem: androidNative.Array<number>;
+					public static StateListDrawableItem_android_drawable: number;
+					public static SwitchCompat: androidNative.Array<number>;
+					public static SwitchCompat_android_textOn: number;
+					public static SwitchCompat_android_textOff: number;
+					public static SwitchCompat_android_thumb: number;
+					public static SwitchCompat_showText: number;
+					public static SwitchCompat_splitTrack: number;
+					public static SwitchCompat_switchMinWidth: number;
+					public static SwitchCompat_switchPadding: number;
+					public static SwitchCompat_switchTextAppearance: number;
+					public static SwitchCompat_thumbTextPadding: number;
+					public static SwitchCompat_thumbTint: number;
+					public static SwitchCompat_thumbTintMode: number;
+					public static SwitchCompat_track: number;
+					public static SwitchCompat_trackTint: number;
+					public static SwitchCompat_trackTintMode: number;
+					public static TextAppearance: androidNative.Array<number>;
+					public static TextAppearance_android_textSize: number;
+					public static TextAppearance_android_typeface: number;
+					public static TextAppearance_android_textStyle: number;
+					public static TextAppearance_android_textColor: number;
+					public static TextAppearance_android_textColorHint: number;
+					public static TextAppearance_android_textColorLink: number;
+					public static TextAppearance_android_shadowColor: number;
+					public static TextAppearance_android_shadowDx: number;
+					public static TextAppearance_android_shadowDy: number;
+					public static TextAppearance_android_shadowRadius: number;
+					public static TextAppearance_android_fontFamily: number;
+					public static TextAppearance_android_textFontWeight: number;
+					public static TextAppearance_fontFamily: number;
+					public static TextAppearance_fontVariationSettings: number;
+					public static TextAppearance_textAllCaps: number;
+					public static TextAppearance_textLocale: number;
+					public static Toolbar: androidNative.Array<number>;
+					public static Toolbar_android_gravity: number;
+					public static Toolbar_android_minHeight: number;
+					public static Toolbar_buttonGravity: number;
+					public static Toolbar_collapseContentDescription: number;
+					public static Toolbar_collapseIcon: number;
+					public static Toolbar_contentInsetEnd: number;
+					public static Toolbar_contentInsetEndWithActions: number;
+					public static Toolbar_contentInsetLeft: number;
+					public static Toolbar_contentInsetRight: number;
+					public static Toolbar_contentInsetStart: number;
+					public static Toolbar_contentInsetStartWithNavigation: number;
+					public static Toolbar_logo: number;
+					public static Toolbar_logoDescription: number;
+					public static Toolbar_maxButtonHeight: number;
+					public static Toolbar_menu: number;
+					public static Toolbar_navigationContentDescription: number;
+					public static Toolbar_navigationIcon: number;
+					public static Toolbar_popupTheme: number;
+					public static Toolbar_subtitle: number;
+					public static Toolbar_subtitleTextAppearance: number;
+					public static Toolbar_subtitleTextColor: number;
+					public static Toolbar_title: number;
+					public static Toolbar_titleMargin: number;
+					public static Toolbar_titleMarginBottom: number;
+					public static Toolbar_titleMarginEnd: number;
+					public static Toolbar_titleMarginStart: number;
+					public static Toolbar_titleMarginTop: number;
+					public static Toolbar_titleMargins: number;
+					public static Toolbar_titleTextAppearance: number;
+					public static Toolbar_titleTextColor: number;
+					public static View: androidNative.Array<number>;
+					public static View_android_theme: number;
+					public static View_android_focusable: number;
+					public static View_paddingEnd: number;
+					public static View_paddingStart: number;
+					public static View_theme: number;
+					public static ViewBackgroundHelper: androidNative.Array<number>;
+					public static ViewBackgroundHelper_android_background: number;
+					public static ViewBackgroundHelper_backgroundTint: number;
+					public static ViewBackgroundHelper_backgroundTintMode: number;
+					public static ViewStubCompat: androidNative.Array<number>;
+					public static ViewStubCompat_android_id: number;
+					public static ViewStubCompat_android_layout: number;
+					public static ViewStubCompat_android_inflatedId: number;
+					public static com_facebook_like_view: androidNative.Array<number>;
+					public static com_facebook_like_view_com_facebook_auxiliary_view_position: number;
+					public static com_facebook_like_view_com_facebook_foreground_color: number;
+					public static com_facebook_like_view_com_facebook_horizontal_alignment: number;
+					public static com_facebook_like_view_com_facebook_object_id: number;
+					public static com_facebook_like_view_com_facebook_object_type: number;
+					public static com_facebook_like_view_com_facebook_style: number;
+					public static<clinit>(): void;
+				}
+			}
+		}
+	}
+}
+
+declare module com {
+	export module facebook {
 		export module share {
 			export class ShareBuilder<M, B> extends java.lang.Object {
-				public static class: java.lang.Class<com.facebook.share.ShareBuilder<any, any>>;
+				public static class: java.lang.Class<com.facebook.share.ShareBuilder>;
 				/**
-				 * Constructs a new instance of the com.facebook.share.ShareBuilder<any,any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+				 * Constructs a new instance of the com.facebook.share.ShareBuilder interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 				 */
 				public constructor(implementation: { build(): M });
 				public constructor();
@@ -7825,6 +18928,7 @@ declare module com {
 			export module internal {
 				export class ShareFeedContent extends com.facebook.share.model.ShareContent<com.facebook.share.internal.ShareFeedContent, com.facebook.share.internal.ShareFeedContent.Builder> {
 					public static class: java.lang.Class<com.facebook.share.internal.ShareFeedContent>;
+					public static Companion: com.facebook.share.internal.ShareFeedContent.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.share.internal.ShareFeedContent>;
 					public getPicture(): string;
 					public constructor(param0: globalAndroid.os.Parcel);
@@ -7962,6 +19066,7 @@ declare module com {
 			export module model {
 				export class AppGroupCreationContent extends com.facebook.share.model.ShareModel {
 					public static class: java.lang.Class<com.facebook.share.model.AppGroupCreationContent>;
+					public static Companion: com.facebook.share.model.AppGroupCreationContent.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.share.model.AppGroupCreationContent>;
 					public constructor(param0: globalAndroid.os.Parcel);
 					public getName(): string;
@@ -8010,6 +19115,7 @@ declare module com {
 			export module model {
 				export class CameraEffectArguments extends com.facebook.share.model.ShareModel {
 					public static class: java.lang.Class<com.facebook.share.model.CameraEffectArguments>;
+					public static Companion: com.facebook.share.model.CameraEffectArguments.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.share.model.CameraEffectArguments>;
 					public constructor(param0: globalAndroid.os.Parcel);
 					public get(param0: string): any;
@@ -8047,6 +19153,7 @@ declare module com {
 			export module model {
 				export class CameraEffectTextures extends com.facebook.share.model.ShareModel {
 					public static class: java.lang.Class<com.facebook.share.model.CameraEffectTextures>;
+					public static Companion: com.facebook.share.model.CameraEffectTextures.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.share.model.CameraEffectTextures>;
 					public getTextureBitmap(param0: string): globalAndroid.graphics.Bitmap;
 					public constructor(param0: globalAndroid.os.Parcel);
@@ -8084,6 +19191,7 @@ declare module com {
 			export module model {
 				export class GameRequestContent extends com.facebook.share.model.ShareModel {
 					public static class: java.lang.Class<com.facebook.share.model.GameRequestContent>;
+					public static Companion: com.facebook.share.model.GameRequestContent.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.share.model.GameRequestContent>;
 					public getTitle(): string;
 					public getActionType(): com.facebook.share.model.GameRequestContent.ActionType;
@@ -8171,6 +19279,7 @@ declare module com {
 			export module model {
 				export class ShareCameraEffectContent extends com.facebook.share.model.ShareContent<com.facebook.share.model.ShareCameraEffectContent, com.facebook.share.model.ShareCameraEffectContent.Builder> {
 					public static class: java.lang.Class<com.facebook.share.model.ShareCameraEffectContent>;
+					public static Companion: com.facebook.share.model.ShareCameraEffectContent.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.share.model.ShareCameraEffectContent>;
 					public constructor(param0: globalAndroid.os.Parcel);
 					public getArguments(): com.facebook.share.model.CameraEffectArguments;
@@ -8210,7 +19319,7 @@ declare module com {
 		export module share {
 			export module model {
 				export abstract class ShareContent<M, B> extends com.facebook.share.model.ShareModel {
-					public static class: java.lang.Class<com.facebook.share.model.ShareContent<any, any>>;
+					public static class: java.lang.Class<com.facebook.share.model.ShareContent>;
 					public getPlaceId(): string;
 					public constructor(param0: globalAndroid.os.Parcel);
 					public getRef(): string;
@@ -8224,7 +19333,7 @@ declare module com {
 				}
 				export module ShareContent {
 					export abstract class Builder<M, B> extends com.facebook.share.model.ShareModelBuilder<any, any> {
-						public static class: java.lang.Class<com.facebook.share.model.ShareContent.Builder<any, any>>;
+						public static class: java.lang.Class<com.facebook.share.model.ShareContent.Builder>;
 						public constructor();
 						public getHashtag$facebook_common_release(): com.facebook.share.model.ShareHashtag;
 						public readFrom(param0: any): any;
@@ -8259,6 +19368,7 @@ declare module com {
 			export module model {
 				export class ShareHashtag extends com.facebook.share.model.ShareModel {
 					public static class: java.lang.Class<com.facebook.share.model.ShareHashtag>;
+					public static Companion: com.facebook.share.model.ShareHashtag.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.share.model.ShareHashtag>;
 					public constructor(param0: globalAndroid.os.Parcel);
 					public describeContents(): number;
@@ -8292,6 +19402,7 @@ declare module com {
 			export module model {
 				export class ShareLinkContent extends com.facebook.share.model.ShareContent<com.facebook.share.model.ShareLinkContent, com.facebook.share.model.ShareLinkContent.Builder> {
 					public static class: java.lang.Class<com.facebook.share.model.ShareLinkContent>;
+					public static Companion: com.facebook.share.model.ShareLinkContent.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.share.model.ShareLinkContent>;
 					public constructor(param0: globalAndroid.os.Parcel);
 					public getQuote(): string;
@@ -8324,7 +19435,7 @@ declare module com {
 		export module share {
 			export module model {
 				export abstract class ShareMedia<M, B> extends com.facebook.share.model.ShareModel {
-					public static class: java.lang.Class<com.facebook.share.model.ShareMedia<any, any>>;
+					public static class: java.lang.Class<com.facebook.share.model.ShareMedia>;
 					public constructor(param0: globalAndroid.os.Parcel);
 					/** @deprecated */
 					public getParameters(): globalAndroid.os.Bundle;
@@ -8335,7 +19446,8 @@ declare module com {
 				}
 				export module ShareMedia {
 					export abstract class Builder<M, B> extends com.facebook.share.model.ShareModelBuilder<any, any> {
-						public static class: java.lang.Class<com.facebook.share.model.ShareMedia.Builder<any, any>>;
+						public static class: java.lang.Class<com.facebook.share.model.ShareMedia.Builder>;
+						public static Companion: com.facebook.share.model.ShareMedia.Builder.Companion;
 						public getParams$facebook_common_release(): globalAndroid.os.Bundle;
 						public constructor();
 						/** @deprecated */
@@ -8374,6 +19486,7 @@ declare module com {
 			export module model {
 				export class ShareMediaContent extends com.facebook.share.model.ShareContent<com.facebook.share.model.ShareMediaContent, com.facebook.share.model.ShareMediaContent.Builder> {
 					public static class: java.lang.Class<com.facebook.share.model.ShareMediaContent>;
+					public static Companion: com.facebook.share.model.ShareMediaContent.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.share.model.ShareMediaContent>;
 					public constructor(param0: globalAndroid.os.Parcel);
 					public describeContents(): number;
@@ -8416,7 +19529,7 @@ declare module com {
 				}
 				export module ShareMessengerActionButton {
 					export abstract class Builder<M, B> extends com.facebook.share.model.ShareModelBuilder<any, any> {
-						public static class: java.lang.Class<com.facebook.share.model.ShareMessengerActionButton.Builder<any, any>>;
+						public static class: java.lang.Class<com.facebook.share.model.ShareMessengerActionButton.Builder>;
 						public getTitle$facebook_common_release(): string;
 						public setTitle$facebook_common_release(param0: string): void;
 						public constructor();
@@ -8436,6 +19549,7 @@ declare module com {
 			export module model {
 				export class ShareMessengerURLActionButton extends com.facebook.share.model.ShareMessengerActionButton {
 					public static class: java.lang.Class<com.facebook.share.model.ShareMessengerURLActionButton>;
+					public static Companion: com.facebook.share.model.ShareMessengerURLActionButton.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.share.model.ShareMessengerURLActionButton>;
 					public getWebviewHeightRatio(): com.facebook.share.model.ShareMessengerURLActionButton.WebviewHeightRatio;
 					public constructor(param0: globalAndroid.os.Parcel);
@@ -8510,9 +19624,9 @@ declare module com {
 		export module share {
 			export module model {
 				export class ShareModelBuilder<M, B> extends com.facebook.share.ShareBuilder<any, any> {
-					public static class: java.lang.Class<com.facebook.share.model.ShareModelBuilder<any, any>>;
+					public static class: java.lang.Class<com.facebook.share.model.ShareModelBuilder>;
 					/**
-					 * Constructs a new instance of the com.facebook.share.model.ShareModelBuilder<any,any> interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+					 * Constructs a new instance of the com.facebook.share.model.ShareModelBuilder interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
 					 */
 					public constructor(implementation: { readFrom(param0: any): any; build(): any });
 					public constructor();
@@ -8530,6 +19644,7 @@ declare module com {
 			export module model {
 				export class SharePhoto extends com.facebook.share.model.ShareMedia<com.facebook.share.model.SharePhoto, com.facebook.share.model.SharePhoto.Builder> {
 					public static class: java.lang.Class<com.facebook.share.model.SharePhoto>;
+					public static Companion: com.facebook.share.model.SharePhoto.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.share.model.SharePhoto>;
 					public getImageUrl(): globalAndroid.net.Uri;
 					public constructor(param0: globalAndroid.os.Parcel);
@@ -8544,6 +19659,7 @@ declare module com {
 				export module SharePhoto {
 					export class Builder extends com.facebook.share.model.ShareMedia.Builder<com.facebook.share.model.SharePhoto, com.facebook.share.model.SharePhoto.Builder> {
 						public static class: java.lang.Class<com.facebook.share.model.SharePhoto.Builder>;
+						public static Companion: com.facebook.share.model.SharePhoto.Builder.Companion;
 						public setImageUrl(param0: globalAndroid.net.Uri): com.facebook.share.model.SharePhoto.Builder;
 						public constructor();
 						public getUserGenerated$facebook_common_release(): boolean;
@@ -8580,6 +19696,7 @@ declare module com {
 			export module model {
 				export class SharePhotoContent extends com.facebook.share.model.ShareContent<com.facebook.share.model.SharePhotoContent, com.facebook.share.model.SharePhotoContent.Builder> {
 					public static class: java.lang.Class<com.facebook.share.model.SharePhotoContent>;
+					public static Companion: com.facebook.share.model.SharePhotoContent.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.share.model.SharePhotoContent>;
 					public constructor(param0: globalAndroid.os.Parcel);
 					public describeContents(): number;
@@ -8614,6 +19731,7 @@ declare module com {
 			export module model {
 				export class ShareStoryContent extends com.facebook.share.model.ShareContent<com.facebook.share.model.ShareStoryContent, com.facebook.share.model.ShareStoryContent.Builder> {
 					public static class: java.lang.Class<com.facebook.share.model.ShareStoryContent>;
+					public static Companion: com.facebook.share.model.ShareStoryContent.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.share.model.ShareStoryContent>;
 					public constructor(param0: globalAndroid.os.Parcel);
 					public getStickerAsset(): com.facebook.share.model.SharePhoto;
@@ -8659,6 +19777,7 @@ declare module com {
 			export module model {
 				export class ShareVideo extends com.facebook.share.model.ShareMedia<com.facebook.share.model.ShareVideo, com.facebook.share.model.ShareVideo.Builder> {
 					public static class: java.lang.Class<com.facebook.share.model.ShareVideo>;
+					public static Companion: com.facebook.share.model.ShareVideo.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.share.model.ShareVideo>;
 					public constructor(param0: globalAndroid.os.Parcel);
 					public constructor(param0: com.facebook.share.model.ShareMedia.Builder<any, any>);
@@ -8694,6 +19813,7 @@ declare module com {
 			export module model {
 				export class ShareVideoContent extends com.facebook.share.model.ShareContent<com.facebook.share.model.ShareVideoContent, com.facebook.share.model.ShareVideoContent.Builder> implements com.facebook.share.model.ShareModel {
 					public static class: java.lang.Class<com.facebook.share.model.ShareVideoContent>;
+					public static Companion: com.facebook.share.model.ShareVideoContent.Companion;
 					public static CREATOR: globalAndroid.os.Parcelable.Creator<com.facebook.share.model.ShareVideoContent>;
 					public constructor(param0: globalAndroid.os.Parcel);
 					public describeContents(): number;
@@ -8739,6 +19859,7 @@ declare module com {
 			export module widget {
 				export class ShareDialog extends com.facebook.internal.FacebookDialogBase<com.facebook.share.model.ShareContent<any, any>, com.facebook.share.Sharer.Result> implements com.facebook.share.Sharer {
 					public static class: java.lang.Class<com.facebook.share.widget.ShareDialog>;
+					public static Companion: com.facebook.share.widget.ShareDialog.Companion;
 					public static WEB_SHARE_DIALOG: string;
 					public canShow(param0: com.facebook.share.model.ShareContent<any, any>, param1: com.facebook.share.widget.ShareDialog.Mode): boolean;
 					public createBaseAppCall(): com.facebook.internal.AppCall;
@@ -8772,7 +19893,7 @@ declare module com {
 						public static class: java.lang.Class<com.facebook.share.widget.ShareDialog.CameraEffectHandler>;
 						public createAppCall(param0: com.facebook.share.model.ShareContent<any, any>): com.facebook.internal.AppCall;
 						public canShow(param0: com.facebook.share.model.ShareContent<any, any>, param1: boolean): boolean;
-						public constructor(param0: com.facebook.internal.FacebookDialogBase<any, any>);
+						public constructor(param0: com.facebook.internal.FacebookDialogBase);
 						public getMode(): any;
 						public setMode(param0: any): void;
 						public createAppCall(param0: any): com.facebook.internal.AppCall;
@@ -8790,7 +19911,7 @@ declare module com {
 						public static class: java.lang.Class<com.facebook.share.widget.ShareDialog.FeedHandler>;
 						public createAppCall(param0: com.facebook.share.model.ShareContent<any, any>): com.facebook.internal.AppCall;
 						public canShow(param0: com.facebook.share.model.ShareContent<any, any>, param1: boolean): boolean;
-						public constructor(param0: com.facebook.internal.FacebookDialogBase<any, any>);
+						public constructor(param0: com.facebook.internal.FacebookDialogBase);
 						public getMode(): any;
 						public setMode(param0: any): void;
 						public createAppCall(param0: any): com.facebook.internal.AppCall;
@@ -8810,7 +19931,7 @@ declare module com {
 						public static class: java.lang.Class<com.facebook.share.widget.ShareDialog.NativeHandler>;
 						public createAppCall(param0: com.facebook.share.model.ShareContent<any, any>): com.facebook.internal.AppCall;
 						public canShow(param0: com.facebook.share.model.ShareContent<any, any>, param1: boolean): boolean;
-						public constructor(param0: com.facebook.internal.FacebookDialogBase<any, any>);
+						public constructor(param0: com.facebook.internal.FacebookDialogBase);
 						public getMode(): any;
 						public setMode(param0: any): void;
 						public createAppCall(param0: any): com.facebook.internal.AppCall;
@@ -8821,7 +19942,7 @@ declare module com {
 						public static class: java.lang.Class<com.facebook.share.widget.ShareDialog.ShareStoryHandler>;
 						public createAppCall(param0: com.facebook.share.model.ShareContent<any, any>): com.facebook.internal.AppCall;
 						public canShow(param0: com.facebook.share.model.ShareContent<any, any>, param1: boolean): boolean;
-						public constructor(param0: com.facebook.internal.FacebookDialogBase<any, any>);
+						public constructor(param0: com.facebook.internal.FacebookDialogBase);
 						public getMode(): any;
 						public setMode(param0: any): void;
 						public createAppCall(param0: any): com.facebook.internal.AppCall;
@@ -8832,7 +19953,7 @@ declare module com {
 						public static class: java.lang.Class<com.facebook.share.widget.ShareDialog.WebShareHandler>;
 						public createAppCall(param0: com.facebook.share.model.ShareContent<any, any>): com.facebook.internal.AppCall;
 						public canShow(param0: com.facebook.share.model.ShareContent<any, any>, param1: boolean): boolean;
-						public constructor(param0: com.facebook.internal.FacebookDialogBase<any, any>);
+						public constructor(param0: com.facebook.internal.FacebookDialogBase);
 						public getMode(): any;
 						public setMode(param0: any): void;
 						public createAppCall(param0: any): com.facebook.internal.AppCall;

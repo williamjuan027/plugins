@@ -236,7 +236,7 @@ export class LoginManager implements ILoginManager {
 			LoginManager.ensureNative();
 			if (!this.#callbackManager) {
 				this.#callbackManager = com.facebook.CallbackManager.Factory.create();
-				Application.android.on(AndroidApplication.activityResultEvent, (data: AndroidActivityResultEventData) => {
+				Application.android.on(Application.android.activityResultEvent, (data: AndroidActivityResultEventData) => {
 					this.#callbackManager.onActivityResult(data.requestCode, data.resultCode, data.intent);
 				});
 			}
