@@ -33,7 +33,7 @@
 		"build.all": {
 			"outputs": ["{workspaceRoot}/dist/packages/background-http"],
 			"options": {
-				"commands": ["node tools/scripts/build-finish.ts background-http"],
+				"commands": ["node tools/scripts/build-finish.ts background-http", "mkdirp dist/packages/background-http/platforms/android", "cp -R packages/background-http/platforms/android/uploadservice-release.aar dist/packages/background-http/platforms/android/uploadservice-release.aar"],
 				"parallel": false
 			},
 			"executor": "nx:run-commands",

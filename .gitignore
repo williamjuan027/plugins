@@ -52,6 +52,7 @@ packages/shared-notification-delegate/common.js.map
 !packages/twitter/platforms/android/twitter-release.aar
 !packages/pdf/platforms/android/android-pdf-viewer-release.aar
 !packages/pdf/platforms/android/PdfiumAndroid-1.0.1.aar
+!packages/background-http/platforms/android/uploadservice-relese.aar
 
 # iOS:
 packages/**/native-src/ios/**/xcuserdata/
