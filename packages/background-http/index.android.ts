@@ -1,6 +1,7 @@
 import { Observable, Application, knownFolders, Utils } from '@nativescript/core';
 import * as common from './index';
 
+declare const kotlin: any;
 type Context = android.content.Context;
 type ServerResponse = net.gotev.uploadservice.network.ServerResponse;
 type UploadInfo = net.gotev.uploadservice.data.UploadInfo;
@@ -312,7 +313,8 @@ function getMultipartRequest(taskId: string, options: common.Request, params: an
 }
 
 function setRequestOptions(request: net.gotev.uploadservice.HttpUploadRequest<any>, options: common.Request) {
-	const config = new (<any>org).nativescript.plugins.background_http.NotificationConfig();
+	// const config = new (<any>org).nativescript.plugins.background_http.NotificationConfig();
+	const config = new NotificationConfig();
 
 	if (typeof options.androidNotificationChannelID === 'string' && options.androidNotificationChannelID) {
 		config.setNotificationChannelId(options.androidNotificationChannelID);
@@ -358,7 +360,8 @@ function setRequestOptions(request: net.gotev.uploadservice.HttpUploadRequest<an
 		config.setOnCancelledMessage(options.androidNotificationOnCancelledMessage);
 	}
 
-	(<any>org).nativescript.plugins.background_http.NotificationConfig.setConfig(request, config);
+	config.setConfig(request);
+	// (<any>org).nativescript.plugins.background_http.NotificationConfig.setConfig(request, config);
 
 	const autoDeleteAfterUpload = typeof options.androidAutoDeleteAfterUpload === 'boolean' ? options.androidAutoDeleteAfterUpload : false;
 	if (autoDeleteAfterUpload) {
@@ -379,4 +382,104 @@ function setRequestOptions(request: net.gotev.uploadservice.HttpUploadRequest<an
 	}
 
 	request.setMethod(options.method ? options.method : 'GET');
+}
+
+class NotificationConfig {
+	uploadRatePlaceholder: string = '[upload_rate]';
+	uploadProgressPlaceholder: string = '[upload_progress]';
+	uploadElapsedTimePlaceholder: string = '[upload_elapsed_time]';
+	ringToneEnabled: boolean = false;
+	titleForAllStatuses: string = 'File Upload';
+	autoClearNotification: boolean = false;
+	notificationChannelId: string | null = null;
+
+	onProgressTitle = this.titleForAllStatuses;
+	onProgressMessage = `Uploading at ${net.gotev.uploadservice.placeholders.Placeholder.UploadRate.getValue()} (${net.gotev.uploadservice.placeholders.Placeholder.Progress.getValue()})`;
+	onCompleteTitle = this.titleForAllStatuses;
+	onCompleteMessage = `Upload completed successfully in ${net.gotev.uploadservice.placeholders.Placeholder.ElapsedTime.getValue()}`;
+	onErrorTitle = this.titleForAllStatuses;
+	onErrorMessage = 'Error during upload';
+	onCancelledTitle = this.titleForAllStatuses;
+	onCancelledMessage = 'Upload cancelled';
+
+	replacePlaceHolders(value: String): String {
+		return value.replace(this.uploadRatePlaceholder, net.gotev.uploadservice.placeholders.Placeholder.UploadRate.getValue()).replace(this.uploadProgressPlaceholder, net.gotev.uploadservice.placeholders.Placeholder.Progress.getValue()).replace(this.uploadElapsedTimePlaceholder, net.gotev.uploadservice.placeholders.Placeholder.ElapsedTime.getValue());
+	}
+
+	setNotificationChannelId(value: string | null): void {
+		this.notificationChannelId = value;
+	}
+
+	setRingToneEnabled(value: boolean): void {
+		this.ringToneEnabled = value;
+	}
+
+	setAutoClearNotification(value: boolean): void {
+		this.autoClearNotification = value;
+	}
+
+	setOnProgressTitle(value: string): void {
+		this.onProgressTitle = value;
+	}
+
+	setOnProgressMessage(value: string): void {
+		this.onProgressMessage = value;
+	}
+
+	setOnCompleteTitle(value: string): void {
+		this.onCompleteMessage = value;
+	}
+
+	setOnCompleteMessage(value: string): void {
+		this.onCompleteMessage = value;
+	}
+
+	setOnErrorTitle(value: string): void {
+		this.onErrorTitle = value;
+	}
+
+	setOnErrorMessage(value: string): void {
+		this.onErrorMessage = value;
+	}
+
+	setOnCancelledTitle(value: string): void {
+		this.onCancelledTitle = value;
+	}
+
+	setOnCancelledMessage(value: string): void {
+		this.onCancelledMessage = value;
+	}
+
+	into(context: any, uploadId: string): net.gotev.uploadservice.data.UploadNotificationConfig {
+		return new net.gotev.uploadservice.data.UploadNotificationConfig(
+			this.notificationChannelId || net.gotev.uploadservice.UploadServiceConfig.getDefaultNotificationChannel(),
+			this.ringToneEnabled,
+			new net.gotev.uploadservice.data.UploadNotificationStatusConfig(
+				this.onProgressTitle,
+				this.onProgressMessage,
+				this.autoClearNotification ? 1 : 0
+				// TODO: we're currently not using cancel, so we'll leave this commented out
+				// new java.util.ArrayList().add(
+				// 	new net.gotev.uploadservice.data.UploadNotificationAction(
+				// 		android.R.drawable.ic_menu_close_clear_cancel,
+				// 		'cancel',
+				// 		context.getCancelUploadIntent(uploadId)
+				// 	)
+				// )
+			),
+			new net.gotev.uploadservice.data.UploadNotificationStatusConfig(this.onCompleteTitle, this.onCompleteMessage, this.autoClearNotification ? 1 : 0),
+			new net.gotev.uploadservice.data.UploadNotificationStatusConfig(this.onErrorTitle, this.onErrorMessage, this.autoClearNotification ? 1 : 0),
+			new net.gotev.uploadservice.data.UploadNotificationStatusConfig(this.onCancelledTitle, this.onCancelledMessage, this.autoClearNotification ? 1 : 0)
+		);
+	}
+
+	setConfig(request: net.gotev.uploadservice.HttpUploadRequest<any>): void {
+		request.setNotificationConfig(
+			new kotlin.jvm.functions.Function2({
+				invoke: (context, uploadId) => {
+					return this.into(context, uploadId);
+				},
+			})
+		);
+	}
 }
