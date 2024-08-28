@@ -360,7 +360,8 @@ function setRequestOptions(request: net.gotev.uploadservice.HttpUploadRequest<an
 		config.setOnCancelledMessage(options.androidNotificationOnCancelledMessage);
 	}
 
-	config.setConfig(request);
+	// disabling notification as it's not currently in use and causes a crash
+	// config.setConfig(request);
 	// (<any>org).nativescript.plugins.background_http.NotificationConfig.setConfig(request, config);
 
 	const autoDeleteAfterUpload = typeof options.androidAutoDeleteAfterUpload === 'boolean' ? options.androidAutoDeleteAfterUpload : false;
@@ -403,6 +404,7 @@ class NotificationConfig {
 	onCancelledMessage = 'Upload cancelled';
 
 	replacePlaceHolders(value: String): String {
+		net.gotev.uploadservice.placeholders.Placeholder.UploadRate;
 		return value.replace(this.uploadRatePlaceholder, net.gotev.uploadservice.placeholders.Placeholder.UploadRate.getValue()).replace(this.uploadProgressPlaceholder, net.gotev.uploadservice.placeholders.Placeholder.Progress.getValue()).replace(this.uploadElapsedTimePlaceholder, net.gotev.uploadservice.placeholders.Placeholder.ElapsedTime.getValue());
 	}
 
@@ -454,18 +456,12 @@ class NotificationConfig {
 		return new net.gotev.uploadservice.data.UploadNotificationConfig(
 			this.notificationChannelId || net.gotev.uploadservice.UploadServiceConfig.getDefaultNotificationChannel(),
 			this.ringToneEnabled,
-			new net.gotev.uploadservice.data.UploadNotificationStatusConfig(
+			new (<any>net.gotev.uploadservice.data.UploadNotificationStatusConfig)(
 				this.onProgressTitle,
 				this.onProgressMessage,
 				this.autoClearNotification ? 1 : 0
 				// TODO: we're currently not using cancel, so we'll leave this commented out
-				// new java.util.ArrayList().add(
-				// 	new net.gotev.uploadservice.data.UploadNotificationAction(
-				// 		android.R.drawable.ic_menu_close_clear_cancel,
-				// 		'cancel',
-				// 		context.getCancelUploadIntent(uploadId)
-				// 	)
-				// )
+				// new java.util.ArrayList().add(new net.gotev.uploadservice.data.UploadNotificationAction(android.R.drawable.ic_menu_close_clear_cancel, 'cancel', context.getCancelUploadIntent(uploadId)))
 			),
 			new net.gotev.uploadservice.data.UploadNotificationStatusConfig(this.onCompleteTitle, this.onCompleteMessage, this.autoClearNotification ? 1 : 0),
 			new net.gotev.uploadservice.data.UploadNotificationStatusConfig(this.onErrorTitle, this.onErrorMessage, this.autoClearNotification ? 1 : 0),
