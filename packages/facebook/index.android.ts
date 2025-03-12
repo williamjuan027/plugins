@@ -231,7 +231,7 @@ export class LoginManager implements ILoginManager {
 		LoginManager.ensureNative();
 	}
 
-	static logInWithPermissions(permissions: string[], context?: any): Promise<LoginResult> {
+	static logInWithPermissions(permissions: string[], context?: any, nonce?: string): Promise<LoginResult> {
 		return new Promise((resolve, reject) => {
 			LoginManager.ensureNative();
 			if (!this.#callbackManager) {
