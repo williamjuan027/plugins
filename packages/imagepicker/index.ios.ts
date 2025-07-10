@@ -1,4 +1,4 @@
-import { ImageAsset, View, Utils, Application, path, knownFolders, ImageSource } from '@nativescript/core';
+import { ImageAsset, View, Utils, Application, path, knownFolders, ImageSource, File } from '@nativescript/core';
 import { AuthorizationResult, ImagePickerBase, ImagePickerSelection, Options } from './common';
 import { getFile } from '@nativescript/core/http';
 import * as permissions from '@nativescript-community/perms';
@@ -198,13 +198,6 @@ class ImagePickerControllerDelegate extends NSObject implements QBImagePickerCon
 						// which we're not using anyways in NT/W2/GP
 						if (path && File.exists(path)) {
 							fileMap[item.originalFilename].filesize = fileManager.attributesOfItemAtPathError(path).fileSize();
-						}
-						if (item.type == 'video') {
-							promises.push(
-								ImageSource.fromAsset(item.asset).then((source) => {
-									fileMap[item.originalFilename].thumbnail = source;
-								})
-							);
 						}
 					}
 				}
