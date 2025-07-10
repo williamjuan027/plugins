@@ -1,6 +1,8 @@
 import { Color, ImageSource, EventData, View } from '@nativescript/core';
 import { JointType, MapType, MapViewBase } from './common';
 
+export { hueFromColor, intoNativeMarkerOptions } from './utils';
+
 export type FeatureTypeAdministrative = 'administrative' | 'administrative.country' | 'administrative.land_parcel' | 'administrative.locality' | 'administrative.neighborhood' | 'administrative.province';
 
 export type FeatureTypeLandscape = 'landscape' | 'landscape.man_made' | 'landscape.natural' | 'landscape.natural.landcover' | 'landscape.natural.terrain';
@@ -54,7 +56,7 @@ export interface MarkerDragEvent extends EventData {
 
 export interface CameraPositionEvent extends EventData {
 	cameraPosition: CameraPosition;
-	state: 'idle' | 'start' | 'moving';
+	state: 'idle' | 'start' | 'move';
 }
 
 export interface CameraPositionStartEvent extends CameraPositionEvent {
@@ -236,7 +238,7 @@ export class MapView extends MapViewBase {
 
 	on(event: 'myLocationTap', callback: (args: MapTapEvent) => void, thisArg?: any);
 
-	on(event: 'myLocationButtonTap', callback: (args: MarkerTapEvent) => void, thisArg?: any);
+	on(event: 'myLocationButtonTap', callback: (args: LocationTapEvent) => void, thisArg?: any);
 
 	on(event: 'markerDragStart', callback: (args: MarkerTapEvent) => void, thisArg?: any);
 

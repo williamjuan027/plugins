@@ -23,33 +23,15 @@ module.exports = {
 			},
 			demo: {
 				clean: {
-					script: 'nx run demo:clean',
+					script: 'nx clean demo',
 					description: '⚆  Clean  🧹',
 				},
 				ios: {
-					script: 'nx run demo:ios',
+					script: 'nx debug demo ios',
 					description: '⚆  Run iOS  ',
 				},
 				android: {
-					script: 'nx run demo:android',
-					description: '⚆  Run Android  🤖',
-				},
-			},
-			'...Angular...': {
-				script: `npx cowsay "Test all the Angles!"`,
-				description: ` 🔻 Angular`,
-			},
-			'demo-angular': {
-				clean: {
-					script: 'nx run demo-angular:clean',
-					description: '⚆  Clean  🧹',
-				},
-				ios: {
-					script: 'nx run demo-angular:ios',
-					description: '⚆  Run iOS  ',
-				},
-				android: {
-					script: 'nx run demo-angular:android',
+					script: 'nx debug demo android',
 					description: '⚆  Run Android  🤖',
 				},
 			},
@@ -278,6 +260,20 @@ module.exports = {
 					description: '@nativescript/contacts: Build',
 				},
 			},
+			// @nativescript/ionic-portals
+			'ionic-portals': {
+				build: {
+					script: 'nx run ionic-portals:build.all',
+					description: '@nativescript/ionic-portals: Build',
+				},
+			},
+			// @nativescript/google-maps-utils
+			'google-maps-utils': {
+				build: {
+					script: 'nx run google-maps-utils:build.all',
+					description: '@nativescript/google-maps-utils: Build',
+				},
+			},
 			// @nativescript/haptics
 			haptics: {
 				build: {
@@ -304,6 +300,13 @@ module.exports = {
 				build: {
 					script: 'nx run keyboard-toolbar:build.all',
 					description: '@nativescript/keyboard-toolbar: Build',
+				},
+			},
+			// @nativescript/google-mobile-ads
+			'google-mobile-ads': {
+				build: {
+					script: 'nx run google-mobile-ads:build.all',
+					description: '@nativescript/google-mobile-ads: Build',
 				},
 			},
 			'build-all': {
@@ -440,6 +443,14 @@ module.exports = {
 				script: 'nx run contacts:focus',
 				description: 'Focus on @nativescript/contacts',
 			},
+			'ionic-portals': {
+				script: 'nx run ionic-portals:focus',
+				description: 'Focus on @nativescript/ionic-portals',
+			},
+			'google-maps-utils': {
+				script: 'nx run google-maps-utils:focus',
+				description: 'Focus on @nativescript/google-maps-utils',
+			},
 			haptics: {
 				script: 'nx run haptics:focus',
 				description: 'Focus on @nativescript/haptics',
@@ -455,6 +466,10 @@ module.exports = {
 			'keyboard-toolbar': {
 				script: 'nx run keyboard-toolbar:focus',
 				description: 'Focus on @nativescript/keyboard-toolbar',
+			},
+			'google-mobile-ads': {
+				script: 'nx run google-mobile-ads:focus',
+				description: 'Focus on @nativescript/google-mobile-ads',
 			},
 			reset: {
 				script: 'nx g @nativescript/plugin-tools:focus-packages',

@@ -14,6 +14,8 @@
 				"assets": [
 					"packages/detox/*.md",
 					"packages/detox/index.d.ts",
+					"packages/detox/postinstall.js",
+					"packages/detox/preuninstall.js",
 					"LICENSE",
 					{
 						"glob": "**/*",
@@ -27,11 +29,11 @@
 					}
 				]
 			},
-			"executor": "@nrwl/js:tsc",
+			"executor": "@nx/js:tsc",
 			"dependsOn": [
 				{
 					"target": "build.all",
-					"projects": "dependencies"
+					"dependencies": true
 				}
 			]
 		},
@@ -45,11 +47,10 @@
 			"dependsOn": [
 				{
 					"target": "build.all",
-					"projects": "dependencies"
+					"dependencies": true
 				},
 				{
-					"target": "build",
-					"projects": "self"
+					"target": "build"
 				}
 			]
 		},
@@ -61,10 +62,7 @@
 			"executor": "nx:run-commands"
 		},
 		"lint": {
-			"executor": "@nrwl/linter:eslint",
-			"options": {
-				"lintFilePatterns": ["packages/detox/**/*.ts"]
-			}
+			"executor": "@nx/eslint:lint"
 		}
 	}
 }

@@ -28,6 +28,8 @@ Install the plugin by running the following command in the root directory of you
 ```cli
 npm install @nativescript/imagepicker
 ```
+**Note: Version 3.1 contains breaking changes:**
+* New behavior on iOS when the user selects `Limit AccessLim..` detailed in [iOS Limited permission](#ios-limited-permission).
 
 **Note: Version 3.0 contains breaking changes:**
 * authorize() now returns a `Promise<AuthorizationResult>` for both android and ios.
@@ -50,6 +52,8 @@ Add the following permissions to the `App_Resources/Android/src/main/AndroidMani
 
 - **targetSdkVersion >=33(Android 13+)**
 
+These are only required when not setting `android.use_photo_picker = true`.
+
 ```xml
 <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
@@ -57,6 +61,24 @@ Add the following permissions to the `App_Resources/Android/src/main/AndroidMani
 ```
 
 See the complete example [here](https://github.com/NativeScript/plugins/blob/main/tools/assets/App_Resources/Android/src/main/AndroidManifest.xml#L14).
+
+### Android Photo picker ###
+
+For phones running android 13+ specifying the option `android.use_photo_picker = true` when creating the `ImagePicker` will result in the use of the System Photo Picker.
+
+<!-- tabs: TS -->
+```ts
+let imagePickerObj: ImagePicker = imagePickerPlugin.create({
+    mode: "single",
+	android: { use_photo_picker: true }});
+```
+This means you can remove the `READ_MEDIA_IMAGES, READ_MEDIA_VIDEO` permissions and do not have to prompt the user for permission.
+
+Full details [here](https://developer.android.com/training/data-storage/shared/photopicker).
+
+You can also now limit the number of images that are selectable in the Photo Picker by specifying the `maximumNumberOfSelection` option.
+
+For phones running  < Android 13, this `use_photo_picker` option has no effect.
 
 ### iOS required permissions
 
@@ -67,6 +89,21 @@ Using the plugin on iOS requires the `NSPhotoLibraryUsageDescription` permission
 <string>Description text goes here</string>
 ```
 Apple App Store might reject your app if you do not describe why you need this permission. The default message `Requires access to photo library.` might not be enough for the App Store reviewers. 
+
+### iOS Limited permission
+
+Apple introduced the `PHAuthorizationStatusLimited` permission status with iOS 14, this is where the user specifies that the app can only access specified photos by choosing the `Limit Access..` option in the authorization dialog.
+
+In this case `authorise()` will return an `AuthorizationResult` where `authorized` will be `true` and the `details` will contain `'limited'`.
+
+Every time the app is launched anew, and the authorize method is called, if the current permission is `limited` the user will be prompted to update the image selection.
+
+To prevent this prompt, add the following values to your `App_Resources/iOS/Info.plist`:
+
+```xml
+<key>PHPhotoLibraryPreventAutomaticLimitedAccessAlert</key>
+<true/>
+```
 
 ## Pick images
 
@@ -151,7 +188,7 @@ An object passed to the `create` method to specify the characteristics of a medi
 |:---------------------------|:-------- |:---------|:-------
 | `mode`                       | `string`     | `multiple`  | The mode of the imagepicker. Possible values are `single` for single selection and `multiple` for multiple selection.                              |
 | `minimumNumberOfSelection`    | `number`      | `0`         | _Optional_:  (`iOS-only`) The minumum number of selected assets.                                                                                                             |
-| `maximumNumberOfSelection`    | `number`      | `0`         | _Optional_:  (`iOS-only`) The maximum number of selected assets.                                                                                                             |
+| `maximumNumberOfSelection`    | `number`      | `0`         | _Optional_:  (`iOS-only`, `Android-Photo Picker-Only`) The maximum number of selected assets.                                                                                                             |
 | `showsNumberOfSelectedAssets` | `boolean`      | `true`      | _Optional_:  (`iOS-only`) Display the number of selected assets.                                                                                                             |
 | `prompt`                      | `string`      | `undefined` | _Optional_:  (`iOS-only`) Display prompt text when selecting assets.                                                                                                         |
 | `numberOfColumnsInPortrait`   | `number`      | `4`         | _Optional_:  (`iOS-only`) Sets the number of columns in Portrait orientation                                                                                                  |

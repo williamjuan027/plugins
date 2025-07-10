@@ -17,6 +17,8 @@
 - [@nativescript/fingerprint-auth](packages/fingerprint-auth/README.md)
 - [@nativescript/geolocation](packages/geolocation/README.md)
 - [@nativescript/google-maps](packages/google-maps/README.md)
+- [@nativescript/google-maps-utils](packages/google-maps-utils/README.md)
+- [@nativescript/google-mobile-ads](packages/google-mobile-ads/README.md)
 - [@nativescript/google-signin](packages/google-signin/README.md)
 - [@nativescript/haptics](packages/haptics/README.md)
 - [@nativescript/imagepicker](packages/imagepicker/README.md)
@@ -40,8 +42,7 @@ This workspace manages the suite of plugins listed above.
 
 ## Prerequisites
 
-- Node 18+ is recommended
-- [yarn v1](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable) is required
+- Node 20+ is recommended
 
 In general, when in doubt with what to do, just `npm start`.
 
