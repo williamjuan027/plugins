@@ -188,6 +188,24 @@ class ImagePickerControllerDelegate extends NSObject implements QBImagePickerCon
 								fileMap[item.originalFilename].thumbnail = source;
 							})
 						);
+					} else {
+						const path = fileMap[item.filename].path;
+						// there is the occasional race condition here where the file in the path
+						// doesn't exist, this would throw the following "discarded error":
+						// "The file couldn't be opened.""
+						// if you have "discardUncaughtJsExceptions" set to "false", the app would crash.
+						// adding the check here would return the image asset without the "filesize" property
+						// which we're not using anyways in NT/W2/GP
+						if (path && File.exists(path)) {
+							fileMap[item.originalFilename].filesize = fileManager.attributesOfItemAtPathError(path).fileSize();
+						}
+						if (item.type == 'video') {
+							promises.push(
+								ImageSource.fromAsset(item.asset).then((source) => {
+									fileMap[item.originalFilename].thumbnail = source;
+								})
+							);
+						}
 					}
 				}
 				count++;
