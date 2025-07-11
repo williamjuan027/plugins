@@ -9,27 +9,45 @@ export function init() {
 	if (didInit) {
 		return;
 	}
+	let callbackCalled = false;
 	initializeProgressReceiver();
-	const appContext: Context = Utils.android.getApplicationContext();
-	const packageName = appContext.getPackageName();
-	if (android.os.Build.VERSION.SDK_INT >= 26) {
-		const channel = new android.app.NotificationChannel(packageName, `${packageName} Channel`, android.app.NotificationManager.IMPORTANCE_LOW);
-		const manager = appContext.getSystemService(android.content.Context.NOTIFICATION_SERVICE) as android.app.NotificationManager;
-		manager.createNotificationChannel(channel);
+	const callback = function (event) {
+		if (callbackCalled) {
+			return;
+		}
+		callbackCalled = true;
+		const appContext: Context = Utils.android.getApplicationContext();
+		const packageName = appContext.getPackageName();
+		if (android.os.Build.VERSION.SDK_INT >= 26) {
+			const channel = new android.app.NotificationChannel(packageName, `${packageName} Channel`, android.app.NotificationManager.IMPORTANCE_LOW);
+			const manager = appContext.getSystemService(android.content.Context.NOTIFICATION_SERVICE) as android.app.NotificationManager;
+			manager.createNotificationChannel(channel);
+		}
+
+		let isDebug = false;
+
+		try {
+			const BuildConfigClazz = java.lang.Class.forName(`${packageName}.BuildConfig`);
+			const DEBUG = BuildConfigClazz.getDeclaredField('DEBUG');
+			isDebug = Boolean(DEBUG.get(null));
+		} catch (e) {}
+
+		net.gotev.uploadservice.UploadServiceConfig.initialize(Utils.android.getApplication(), packageName, isDebug);
+
+		new net.gotev.uploadservice.observer.request.GlobalRequestObserver(Utils.android.getApplication(), ProgressReceiver);
+		const namespace = net.gotev.uploadservice.UploadServiceConfig.getNamespace();
+		if (namespace) {
+			didInit = true;
+			Application.off('launch', callback);
+			Application.off('resume', callback);
+		}
+	};
+	if (Application.hasLaunched()) {
+		callback(undefined);
+	} else {
+		Application.on('launch', callback);
+		Application.on('resume', callback);
 	}
-
-	let isDebug = false;
-
-	try {
-		const BuildConfigClazz = java.lang.Class.forName(`${packageName}.BuildConfig`);
-		const DEBUG = BuildConfigClazz.getDeclaredField('DEBUG');
-		isDebug = Boolean(DEBUG.get(null));
-	} catch (e) {}
-
-	net.gotev.uploadservice.UploadServiceConfig.initialize(Utils.android.getApplication(), packageName, isDebug);
-
-	new net.gotev.uploadservice.observer.request.GlobalRequestObserver(Utils.android.getApplication(), ProgressReceiver);
-	didInit = true;
 }
 
 /* A snapshot-friendly, lazy-loaded class for ProgressReceiver BEGIN */
